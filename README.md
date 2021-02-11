@@ -7,19 +7,7 @@ https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
 
 
-### Branches:
 
-Gharam
-https://github.com/rayngan999/ECS189e-Big-Bang-Theory/tree/Gharam
-
-Wai Hei Ngan
-https://github.com/rayngan999/ECS189e-Big-Bang-Theory/tree/WaiHeiNgan(Ray)
-
-Eden
-https://github.com/rayngan999/ECS189e-Big-Bang-Theory/tree/Eden
-
-Ma Eint
-https://github.com/rayngan999/ECS189e-Big-Bang-Theory/blob/MaEint/README.md
 
 ### Google doc (idea draft):
 https://docs.google.com/document/d/11F6mqw1bmnWUQWVpPF654X7oGxjg-IKWn8QEcZLwYDw/edit?usp=sharing
