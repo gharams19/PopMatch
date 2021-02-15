@@ -1,4 +1,4 @@
-# ECS-189e-[Big-Bang-Theory]!
+# ECS-189e [Big-Bang-Theory]!
 ### Project Summary 
 An app that uses an unique queue matching system to allow users to have 1 on 1 video chats with other people. A way to create social bonds or networking in a community, specifically in Universities. 
 
