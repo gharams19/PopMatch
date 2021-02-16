@@ -10,6 +10,8 @@ Eden Avivi, eavivi4 (sometimes just Eden)
 
 Gharam Alsaedi, gharams19
 ***photo***
+![Gharam Picture](/images/GharamPic.png)
+Format: ![Alt Text](url)
 
 Wai Hei Ngan, rayngan999 
 ***photo***
