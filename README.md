@@ -9,7 +9,7 @@ Eden Avivi, eavivi4 (sometimes just Eden)
 ***photo***
 
 Gharam Alsaedi, gharams19
-***photo**
+<br/>
 <img src="https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Images/GharamPic.jpg"  width="300"/>
 
 Wai Hei Ngan, rayngan999 
