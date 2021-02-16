@@ -11,3 +11,14 @@ https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
 ### Google doc (idea draft):
 https://docs.google.com/document/d/11F6mqw1bmnWUQWVpPF654X7oGxjg-IKWn8QEcZLwYDw/edit?usp=sharing
+
+
+### Group member names, usernames and photos:
+Eden Avivi, eavivi4 (sometimes just Eden)
+***photo***
+Gharam Alsaedi, gharams19
+***photo***
+Wai Hei Ngan, rayngan999 
+***photo***
+Ma Eint Poe, maeintpoe
+***photo***
