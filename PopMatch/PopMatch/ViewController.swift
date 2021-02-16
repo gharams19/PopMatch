@@ -26,6 +26,9 @@ class ViewController: UIViewController {
         }
         //optional navigation controller
         navigationController?.pushViewController(signUpViewController, animated: true)
+        emailTextField.text = nil
+        passwordTextField.text = nil
+        self.view.endEditing(true)
     }
     @IBAction func logInButton() {
         //check if the email and password match to an account in the database, if it matches
@@ -38,6 +41,7 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(mainViewController, animated: true)
         emailTextField.text = nil
         passwordTextField.text = nil
+        self.view.endEditing(true)
         //if it does not match, present error label on the type of error 
     }
     
