@@ -16,5 +16,5 @@ Wai Hei Ngan, rayngan999
 ***photo***
 
 Ma Eint Poe, maeintpoe
-***photo***
-
+<br/>
+<img src="https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Images/MaEintPoe.png"  width="300"/>
