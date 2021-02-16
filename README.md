@@ -1,13 +1,19 @@
-# ECS-189e---Big-Bang-Theory-
-### Project Summary 
-An app that uses an unique queue matching system to allow users to have 1 on 1 video chats with other people. A way to create social bonds or networking in a community, specifically in Universities. 
 
+# Milestone 1 Documentation
 
+### Trello Link
 https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
+### Group member names, usernames and photos:
+Eden Avivi, eavivi4 (sometimes just Eden)
+***photo***
 
+Gharam Alsaedi, gharams19
+***photo***
 
+Wai Hei Ngan, rayngan999 
+***photo***
 
+Ma Eint Poe, maeintpoe
+***photo***
 
-### Google doc (idea draft):
-https://docs.google.com/document/d/11F6mqw1bmnWUQWVpPF654X7oGxjg-IKWn8QEcZLwYDw/edit?usp=sharing
