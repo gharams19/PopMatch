@@ -1,5 +1,3 @@
-# project-w21-big-bang-theory
-project-w21-big-bang-theory created by GitHub Classroom
 
 # Milestone 1 Documentation
 
