@@ -6,7 +6,8 @@ https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
 ### Group member names, usernames and photos:
 Eden Avivi, eavivi4 (sometimes just Eden)
-***photo***
+<br/>
+<img src="https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Images/EdenPic.jpg"  width="300"/>
 
 Gharam Alsaedi, gharams19
 <br/>
