@@ -15,6 +15,15 @@ class SignUpViewController: UIViewController {
         errLabel.text = nil
     }
 
+    @IBAction func logInHere() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let logInViewController = storyboard.instantiateViewController(withIdentifier: "logInVC") as? ViewController else {
+            assertionFailure("couldn't find vc") //will stop program
+            return
+        }
+        //optional navigation controller
+        navigationController?.pushViewController(logInViewController, animated: true)
+    }
     @IBAction func signUpButton() {
         //check if the email is correct and also have a check to verify the password
         //change back button to login viewController
