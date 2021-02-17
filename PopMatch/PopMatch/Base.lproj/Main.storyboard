@@ -348,6 +348,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGf-Jf-JWY">
+                                <rect key="frame" x="306" y="730" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="loC-1L-JUZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -359,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fix-85-BMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2339" y="94"/>
+            <point key="canvasLocation" x="2337.68115942029" y="93.75"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="UQz-ve-M62">
