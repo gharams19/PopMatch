@@ -32,4 +32,4 @@ Ma Eint Poe, maeintpoe
 <img src="https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Images/MaEintPoe.png"  width="300"/>
 
 ### Testing Plan
-
+<https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Testing_Plan.md>
