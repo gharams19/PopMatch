@@ -12,13 +12,16 @@ https://trello.com/b/Ctr0GQnf/ecs-189e-project
 ### Google doc (idea draft):
 https://docs.google.com/document/d/11F6mqw1bmnWUQWVpPF654X7oGxjg-IKWn8QEcZLwYDw/edit?usp=sharing
 
+### Branches:
 
-### Group member names, usernames and photos:
-Eden Avivi, eavivi4 (sometimes just Eden)
-***photo***
-Gharam Alsaedi, gharams19
-***photo***
-Wai Hei Ngan, rayngan999 
-***photo***
-Ma Eint Poe, maeintpoe
-***photo***
+Gharam
+https://github.com/ECS189E/project-w21-big-bang-theory/tree/Gharam
+
+Wai Hei Ngan
+https://github.com/ECS189E/project-w21-big-bang-theory/tree/WaiHeiNgan
+
+Eden
+https://github.com/ECS189E/project-w21-big-bang-theory/tree/Eden
+
+Ma Eint
+https://github.com/ECS189E/project-w21-big-bang-theory/tree/MaEint
