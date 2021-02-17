@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -348,6 +349,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGf-Jf-JWY">
+                                <rect key="frame" x="295" y="763" width="70" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.right.square.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toVideoCall:" destination="Tuc-NH-aXD" eventType="touchUpInside" id="gPW-s8-UWA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="loC-1L-JUZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -359,7 +371,123 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fix-85-BMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2339" y="94"/>
+            <point key="canvasLocation" x="2337.68115942029" y="93.75"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="MOi-fs-3Ix">
+            <objects>
+                <viewController storyboardIdentifier="videoVC" id="rgy-3g-sry" customClass="VideoViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PBg-Wz-KK1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4C-k3-3m6">
+                                <rect key="frame" x="36" y="347" width="49" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Skl-ZR-y3L" userLabel="Room Text Field">
+                                <rect key="frame" x="106" y="342" width="272" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Hg1-ft-58y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="join"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqE-01-rI5" userLabel="Room Line">
+                                <rect key="frame" x="36" y="367.5" width="342" height="2"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="OuD-cA-Fj9"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAm-Cb-VEh">
+                                <rect key="frame" x="278" y="684" width="70" height="65"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="checkmark.square.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectWithSender:" destination="rgy-3g-sry" eventType="touchUpInside" id="6rc-iP-bVJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEc-K7-6jP">
+                                <rect key="frame" x="224" y="754" width="73" height="71"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="mic.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleMicWithSender:" destination="rgy-3g-sry" eventType="touchUpInside" id="03E-aV-poD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfY-4n-A2U">
+                                <rect key="frame" x="106" y="754" width="73" height="71"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnectWithSender:" destination="rgy-3g-sry" eventType="touchUpInside" id="pUm-r9-Zux"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="gR0-4w-8SS" customClass="TVIVideoView">
+                                <rect key="frame" x="36" y="532" width="120" height="160"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="IDL-Du-O2B"/>
+                                    <constraint firstAttribute="width" constant="120" id="J4r-8b-y6M"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaK-Zn-ghV">
+                                <rect key="frame" x="20" y="109" width="375" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="I8G-Ef-aH9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wCR-aA-ciB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hEc-K7-6jP" firstAttribute="leading" secondItem="CfY-4n-A2U" secondAttribute="trailing" constant="45" id="6jf-bA-UkL"/>
+                            <constraint firstItem="X4C-k3-3m6" firstAttribute="leading" secondItem="uqE-01-rI5" secondAttribute="leading" id="7mg-xl-omL"/>
+                            <constraint firstItem="HaK-Zn-ghV" firstAttribute="centerX" secondItem="PBg-Wz-KK1" secondAttribute="centerX" id="DSP-ll-eI6"/>
+                            <constraint firstItem="Skl-ZR-y3L" firstAttribute="leading" secondItem="CfY-4n-A2U" secondAttribute="leading" id="FK1-nq-a5h"/>
+                            <constraint firstItem="CfY-4n-A2U" firstAttribute="baseline" secondItem="hEc-K7-6jP" secondAttribute="baseline" id="IKg-u6-oJt"/>
+                            <constraint firstItem="Skl-ZR-y3L" firstAttribute="top" secondItem="PBg-Wz-KK1" secondAttribute="top" constant="342" id="IXh-gP-fmW"/>
+                            <constraint firstItem="uqE-01-rI5" firstAttribute="leading" secondItem="gR0-4w-8SS" secondAttribute="leading" id="JML-1u-d1d"/>
+                            <constraint firstItem="HaK-Zn-ghV" firstAttribute="centerX" secondItem="uqE-01-rI5" secondAttribute="centerX" id="QWk-5E-XP1"/>
+                            <constraint firstItem="Skl-ZR-y3L" firstAttribute="leading" secondItem="X4C-k3-3m6" secondAttribute="trailing" constant="21" id="Rwv-Gj-N1r"/>
+                            <constraint firstItem="wCR-aA-ciB" firstAttribute="trailing" secondItem="JAm-Cb-VEh" secondAttribute="trailing" constant="66" id="SDK-hI-zq3"/>
+                            <constraint firstItem="CfY-4n-A2U" firstAttribute="top" secondItem="gR0-4w-8SS" secondAttribute="bottom" constant="62" id="Sjx-em-096"/>
+                            <constraint firstItem="Skl-ZR-y3L" firstAttribute="trailing" secondItem="uqE-01-rI5" secondAttribute="trailing" id="TIe-cz-ovo"/>
+                            <constraint firstItem="X4C-k3-3m6" firstAttribute="leading" secondItem="wCR-aA-ciB" secondAttribute="leading" constant="36" id="Yqb-6E-Dmq"/>
+                            <constraint firstItem="wCR-aA-ciB" firstAttribute="bottom" secondItem="CfY-4n-A2U" secondAttribute="bottom" constant="37" id="d3l-he-aYO"/>
+                            <constraint firstItem="Skl-ZR-y3L" firstAttribute="baseline" secondItem="X4C-k3-3m6" secondAttribute="baseline" id="e9a-VZ-7Oy"/>
+                            <constraint firstItem="HaK-Zn-ghV" firstAttribute="top" secondItem="wCR-aA-ciB" secondAttribute="top" constant="65" id="koE-3F-Dwk"/>
+                            <constraint firstItem="hEc-K7-6jP" firstAttribute="top" secondItem="JAm-Cb-VEh" secondAttribute="bottom" constant="5" id="lA1-EP-Q2J"/>
+                            <constraint firstItem="HaK-Zn-ghV" firstAttribute="leading" secondItem="PBg-Wz-KK1" secondAttribute="leadingMargin" id="uDp-hK-Jic"/>
+                            <constraint firstItem="uqE-01-rI5" firstAttribute="top" secondItem="X4C-k3-3m6" secondAttribute="bottom" id="vf4-Mb-lhs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="connectButton" destination="JAm-Cb-VEh" id="Szn-yB-ZCe"/>
+                        <outlet property="disconnectButton" destination="CfY-4n-A2U" id="rHu-he-fN5"/>
+                        <outlet property="messageLabel" destination="HaK-Zn-ghV" id="tpL-ss-h5I"/>
+                        <outlet property="micButton" destination="hEc-K7-6jP" id="PQh-ZP-vhp"/>
+                        <outlet property="previewView" destination="gR0-4w-8SS" id="zRe-yU-htU"/>
+                        <outlet property="roomLabel" destination="X4C-k3-3m6" id="rYg-OX-Cey"/>
+                        <outlet property="roomLine" destination="uqE-01-rI5" id="XSd-t3-qhO"/>
+                        <outlet property="roomTextField" destination="Skl-ZR-y3L" id="zTd-Pv-aje"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XN6-GL-fht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3144.9275362318845" y="93.75"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="UQz-ve-M62">
@@ -407,6 +535,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.right.square.fill" catalog="system" width="128" height="114"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="mic.circle" catalog="system" width="128" height="121"/>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
