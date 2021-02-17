@@ -3,7 +3,9 @@
 ### Designs for all screens to be used
 
 ### List of third party libraries and server support
-Since we are using Firebase for our data storage and authentication of emails and passwords, we have not found an Api component needed to be implmeneted for now.
+- Firebase
+- Twilio
+Since we are using Firebase for our data storage and authentication of emails and passwords, and Twilio for the video aspect, we have not found an Api component needed to be implmeneted for now.
 
 ### List of all view controllers
 
