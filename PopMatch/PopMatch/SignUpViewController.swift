@@ -10,6 +10,11 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var errLabel: UILabel!
+    
+    
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var createPassTextField: UITextField!
     @IBOutlet weak var verifyPassTextField: UITextField!
     @IBOutlet weak var showHideCreate: UIButton!
@@ -71,6 +76,7 @@ class SignUpViewController: UIViewController {
         //optional navigation controller
         navigationController?.pushViewController(logInViewController, animated: true)
     }
+    
     @IBAction func signUpButton() {
         //check if the email is correct
         
@@ -80,18 +86,30 @@ class SignUpViewController: UIViewController {
             errLabel.textColor = .red
             errLabel.text = "Password does not match"
         } else {
+            //validate email
+//            let emailString = emailTextField.text ?? nil
+//            if !(emailString?.contains("@")){
+//
+//            }
             
-            //empty error
-            errLabel.text = nil
+            //check that all fields are full before proceeding
+            if firstNameTextField.text == "" || lastNameTextField.text == "" || emailTextField.text == "" || createPassTextField.text == "" || verifyPassTextField.text == "" {
+                errLabel.text = "Please fill all fields"
+                errLabel.textColor = .red
+            } else {
             
-            //go into next view controller
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? MainViewController else {
+                //empty error
+                errLabel.text = nil
+            
+                //go into next view controller
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? MainViewController else {
                 assertionFailure("couldn't find vc") //will stop program
                 return
                 }
-            //optional navigation controller
-            navigationController?.pushViewController(mainViewController, animated: true)
+                //optional navigation controller
+                navigationController?.pushViewController(mainViewController, animated: true)
+            }
         }
     }
 }

@@ -61,21 +61,30 @@ class ViewController: UIViewController {
     
     @IBAction func logInButton() {
         
-        //check if the email and password match to an account in the database, if it matches
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? MainViewController else {
+        //check if both fields are full
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            errLabel.text = "Enter email and password"
+            errLabel.textColor = .red
+        } else {
+            
+            //check if the email and password match to an account in the database, if it matches (using Api call)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? MainViewController else {
             assertionFailure("couldn't find vc") //will stop program
             return
+            }
+            //optional navigation controller
+            navigationController?.pushViewController(mainViewController, animated: true)
+        
+            //clear textfields and dismiss keyboard
+            emailTextField.text = nil
+            passwordTextField.text = nil
+            self.view.endEditing(true)
+        
+            //if it does not match, present error label on the type of error
+            
         }
-        //optional navigation controller
-        navigationController?.pushViewController(mainViewController, animated: true)
-        
-        //clear textfields and dismiss keyboard
-        emailTextField.text = nil
-        passwordTextField.text = nil
-        self.view.endEditing(true)
-        
-        //if it does not match, present error label on the type of error 
     }
     
 
