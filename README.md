@@ -1,6 +1,18 @@
 # Milestone 1 Documentation
 
-### Trello Link
+### Designs for all screens to be used
+
+### List of third party libraries
+
+### API support
+
+### List of all view controllers
+
+### List of models
+
+### List of week long tasks
+
+### Trello board link
 https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
 ### Group member names, usernames and photos:
@@ -18,4 +30,6 @@ Wai Hei Ngan, rayngan999
 Ma Eint Poe, maeintpoe
 <br/>
 <img src="https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Images/MaEintPoe.png"  width="300"/>
->>>>>>> 16279c490da30aa9b1942d536f93a3614bd19467
+
+### Testing Plan
+
