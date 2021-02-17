@@ -25,7 +25,8 @@ Gharam Alsaedi, gharams19
 <img src="https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Images/GharamPic.jpg"  width="300"/>
 
 Wai Hei Ngan, rayngan999 
-***photo***
+<br/>
+<img src="https://github.com/ECS189E/project-w21-big-bang-theory/blob/Eden/Images/RayPic.jpeg"  width="300"/>
 
 Ma Eint Poe, maeintpoe
 <br/>
