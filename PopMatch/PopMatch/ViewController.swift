@@ -12,11 +12,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var errLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var showHideButton: UIButton!
+    
+    let showHideTitles: (String, String) = ("show", "hide")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         errLabel.text = nil
+        passwordTextField.isSecureTextEntry = true
     }
+    func toggleButtonTitle(between titles:(String, String), on button: UIButton) -> Void {
+        let newTitle = button.currentTitle == titles.0 ? titles.1 : titles.0
+        button.setTitle(newTitle, for: .normal)
+    }
+    
+    @IBAction func showPassword() {
+        toggleButtonTitle(between: showHideTitles, on: showHideButton)
+        if showHideButton.title(for: .normal) == "show" {
+            passwordTextField.isSecureTextEntry = true
+        } else if showHideButton.title(for: .normal) == "hide" {
+            passwordTextField.isSecureTextEntry = false
+        }
+        
+        
+            
+    }
+    
     @IBAction func signUpHere() {
         //move to the signUpVC
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -30,6 +51,7 @@ class ViewController: UIViewController {
         passwordTextField.text = nil
         self.view.endEditing(true)
     }
+    
     @IBAction func logInButton() {
         //check if the email and password match to an account in the database, if it matches
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
