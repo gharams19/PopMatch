@@ -40,7 +40,10 @@ Delegates: (will keep updating)
 
 ### List of models
 
-https://github.com/ECS189E/project-w21-big-bang-theory/blob/master/models.md
+#### A listing of all of the models you plan to include in your app
+- Timer Model
+- Video Model
+- User Model
 
 ### List of week long tasks
 
