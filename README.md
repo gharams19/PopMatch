@@ -13,10 +13,12 @@ Since we are using Firebase for our data storage and authentication of emails an
 * Login 
 * Sign up 
 * Profile 
+* Setting
 * Professional Questionnaire 
 * Friend Questionnaire 
+* Lobby (loading screen)
 * Match 
-* Chat 
+* Video
 
 Navigation between the VC: [Figma Wireframe](https://www.figma.com/proto/C1nZuKT19fLt7fyb8CQKS2/%5BThe-Big-Bang-Theory%5D!?node-id=17%3A25&scaling=scale-down)
 
