@@ -40,6 +40,8 @@ Delegates: (will keep updating)
 
 ### List of models
 
+https://github.com/ECS189E/project-w21-big-bang-theory/blob/master/models.md
+
 ### List of week long tasks
 
 ### Trello board link
