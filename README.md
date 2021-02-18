@@ -9,14 +9,14 @@
 Since we are using Firebase for our data storage and authentication of emails and passwords, and Twilio for the video aspect, we have not found an Api component needed to be implmeneted for now.
 
 ### List of all view controllers
-#### Splash Screen
-#### Login 
-#### Sign up 
-#### Profile 
-#### Professional Questionnaire 
-#### Friend Questionnaire 
-#### Match 
-#### Chat 
+* Splash Screen
+* Login 
+* Sign up 
+* Profile 
+* Professional Questionnaire 
+* Friend Questionnaire 
+* Match 
+* Chat 
 
 Navigation between the VC: [Figma Wireframe](https://www.figma.com/proto/C1nZuKT19fLt7fyb8CQKS2/%5BThe-Big-Bang-Theory%5D!?node-id=17%3A25&scaling=scale-down)
 
