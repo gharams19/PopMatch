@@ -20,7 +20,9 @@ Created a Firebase program, installed necessary pods (Auth and Firestore) and st
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78af4277b41c40260f98c240
 
 **Gharam Alsaedi** - 
-
+- Designed Icon.
+- Designed Screens and overall flow of the app. Along with Ma Eint Poe, we discussed the flow of the application and the connections between view controllers. In addition, I started designing the screens using Figma : https://www.figma.com/file/C1nZuKT19fLt7fyb8CQKS2/The-Big-Bang-Theory?node-id=0%3A1 
+- Researched databases: found that Firebase is the best option due to its simplicity and speed. 
 **Ma Eint Poe** - 
 
 **Wai Hei Ngan** -
@@ -29,7 +31,7 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78
 
 **Eden Avivi** - Look more into Firebase, understand the usage and implement into the login and sign up view controllers.
 
-**Gharam Alsaedi** - 
+**Gharam Alsaedi** - Create UI for the view controllers. 
 
 **Ma Eint Poe** - 
 
