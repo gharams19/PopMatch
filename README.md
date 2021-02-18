@@ -44,6 +44,8 @@ https://github.com/ECS189E/project-w21-big-bang-theory/blob/master/models.md
 
 ### List of week long tasks
 
+https://github.com/ECS189E/project-w21-big-bang-theory/blob/master/Week_Long_Tasks.md
+
 ### Trello board link
 https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
