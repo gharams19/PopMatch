@@ -27,9 +27,10 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78
 - Researched databases: found that Firebase is the best option due to its simplicity and speed. 
 
 **Ma Eint Poe** - 
-- Came up with the list of all the view controllers and wireframed the navigation for the overall flow of the app using Figma
-- Compiled a list of questions to ask for the professional questionnaires and the friend questionnaires
-- Came up with some possible protocols and delegates
+- Came up with the list of all the view controllers and wireframed the navigation for the overall flow of the app using Figma: https://www.figma.com/file/C1nZuKT19fLt7fyb8CQKS2/%5BThe-Big-Bang-Theory%5D!
+- Compiled a list of questions to ask for the professional questionnaires and the friend questionnaires (Added in Figma)
+- Came up with some possible protocols and delegates: https://github.com/ECS189E/project-w21-big-bang-theory/commit/3faaf33bdb07259975fe5608566ee5e9548f2111
+- Added tabcontrollers: https://github.com/ECS189E/project-w21-big-bang-theory/commit/2779231f92ba8e8159a0ebccf390ddb82e634351
 
 **Wai Hei Ngan** -
 - Researched different Apis for Video Chatting and settled for Twilio
