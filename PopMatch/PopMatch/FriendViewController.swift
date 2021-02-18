@@ -1,18 +1,19 @@
 //
-//  MainViewController.swift
+//  FriendViewController.swift
 //  PopMatch
 //
-//  Created by Eden Avivi on 2/15/21.
+//  Created by Ma Eint Poe on 2/18/21.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
+class FriendViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = .purple
     }
 
     @IBAction func toVideoCall(_ sender: Any) {
@@ -23,4 +24,5 @@ class MainViewController: UIViewController {
         }
         navigationController?.pushViewController(videoViewController, animated: true)
     }
+    
 }

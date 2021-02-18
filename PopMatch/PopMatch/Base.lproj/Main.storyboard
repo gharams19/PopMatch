@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="logInVC" id="BYZ-38-t0r" customClass="ViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="logInVC" title="Login View Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -213,7 +213,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTQ-2d-dLP">
-                                <rect key="frame" x="60.5" y="66" width="293.5" height="41"/>
+                                <rect key="frame" x="60.5" y="66" width="293" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <color key="textColor" red="0.57939508510000004" green="0.43096561480000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -335,44 +335,6 @@
             </objects>
             <point key="canvasLocation" x="1657.9710144927537" y="93.75"/>
         </scene>
-        <!--Main View Controller-->
-        <scene sceneID="pYz-II-0fP">
-            <objects>
-                <viewController storyboardIdentifier="mainVC" id="Tuc-NH-aXD" customClass="MainViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UE8-VB-aCf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Professional Q page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQn-Nn-Im8">
-                                <rect key="frame" x="70" y="428.5" width="274" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGf-Jf-JWY">
-                                <rect key="frame" x="295" y="763" width="70" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="arrow.right.square.fill" catalog="system" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                </state>
-                                <connections>
-                                    <action selector="toVideoCall:" destination="Tuc-NH-aXD" eventType="touchUpInside" id="gPW-s8-UWA"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="loC-1L-JUZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="GQn-Nn-Im8" firstAttribute="centerX" secondItem="UE8-VB-aCf" secondAttribute="centerX" id="D6O-Mz-GPC"/>
-                            <constraint firstItem="GQn-Nn-Im8" firstAttribute="centerY" secondItem="UE8-VB-aCf" secondAttribute="centerY" id="N7S-oj-ytI"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fix-85-BMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2337.68115942029" y="93.75"/>
-        </scene>
         <!--Video View Controller-->
         <scene sceneID="MOi-fs-3Ix">
             <objects>
@@ -487,34 +449,103 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XN6-GL-fht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3144.9275362318845" y="93.75"/>
+            <point key="canvasLocation" x="4165" y="94"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="UQz-ve-M62">
+        <!--Friend View Controller-->
+        <scene sceneID="9mc-9T-yer">
             <objects>
-                <viewController id="FIC-OI-HcF" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HTI-7R-3Ha">
+                <viewController storyboardIdentifier="friendVC" title="Friend View Controller" id="RtG-am-fPH" customClass="FriendViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pVq-c3-VT8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Casual Q page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kV7-kI-lt1">
-                                <rect key="frame" x="106" y="428.5" width="202" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eod-Vx-YhL">
+                                <rect key="frame" x="281" y="348" width="70" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.right.square.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toVideoCall:" destination="RtG-am-fPH" eventType="touchUpInside" id="GlX-uM-UOe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend Q page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kV7-kI-lt1">
+                                <rect key="frame" x="110" y="166" width="194" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="hyv-hY-eTl"/>
+                        <viewLayoutGuide key="safeArea" id="xzx-eE-2Xt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kV7-kI-lt1" firstAttribute="centerX" secondItem="HTI-7R-3Ha" secondAttribute="centerX" id="1He-t9-djf"/>
-                            <constraint firstItem="kV7-kI-lt1" firstAttribute="centerY" secondItem="HTI-7R-3Ha" secondAttribute="centerY" id="m8f-Ub-wRU"/>
+                            <constraint firstItem="kV7-kI-lt1" firstAttribute="centerY" secondItem="pVq-c3-VT8" secondAttribute="centerY" constant="-262.5" id="Bhg-vD-8Qq"/>
+                            <constraint firstItem="kV7-kI-lt1" firstAttribute="centerX" secondItem="pVq-c3-VT8" secondAttribute="centerX" id="D4y-8t-PqG"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Friend" id="YG2-dX-Lc3"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="22U-rE-7X3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nur-Wg-PMq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2338" y="740"/>
+            <point key="canvasLocation" x="3280" y="406"/>
+        </scene>
+        <!--Professional View Controller-->
+        <scene sceneID="pWp-gw-jho">
+            <objects>
+                <viewController storyboardIdentifier="professionalVC" title="Professional View Controller" id="QOA-en-6WY" customClass="ProfessionalViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tb5-Z3-CfR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoQ-Tr-ML5">
+                                <rect key="frame" x="258" y="447" width="70" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.right.square.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toVideoCall:" destination="QOA-en-6WY" eventType="touchUpInside" id="zQP-MW-4p3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Professional Q page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQn-Nn-Im8">
+                                <rect key="frame" x="70" y="197" width="274" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0f2-Ji-g9D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GQn-Nn-Im8" firstAttribute="centerX" secondItem="Tb5-Z3-CfR" secondAttribute="centerX" id="M7N-4k-e7M"/>
+                            <constraint firstItem="GQn-Nn-Im8" firstAttribute="centerY" secondItem="Tb5-Z3-CfR" secondAttribute="centerY" constant="-273.5" id="SFF-zf-q4p"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Professional" id="poJ-Ex-3SH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LLJ-Un-Rg7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3280" y="-360"/>
+        </scene>
+        <!--questionnaireVC-->
+        <scene sceneID="ED9-U5-bp4">
+            <objects>
+                <tabBarController storyboardIdentifier="questionnaireVC" title="questionnaireVC" id="fSH-uZ-Y8e" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2cL-CI-PLR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="QOA-en-6WY" kind="relationship" relationship="viewControllers" id="vJU-X3-GdW"/>
+                        <segue destination="RtG-am-fPH" kind="relationship" relationship="viewControllers" id="feM-K3-AIl"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbG-zr-k0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2387" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PqZ-B8-Q2J">
