@@ -26,6 +26,8 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78
 **Ma Eint Poe** - 
 
 **Wai Hei Ngan** -
+- Researched different Apis for Video Chatting and settled for Twilio.
+- Implmeneted basic video call features for the app.
 
 ### Plan to do:
 
@@ -35,5 +37,9 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78
 
 **Ma Eint Poe** - 
 
-**Wai Hei Ngan** -
+**Wai Hei Ngan** - 
+- Customize video call Api to fit what we need
+- Improve video meeting room interface
+- Generate token for different users logged in
+- Bypass video meeting room name declaration
 
