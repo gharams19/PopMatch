@@ -23,7 +23,11 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78
 - Designed Icon.
 - Designed Screens and overall flow of the app. Along with Ma Eint Poe, we discussed the flow of the application and the connections between view controllers. In addition, I started designing the screens using Figma : https://www.figma.com/file/C1nZuKT19fLt7fyb8CQKS2/The-Big-Bang-Theory?node-id=0%3A1 
 - Researched databases: found that Firebase is the best option due to its simplicity and speed. 
+
 **Ma Eint Poe** - 
+- Came up with the list of all the view controllers and wireframed the navigation for the overall flow of the app using Figma
+- Compiled a list of questions to ask for the professional questionnaires and the friend questionnaires
+- Came up with some possible protocols and delegates
 
 **Wai Hei Ngan** -
 - Researched different Apis for Video Chatting and settled for Twilio.
@@ -36,6 +40,8 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78
 **Gharam Alsaedi** - Create UI for the view controllers. 
 
 **Ma Eint Poe** - 
+- Start implementing the professional and friend questionnaire view controllers 
+- Familiarize/Learn how to use Firebase
 
 **Wai Hei Ngan** - 
 - Customize video call Api to fit what we need
