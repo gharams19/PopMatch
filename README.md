@@ -21,9 +21,13 @@ Since we are using Firebase for our data storage and authentication of emails an
 Navigation between the VC: [Figma Wireframe](https://www.figma.com/proto/C1nZuKT19fLt7fyb8CQKS2/%5BThe-Big-Bang-Theory%5D!?node-id=17%3A25&scaling=scale-down)
 
 ####Protocols for UserDelegate
+
 `userDataChanged()` : To handle the changes to the user data such as name, social media, etc.
+
 `displayMatch()` : To handle the matching between different users
-`callStatusChange()` : To handle the the starting and ending of video calls
+
+`callStatusChange()` : To handle the the starting, extending, and ending of video calls
+
 
 Delegates:
 * UITextFieldDelegate 
