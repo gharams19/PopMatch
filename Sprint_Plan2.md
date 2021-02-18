@@ -30,7 +30,9 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/955c150622777e0c78
 - Came up with some possible protocols and delegates
 
 **Wai Hei Ngan** -
-- Researched different Apis for Video Chatting and settled for Twilio.
+- Researched different Apis for Video Chatting and settled for Twilio
+  <br/>
+  https://www.twilio.com/docs/video
 - Implmeneted basic video call features for the app:
   <br/>
   https://github.com/ECS189E/project-w21-big-bang-theory/commit/4be4ff7b4a6ea4b5594c48573a54aed9a539dc98
