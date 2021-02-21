@@ -103,12 +103,11 @@ class SignUpViewController: UIViewController {
             
                 //go into next view controller
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? MainViewController else {
-                assertionFailure("couldn't find vc") //will stop program
-                return
-                }
+                guard let professionalViewController = storyboard.instantiateViewController(identifier: "professionalVC") as? ProfessionalViewController else {
+                    assertionFailure("couldn't find vc")
+                    return }
                 //optional navigation controller
-                navigationController?.pushViewController(mainViewController, animated: true)
+                navigationController?.pushViewController(professionalViewController, animated: true)
             }
         }
     }

@@ -70,12 +70,16 @@ class ViewController: UIViewController {
             //check if the email and password match to an account in the database, if it matches (using Api call)
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? MainViewController else {
+           /* guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? MainViewController else {
             assertionFailure("couldn't find vc") //will stop program
             return
+            }*/
+            guard let profileViewController = storyboard.instantiateViewController(identifier: "profileVC") as? ProfileViewController else {
+                assertionFailure("couldn't find vc")
+                return
             }
             //optional navigation controller
-            navigationController?.pushViewController(mainViewController, animated: true)
+            navigationController?.pushViewController(profileViewController, animated: true)
         
             //clear textfields and dismiss keyboard
             emailTextField.text = nil
