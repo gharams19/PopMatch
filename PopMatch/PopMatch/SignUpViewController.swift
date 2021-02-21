@@ -103,17 +103,11 @@ class SignUpViewController: UIViewController {
             
                 //go into next view controller
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                /*guard let professionalViewController = storyboard.instantiateViewController(withIdentifier: "professionalVC") as? ProfessionalViewController else {
-                assertionFailure("couldn't find vc") //will stop program
-                return
-                }*/
-                guard let questionnaireViewController = storyboard.instantiateViewController(identifier: "questionnaireVC") as? UITabBarController else {
+                guard let professionalViewController = storyboard.instantiateViewController(identifier: "professionalVC") as? ProfessionalViewController else {
                     assertionFailure("couldn't find vc")
                     return }
                 //optional navigation controller
-                navigationController?.pushViewController(questionnaireViewController, animated: true)
-                //optional navigation controller
-               // navigationController?.pushViewController(professionalViewController, animated: true)
+                navigationController?.pushViewController(professionalViewController, animated: true)
             }
         }
     }

@@ -74,12 +74,12 @@ class ViewController: UIViewController {
             assertionFailure("couldn't find vc") //will stop program
             return
             }*/
-            guard let questionnaireViewController = storyboard.instantiateViewController(identifier: "questionnaireVC") as? UITabBarController else {
+            guard let profileViewController = storyboard.instantiateViewController(identifier: "profileVC") as? ProfileViewController else {
                 assertionFailure("couldn't find vc")
                 return
             }
             //optional navigation controller
-            navigationController?.pushViewController(questionnaireViewController, animated: true)
+            navigationController?.pushViewController(profileViewController, animated: true)
         
             //clear textfields and dismiss keyboard
             emailTextField.text = nil
