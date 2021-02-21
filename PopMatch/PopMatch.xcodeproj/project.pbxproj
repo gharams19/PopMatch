@@ -17,6 +17,7 @@
 		7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5125DB25D200377699 /* SignUpViewController.swift */; };
 		7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5425DB2FFF00377699 /* MainViewController.swift */; };
 		7A7DDA8A25DC37F000D804CB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDA8925DC37F000D804CB /* Api.swift */; };
+		D49218B225E2EA1E002D84E9 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49218B125E2EA1E002D84E9 /* MeetingViewController.swift */; };
 		D4A32ADC25DDB7E100EF915F /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A32ADB25DDB7E100EF915F /* VideoViewController.swift */; };
 		D4A32AF225DDB9F600EF915F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A32AEF25DDB9F500EF915F /* SettingsTableViewController.swift */; };
 		D4A32AF325DDB9F600EF915F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A32AF125DDB9F600EF915F /* Utils.swift */; };
@@ -39,6 +40,7 @@
 		7A560C5425DB2FFF00377699 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A7DDA8925DC37F000D804CB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		8E8FEF68FF003E405432C290 /* Pods-PopMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopMatch.debug.xcconfig"; path = "Target Support Files/Pods-PopMatch/Pods-PopMatch.debug.xcconfig"; sourceTree = "<group>"; };
+		D49218B125E2EA1E002D84E9 /* MeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 		D4A32ADB25DDB7E100EF915F /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D4A32AEE25DDB9F500EF915F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D4A32AEF25DDB9F500EF915F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				7A560C4725DB20FB00377699 /* LaunchScreen.storyboard */,
 				D4A32AF025DDB9F600EF915F /* Colors.swift */,
 				D4A32AEE25DDB9F500EF915F /* Settings.swift */,
+				D49218B125E2EA1E002D84E9 /* MeetingViewController.swift */,
 				D4A32AEF25DDB9F500EF915F /* SettingsTableViewController.swift */,
 				D4A32AF125DDB9F600EF915F /* Utils.swift */,
 				D4A32ADB25DDB7E100EF915F /* VideoViewController.swift */,
@@ -235,6 +238,10 @@
 				D4A32AF325DDB9F600EF915F /* Utils.swift in Sources */,
 				7A560C4125DB20FA00377699 /* ViewController.swift in Sources */,
 				D4A32AF425DDB9F600EF915F /* Settings.swift in Sources */,
+<<<<<<< Updated upstream
+=======
+				D49218B225E2EA1E002D84E9 /* MeetingViewController.swift in Sources */,
+>>>>>>> Stashed changes
 				7A560C3D25DB20FA00377699 /* AppDelegate.swift in Sources */,
 				D4A32AF225DDB9F600EF915F /* SettingsTableViewController.swift in Sources */,
 				7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */,
