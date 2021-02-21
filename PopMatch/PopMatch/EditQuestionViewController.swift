@@ -31,6 +31,8 @@ class EditQuestionViewController: UIViewController {
         navigationController?.pushViewController(friendViewController, animated: true)
     }
     
+    
+    // Make the animation come from the leftside instead of default right
     @IBAction func rightSwipe(_ sender: Any) {
         print("right swiped")
         //go into professional view controller

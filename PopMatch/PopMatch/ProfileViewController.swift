@@ -9,10 +9,36 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var profileSignOutBtn: UIButton!
+    
+    // Textfields
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var firstnameTextField: UITextField!
+    @IBOutlet weak var lastnameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!  // <-- UNSURE ABOUT THIS
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Styling
+        profileSignOutBtn.layer.cornerRadius = 15
+        bottomBorder(textField: usernameTextField)
+        bottomBorder(textField: firstnameTextField)
+        bottomBorder(textField: lastnameTextField)
+        bottomBorder(textField: emailTextField)
+   
+
+        
+    }
+    
+    func bottomBorder(textField: UITextField) {
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.blue.cgColor
+        layer.frame = CGRect(x: 0.0, y: textField.frame.size.height - 1.0, width: textField.frame.size.width, height: 1.0)
+        textField.layer.addSublayer(layer)
     }
     
 

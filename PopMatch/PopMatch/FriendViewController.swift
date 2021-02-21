@@ -64,6 +64,26 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return false
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // Maybe switch to using a map instead?
+        switch textField {
+        case ageTextField:
+            ageTextField.resignFirstResponder()
+        case hobbiesTextField:
+            hobbiesTextField.resignFirstResponder()
+        case musicTextField:
+            musicTextField.resignFirstResponder()
+        case appTextField:
+            appTextField.resignFirstResponder()
+        case jokeTextField:
+            jokeTextField.resignFirstResponder()
+        default:
+            ageTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
 
     @IBAction func toEditQuestion(_ sender: Any) {
         

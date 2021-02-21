@@ -72,6 +72,24 @@ class ProfessionalViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
 
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case industryTextField:
+            industryTextField.resignFirstResponder()
+        case employmentTextField:
+            employmentTextField.resignFirstResponder()
+        case skillsTextField:
+            skillsTextField.resignFirstResponder()
+        case interestFieldTextField:
+            interestFieldTextField.resignFirstResponder()
+        case careerGoalTextField:
+            careerGoalTextField.resignFirstResponder()
+        default:
+            industryTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
     // When Done Pressed - store data & return to edit question view
     @IBAction func toEditQuestion(_ sender: Any) {
         
