@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var errLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField! 
     @IBOutlet weak var showHideButton: UIButton!
     
     let showHideTitles: (String, String) = ("show", "hide")

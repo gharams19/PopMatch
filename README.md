@@ -1,6 +1,7 @@
 # Milestone 1 Documentation
 
 ### Designs for all screens to be used
+[Figma Wireframe](https://www.figma.com/file/C1nZuKT19fLt7fyb8CQKS2/The-Big-Bang-Theory?node-id=0%3A1)
 
 ### List of third party libraries and server support
 - Firebase
