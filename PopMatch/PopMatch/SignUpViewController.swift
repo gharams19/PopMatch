@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController {
 
@@ -22,6 +23,9 @@ class SignUpViewController: UIViewController {
     
     let showHideTitles: (String, String) = ("show", "hide")
     
+    //handler for when the sign in state is changed
+    var handle: AuthStateDidChangeListenerHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errLabel.text = nil
@@ -30,6 +34,20 @@ class SignUpViewController: UIViewController {
         createPassTextField.isSecureTextEntry = true
         verifyPassTextField.isSecureTextEntry = true
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //add a listener to the view controller which will get called when the sign in state is changed
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        //detach the listener
+        //fix this forced unwrap
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     func toggleButtonTitle(between titles:(String, String), on button: UIButton) -> Void {
@@ -78,36 +96,40 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButton() {
-        //check if the email is correct
         
+        //if password fields do not match, present error
         if createPassTextField.text != verifyPassTextField.text {
-            
-            //if password fields do not match, present error
             errLabel.textColor = .red
             errLabel.text = "Password does not match"
         } else {
-            //validate email
-//            let emailString = emailTextField.text ?? nil
-//            if !(emailString?.contains("@")){
-//
-//            }
             
             //check that all fields are full before proceeding
             if firstNameTextField.text == "" || lastNameTextField.text == "" || emailTextField.text == "" || createPassTextField.text == "" || verifyPassTextField.text == "" {
                 errLabel.text = "Please fill all fields"
                 errLabel.textColor = .red
             } else {
-            
-                //empty error
-                errLabel.text = nil
-            
-                //go into next view controller
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let professionalViewController = storyboard.instantiateViewController(identifier: "professionalVC") as? ProfessionalViewController else {
-                    assertionFailure("couldn't find vc")
-                    return }
-                //optional navigation controller
-                navigationController?.pushViewController(professionalViewController, animated: true)
+                Auth.auth().createUser(withEmail: emailTextField.text ?? "", password: createPassTextField.text ?? "", completion: { authResult, error in
+                    
+                    //if there is no error with creating a user
+                    if error == nil {
+                        //empty error
+                        self.errLabel.text = nil
+                
+                        //go into next view controller
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
+                                assertionFailure("couldn't find vc") //will stop program
+                                return
+                            }
+                        //optional navigation controller
+                        self.navigationController?.pushViewController(profileViewController, animated: true)
+                    } else {
+                        //present error, that could not create an account
+                        self.errLabel.text = "Could not create account"
+                        self.errLabel.textColor = .red
+                    }
+                })
+                
             }
         }
     }

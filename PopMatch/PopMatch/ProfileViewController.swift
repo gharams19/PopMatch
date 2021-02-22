@@ -41,6 +41,15 @@ class ProfileViewController: UIViewController {
         textField.layer.addSublayer(layer)
     }
     
+    @IBAction func to_lobby(_ sender: Any) {
+        // go to lobby view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
+            assertionFailure("couldn't find vc")
+            return }
+        //optional navigation controller
+        navigationController?.pushViewController(lobbyViewController, animated: true)
+    }
 
     @IBAction func toEditQuestion(_ sender: Any) {
         
