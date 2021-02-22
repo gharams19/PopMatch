@@ -1,7 +1,7 @@
 # Milestone 1 Documentation
 
 ### Pop Match
-A video chatting app that allows users to have 1 on 1 meetings with new people and like minded thinkers. A ways to create soical bonds or networks in a community, specifically in Universites.
+A video chatting app that allows users to have 1 on 1 meetings with new people and like minded thinkers. A way to create soical bonds or networks in a community, specifically in Universites.
 
 ### Designs for all screens to be used
 [Figma Wireframe](https://www.figma.com/file/C1nZuKT19fLt7fyb8CQKS2/The-Big-Bang-Theory?node-id=0%3A1)
