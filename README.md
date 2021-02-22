@@ -1,6 +1,6 @@
 # Milestone 1 Documentation
 
-### Our Project:
+### Pop Match:
 A video chatting app that allows users to have 1 on 1 meetings with new people and like minded thinkers. A ways to create soical bonds or networks in a community, specifically in Universites.
 
 ### Designs for all screens to be used
