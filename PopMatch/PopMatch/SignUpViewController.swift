@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var errLabel: UILabel!
     
@@ -20,6 +20,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var verifyPassTextField: UITextField!
     @IBOutlet weak var showHideCreate: UIButton!
     @IBOutlet weak var showHideVerify: UIButton!
+    
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
+    
     
     let showHideTitles: (String, String) = ("show", "hide")
     
@@ -33,6 +36,13 @@ class SignUpViewController: UIViewController {
         //password is automatically hidden
         createPassTextField.isSecureTextEntry = true
         verifyPassTextField.isSecureTextEntry = true
+        
+        //set delegates for textfields
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        emailTextField.delegate = self
+        createPassTextField.delegate = self
+        verifyPassTextField.delegate = self
         
     }
     
@@ -49,6 +59,16 @@ class SignUpViewController: UIViewController {
         //fix this forced unwrap
         Auth.auth().removeStateDidChangeListener(handle!)
     }
+    
+    @IBAction func startEditing(_ sender: Any) {
+        self.tapGestureRecognizer.isEnabled = true
+    }
+    
+    @IBAction func tap(_ sender: Any) {
+        self.view.endEditing(true)
+        self.tapGestureRecognizer.isEnabled = false
+    }
+    
     
     func toggleButtonTitle(between titles:(String, String), on button: UIButton) -> Void {
         
@@ -132,5 +152,10 @@ class SignUpViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }

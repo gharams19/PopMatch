@@ -28,12 +28,18 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="OLb-wh-gCi"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxH-BC-NAB">
                                 <rect key="frame" x="120" y="297" width="274" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="gQv-61-9Vf"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2W2-e3-JpY">
                                 <rect key="frame" x="20" y="245" width="45" height="20"/>
@@ -147,6 +153,9 @@
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="startEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="U6z-Cf-R67"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;ERR_LABEL&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCv-cs-Swi">
                                         <rect key="frame" x="132" y="115" width="111" height="21"/>
@@ -161,6 +170,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="xC5-uw-1aK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1DD-8J-fq4"/>
                             <constraint firstItem="xC5-uw-1aK" firstAttribute="top" secondItem="nxH-BC-NAB" secondAttribute="bottom" constant="8" symbolic="YES" id="8dK-37-LLC"/>
@@ -191,6 +201,9 @@
                             <constraint firstItem="Clx-58-LOF" firstAttribute="leading" secondItem="2Qh-0S-81l" secondAttribute="trailing" constant="8" symbolic="YES" id="xy3-Ut-pAG"/>
                             <constraint firstItem="2Qh-0S-81l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="yNM-ou-kdU"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LJP-ID-ifA" appends="YES" id="yNC-Q8-fgC"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="mGo-Y8-TIm"/>
                     <connections>
@@ -204,9 +217,15 @@
                         <outlet property="resetPasswordView" destination="gr3-T0-E3j" id="YZM-vQ-69v"/>
                         <outlet property="showHideButton" destination="OhY-TS-HFO" id="L4C-WZ-8k5"/>
                         <outlet property="signUpHereButton" destination="Clx-58-LOF" id="156-dS-2W1"/>
+                        <outlet property="tapGestureRecognizer" destination="LJP-ID-ifA" id="OLK-vq-txW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LJP-ID-ifA">
+                    <connections>
+                        <action selector="tap:" destination="BYZ-38-t0r" id="kED-11-Uyu"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1005.7971014492755" y="93.75"/>
         </scene>
@@ -253,30 +272,45 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="AmM-e6-5t2"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53w-hk-V0y">
                                 <rect key="frame" x="192" y="174" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="dh7-f8-Afk"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r3v-1d-BiK">
                                 <rect key="frame" x="192" y="216" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="vfg-aF-gHT"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kY-UL-zGz">
                                 <rect key="frame" x="192" y="258" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="53a-dQ-zUa"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBU-Fe-Nsx">
                                 <rect key="frame" x="192" y="300" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="Fcb-PQ-mzh"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VTQ-2d-dLP">
                                 <rect key="frame" x="60.5" y="66" width="293.5" height="41"/>
@@ -350,6 +384,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WSr-I5-gB1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3GC-x2-RYu" firstAttribute="leading" secondItem="WSr-I5-gB1" secondAttribute="leading" constant="20" id="0DK-s6-jgq"/>
                             <constraint firstItem="2kY-UL-zGz" firstAttribute="leading" secondItem="WwO-AC-kLc" secondAttribute="trailing" constant="20" id="14Z-iT-OoH"/>
@@ -391,6 +426,9 @@
                             <constraint firstItem="VTQ-2d-dLP" firstAttribute="centerX" secondItem="uYC-xW-7hr" secondAttribute="centerX" id="wuT-SZ-O7L"/>
                             <constraint firstItem="2kY-UL-zGz" firstAttribute="top" secondItem="r3v-1d-BiK" secondAttribute="bottom" constant="8" symbolic="YES" id="xhU-pQ-BnJ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="QK6-ZE-7Iv" appends="YES" id="5Ca-8m-BIB"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="createPassTextField" destination="2kY-UL-zGz" id="jGT-od-nag"/>
@@ -400,10 +438,16 @@
                         <outlet property="lastNameTextField" destination="53w-hk-V0y" id="p9m-jr-78f"/>
                         <outlet property="showHideCreate" destination="JBX-r2-L09" id="rto-21-g0k"/>
                         <outlet property="showHideVerify" destination="BtL-2t-xaP" id="RxM-8E-gwg"/>
+                        <outlet property="tapGestureRecognizer" destination="QK6-ZE-7Iv" id="V5w-Ir-eM9"/>
                         <outlet property="verifyPassTextField" destination="XBU-Fe-Nsx" id="CCw-zp-KOJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbP-bA-umF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QK6-ZE-7Iv">
+                    <connections>
+                        <action selector="tap:" destination="PvV-Dd-9oM" id="p9j-xE-TQC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1657.9710144927537" y="93.75"/>
         </scene>
