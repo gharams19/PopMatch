@@ -8,31 +8,63 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        var array: [UIImageView] = []
+        let userNumber = 10
+        for _ in 0...userNumber-1 {
+            let bubbleImageView = UIImageView(image: #imageLiteral(resourceName: "bubble2 copy"))
+            bubbleImageView.translatesAutoresizingMaskIntoConstraints = false
+            array.append(bubbleImageView)
+        }
+        for i in 0...userNumber-1 {
+            view.addSubview(array[i])
+            array[i].frame.origin.x = view.center.x
+            array[i].frame.origin.y = view.center.y
+            animation(image: array[i])
+        }
         
-        let emitter = CAEmitterLayer()
-        emitter.bounds = self.view.bounds
-        emitter.emitterPosition = CGPoint(x: view.frame.width / 2, y: 0)
-        emitter.emitterShape = CAEmitterLayerEmitterShape.line
-
-        var cells = [CAEmitterCell]()
-        let cell = CAEmitterCell()
-        cell.contents = UIImage(named: "bubble2.png")?.cgImage
-        cell.birthRate = 0.5
-        cell.lifetime = 1000
-        cell.scale = 0.05
-        cell.velocity = CGFloat(25)
-        cell.emissionLongitude = (180 * ( .pi / 180))
-        cell.emissionRange = (45 * (.pi/180))
-        cells.append(cell)
-        
-        emitter.emitterCells = cells
-        view.layer.addSublayer(emitter)
-       
         
     }
+    func animation(image: UIImageView) {
+        let maxX = self.view.frame.maxX - CGFloat(100)
+        let maxY = self.view.frame.maxY - CGFloat(100)
+        let newX = arc4random_uniform(UInt32(maxX)) + 0
+        let newY = arc4random_uniform(UInt32(maxY)) + 0
+        
+        //calculation of distance to have the speed of the bubble be constant
+        var distanceX = UInt32(0)
+        var distanceY = UInt32(0)
+        if newX > UInt32(image.center.x) {
+            distanceX = newX - UInt32(image.center.x)
+        } else {
+            distanceX = UInt32(image.center.x) - newX
+        }
+        if newY > UInt32(image.center.y) {
+            distanceY = newY - UInt32(image.center.y)
+        } else {
+            distanceY = UInt32(image.center.y) - newY
+        }
+       
+        
+        let totalDistance = sqrt(Double(distanceX * distanceX)) + sqrt(Double(distanceY * distanceY))
+        let velocity = 125
+        UIView.animate(withDuration: totalDistance / Double(velocity), delay: 0, options: .curveLinear, animations: {
+            image.frame.origin.x = CGFloat(newX)
+            image.frame.origin.y = CGFloat(newY)
+            image.layoutIfNeeded()
+        }, completion:
+        { finished in
+            self.animation(image: image)
+        }
+        )
+    }
+    
+    func distance() {
+        
+    }
+    
 
     @IBAction func match_accepted(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
