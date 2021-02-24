@@ -8,9 +8,12 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
+    @IBOutlet weak var bubbleView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bubbleView.backgroundColor = .white
+        self.view.addSubview(bubbleView)
         var array: [UIImageView] = []
         let userNumber = 10
         for _ in 0...userNumber-1 {
@@ -19,19 +22,39 @@ class LobbyViewController: UIViewController {
             array.append(bubbleImageView)
         }
         for i in 0...userNumber-1 {
-            view.addSubview(array[i])
-            array[i].frame.origin.x = view.center.x
-            array[i].frame.origin.y = view.center.y
+            bubbleView.addSubview(array[i])
+            array[i].center.x = bubbleView.center.x
+            array[i].center.y = bubbleView.center.y
             animation(image: array[i])
         }
         
         
     }
     func animation(image: UIImageView) {
-        let maxX = self.view.frame.maxX - CGFloat(100)
-        let maxY = self.view.frame.maxY - CGFloat(100)
-        let newX = arc4random_uniform(UInt32(maxX)) + 0
-        let newY = arc4random_uniform(UInt32(maxY)) + 0
+        let maxX = self.bubbleView.frame.maxX - CGFloat(100)
+        let maxY = self.bubbleView.frame.maxY - CGFloat(100)
+        var newX = arc4random_uniform(UInt32(maxX)) + 0
+        var newY = arc4random_uniform(UInt32(maxY)) + 0
+        
+        //decide randomly which direction to go into
+        let sideDecider = Int.random(in: 1...4)
+        switch sideDecider {
+        case 1:
+            newX = UInt32(maxX)
+            newY = 0
+        case 2:
+            newX = UInt32(maxX)
+            newY = UInt32(maxY)
+        case 3:
+            newX = 0
+            newY = UInt32(maxY)
+        case 4:
+            newX = 0
+            newY = 0
+        default:
+            newX = 0
+            newY = 0
+        }
         
         //calculation of distance to have the speed of the bubble be constant
         var distanceX = UInt32(0)
@@ -46,8 +69,7 @@ class LobbyViewController: UIViewController {
         } else {
             distanceY = UInt32(image.center.y) - newY
         }
-       
-        
+    
         let totalDistance = sqrt(Double(distanceX * distanceX)) + sqrt(Double(distanceY * distanceY))
         let velocity = 125
         UIView.animate(withDuration: totalDistance / Double(velocity), delay: 0, options: .curveLinear, animations: {

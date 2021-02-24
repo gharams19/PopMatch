@@ -919,18 +919,29 @@
                                 <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfc-bT-CHl">
+                                <rect key="frame" x="0.0" y="140" width="414" height="536"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z80-n9-iSJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="brx-DU-Kb5" firstAttribute="top" secondItem="z80-n9-iSJ" secondAttribute="top" id="9vX-am-zud"/>
+                            <constraint firstItem="lfc-bT-CHl" firstAttribute="trailing" secondItem="z80-n9-iSJ" secondAttribute="trailing" id="CxD-dJ-FSd"/>
                             <constraint firstItem="brx-DU-Kb5" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="Eiq-zn-plo"/>
                             <constraint firstItem="fFa-rP-3fO" firstAttribute="top" secondItem="z80-n9-iSJ" secondAttribute="top" constant="640" id="Fu7-P4-PRN"/>
+                            <constraint firstItem="lfc-bT-CHl" firstAttribute="leading" secondItem="z80-n9-iSJ" secondAttribute="leading" id="Gm0-bZ-FeE"/>
                             <constraint firstItem="qDc-pX-TPZ" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="Jic-fC-x0e"/>
+                            <constraint firstItem="fFa-rP-3fO" firstAttribute="top" secondItem="lfc-bT-CHl" secondAttribute="bottom" constant="8" symbolic="YES" id="Jr1-KY-CGO"/>
+                            <constraint firstItem="lfc-bT-CHl" firstAttribute="top" secondItem="qDc-pX-TPZ" secondAttribute="bottom" constant="8" symbolic="YES" id="M75-Od-1cm"/>
                             <constraint firstItem="qDc-pX-TPZ" firstAttribute="top" secondItem="brx-DU-Kb5" secondAttribute="bottom" constant="8" symbolic="YES" id="Rgm-9p-9t1"/>
                             <constraint firstItem="z80-n9-iSJ" firstAttribute="trailing" secondItem="fFa-rP-3fO" secondAttribute="trailing" constant="66" id="cfl-Vt-8vp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bubbleView" destination="lfc-bT-CHl" id="hnf-KW-8d6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vs-pR-dIb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
