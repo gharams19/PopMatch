@@ -32,9 +32,9 @@ class LobbyViewController: UIViewController {
     }
     func animation(image: UIImageView) {
         let maxX = self.bubbleView.frame.maxX - CGFloat(100)
-        let maxY = self.bubbleView.frame.maxY - CGFloat(100)
-        var newX = arc4random_uniform(UInt32(maxX)) + 0
-        var newY = arc4random_uniform(UInt32(maxY)) + 0
+        let maxY = self.bubbleView.frame.height - CGFloat(100)
+        var newX = UInt32(0)
+        var newY = UInt32(0)
         
         //decide randomly which direction to go into
         let sideDecider = Int.random(in: 1...4)
