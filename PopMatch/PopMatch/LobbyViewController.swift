@@ -11,10 +11,28 @@ class LobbyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let emitter = CAEmitterLayer()
+        emitter.bounds = self.view.bounds
+        emitter.emitterPosition = CGPoint(x: view.frame.width / 2, y: 0)
+        emitter.emitterShape = CAEmitterLayerEmitterShape.line
 
-        // Do any additional setup after loading the view.
+        var cells = [CAEmitterCell]()
+        let cell = CAEmitterCell()
+        cell.contents = UIImage(named: "bubble2.png")?.cgImage
+        cell.birthRate = 0.5
+        cell.lifetime = 1000
+        cell.scale = 0.05
+        cell.velocity = CGFloat(25)
+        cell.emissionLongitude = (180 * ( .pi / 180))
+        cell.emissionRange = (45 * (.pi/180))
+        cells.append(cell)
+        
+        emitter.emitterCells = cells
+        view.layer.addSublayer(emitter)
+       
+        
     }
-    
 
     @IBAction func match_accepted(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
