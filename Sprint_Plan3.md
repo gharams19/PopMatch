@@ -14,13 +14,15 @@ Started implementing the Firebase Auth API calls for login and sign up screens, 
 
 Finished up the login and sign up view controllers by adding tap recognizers and text field return functions.
 
-Started working on the lobby view controller and came up with a specific animation that might be used later for other parts.
+Started working on the lobby view controller by looking into animation in xcode.
 
 Commits: (I had some merging problems with master, so some of my commits are on Wai Hei Ngan's account since he helped with the merge)
 
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/470120918ff4aac6e496c060d317406a20090ae6#diff-f0bd699b419718c4f95799f8863e0376a21d0daef476803700ec894ba624053a
 
-https://github.com/ECS189E/project-w21-big-bang-theory/commit/1d249950a2bc0867a5f030ab5ef1b263adb6f804 (On my own branch for now)
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/1d249950a2bc0867a5f030ab5ef1b263adb6f804 (On my branch for now)
+
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/06eb1f66e982b3ca981c1515abe3f4e081e8e514 (On my branch for now)
 
 **Gharam Alsaedi** - 
 
