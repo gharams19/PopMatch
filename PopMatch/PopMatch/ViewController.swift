@@ -39,6 +39,7 @@ class ViewController: UIViewController {
         resetPasswordView.sizeToFit()
         resetPasswordView.isHidden = true
         resetErrLabel.text = nil
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
