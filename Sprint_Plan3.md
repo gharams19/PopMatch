@@ -52,8 +52,8 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/195649f9b29860ef52
 **Wai Hei Ngan** -
 - Combined Video chatting features and firebase API and pushed to master
   - https://github.com/ECS189E/project-w21-big-bang-theory/commit/470120918ff4aac6e496c060d317406a20090ae6
-- Working on add more Video Chatting Features
-  - Added all the icons
+- Worked on adding more Video Chatting Features
+  - Added all the icons nesscary
   - Implement some of the icons features
 - Added a timer model for the Video call
 
