@@ -13,25 +13,19 @@ class MeetingViewController: UIViewController {
     
 
     @IBOutlet weak var messageLabel: UILabel!
-//    @IBOutlet weak var vidView: VideoView!
+    @IBOutlet weak var vidView: VideoView!
     
     var room: Room?
     var camera: CameraSource?
     var localVideoTrack: LocalVideoTrack?
     var localAudioTrack: LocalAudioTrack?
     var remoteParticipant: RemoteParticipant?
-    var remoteView: VideoView?
+
     
     var accessToken : String = ""
     // Configure remote URL to fetch token from
     var tokenUrl = "http://localhost:8000/token.php"
-//    deinit {
-//        // We are done with camera
-//        if let camera = self.camera {
-//            camera.stopCapture()
-//            self.camera = nil
-//        }
-//    }
+
     
     
     override func viewDidLoad() {
@@ -49,8 +43,15 @@ class MeetingViewController: UIViewController {
     }
 
     @IBAction func disconnect(sender: AnyObject) {
-        self.room!.disconnect()
-        logMessage(messageText: "Attempting to disconnect from room \(room!.name)")
+        self.room?.disconnect()
+        logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
+        // go to lobby view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
+            assertionFailure("couldn't find vc")
+            return }
+        //optional navigation controller
+        navigationController?.pushViewController(lobbyViewController, animated: true)
     }
     
     @IBAction func toggleMic(sender: AnyObject) {
@@ -59,49 +60,7 @@ class MeetingViewController: UIViewController {
             
         }
     }
-    func setupRemoteVideoView() {
-        // Creating `VideoView` programmatically
-        self.remoteView = VideoView(frame: CGRect.zero, delegate: self)
 
-        self.view.insertSubview(self.remoteView!, at: 0)
-        
-        // `VideoView` supports scaleToFill, scaleAspectFill and scaleAspectFit
-        // scaleAspectFit is the default mode when you create `VideoView` programmatically.
-        self.remoteView!.contentMode = .scaleAspectFit;
-
-        let centerX = NSLayoutConstraint(item: self.remoteView!,
-                                         attribute: NSLayoutConstraint.Attribute.centerX,
-                                         relatedBy: NSLayoutConstraint.Relation.equal,
-                                         toItem: self.view,
-                                         attribute: NSLayoutConstraint.Attribute.centerX,
-                                         multiplier: 1,
-                                         constant: 0);
-        self.view.addConstraint(centerX)
-        let centerY = NSLayoutConstraint(item: self.remoteView!,
-                                         attribute: NSLayoutConstraint.Attribute.centerY,
-                                         relatedBy: NSLayoutConstraint.Relation.equal,
-                                         toItem: self.view,
-                                         attribute: NSLayoutConstraint.Attribute.centerY,
-                                         multiplier: 1,
-                                         constant: 0);
-        self.view.addConstraint(centerY)
-        let width = NSLayoutConstraint(item: self.remoteView!,
-                                       attribute: NSLayoutConstraint.Attribute.width,
-                                       relatedBy: NSLayoutConstraint.Relation.equal,
-                                       toItem: self.view,
-                                       attribute: NSLayoutConstraint.Attribute.width,
-                                       multiplier: 1,
-                                       constant: 0);
-        self.view.addConstraint(width)
-        let height = NSLayoutConstraint(item: self.remoteView!,
-                                        attribute: NSLayoutConstraint.Attribute.height,
-                                        relatedBy: NSLayoutConstraint.Relation.equal,
-                                        toItem: self.view,
-                                        attribute: NSLayoutConstraint.Attribute.height,
-                                        multiplier: 1,
-                                        constant: 0);
-        self.view.addConstraint(height)
-    }
     func connect(){
         // Configure access token either from server or manually.
         // If the default wasn't changed, try fetching from server.
@@ -125,28 +84,7 @@ class MeetingViewController: UIViewController {
             builder.audioTracks = self.localAudioTrack != nil ? [self.localAudioTrack!] : [LocalAudioTrack]()
             builder.videoTracks = self.localVideoTrack != nil ? [self.localVideoTrack!] : [LocalVideoTrack]()
             
-            // Use the preferred audio codec
-            if let preferredAudioCodec = Settings.shared.audioCodec {
-                builder.preferredAudioCodecs = [preferredAudioCodec]
-            }
-            
-            // Use the preferred video codec
-            if let preferredVideoCodec = Settings.shared.videoCodec {
-                builder.preferredVideoCodecs = [preferredVideoCodec]
-            }
-            
-            // Use the preferred encoding parameters
-            if let encodingParameters = Settings.shared.getEncodingParameters() {
-                builder.encodingParameters = encodingParameters
-            }
-
-            // Use the preferred signaling region
-            if let signalingRegion = Settings.shared.signalingRegion {
-                builder.region = signalingRegion
-            }
-            
-            // The name of the Room where the Client will attempt to connect to. Please note that if you pass an empty
-            // Room `name`, the Client will create one for you. You can get the name or sid from any connected Room.
+   
          
         }
         
@@ -214,8 +152,8 @@ class MeetingViewController: UIViewController {
         for publication in videoPublications {
             if let subscribedVideoTrack = publication.remoteTrack,
                 publication.isTrackSubscribed {
-                setupRemoteVideoView()
-                subscribedVideoTrack.addRenderer(self.remoteView!)
+                
+                subscribedVideoTrack.addRenderer(self.vidView)
                 self.remoteParticipant = participant
                 return true
             }
@@ -235,8 +173,8 @@ class MeetingViewController: UIViewController {
 
     func cleanupRemoteParticipant() {
         if self.remoteParticipant != nil {
-            self.remoteView?.removeFromSuperview()
-            self.remoteView = nil
+            self.vidView?.removeFromSuperview()
+            self.vidView = nil
             self.remoteParticipant = nil
         }
     }
@@ -396,5 +334,22 @@ extension MeetingViewController : VideoViewDelegate {
 extension MeetingViewController : CameraSourceDelegate {
     func cameraSourceDidFail(source: CameraSource, error: Error) {
         logMessage(messageText: "Camera source failed with error: \(error.localizedDescription)")
+    }
+}
+
+struct TokenUtils {
+    static func fetchToken(url : String) throws -> String {
+        var token: String = "TWILIO_ACCESS_TOKEN"
+        let requestURL: URL = URL(string: url)!
+        do {
+            let data = try Data(contentsOf: requestURL)
+            if let tokenReponse = String(data: data, encoding: String.Encoding.utf8) {
+                token = tokenReponse
+            }
+        } catch let error as NSError {
+            print ("Invalid token url, error = \(error)")
+            throw error
+        }
+        return token
     }
 }
