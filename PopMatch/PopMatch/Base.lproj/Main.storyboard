@@ -940,8 +940,8 @@
                                     <action selector="goBackToProfileVC:" destination="sJe-e4-LjX" eventType="touchUpInside" id="o6U-qo-OfI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on image to view &lt;USERNAME&gt;'s information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSL-yn-xVI">
-                                <rect key="frame" x="17" y="173" width="379" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on image to view &lt;USERNAME&gt;'s information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSL-yn-xVI">
+                                <rect key="frame" x="17" y="173" width="380" height="19"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1069,6 +1069,7 @@
                             <constraint firstItem="Vx1-ok-ejo" firstAttribute="top" secondItem="sMc-p0-eiK" secondAttribute="top" constant="77" id="GjO-Yd-2Ek"/>
                             <constraint firstItem="sMc-p0-eiK" firstAttribute="trailing" secondItem="r10-ai-fkM" secondAttribute="trailing" constant="20" id="KJg-Fh-ZId"/>
                             <constraint firstItem="QUG-DE-hiN" firstAttribute="top" secondItem="qks-m4-lqI" secondAttribute="bottom" constant="103" id="Kbd-v8-6em"/>
+                            <constraint firstItem="LSL-yn-xVI" firstAttribute="centerX" secondItem="Li2-HQ-wIV" secondAttribute="centerX" id="NFw-ms-aPR"/>
                             <constraint firstItem="2oc-m5-cZI" firstAttribute="leading" secondItem="sMc-p0-eiK" secondAttribute="leading" constant="59" id="OD0-DZ-bvE"/>
                             <constraint firstItem="Vx1-ok-ejo" firstAttribute="centerX" secondItem="qks-m4-lqI" secondAttribute="centerX" id="Qjw-vJ-CGy"/>
                             <constraint firstItem="LSL-yn-xVI" firstAttribute="leading" secondItem="sMc-p0-eiK" secondAttribute="leading" constant="17" id="V2V-wF-ZRc"/>
@@ -1084,6 +1085,7 @@
                     <connections>
                         <outlet property="acceptButton" destination="QUG-DE-hiN" id="j3C-0W-2Gi"/>
                         <outlet property="backButton" destination="pkr-sQ-kAf" id="wIz-hS-vug"/>
+                        <outlet property="instruction" destination="LSL-yn-xVI" id="g2g-oD-SY8"/>
                         <outlet property="matchImage" destination="qks-m4-lqI" id="Lry-Kn-1Fh"/>
                         <outlet property="matchUsername" destination="Vx1-ok-ejo" id="6ud-at-Jfb"/>
                         <outlet property="popUpView" destination="r10-ai-fkM" id="5Xa-Xq-5t7"/>

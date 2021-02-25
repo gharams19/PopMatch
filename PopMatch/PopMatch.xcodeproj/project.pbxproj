@@ -23,9 +23,9 @@
 		7A86DE0725E31CDF00FFB75A /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0625E31CDF00FFB75A /* EditQuestionViewController.swift */; };
 		7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0925E31CF700FFB75A /* FriendViewController.swift */; };
 		7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */; };
-		D16749FF7F5EF93617FF7503 /* libPods-PopMatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F339490118E6618B31A72 /* libPods-PopMatch.a */; };
 		D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121325E3333100EF46F3 /* LobbyViewController.swift */; };
 		D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */; };
+		FC6988E66DEE39F2D6A7BD61 /* Pods_PopMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,9 +67,9 @@
 		7A86DE0625E31CDF00FFB75A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		7A86DE0925E31CF700FFB75A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FE121325E3333100EF46F3 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
-		E06F339490118E6618B31A72 /* libPods-PopMatch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopMatch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D16749FF7F5EF93617FF7503 /* libPods-PopMatch.a in Frameworks */,
+				FC6988E66DEE39F2D6A7BD61 /* Pods_PopMatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +166,7 @@
 		BD56D9BB08E6B83534A16ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E06F339490118E6618B31A72 /* libPods-PopMatch.a */,
+				B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,7 +182,6 @@
 				7A560C3525DB20FA00377699 /* Sources */,
 				7A560C3625DB20FA00377699 /* Frameworks */,
 				7A560C3725DB20FA00377699 /* Resources */,
-				FC5624F224EF5C011CDFA3B0 /* [CP] Copy Pods Resources */,
 				2150B3F2A4B41A2A52CFD107 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -278,23 +277,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FC5624F224EF5C011CDFA3B0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

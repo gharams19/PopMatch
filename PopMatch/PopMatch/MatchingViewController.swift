@@ -6,25 +6,49 @@
 //
 
 import UIKit
+import Firebase
 
 class MatchingViewController: UIViewController {
     
     @IBOutlet weak var matchUsername: UILabel!
     @IBOutlet weak var matchImage: UIImageView!
     
-    
+    @IBOutlet weak var instruction: UILabel!
     
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     
-    let matchName = ""
+    var matchName = ""
     var rejectedMatches = [String]()
+    var db = Firestore.firestore()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //matchUsername.text = nil
+        
+        
+        let docRef = db.collection("users").document("Lr4b4gJoa9aM9qtD0LVX")
+        docRef.getDocument { (document, error) in
+            
+            if let document = document, document.exists {
+                self.matchName = document.get("first name") as? String ?? ""
+                
+                let username = document.get("username") as? String ?? ""
+                if username.count == 0 {
+                    self.matchUsername.text = self.matchName
+                    self.instruction.text = "Tap on image to view \(self.matchName)'s information"
+                }
+                else {
+                    self.matchUsername.text = username
+                    self.instruction.text = "Tap on image to view \(username)'s information"
+                }
+            } else {
+                print("Document does not exist")
+            }
+            
+        }
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
@@ -43,7 +67,8 @@ class MatchingViewController: UIViewController {
         popUpView.layer.borderColor = UIColor(displayP3Red: 1.0, green: 0.54, blue: 0.11, alpha: 1.0).cgColor
           
         popUpView.isHidden = true
-     
+    
+        
         
     }
     
@@ -62,10 +87,8 @@ class MatchingViewController: UIViewController {
             
             switch swipeGesture.direction {
             case .right:
-                print("Swiped right")
                 acceptMatch()
             case .left:
-                print("Swiped left")
                 rejectMatch()
             default:
                 break
@@ -82,8 +105,16 @@ class MatchingViewController: UIViewController {
     
     func rejectMatch() {
         /*Add user to rejectedMatches array*/
+        rejectedMatches.append(matchName)
         
         /*Go to lobbyVC to find another */
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let lobbyViewController = storyboard.instantiateViewController(withIdentifier: "lobbyVC") as? LobbyViewController else {
+                assertionFailure("couldn't find vc") //will stop program
+                return
+            }
+        //optional navigation controller
+        self.navigationController?.pushViewController(lobbyViewController, animated: true)
         
     }
     @IBAction func invokeAcceptMatchFunc(_ sender: Any) {
