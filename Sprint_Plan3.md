@@ -10,7 +10,7 @@ https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
 **Eden Avivi** - 
 
-* Started implementing the Firebase Auth API calls for login and sign up screens, added a custom pop up for resetting the password in the login view which send a custom email to the user's email through Firebase and has the steps to reset there.
+* Started implementing the Firebase Auth API calls for login and sign up screens, added a custom pop up for resetting the password in the login view which sends a custom email to the user's email through Firebase and has the steps to reset there.
 
 * Finished up the login and sign up view controllers by adding tap recognizers and text field return functions.
 
