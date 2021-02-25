@@ -46,6 +46,10 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/195649f9b29860ef52
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/d53267fdb7e1a0a0066b8b419477638f95a04891 (On my branch for now)
 
 **Ma Eint Poe** -
+-Implemented the navigation between Profile VC, Edit Question VC, Professional VC, and FriendVC
+-Imeplemented UI and basic functionality in the Professional VC and Frend VC (still need to do store it into the database) (https://github.com/ECS189E/project-w21-big-bang-theory/commit/f63695dfdb6af62aacf3d3ee19f3a521f8596c51)
+-Added the UI components to the Profile VC (https://github.com/ECS189E/project-w21-big-bang-theory/commit/f458a992bc54c3c403089dad77e1d1878da94576)
+-Set up the database collection for user's answer to the questionnaires
 
 
 **Wai Hei Ngan** -
@@ -65,6 +69,9 @@ Continue working on the lobby view controller by researching how to know how man
 Will use Firebase Analytics' to get currently active users and connect their info to the matching UI. I will also implement the matching algorithm to check if the other user accepted or rejected the call and moved to the relative screens. Find a way to keep track of rejected matches such that they dont show up again in current setting. 
 
 **Ma Eint Poe** -
+-Fix the friend VC questionnaire to nontextfield type answers
+-Add in the api calls to to the database to store the user's answer for the friendship questionnaire VC and to display the stored data on the profile VC
+
 
 
 **Wai Hei Ngan** -
