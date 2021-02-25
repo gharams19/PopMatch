@@ -84,12 +84,7 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return true
     }
     
-
-    @IBAction func toEditQuestion(_ sender: Any) {
-        
-        // Make api request to store data here
-        
-        
+    @IBAction func toProfile() {
         // Navigate to edit question view controller
       /*  let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let editQuestionViewController = storyboard.instantiateViewController(withIdentifier: "editQuestionVC") as? EditQuestionViewController else {

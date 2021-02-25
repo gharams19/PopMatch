@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		76412B9C25E387F400777066 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76412B9B25E387F400777066 /* GoogleService-Info.plist */; };
-		76412BA325E388F100777066 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 76412BA225E388F100777066 /* Fonts */; };
-		76412BA625E388FA00777066 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 76412BA525E388FA00777066 /* Fonts */; };
 		7A560C3D25DB20FA00377699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C3C25DB20FA00377699 /* AppDelegate.swift */; };
 		7A560C3F25DB20FA00377699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C3E25DB20FA00377699 /* SceneDelegate.swift */; };
 		7A560C4125DB20FA00377699 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C4025DB20FA00377699 /* ViewController.swift */; };
@@ -32,8 +30,6 @@
 		02738B69DB9DDE5BEF5E0CD5 /* Pods-PopMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopMatch.debug.xcconfig"; path = "Target Support Files/Pods-PopMatch/Pods-PopMatch.debug.xcconfig"; sourceTree = "<group>"; };
 		6D09C60EBCAEC971F1AE5DC9 /* Pods-PopMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopMatch.release.xcconfig"; path = "Target Support Files/Pods-PopMatch/Pods-PopMatch.release.xcconfig"; sourceTree = "<group>"; };
 		76412B9B25E387F400777066 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		76412BA225E388F100777066 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = ../../../../../../Fonts; sourceTree = "<group>"; };
-		76412BA525E388FA00777066 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = ../../../../../../Fonts; sourceTree = "<group>"; };
 		76412BAB25E3896A00777066 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
 		76412BAC25E3896A00777066 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
 		76412BAD25E3896B00777066 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -130,10 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				7A560C3B25DB20FA00377699 /* PopMatch */,
+				76412BAA25E3892900777066 /* Fonts */,
 				7A560C3A25DB20FA00377699 /* Products */,
 				72AD5EC41363C445F38348BE /* Pods */,
 				BD56D9BB08E6B83534A16ACF /* Frameworks */,
-				76412BAA25E3892900777066 /* Fonts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,8 +168,6 @@
 		BD56D9BB08E6B83534A16ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				76412BA225E388F100777066 /* Fonts */,
-				76412BA525E388FA00777066 /* Fonts */,
 				76412BA825E388FE00777066 /* Fonts */,
 				E06F339490118E6618B31A72 /* libPods-PopMatch.a */,
 			);
@@ -240,10 +234,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76412BA325E388F100777066 /* Fonts in Resources */,
 				7A560C4925DB20FB00377699 /* LaunchScreen.storyboard in Resources */,
 				76412B9C25E387F400777066 /* GoogleService-Info.plist in Resources */,
-				76412BA625E388FA00777066 /* Fonts in Resources */,
 				7A560C4625DB20FB00377699 /* Assets.xcassets in Resources */,
 				7A560C4425DB20FA00377699 /* Main.storyboard in Resources */,
 			);
@@ -475,13 +467,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6FUG82M737;
+				DEVELOPMENT_TEAM = U6X5U6524V;
 				INFOPLIST_FILE = PopMatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.cs.ecs189e.w21.PopMatch;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.cs.ecs189e.w21.PopMatch2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,13 +487,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6FUG82M737;
+				DEVELOPMENT_TEAM = U6X5U6524V;
 				INFOPLIST_FILE = PopMatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.cs.ecs189e.w21.PopMatch;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.cs.ecs189e.w21.PopMatch2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
