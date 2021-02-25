@@ -22,14 +22,16 @@ class LobbyViewController: UIViewController {
             array.append(bubbleImageView)
         }
         for i in 0...userNumber-1 {
+            array[i].frame = CGRect(x: bubbleView.center.x, y: bubbleView.center.y, width: 100, height: 100)
             bubbleView.addSubview(array[i])
-            array[i].center.x = bubbleView.center.x
-            array[i].center.y = bubbleView.center.y
             animation(image: array[i])
         }
         
         
     }
+   
+    var previousAnimation = Int()
+    
     func animation(image: UIImageView) {
         let maxX = self.bubbleView.frame.maxX - CGFloat(100)
         let maxY = self.bubbleView.frame.height - CGFloat(100)
@@ -37,7 +39,15 @@ class LobbyViewController: UIViewController {
         var newY = UInt32(0)
         
         //decide randomly which direction to go into
-        let sideDecider = Int.random(in: 1...4)
+        var sideDecider = Int.random(in: 1...4)
+        
+        //added to make it less likely bubbles will overlap
+        if previousAnimation == sideDecider && sideDecider < 4 {
+            sideDecider += 1
+        } else if previousAnimation == sideDecider && sideDecider == 4 {
+            sideDecider = 1
+        }
+        
         switch sideDecider {
         case 1:
             newX = UInt32(maxX)
@@ -55,6 +65,7 @@ class LobbyViewController: UIViewController {
             newX = 0
             newY = 0
         }
+        previousAnimation = sideDecider
         
         //calculation of distance to have the speed of the bubble be constant
         var distanceX = UInt32(0)
