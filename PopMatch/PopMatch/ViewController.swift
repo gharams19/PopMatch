@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var logInOutlet: UIButton!
     @IBOutlet weak var resetOutlet: UIButton!
     
+    @IBOutlet var tapGestureRecongizer: UITapGestureRecognizer!
     
     let showHideTitles: (String, String) = ("show", "hide")
     
@@ -40,6 +41,10 @@ class ViewController: UIViewController {
         resetPasswordView.isHidden = true
         resetErrLabel.text = nil
        
+        //set delegates for textfields
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        resetPasswordEmail.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +58,16 @@ class ViewController: UIViewController {
         
         //fix this forced unwrap
         Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    @IBAction func startEditing(_ sender: Any) {
+        self.tapGestureRecongizer.isEnabled = true
+    }
+    
+    
+    @IBAction func tap(_ sender: Any) {
+        self.view.endEditing(true)
+        resetPasswordView.endEditing(true)
+        self.tapGestureRecongizer.isEnabled = false
     }
     
     func toggleButtonTitle(between titles:(String, String), on button: UIButton) -> Void {
@@ -164,6 +179,10 @@ class ViewController: UIViewController {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 
 }
 

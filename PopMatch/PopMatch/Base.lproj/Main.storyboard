@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
         <array key="Montserrat-Medium.ttf">
             <string>Montserrat-Medium</string>
         </array>
@@ -42,12 +45,18 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="FcL-DX-dIw"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxH-BC-NAB">
                                 <rect key="frame" x="120" y="297" width="274" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Das-JN-lc3"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2W2-e3-JpY">
                                 <rect key="frame" x="20" y="245" width="45" height="20"/>
@@ -161,6 +170,9 @@
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="startEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="PdS-q7-eIj"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;ERR_LABEL&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCv-cs-Swi">
                                         <rect key="frame" x="132" y="115" width="111" height="21"/>
@@ -175,6 +187,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="xC5-uw-1aK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1DD-8J-fq4"/>
                             <constraint firstItem="xC5-uw-1aK" firstAttribute="top" secondItem="nxH-BC-NAB" secondAttribute="bottom" constant="8" symbolic="YES" id="8dK-37-LLC"/>
@@ -205,6 +218,9 @@
                             <constraint firstItem="Clx-58-LOF" firstAttribute="leading" secondItem="2Qh-0S-81l" secondAttribute="trailing" constant="8" symbolic="YES" id="xy3-Ut-pAG"/>
                             <constraint firstItem="2Qh-0S-81l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="yNM-ou-kdU"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8Lb-Eq-Trg" appends="YES" id="dRj-13-ffm"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="mGo-Y8-TIm"/>
                     <connections>
@@ -218,9 +234,15 @@
                         <outlet property="resetPasswordView" destination="gr3-T0-E3j" id="YZM-vQ-69v"/>
                         <outlet property="showHideButton" destination="OhY-TS-HFO" id="L4C-WZ-8k5"/>
                         <outlet property="signUpHereButton" destination="Clx-58-LOF" id="156-dS-2W1"/>
+                        <outlet property="tapGestureRecongizer" destination="8Lb-Eq-Trg" id="hO9-g1-cd9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8Lb-Eq-Trg">
+                    <connections>
+                        <action selector="tap:" destination="BYZ-38-t0r" id="dML-PM-3jC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1005.7971014492755" y="93.75"/>
         </scene>
@@ -267,30 +289,45 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="CE1-QA-4jg"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53w-hk-V0y">
                                 <rect key="frame" x="192" y="174" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="GAm-9G-cFe"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r3v-1d-BiK">
                                 <rect key="frame" x="192" y="216" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="tfs-U8-23y"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kY-UL-zGz">
                                 <rect key="frame" x="192" y="258" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="cch-d9-BJg"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBU-Fe-Nsx">
                                 <rect key="frame" x="192" y="300" width="202" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="startEditing:" destination="PvV-Dd-9oM" eventType="editingDidBegin" id="piN-wY-C7e"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VTQ-2d-dLP">
                                 <rect key="frame" x="60.5" y="66" width="293.5" height="41"/>
@@ -364,6 +401,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WSr-I5-gB1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3GC-x2-RYu" firstAttribute="leading" secondItem="WSr-I5-gB1" secondAttribute="leading" constant="20" id="0DK-s6-jgq"/>
                             <constraint firstItem="2kY-UL-zGz" firstAttribute="leading" secondItem="WwO-AC-kLc" secondAttribute="trailing" constant="20" id="14Z-iT-OoH"/>
@@ -405,6 +443,9 @@
                             <constraint firstItem="VTQ-2d-dLP" firstAttribute="centerX" secondItem="uYC-xW-7hr" secondAttribute="centerX" id="wuT-SZ-O7L"/>
                             <constraint firstItem="2kY-UL-zGz" firstAttribute="top" secondItem="r3v-1d-BiK" secondAttribute="bottom" constant="8" symbolic="YES" id="xhU-pQ-BnJ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mti-Vx-maD" appends="YES" id="BPf-Zv-OIh"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="createPassTextField" destination="2kY-UL-zGz" id="jGT-od-nag"/>
@@ -414,10 +455,16 @@
                         <outlet property="lastNameTextField" destination="53w-hk-V0y" id="p9m-jr-78f"/>
                         <outlet property="showHideCreate" destination="JBX-r2-L09" id="rto-21-g0k"/>
                         <outlet property="showHideVerify" destination="BtL-2t-xaP" id="RxM-8E-gwg"/>
+                        <outlet property="tapGestureRecognizer" destination="mti-Vx-maD" id="t2I-Ag-AXp"/>
                         <outlet property="verifyPassTextField" destination="XBU-Fe-Nsx" id="CCw-zp-KOJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbP-bA-umF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mti-Vx-maD">
+                    <connections>
+                        <action selector="tap:" destination="PvV-Dd-9oM" id="uTb-ox-Tuv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1657.9710144927537" y="93.75"/>
         </scene>
@@ -872,14 +919,38 @@
                                     <action selector="match_accepted:" destination="blZ-jM-pcS" eventType="touchUpInside" id="9Lq-H8-C15"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iER-lr-YPz">
+                                <rect key="frame" x="0.0" y="140" width="414" height="536"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding your next " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ais-Gb-vvp">
+                                <rect key="frame" x="78.5" y="44" width="257" height="37.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
+                                <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bubble..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LHQ-Ae-SsJ">
+                                <rect key="frame" x="144" y="89.5" width="126" height="37.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
+                                <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z80-n9-iSJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LHQ-Ae-SsJ" firstAttribute="top" secondItem="Ais-Gb-vvp" secondAttribute="bottom" constant="8" symbolic="YES" id="8AZ-wA-JLz"/>
                             <constraint firstItem="fFa-rP-3fO" firstAttribute="top" secondItem="z80-n9-iSJ" secondAttribute="top" constant="640" id="Fu7-P4-PRN"/>
+                            <constraint firstItem="Ais-Gb-vvp" firstAttribute="top" secondItem="z80-n9-iSJ" secondAttribute="top" id="OjC-aw-t8Y"/>
+                            <constraint firstItem="Ais-Gb-vvp" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="ToN-1d-zfZ"/>
                             <constraint firstItem="z80-n9-iSJ" firstAttribute="trailing" secondItem="fFa-rP-3fO" secondAttribute="trailing" constant="66" id="cfl-Vt-8vp"/>
+                            <constraint firstItem="LHQ-Ae-SsJ" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="iDV-wa-Rwq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bubbleView" destination="iER-lr-YPz" id="mOA-nw-A5a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vs-pR-dIb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
