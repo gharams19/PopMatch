@@ -9,19 +9,23 @@
 import UIKit
 import TwilioVideo
 
+
 class MeetingViewController: UIViewController {
     
 
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var vidView: VideoView!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var addTimerButton: UIButton!
     
+    var remoteView: VideoView!
     var room: Room?
     var camera: CameraSource?
     var localVideoTrack: LocalVideoTrack?
     var localAudioTrack: LocalAudioTrack?
     var remoteParticipant: RemoteParticipant?
-
-    
+    var vidTimer: Timer?
+    var runCount = 300;
+    var addedTime = false;
     var accessToken : String = ""
     // Configure remote URL to fetch token from
     var tokenUrl = "http://localhost:8000/token.php"
@@ -31,17 +35,79 @@ class MeetingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareLocalMedia()
-        
         self.connect()
-        
+        self.startTimer()
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
-        
+       
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
     }
+    
+    func setupRemoteVideoView() {
+        // Creating `VideoView` programmatically
+        self.remoteView = VideoView(frame: CGRect.zero, delegate: self)
 
+        self.view.insertSubview(self.remoteView!, at: 0)
+        
+        // `VideoView` supports scaleToFill, scaleAspectFill and scaleAspectFit
+        // scaleAspectFit is the default mode when you create `VideoView` programmatically.
+        self.remoteView!.contentMode = .scaleAspectFill;
+
+        let centerX = NSLayoutConstraint(item: self.remoteView!,
+                                         attribute: NSLayoutConstraint.Attribute.centerX,
+                                         relatedBy: NSLayoutConstraint.Relation.equal,
+                                         toItem: self.view,
+                                         attribute: NSLayoutConstraint.Attribute.centerX,
+                                         multiplier: 1,
+                                         constant: 0);
+        self.view.addConstraint(centerX)
+        let centerY = NSLayoutConstraint(item: self.remoteView!,
+                                         attribute: NSLayoutConstraint.Attribute.centerY,
+                                         relatedBy: NSLayoutConstraint.Relation.equal,
+                                         toItem: self.view,
+                                         attribute: NSLayoutConstraint.Attribute.centerY,
+                                         multiplier: 1,
+                                         constant: 0);
+        self.view.addConstraint(centerY)
+        let width = NSLayoutConstraint(item: self.remoteView!,
+                                       attribute: NSLayoutConstraint.Attribute.width,
+                                       relatedBy: NSLayoutConstraint.Relation.equal,
+                                       toItem: self.view,
+                                       attribute: NSLayoutConstraint.Attribute.width,
+                                       multiplier: 1,
+                                       constant: 0);
+        self.view.addConstraint(width)
+        let height = NSLayoutConstraint(item: self.remoteView!,
+                                        attribute: NSLayoutConstraint.Attribute.height,
+                                        relatedBy: NSLayoutConstraint.Relation.equal,
+                                        toItem: self.view,
+                                        attribute: NSLayoutConstraint.Attribute.height,
+                                        multiplier: 1,
+                                        constant: 0);
+        self.view.addConstraint(height)
+    }
+    
+    func startTimer(){
+        vidTimer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+        timerLabel.text = "Timer:" + String(runCount/60) + ":" + String(format: "%02d",runCount%60)
+        
+    }
+    @objc func updateTimer() {
+        runCount -= 1
+        timerLabel.text = "Timer:" + String(runCount/60) + ":" + String(format: "%02d",runCount%60)
+        
+    }
+    @IBAction func addTime(_ sender: Any) {
+        if(!addedTime){
+            runCount += 60
+            addedTime = true;
+            print("added time")
+        }
+    }
+    
+    
     @IBAction func disconnect(sender: AnyObject) {
         self.room?.disconnect()
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
@@ -122,8 +188,9 @@ class MeetingViewController: UIViewController {
             }
             // Preview our local camera track in the local video preview view.
             camera = CameraSource(options: options, delegate: self)
+            
             localVideoTrack = LocalVideoTrack(source: camera!, enabled: true, name: "Camera")
-
+            
             // Add renderer to video track for local preview
             
             logMessage(messageText: "Video track created")
@@ -142,6 +209,7 @@ class MeetingViewController: UIViewController {
             self.logMessage(messageText:"No front or back capture device found!")
         }
    }
+    
     func logMessage(messageText: String) {
         NSLog(messageText)
         messageLabel.text = messageText
@@ -152,8 +220,8 @@ class MeetingViewController: UIViewController {
         for publication in videoPublications {
             if let subscribedVideoTrack = publication.remoteTrack,
                 publication.isTrackSubscribed {
-                
-                subscribedVideoTrack.addRenderer(self.vidView)
+                setupRemoteVideoView()
+                subscribedVideoTrack.addRenderer(self.remoteView)
                 self.remoteParticipant = participant
                 return true
             }
@@ -173,8 +241,8 @@ class MeetingViewController: UIViewController {
 
     func cleanupRemoteParticipant() {
         if self.remoteParticipant != nil {
-            self.vidView?.removeFromSuperview()
-            self.vidView = nil
+            self.remoteView?.removeFromSuperview()
+            self.remoteView = nil
             self.remoteParticipant = nil
         }
     }

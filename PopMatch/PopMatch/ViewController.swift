@@ -39,6 +39,9 @@ class ViewController: UIViewController {
         resetPasswordView.sizeToFit()
         resetPasswordView.isHidden = true
         resetErrLabel.text = nil
+        
+        emailTextField.text = "rayngan999@gmail.com"
+        passwordTextField.text = "Aa263350"
     }
     
     override func viewWillAppear(_ animated: Bool) {

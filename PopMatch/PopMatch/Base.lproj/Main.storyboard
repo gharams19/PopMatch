@@ -888,117 +888,109 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8h-mm-oHB" customClass="TVIVideoView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIX-vP-2nv">
-                                        <rect key="frame" x="44" y="438" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="0Ab-zY-1zR"/>
-                                        </constraints>
-                                        <state key="normal">
-                                            <imageReference key="image" image="end call Icon" symbolScale="large" renderingMode="original"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="disconnectWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="qM5-td-ibz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5v-QJ-yzA">
-                                        <rect key="frame" x="49" y="374" width="41" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Cku-IX-8AR"/>
-                                            <constraint firstAttribute="width" constant="41" id="IAL-6B-3Nu"/>
-                                        </constraints>
-                                        <state key="normal">
-                                            <imageReference key="image" image="Microphone Icon" symbolScale="large" renderingMode="original"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="toggleMicWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="cj3-JE-JHB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifC-Jb-Ate">
-                                        <rect key="frame" x="44" y="323" width="50" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="XHx-BY-Z0B"/>
-                                        </constraints>
-                                        <state key="normal">
-                                            <imageReference key="image" image="Video Icon" symbolScale="large" renderingMode="original"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4f-ph-Vwh">
-                                        <rect key="frame" x="80" y="786" width="254" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="ETI-62-Shn"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEq-48-3AH">
-                                        <rect key="frame" x="41" y="52" width="127" height="155"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSb-cc-Zmn">
-                                        <rect key="frame" x="41" y="215" width="79" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="S4f-hy-hzp"/>
-                                            <constraint firstAttribute="width" constant="79" id="d5H-sa-oHT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cka-Hx-TCy">
-                                        <rect key="frame" x="44" y="261" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="PXF-fr-uRk"/>
-                                        </constraints>
-                                        <state key="normal">
-                                            <imageReference key="image" image="addTime Icon" symbolScale="large" renderingMode="original"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZt-32-h76">
+                                <rect key="frame" x="44" y="454" width="51" height="50"/>
                                 <constraints>
-                                    <constraint firstItem="dSb-cc-Zmn" firstAttribute="leading" secondItem="bEq-48-3AH" secondAttribute="leading" id="1iU-Ci-gVK"/>
-                                    <constraint firstItem="ifC-Jb-Ate" firstAttribute="trailing" secondItem="jIX-vP-2nv" secondAttribute="trailing" id="3Tj-8V-vkF"/>
-                                    <constraint firstItem="jIX-vP-2nv" firstAttribute="top" secondItem="t5v-QJ-yzA" secondAttribute="bottom" constant="14" id="49A-Ij-Vpz"/>
-                                    <constraint firstItem="dSb-cc-Zmn" firstAttribute="top" secondItem="x8h-mm-oHB" secondAttribute="top" constant="215" id="4IP-fS-PTY"/>
-                                    <constraint firstItem="Cka-Hx-TCy" firstAttribute="leading" secondItem="x8h-mm-oHB" secondAttribute="leading" constant="44" id="4cD-J4-Oxi"/>
-                                    <constraint firstItem="Cka-Hx-TCy" firstAttribute="leading" secondItem="ifC-Jb-Ate" secondAttribute="leading" id="6e1-y6-sOn"/>
-                                    <constraint firstAttribute="trailing" secondItem="bEq-48-3AH" secondAttribute="trailing" constant="246" id="HUM-hQ-mCc"/>
-                                    <constraint firstAttribute="trailing" secondItem="o4f-ph-Vwh" secondAttribute="trailing" constant="80" id="LRB-yD-NvM"/>
-                                    <constraint firstItem="ifC-Jb-Ate" firstAttribute="centerX" secondItem="t5v-QJ-yzA" secondAttribute="centerX" id="LUO-NK-iPe"/>
-                                    <constraint firstItem="Cka-Hx-TCy" firstAttribute="top" secondItem="dSb-cc-Zmn" secondAttribute="bottom" constant="25" id="T5A-lx-Bo9"/>
-                                    <constraint firstAttribute="bottom" secondItem="o4f-ph-Vwh" secondAttribute="bottom" constant="50" id="Wbz-PG-O36"/>
-                                    <constraint firstItem="dSb-cc-Zmn" firstAttribute="leading" secondItem="x8h-mm-oHB" secondAttribute="leading" constant="41" id="XKM-Kl-wBx"/>
-                                    <constraint firstItem="ifC-Jb-Ate" firstAttribute="leading" secondItem="jIX-vP-2nv" secondAttribute="leading" id="bOC-nH-ZmZ"/>
-                                    <constraint firstItem="dSb-cc-Zmn" firstAttribute="top" secondItem="bEq-48-3AH" secondAttribute="bottom" constant="8" id="h6J-Mg-h0e"/>
-                                    <constraint firstItem="t5v-QJ-yzA" firstAttribute="leading" secondItem="x8h-mm-oHB" secondAttribute="leading" constant="49" id="i17-G3-kKI"/>
-                                    <constraint firstItem="bEq-48-3AH" firstAttribute="top" secondItem="x8h-mm-oHB" secondAttribute="topMargin" id="ixn-13-0Cs"/>
-                                    <constraint firstItem="o4f-ph-Vwh" firstAttribute="leading" secondItem="x8h-mm-oHB" secondAttribute="leading" constant="80" id="jNo-PP-phL"/>
-                                    <constraint firstItem="Cka-Hx-TCy" firstAttribute="trailing" secondItem="ifC-Jb-Ate" secondAttribute="trailing" id="k23-tl-2P3"/>
-                                    <constraint firstItem="t5v-QJ-yzA" firstAttribute="top" secondItem="ifC-Jb-Ate" secondAttribute="bottom" constant="16" id="sM1-KQ-aSJ"/>
-                                    <constraint firstItem="ifC-Jb-Ate" firstAttribute="top" secondItem="Cka-Hx-TCy" secondAttribute="bottom" constant="12" id="xeS-eb-HAI"/>
+                                    <constraint firstAttribute="height" constant="50" id="kA6-Iu-fut"/>
                                 </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="end call Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnectWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="lag-4b-GaG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSS-oz-4et">
+                                <rect key="frame" x="49" y="390" width="41" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="41" id="74U-w5-dLo"/>
+                                    <constraint firstAttribute="height" constant="50" id="x8u-Px-IsO"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="Microphone Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleMicWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="plS-ed-dR1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTa-cK-3Ge">
+                                <rect key="frame" x="44" y="339" width="51" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1g4-JX-EmN"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="Video Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWD-9C-Xz0">
+                                <rect key="frame" x="80" y="802" width="254" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OHc-Bk-fj3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJO-xG-svV">
+                                <rect key="frame" x="20" y="68" width="148" height="155"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: 0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWf-RX-JRp">
+                                <rect key="frame" x="20" y="231" width="125" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="BKo-WK-hlw"/>
+                                    <constraint firstAttribute="height" constant="21" id="zUW-nJ-UAk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIg-wR-dgM">
+                                <rect key="frame" x="44" y="277" width="51" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fLB-6a-aST"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="addTime Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTime:" destination="8nw-Du-75w" eventType="touchUpInside" id="RCm-cg-4tR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hqT-Au-c8B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="x8h-mm-oHB" firstAttribute="centerX" secondItem="Nrh-LU-Kgi" secondAttribute="centerX" id="DCo-Kl-m5J"/>
-                            <constraint firstItem="x8h-mm-oHB" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" id="GLx-rB-vLF"/>
-                            <constraint firstItem="x8h-mm-oHB" firstAttribute="top" secondItem="Nrh-LU-Kgi" secondAttribute="topMargin" constant="-44" id="Tgf-QB-0BI"/>
-                            <constraint firstItem="x8h-mm-oHB" firstAttribute="centerY" secondItem="Nrh-LU-Kgi" secondAttribute="centerY" id="cwl-28-VL5"/>
+                            <constraint firstItem="FWf-RX-JRp" firstAttribute="top" secondItem="Nrh-LU-Kgi" secondAttribute="top" constant="231" id="0ib-4F-pZk"/>
+                            <constraint firstItem="KSS-oz-4et" firstAttribute="top" secondItem="qTa-cK-3Ge" secondAttribute="bottom" constant="16" id="13T-Q2-fQ4"/>
+                            <constraint firstItem="FWf-RX-JRp" firstAttribute="top" secondItem="UJO-xG-svV" secondAttribute="bottom" constant="8" id="4V4-PC-psd"/>
+                            <constraint firstItem="yIg-wR-dgM" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="44" id="52N-1t-Bgq"/>
+                            <constraint firstItem="yWD-9C-Xz0" firstAttribute="centerX" secondItem="Nrh-LU-Kgi" secondAttribute="centerX" id="6f7-sH-UwZ"/>
+                            <constraint firstItem="yIg-wR-dgM" firstAttribute="trailing" secondItem="qTa-cK-3Ge" secondAttribute="trailing" id="Aci-jp-O0E"/>
+                            <constraint firstItem="yIg-wR-dgM" firstAttribute="leading" secondItem="qTa-cK-3Ge" secondAttribute="leading" id="EW5-Kb-fk1"/>
+                            <constraint firstItem="FWf-RX-JRp" firstAttribute="leading" secondItem="UJO-xG-svV" secondAttribute="leading" id="Hqg-7b-1JN"/>
+                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="centerX" secondItem="KSS-oz-4et" secondAttribute="centerX" id="Ive-uV-WDf"/>
+                            <constraint firstItem="UJO-xG-svV" firstAttribute="top" secondItem="hqT-Au-c8B" secondAttribute="top" constant="24" id="V9y-5G-QsS"/>
+                            <constraint firstItem="yWD-9C-Xz0" firstAttribute="bottom" secondItem="hqT-Au-c8B" secondAttribute="bottom" id="VVr-jP-l9M"/>
+                            <constraint firstItem="OZt-32-h76" firstAttribute="top" secondItem="KSS-oz-4et" secondAttribute="bottom" constant="14" id="Xcf-IR-2Iv"/>
+                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="top" secondItem="yIg-wR-dgM" secondAttribute="bottom" constant="12" id="YjY-31-QVk"/>
+                            <constraint firstItem="yWD-9C-Xz0" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="80" id="dbR-7a-brB"/>
+                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="leading" secondItem="OZt-32-h76" secondAttribute="leading" id="e4u-xU-Rbt"/>
+                            <constraint firstItem="hqT-Au-c8B" firstAttribute="trailing" secondItem="UJO-xG-svV" secondAttribute="trailing" constant="246" id="fHG-fn-jSr"/>
+                            <constraint firstItem="KSS-oz-4et" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="49" id="lTi-dc-dnf"/>
+                            <constraint firstItem="UJO-xG-svV" firstAttribute="leading" secondItem="Nrh-LU-Kgi" secondAttribute="leadingMargin" id="qNL-iM-HfL"/>
+                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="trailing" secondItem="OZt-32-h76" secondAttribute="trailing" id="sgu-Zx-CAK"/>
+                            <constraint firstItem="yIg-wR-dgM" firstAttribute="top" secondItem="FWf-RX-JRp" secondAttribute="bottom" constant="25" id="vBX-No-wcB"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="messageLabel" destination="o4f-ph-Vwh" id="JbP-sE-tG1"/>
-                        <outlet property="vidView" destination="x8h-mm-oHB" id="k1u-1W-uHb"/>
+                        <outlet property="addTimerButton" destination="yIg-wR-dgM" id="NCP-nn-F5G"/>
+                        <outlet property="messageLabel" destination="yWD-9C-Xz0" id="ml9-fH-Qey"/>
+                        <outlet property="timerLabel" destination="FWf-RX-JRp" id="d9b-yJ-2SW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRj-pw-Mtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
