@@ -37,12 +37,13 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/d4c272729009c0461e
   - Added the swiping gestures (right and left), and the image tap gesture
   - Created an action for the back button that takes the user to profile screen.
   - Created RounderImageView class that makes an image round if inherited
-- Added Font target
+- Setup Firestore
 - Researched Google Analytics to be used for finding the current user's in the lobby screen
 
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/422b3759cd0ea5181dda001f2c43d49543cf63b6 (On my branch for now)
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/56134b90c4605270fcfe5d7cfe8c73477496ef94 (On my branch for now)
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/195649f9b29860ef52519ece19be62d69e63c5a0 (On my branch for now)
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/d53267fdb7e1a0a0066b8b419477638f95a04891 (On my branch for now)
 
 **Ma Eint Poe** -
 
@@ -61,7 +62,7 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/195649f9b29860ef52
 Continue working on the lobby view controller by researching how to know how many users are in a specific view controller, have the matching process happen in the lobby view and have the lobby view controller stay until a match is found, in which case the match view controller will appear next.
 
 **Gharam Alsaedi** - 
-Will use Firebase Analytics' to get currently active users and connect their info to the matching UI. I will also implement the matching algorithm to check if the other user accepted or rejected the call and moved to the relative screens. Find a way to keep track of rejected matches such that they dont show up again in current setting. Will also setup firestore and add necessary user info.
+Will use Firebase Analytics' to get currently active users and connect their info to the matching UI. I will also implement the matching algorithm to check if the other user accepted or rejected the call and moved to the relative screens. Find a way to keep track of rejected matches such that they dont show up again in current setting. 
 
 **Ma Eint Poe** -
 
