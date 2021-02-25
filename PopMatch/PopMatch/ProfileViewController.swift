@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Firebase
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITextFieldDelegate {
 
   
     @IBOutlet weak var profileImage: UIImageView!
@@ -26,7 +27,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var instagramBtn: UIButton!
     @IBOutlet weak var linkedinBtn: UIButton!
     
+    var twitterLink = ""
+    var facebookLink = ""
+    var snapchatLink = ""
+    var instagramLink = ""
+    var linkedinLink = ""
+    
     @IBOutlet weak var signoutBtn: UIButton!
+    var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +46,21 @@ class ProfileViewController: UIViewController {
         bottomBorder(firstnameTextField)
         bottomBorder(lastnameTextField)
         bottomBorder(emailTextField)
+        bottomBorder(passwordTextField)
+        
+        // Delegate TextFields
+        usernameTextField.delegate = self
+        firstnameTextField.delegate = self
+        lastnameTextField.delegate = self
+        emailTextField.delegate = self
+
+        
+        // Display the stored data of user if it exists
+        displayUserData()
         
     }
     
+    // Styling
     func bottomBorder(_ textField: UITextField) {
         let layer = CALayer()
         layer.backgroundColor = UIColor.blue.cgColor
@@ -48,6 +68,60 @@ class ProfileViewController: UIViewController {
         textField.layer.addSublayer(layer)
     }
     
+    
+    
+    //
+    func displayUserData () {
+        let userData = db.collection("users").document("testing-user-profile")
+        userData.getDocument { (document, error) in
+            
+            if let document = document, document.exists {
+                self.usernameTextField.text = document.get("username") as? String ?? ""
+                
+                if let firstname = document.get("first name") {
+                    self.firstnameTextField.text = firstname as? String
+                }
+                
+                if let lastname = document.get("last name") {
+                    self.lastnameTextField.text = lastname as? String
+                }
+                
+                if let email = document.get("email") {
+                    self.emailTextField.text = email as? String
+                }
+            } else {
+                print("User document doesn't exists")
+            }
+            
+            // Set the social media links
+            let userSocialData = userData.collection("socials").document("links")
+            userSocialData.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    if let twitter = document.get("twitter") {
+                        self.twitterLink = twitter as? String ?? ""
+                        print("twitterLink: \(self.twitterLink)")
+                    }
+                    if let facebook = document.get("facebook") {
+                        self.facebookLink = facebook as? String ?? ""
+                    }
+                    if let snapchat = document.get("snapchat") {
+                        self.snapchatLink = snapchat as? String ?? ""
+                    }
+                    if let instagram = document.get("instagram") {
+                        self.instagramLink = instagram as? String ?? ""
+                    }
+                    if let linkedin = document.get("linkedin") {
+                        self.linkedinLink = linkedin as? String ?? ""
+                    }
+                } else {
+                    print("Social Media link doc doesn't exists")
+                }
+            }
+            
+            
+        }
+    }
+ 
     @IBAction func to_lobby(_ sender: Any) {
         // go to lobby view
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -67,6 +141,7 @@ class ProfileViewController: UIViewController {
         navigationController?.pushViewController(friendViewController, animated: true)
         
     }
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -88,6 +163,8 @@ class ProfileViewController: UIViewController {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        print("textFieldShouldReturn called")
+        
         // Maybe switch to using a map instead?
         switch textField {
         case usernameTextField:
@@ -103,6 +180,12 @@ class ProfileViewController: UIViewController {
         default:
             usernameTextField.resignFirstResponder()
         }
+        
+        // Make the api request here to send the data to db
+        let sendData = ["username" : usernameTextField.text, "first name" : firstnameTextField.text, "last name" : lastnameTextField.text, "email" : emailTextField.text]
+        let newDoc = db.collection("users").document("testing-user-profile")
+        newDoc.setData(sendData as [String : Any])
+        print("db sent?")
         return true
     }
     
