@@ -61,7 +61,7 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/195649f9b29860ef52
 Continue working on the lobby view controller by researching how to know how many users are in a specific view controller, have the matching process happen in the lobby view and have the lobby view controller stay until a match is found, in which case the match view controller will appear next.
 
 **Gharam Alsaedi** - 
-Will use Firebase Analytics' to get currently active users and connect their info to the matching UI. I will also implement the matching algorithm to check if the other user accepted or rejected the call and moved to the relative screens. Find a way to keep track of rejected matches such that they dont show up again in current setting.
+Will use Firebase Analytics' to get currently active users and connect their info to the matching UI. I will also implement the matching algorithm to check if the other user accepted or rejected the call and moved to the relative screens. Find a way to keep track of rejected matches such that they dont show up again in current setting. Will also setup firestore and add necessary user info.
 
 **Ma Eint Poe** -
 
