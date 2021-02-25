@@ -16,6 +16,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var addTimerButton: UIButton!
+    @IBOutlet weak var myView: VideoView!
     
     var remoteView: VideoView!
     var room: Room?
@@ -190,7 +191,7 @@ class MeetingViewController: UIViewController {
             camera = CameraSource(options: options, delegate: self)
             
             localVideoTrack = LocalVideoTrack(source: camera!, enabled: true, name: "Camera")
-            
+            localVideoTrack!.addRenderer(self.myView)
             // Add renderer to video track for local preview
             
             logMessage(messageText: "Video track created")
