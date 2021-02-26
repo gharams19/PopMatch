@@ -46,7 +46,9 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         self.messageLabel.minimumScaleFactor = 0.75;
         timerModel.delegate = self
         if(room?.remoteParticipants != nil){
-            
+            // This would create another timer model class, which would not synconize with the other timer model
+            // We need to create a timer API so both devices would be accessing the same timer model API
+            timerModel.start();
                 
         }
 
