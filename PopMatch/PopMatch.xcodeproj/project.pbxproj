@@ -22,6 +22,7 @@
 		7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0925E31CF700FFB75A /* FriendViewController.swift */; };
 		7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */; };
 		D16749FF7F5EF93617FF7503 /* libPods-PopMatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F339490118E6618B31A72 /* libPods-PopMatch.a */; };
+		D436344E25E8719200EA1FA7 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436344D25E8719200EA1FA7 /* TimerModel.swift */; };
 		D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121325E3333100EF46F3 /* LobbyViewController.swift */; };
 		D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		7A86DE0625E31CDF00FFB75A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		7A86DE0925E31CF700FFB75A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D436344D25E8719200EA1FA7 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		D4FE121325E3333100EF46F3 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 		E06F339490118E6618B31A72 /* libPods-PopMatch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopMatch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 				7A560C5125DB25D200377699 /* SignUpViewController.swift */,
 				D4FE121325E3333100EF46F3 /* LobbyViewController.swift */,
 				D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */,
+				D436344D25E8719200EA1FA7 /* TimerModel.swift */,
 				7A560C5425DB2FFF00377699 /* MainViewController.swift */,
 				7A7DDA8925DC37F000D804CB /* Api.swift */,
 				7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */,
@@ -304,6 +307,7 @@
 				7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */,
 				7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */,
 				7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */,
+				D436344E25E8719200EA1FA7 /* TimerModel.swift in Sources */,
 				D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */,
 				7A560C3F25DB20FA00377699 /* SceneDelegate.swift in Sources */,
 				D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */,

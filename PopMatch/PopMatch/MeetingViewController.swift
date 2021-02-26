@@ -10,13 +10,18 @@ import UIKit
 import TwilioVideo
 
 
-class MeetingViewController: UIViewController {
+class MeetingViewController: UIViewController, TimerModelUpdates {
+    
+  
+    
     
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var addTimerButton: UIButton!
     @IBOutlet weak var myView: VideoView!
+    @IBOutlet weak var micImage: UIButton!
+    @IBOutlet weak var vidImage: UIButton!
     
     var remoteView: VideoView!
     var room: Room?
@@ -26,7 +31,7 @@ class MeetingViewController: UIViewController {
     var remoteParticipant: RemoteParticipant?
     var vidTimer: Timer?
     var runCount = 300;
-    var addedTime = false;
+    
     var accessToken : String = ""
     // Configure remote URL to fetch token from
     var tokenUrl = "http://localhost:8000/token.php"
@@ -37,13 +42,78 @@ class MeetingViewController: UIViewController {
         super.viewDidLoad()
         self.prepareLocalMedia()
         self.connect()
-        self.startTimer()
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
-       
+        timerModel.delegate = self
+        if(room?.remoteParticipants != nil){
+            
+                
+        }
+
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
+    }
+    
+    let timerModel = TimerModel()
+    
+    func currentTimeDidChange(_ currentTime: Int) {
+        timerLabel.text = "Timer: " + String(currentTime/60) + ":" + String(format: "%02d",currentTime % 60)
+        if(currentTime == 0){
+            self.room?.disconnect()
+            goBackToLobby()
+        }
+    }
+    
+   
+  
+    @IBAction func addTime(_ sender: Any) {
+        timerModel.addTime()
+    }
+    
+    
+    @IBAction func disconnect(sender: AnyObject) {
+        self.room?.disconnect()
+        logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
+        goBackToLobby()
+    }
+    func goBackToLobby(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
+            assertionFailure("couldn't find vc")
+            return }
+        //optional navigation controller
+        navigationController?.pushViewController(lobbyViewController, animated: true)
+    }
+    var toggleMicState = 1;
+    @IBAction func toggleMic(sender: AnyObject) {
+        let micOn = UIImage(named:"Microphone Icon")
+        let micOff = UIImage(named: "mute Microphone Icon")
+        if (self.localAudioTrack != nil) {
+            self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled)!
+            if(toggleMicState == 1){
+                micImage.setImage(micOff, for: .normal)
+                toggleMicState = 2
+            }else{
+                micImage.setImage(micOn, for: .normal)
+                toggleMicState = 1
+            }
+        }
+    }
+    var toggleVidState = 1;
+    @IBAction func toggleVid(_ sender: Any) {
+        let vidOn = UIImage(named:"Video Icon")
+        let vidOff = UIImage(named: "Close View Icon")
+        if (self.localVideoTrack != nil) {
+            self.localVideoTrack?.isEnabled = !(self.localVideoTrack?.isEnabled)!
+            if(toggleVidState == 1){
+                vidImage.setImage(vidOff, for: .normal)
+                toggleVidState = 2
+            }else{
+                vidImage.setImage(vidOn, for: .normal)
+                toggleVidState = 1
+            }
+        }
     }
     
     func setupRemoteVideoView() {
@@ -90,44 +160,6 @@ class MeetingViewController: UIViewController {
         self.view.addConstraint(height)
     }
     
-    func startTimer(){
-        vidTimer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
-        timerLabel.text = "Timer:" + String(runCount/60) + ":" + String(format: "%02d",runCount%60)
-        
-    }
-    @objc func updateTimer() {
-        runCount -= 1
-        timerLabel.text = "Timer:" + String(runCount/60) + ":" + String(format: "%02d",runCount%60)
-        
-    }
-    @IBAction func addTime(_ sender: Any) {
-        if(!addedTime){
-            runCount += 60
-            addedTime = true;
-            print("added time")
-        }
-    }
-    
-    
-    @IBAction func disconnect(sender: AnyObject) {
-        self.room?.disconnect()
-        logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
-        // go to lobby view
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
-            assertionFailure("couldn't find vc")
-            return }
-        //optional navigation controller
-        navigationController?.pushViewController(lobbyViewController, animated: true)
-    }
-    
-    @IBAction func toggleMic(sender: AnyObject) {
-        if (self.localAudioTrack != nil) {
-            self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled)!
-            
-        }
-    }
-
     func connect(){
         // Configure access token either from server or manually.
         // If the default wasn't changed, try fetching from server.
@@ -259,7 +291,9 @@ extension MeetingViewController: RoomDelegate {
         // This example only renders 1 RemoteVideoTrack at a time. Listen for all events to decide which track to render.
         for remoteParticipant in room.remoteParticipants {
             remoteParticipant.delegate = self
+            
         }
+        
     }
 
     func roomDidDisconnect(room: Room, error: Error?) {
@@ -289,8 +323,10 @@ extension MeetingViewController: RoomDelegate {
     func participantDidConnect(room: Room, participant: RemoteParticipant) {
         // Listen for events from all Participants to decide which RemoteVideoTrack to render.
         participant.delegate = self
-
+        
         logMessage(messageText: "Participant \(participant.identity) connected with \(participant.remoteAudioTracks.count) audio and \(participant.remoteVideoTracks.count) video tracks")
+        timerModel.start()
+        
     }
 
     func participantDidDisconnect(room: Room, participant: RemoteParticipant) {
@@ -349,6 +385,7 @@ extension MeetingViewController : RemoteParticipantDelegate {
                let index = remainingParticipants.firstIndex(of: participant) {
                 remainingParticipants.remove(at: index)
                 renderRemoteParticipants(participants: remainingParticipants)
+                
             }
         }
     }

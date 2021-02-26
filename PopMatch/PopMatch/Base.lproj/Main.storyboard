@@ -888,23 +888,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZt-32-h76">
-                                <rect key="frame" x="44" y="511" width="51" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="kA6-Iu-fut"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="end call Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                </state>
-                                <connections>
-                                    <action selector="disconnectWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="lag-4b-GaG"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSS-oz-4et">
-                                <rect key="frame" x="49" y="447" width="41" height="50"/>
+                                <rect key="frame" x="25" y="424" width="40" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="41" id="74U-w5-dLo"/>
+                                    <constraint firstAttribute="width" constant="40" id="74U-w5-dLo"/>
                                     <constraint firstAttribute="height" constant="50" id="x8u-Px-IsO"/>
                                 </constraints>
                                 <state key="normal">
@@ -916,17 +903,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTa-cK-3Ge">
-                                <rect key="frame" x="44" y="396" width="51" height="35"/>
+                                <rect key="frame" x="23" y="374" width="50" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1g4-JX-EmN"/>
+                                    <constraint firstAttribute="width" constant="50" id="EB4-dX-fux"/>
                                 </constraints>
                                 <state key="normal">
                                     <imageReference key="image" image="Video Icon" symbolScale="large" renderingMode="original"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
                                 </state>
+                                <connections>
+                                    <action selector="toggleVid:" destination="8nw-Du-75w" eventType="touchUpInside" id="NBY-QI-e91"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWD-9C-Xz0">
-                                <rect key="frame" x="80" y="802" width="254" height="60"/>
+                                <rect key="frame" x="10" y="802" width="394" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="OHc-Bk-fj3"/>
                                 </constraints>
@@ -935,14 +926,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJO-xG-svV" customClass="TVIVideoView">
-                                <rect key="frame" x="20" y="68" width="148" height="200"/>
+                                <rect key="frame" x="20" y="68" width="109" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="k3I-EY-5UW"/>
+                                    <constraint firstAttribute="height" constant="180" id="k3I-EY-5UW"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: 0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWf-RX-JRp">
-                                <rect key="frame" x="20" y="288" width="125" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: 5:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWf-RX-JRp">
+                                <rect key="frame" x="15" y="268" width="125" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="BKo-WK-hlw"/>
                                     <constraint firstAttribute="height" constant="21" id="zUW-nJ-UAk"/>
@@ -952,9 +943,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIg-wR-dgM">
-                                <rect key="frame" x="44" y="334" width="51" height="50"/>
+                                <rect key="frame" x="20" y="309" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fLB-6a-aST"/>
+                                    <constraint firstAttribute="width" constant="50" id="xCn-4B-2gW"/>
                                 </constraints>
                                 <state key="normal">
                                     <imageReference key="image" image="addTime Icon" symbolScale="large" renderingMode="original"/>
@@ -964,36 +956,50 @@
                                     <action selector="addTime:" destination="8nw-Du-75w" eventType="touchUpInside" id="RCm-cg-4tR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZt-32-h76">
+                                <rect key="frame" x="20" y="489" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="T4l-fD-oX6"/>
+                                    <constraint firstAttribute="height" constant="50" id="kA6-Iu-fut"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="end call Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnectWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="lag-4b-GaG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hqT-Au-c8B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="KSS-oz-4et" firstAttribute="top" secondItem="qTa-cK-3Ge" secondAttribute="bottom" constant="16" id="13T-Q2-fQ4"/>
-                            <constraint firstItem="yIg-wR-dgM" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="44" id="52N-1t-Bgq"/>
+                            <constraint firstItem="FWf-RX-JRp" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="15" id="2oZ-Zx-91p"/>
+                            <constraint firstItem="OZt-32-h76" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="20" id="3rp-JH-ZGj"/>
                             <constraint firstItem="yWD-9C-Xz0" firstAttribute="centerX" secondItem="Nrh-LU-Kgi" secondAttribute="centerX" id="6f7-sH-UwZ"/>
-                            <constraint firstItem="yIg-wR-dgM" firstAttribute="trailing" secondItem="qTa-cK-3Ge" secondAttribute="trailing" id="Aci-jp-O0E"/>
-                            <constraint firstItem="hqT-Au-c8B" firstAttribute="trailing" secondItem="UJO-xG-svV" secondAttribute="trailing" constant="246" id="Bfq-ba-N9h"/>
-                            <constraint firstItem="yIg-wR-dgM" firstAttribute="leading" secondItem="qTa-cK-3Ge" secondAttribute="leading" id="EW5-Kb-fk1"/>
+                            <constraint firstItem="yIg-wR-dgM" firstAttribute="top" secondItem="FWf-RX-JRp" secondAttribute="bottom" constant="20" id="BdH-hs-ev2"/>
+                            <constraint firstItem="hqT-Au-c8B" firstAttribute="trailing" secondItem="UJO-xG-svV" secondAttribute="trailing" constant="285" id="Bfq-ba-N9h"/>
+                            <constraint firstItem="OZt-32-h76" firstAttribute="top" secondItem="KSS-oz-4et" secondAttribute="bottom" constant="15" id="Cf8-RL-moa"/>
+                            <constraint firstItem="hqT-Au-c8B" firstAttribute="trailing" secondItem="yWD-9C-Xz0" secondAttribute="trailing" constant="10" id="FbL-Qd-BhK"/>
                             <constraint firstItem="FWf-RX-JRp" firstAttribute="top" secondItem="UJO-xG-svV" secondAttribute="bottom" constant="20" id="HES-X4-9Gy"/>
-                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="centerX" secondItem="KSS-oz-4et" secondAttribute="centerX" id="Ive-uV-WDf"/>
-                            <constraint firstItem="UJO-xG-svV" firstAttribute="leading" secondItem="FWf-RX-JRp" secondAttribute="leading" id="Mrd-HO-Qjo"/>
+                            <constraint firstItem="KSS-oz-4et" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="25" id="UYa-OX-Toa"/>
                             <constraint firstItem="UJO-xG-svV" firstAttribute="top" secondItem="hqT-Au-c8B" secondAttribute="top" constant="24" id="V9y-5G-QsS"/>
                             <constraint firstItem="yWD-9C-Xz0" firstAttribute="bottom" secondItem="hqT-Au-c8B" secondAttribute="bottom" id="VVr-jP-l9M"/>
-                            <constraint firstItem="OZt-32-h76" firstAttribute="top" secondItem="KSS-oz-4et" secondAttribute="bottom" constant="14" id="Xcf-IR-2Iv"/>
-                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="top" secondItem="yIg-wR-dgM" secondAttribute="bottom" constant="12" id="YjY-31-QVk"/>
-                            <constraint firstItem="yWD-9C-Xz0" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="80" id="dbR-7a-brB"/>
-                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="leading" secondItem="OZt-32-h76" secondAttribute="leading" id="e4u-xU-Rbt"/>
-                            <constraint firstItem="KSS-oz-4et" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="49" id="lTi-dc-dnf"/>
+                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="23" id="Vuo-ls-Mef"/>
+                            <constraint firstItem="yWD-9C-Xz0" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="10" id="Yin-s0-YxE"/>
+                            <constraint firstItem="KSS-oz-4et" firstAttribute="top" secondItem="qTa-cK-3Ge" secondAttribute="bottom" constant="15" id="ZdE-Au-Aaa"/>
+                            <constraint firstItem="yIg-wR-dgM" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="20" id="hPy-SU-Gdh"/>
                             <constraint firstItem="UJO-xG-svV" firstAttribute="leading" secondItem="Nrh-LU-Kgi" secondAttribute="leadingMargin" id="myW-Nk-dvb"/>
-                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="trailing" secondItem="OZt-32-h76" secondAttribute="trailing" id="sgu-Zx-CAK"/>
-                            <constraint firstItem="yIg-wR-dgM" firstAttribute="top" secondItem="FWf-RX-JRp" secondAttribute="bottom" constant="25" id="vBX-No-wcB"/>
+                            <constraint firstItem="qTa-cK-3Ge" firstAttribute="top" secondItem="yIg-wR-dgM" secondAttribute="bottom" constant="15" id="rNE-Xr-WV1"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addTimerButton" destination="yIg-wR-dgM" id="NCP-nn-F5G"/>
                         <outlet property="messageLabel" destination="yWD-9C-Xz0" id="ml9-fH-Qey"/>
+                        <outlet property="micImage" destination="KSS-oz-4et" id="OYT-EE-syp"/>
                         <outlet property="myView" destination="UJO-xG-svV" id="aWd-4C-MF1"/>
                         <outlet property="timerLabel" destination="FWf-RX-JRp" id="d9b-yJ-2SW"/>
+                        <outlet property="vidImage" destination="qTa-cK-3Ge" id="d5R-LG-dxe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRj-pw-Mtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

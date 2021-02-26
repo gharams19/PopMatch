@@ -23,7 +23,7 @@ class LobbyViewController: UIViewController {
             return
         }
         // need to gernerate tokens for each user
-        meetingViewController.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2LTE2MTQyODkwMjIiLCJpc3MiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2Iiwic3ViIjoiQUNjNmNjYWIzMjZkZTVlMDA0Y2U4OWNjYTA0MTA1MDljNSIsImV4cCI6MTYxNDI5MjYyMiwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiUmF5J3MgaXBob25lIiwidmlkZW8iOnsicm9vbSI6InBvcG1hdGNoIn19fQ.YzYHI0dqzayXeoWxrkMzKnGqXXvGB_FZHe2bU2QaICY"
+        meetingViewController.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2LTE2MTQyOTk5ODEiLCJpc3MiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2Iiwic3ViIjoiQUNjNmNjYWIzMjZkZTVlMDA0Y2U4OWNjYTA0MTA1MDljNSIsImV4cCI6MTYxNDMwMzU4MSwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiUmF5J3MgbWFjIiwidmlkZW8iOnsicm9vbSI6InBvcG1hdGNoIn19fQ.pMuQ0nLyH7dssdTZ-lokbaLKsOIuvzYw1ffPUF9w9DA"
         navigationController?.pushViewController(meetingViewController, animated: true)
         
     }
