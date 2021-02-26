@@ -59,10 +59,15 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/d53267fdb7e1a0a006
 **Wai Hei Ngan** -
 - Combined Video chatting features and firebase API and pushed to master
   - https://github.com/ECS189E/project-w21-big-bang-theory/commit/470120918ff4aac6e496c060d317406a20090ae6
-- Worked on adding more Video Chatting Features
-  - Added all the icons nesscary
-  - Implement some of the icons features
-- Added a timer model for the Video call
+- Added video calling button features
+  - https://github.com/ECS189E/project-w21-big-bang-theory/commit/c56dcdfa2250b22fcf15c0cfe85daee4c2c73047
+- Changed video calling to full screen
+  - https://github.com/ECS189E/project-w21-big-bang-theory/commit/019041c79af19c1ffd5d11e97457c7e85f4e445e
+- Added self camera view during video calls
+  - https://github.com/ECS189E/project-w21-big-bang-theory/commit/d0d1f8768cfe7d5248cfc1a52d5cba6d2a877906
+- Added timer model for video call countdown
+  - https://github.com/ECS189E/project-w21-big-bang-theory/commit/c56b90c0686092dabee926fe5eed7e9e817542d6
+
 
 ### Plan to do:
 
@@ -76,7 +81,6 @@ Will use Firebase Analytics' to get currently active users and connect their inf
 - Fix the friend VC questionnaire to nontextfield type answers
 - Add in the api calls to to the database to store the user's answer for the friendship questionnaire VC and to display the stored data on the profile VC
 
-
-
 **Wai Hei Ngan** -
-Generate token for each user. Create a new room for user to join when they press accept.
+- Create token for each user for the video conference room
+- Create Timer Model API
