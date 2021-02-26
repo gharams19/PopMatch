@@ -14,7 +14,7 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var friendshipDoneBtn: UIButton!
     
     // Textfields
-    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField! 
     @IBOutlet weak var hobbiesTextField: UITextField!
     @IBOutlet weak var musicTextField: UITextField!
     @IBOutlet weak var appTextField: UITextField!

@@ -460,7 +460,7 @@
                                     <action selector="toProfile" destination="GaE-2k-0Rq" eventType="touchUpInside" id="d1a-hn-OXt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Age Group:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aya-A8-kOK" userLabel="Age">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Age Group:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aya-A8-kOK" userLabel="Major">
                                 <rect key="frame" x="25" y="172.5" width="364" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -515,6 +515,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYP-T2-x4t" customClass="DLRadioButton" customModule="PopMatch" customModuleProvider="target">
+                                <rect key="frame" x="41" y="594" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xfT-zn-AXw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -607,7 +612,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7E-9o-XQR" userLabel="Twitter Button">
-                                <rect key="frame" x="70" y="534" width="35" height="35"/>
+                                <rect key="frame" x="70" y="533.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="MwU-TP-wkz"/>
                                     <constraint firstAttribute="width" constant="35" id="wiU-8Y-com"/>
@@ -621,7 +626,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSx-zU-OpC" userLabel="Facebook Button">
-                                <rect key="frame" x="130" y="534" width="35" height="35"/>
+                                <rect key="frame" x="130" y="533.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="7Wk-ht-MQ2"/>
                                     <constraint firstAttribute="height" constant="35" id="hNL-8G-UrF"/>
@@ -635,7 +640,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uud-tM-lve" userLabel="LinkedIn Button">
-                                <rect key="frame" x="310" y="534" width="35" height="35"/>
+                                <rect key="frame" x="310" y="533.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="GVF-w3-UMF"/>
                                     <constraint firstAttribute="width" constant="35" id="olr-Si-JGf"/>
@@ -649,7 +654,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbX-jr-26u" userLabel="Snapchat Button">
-                                <rect key="frame" x="190" y="534" width="35" height="35"/>
+                                <rect key="frame" x="190" y="533.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="5gU-Ol-TSN"/>
                                     <constraint firstAttribute="width" constant="35" id="ZWh-R3-F67"/>
@@ -663,7 +668,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWE-LD-blm" userLabel="Instagram Button">
-                                <rect key="frame" x="250" y="534" width="35" height="35"/>
+                                <rect key="frame" x="250" y="533.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="bkR-5Y-P79"/>
                                     <constraint firstAttribute="height" constant="35" id="siL-I0-A1R"/>
@@ -695,19 +700,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tm-qz-3k7">
-                                <rect key="frame" x="20" y="219" width="112" height="25"/>
+                                <rect key="frame" x="20" y="219" width="111.5" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-sC-CHi" userLabel="Username Textfield">
-                                <rect key="frame" x="142" y="219" width="247" height="26"/>
+                                <rect key="frame" x="141.5" y="219" width="247.5" height="26"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AE8-NC-pSg" userLabel="First Name ">
-                                <rect key="frame" x="20" y="260" width="118" height="25"/>
+                                <rect key="frame" x="20" y="260" width="118" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -719,7 +724,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05J-gS-78p" userLabel="Last Name ">
-                                <rect key="frame" x="20" y="301" width="115.5" height="25"/>
+                                <rect key="frame" x="20" y="301" width="115.5" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -730,14 +735,14 @@
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aap-kT-wfw" userLabel="Email Textfield">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aap-kT-wfw" userLabel="Email Textfield">
                                 <rect key="frame" x="93.5" y="342" width="295.5" height="26"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzi-14-rC9" userLabel="Email">
-                                <rect key="frame" x="20" y="342" width="63.5" height="25"/>
+                                <rect key="frame" x="20" y="342" width="63.5" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -749,25 +754,25 @@
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ej1-Db-svf" userLabel="Password">
-                                <rect key="frame" x="20" y="383" width="105" height="25"/>
+                                <rect key="frame" x="20" y="383" width="105" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social Media Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5M-Kp-eJS" userLabel="Social Label">
-                                <rect key="frame" x="20" y="469" width="369" height="25"/>
+                                <rect key="frame" x="20" y="469" width="369" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the icon of the social link you'd like to edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alG-j9-vw4" userLabel="Social Instructions Label">
-                                <rect key="frame" x="20" y="499" width="369" height="15"/>
+                                <rect key="frame" x="20" y="498.5" width="369" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rN-XO-5HI">
-                                <rect key="frame" x="160.5" y="619" width="93" height="45"/>
+                                <rect key="frame" x="160.5" y="618.5" width="93" height="45"/>
                                 <color key="backgroundColor" red="0.99651342629999995" green="0.59027928110000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="DIo-kV-Eou"/>
@@ -781,6 +786,43 @@
                                     <action selector="signUpButton" destination="PvV-Dd-9oM" eventType="touchUpInside" id="nFf-uq-9oz"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CL-Bj-AoJ" userLabel="Social Pop Up View">
+                                <rect key="frame" x="25" y="348" width="364" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Social Media&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2h-61-tyD">
+                                        <rect key="frame" x="96.5" y="20" width="171.5" height="28.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="23"/>
+                                        <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Link&gt;" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9w-2U-COC">
+                                        <rect key="frame" x="10" y="88.5" width="344" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3p-4O-lCB">
+                                        <rect key="frame" x="326" y="0.0" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closePopUp" destination="aJ4-AL-Y0h" eventType="touchUpInside" id="hAE-Jr-uqZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="5XX-mu-CO5"/>
+                                    <constraint firstItem="S2h-61-tyD" firstAttribute="centerX" secondItem="2CL-Bj-AoJ" secondAttribute="centerX" id="6uN-jX-bvz"/>
+                                    <constraint firstItem="h9w-2U-COC" firstAttribute="leading" secondItem="2CL-Bj-AoJ" secondAttribute="leading" constant="10" id="GuI-sM-Vrj"/>
+                                    <constraint firstItem="S2h-61-tyD" firstAttribute="top" secondItem="2CL-Bj-AoJ" secondAttribute="top" constant="20" id="Hcq-HU-R5J"/>
+                                    <constraint firstItem="b3p-4O-lCB" firstAttribute="top" secondItem="2CL-Bj-AoJ" secondAttribute="top" id="dHI-HK-5kl"/>
+                                    <constraint firstAttribute="trailing" secondItem="b3p-4O-lCB" secondAttribute="trailing" constant="8" id="dLv-JU-uLY"/>
+                                    <constraint firstItem="h9w-2U-COC" firstAttribute="top" secondItem="S2h-61-tyD" secondAttribute="bottom" constant="40" id="eXu-Cd-sIA"/>
+                                    <constraint firstAttribute="trailing" secondItem="h9w-2U-COC" secondAttribute="trailing" constant="10" id="vsM-96-zZx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BlD-rq-4W4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -811,16 +853,20 @@
                             <constraint firstItem="vzi-14-rC9" firstAttribute="top" secondItem="Oir-uh-FxX" secondAttribute="bottom" constant="15" id="QhH-mv-6GP"/>
                             <constraint firstItem="Ao5-hK-DCG" firstAttribute="leading" secondItem="AE8-NC-pSg" secondAttribute="trailing" constant="10" id="Qww-af-CrG"/>
                             <constraint firstItem="BlD-rq-4W4" firstAttribute="trailing" secondItem="B5M-Kp-eJS" secondAttribute="trailing" constant="25" id="Rik-YX-1ay"/>
+                            <constraint firstItem="BlD-rq-4W4" firstAttribute="trailing" secondItem="2CL-Bj-AoJ" secondAttribute="trailing" constant="25" id="Rpf-Ko-CsQ"/>
                             <constraint firstItem="jWE-LD-blm" firstAttribute="top" secondItem="alG-j9-vw4" secondAttribute="bottom" constant="20" id="Scq-fI-kCK"/>
                             <constraint firstItem="cSx-zU-OpC" firstAttribute="top" secondItem="alG-j9-vw4" secondAttribute="bottom" constant="20" id="V4X-KH-cdT"/>
                             <constraint firstItem="Uud-tM-lve" firstAttribute="top" secondItem="alG-j9-vw4" secondAttribute="bottom" constant="20" id="VsC-Ks-pej"/>
                             <constraint firstItem="jDG-4b-pCy" firstAttribute="leading" secondItem="BlD-rq-4W4" secondAttribute="leading" constant="215" id="YRW-Wl-LQT"/>
                             <constraint firstItem="GbP-Wy-cYg" firstAttribute="leading" secondItem="ej1-Db-svf" secondAttribute="trailing" constant="10" id="a6H-b5-Hqb"/>
                             <constraint firstItem="ej1-Db-svf" firstAttribute="leading" secondItem="BlD-rq-4W4" secondAttribute="leading" constant="20" id="aCh-s7-hsD"/>
+                            <constraint firstItem="2CL-Bj-AoJ" firstAttribute="leading" secondItem="BlD-rq-4W4" secondAttribute="leading" constant="25" id="bZu-X2-w8x"/>
                             <constraint firstItem="AE8-NC-pSg" firstAttribute="leading" secondItem="BlD-rq-4W4" secondAttribute="leading" constant="20" id="ctg-oa-cS6"/>
                             <constraint firstItem="ej1-Db-svf" firstAttribute="top" secondItem="Aap-kT-wfw" secondAttribute="bottom" constant="15" id="f6S-dN-Jnz"/>
                             <constraint firstItem="B5M-Kp-eJS" firstAttribute="leading" secondItem="BlD-rq-4W4" secondAttribute="leading" constant="20" id="fGx-W4-IKT"/>
+                            <constraint firstItem="2CL-Bj-AoJ" firstAttribute="centerY" secondItem="d6W-fl-PTD" secondAttribute="centerY" id="fIw-lB-MLh"/>
                             <constraint firstItem="BlD-rq-4W4" firstAttribute="trailing" secondItem="jDG-4b-pCy" secondAttribute="trailing" constant="28" id="fpl-pD-a5Y"/>
+                            <constraint firstItem="2CL-Bj-AoJ" firstAttribute="centerX" secondItem="d6W-fl-PTD" secondAttribute="centerX" id="gSy-jW-UeQ"/>
                             <constraint firstItem="BbX-jr-26u" firstAttribute="top" secondItem="alG-j9-vw4" secondAttribute="bottom" constant="20" id="gok-R8-AfC"/>
                             <constraint firstItem="vzi-14-rC9" firstAttribute="leading" secondItem="BlD-rq-4W4" secondAttribute="leading" constant="20" id="iLR-mv-paa"/>
                             <constraint firstItem="m6P-9s-dVY" firstAttribute="centerX" secondItem="d6W-fl-PTD" secondAttribute="centerX" id="it4-iv-cGb"/>
@@ -841,16 +887,22 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeViewBtn" destination="b3p-4O-lCB" id="v9V-fn-ttW"/>
                         <outlet property="emailTextField" destination="Aap-kT-wfw" id="D0d-Uv-cYf"/>
                         <outlet property="facebookBtn" destination="cSx-zU-OpC" id="Tea-BV-8ak"/>
                         <outlet property="firstnameTextField" destination="Ao5-hK-DCG" id="bjZ-Yi-qb7"/>
                         <outlet property="instagramBtn" destination="jWE-LD-blm" id="MOZ-mL-qwA"/>
                         <outlet property="lastnameTextField" destination="Oir-uh-FxX" id="Er1-EW-vq5"/>
                         <outlet property="linkedinBtn" destination="Uud-tM-lve" id="sKf-8z-T7U"/>
+                        <outlet property="lobbyBtn" destination="jDG-4b-pCy" id="h92-f9-wUk"/>
                         <outlet property="passwordTextField" destination="GbP-Wy-cYg" id="K95-XP-LeH"/>
                         <outlet property="profileImage" destination="m6P-9s-dVY" id="t0e-9J-2gP"/>
+                        <outlet property="settingBtn" destination="uc0-8g-JdZ" id="hi6-qm-2iI"/>
                         <outlet property="signoutBtn" destination="3rN-XO-5HI" id="ttI-YB-xKk"/>
                         <outlet property="snapchatBtn" destination="BbX-jr-26u" id="0rC-Dy-Xhd"/>
+                        <outlet property="socialLabel" destination="S2h-61-tyD" id="sWT-58-u0g"/>
+                        <outlet property="socialLinkTextField" destination="h9w-2U-COC" id="uat-zA-0BB"/>
+                        <outlet property="socialPopUpView" destination="2CL-Bj-AoJ" id="UdU-qN-lco"/>
                         <outlet property="twitterBtn" destination="f7E-9o-XQR" id="TdH-Se-cCC"/>
                         <outlet property="usernameTextField" destination="h4c-sC-CHi" id="QfR-VQ-GVS"/>
                     </connections>

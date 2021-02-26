@@ -10,7 +10,10 @@ import Firebase
 
 class ProfileViewController: UIViewController, UITextFieldDelegate {
 
-  
+    @IBOutlet weak var settingBtn: UIButton!
+    @IBOutlet weak var signoutBtn: UIButton!
+    @IBOutlet weak var lobbyBtn: UIButton!
+    
     @IBOutlet weak var profileImage: UIImageView!
     
     // TextFields
@@ -19,6 +22,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lastnameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    var TFFields: [UITextField] = []
    
     // Social Media
     @IBOutlet weak var twitterBtn: UIButton!
@@ -27,13 +31,21 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var instagramBtn: UIButton!
     @IBOutlet weak var linkedinBtn: UIButton!
     
-    var twitterLink = ""
-    var facebookLink = ""
-    var snapchatLink = ""
-    var instagramLink = ""
-    var linkedinLink = ""
+    // Pop Up View
+    @IBOutlet weak var socialPopUpView: UIView!
+    @IBOutlet weak var closeViewBtn: UIButton!
+    @IBOutlet weak var socialLabel: UILabel!
+    @IBOutlet weak var socialLinkTextField: UITextField!
     
-    @IBOutlet weak var signoutBtn: UIButton!
+    var twitterLink = ""  // 1
+    var facebookLink = ""  // 2
+    var snapchatLink = ""  // 3
+    var instagramLink = ""  // 4
+    var linkedinLink = ""  // 5
+    
+    var links: [String] = []
+    
+   
     var db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -42,18 +54,28 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         // Styling
         signoutBtn.layer.cornerRadius = 15
+        socialPopUpView.layer.cornerRadius = 15
+        socialPopUpView.layer.borderWidth = 1.5
+        socialPopUpView.layer.borderColor = UIColor.systemOrange.cgColor
         bottomBorder(usernameTextField)
         bottomBorder(firstnameTextField)
         bottomBorder(lastnameTextField)
         bottomBorder(emailTextField)
         bottomBorder(passwordTextField)
+        bottomBorder(socialLinkTextField)
         
+        self.TFFields = [usernameTextField, firstnameTextField, lastnameTextField, emailTextField, socialLinkTextField]
+        self.TFFields = self.TFFields.map({$0.delegate = self; return $0})
+        
+        self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
         // Delegate TextFields
-        usernameTextField.delegate = self
-        firstnameTextField.delegate = self
-        lastnameTextField.delegate = self
-        emailTextField.delegate = self
+//        usernameTextField.delegate = self
+//        firstnameTextField.delegate = self
+//        lastnameTextField.delegate = self
+//        emailTextField.delegate = self
+//        socialLinkTextField.delegate = self
 
+        socialPopUpView.isHidden = true
         
         // Display the stored data of user if it exists
         displayUserData()
@@ -70,32 +92,38 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    //
+    // Make API call to database and display data
     func displayUserData () {
+        print("displayUserData called")
         let userData = db.collection("users").document("testing-user-profile")
         userData.getDocument { (document, error) in
-            
-            if let document = document, document.exists {
-                self.usernameTextField.text = document.get("username") as? String ?? ""
-                
-                if let firstname = document.get("first name") {
-                    self.firstnameTextField.text = firstname as? String
-                }
-                
-                if let lastname = document.get("last name") {
-                    self.lastnameTextField.text = lastname as? String
-                }
-                
-                if let email = document.get("email") {
-                    self.emailTextField.text = email as? String
+            if error == nil {
+                if let document = document, document.exists {
+                    self.usernameTextField.text = document.get("username") as? String ?? ""
+                    
+                    if let firstname = document.get("first name") {
+                        self.firstnameTextField.text = firstname as? String
+                    }
+                    
+                    if let lastname = document.get("last name") {
+                        self.lastnameTextField.text = lastname as? String
+                    }
+                    
+                    if let email = document.get("email") {
+                        self.emailTextField.text = email as? String
+                    }
+                } else {
+                    print("User document doesn't exists")
                 }
             } else {
-                print("User document doesn't exists")
+                print ("Error in user document, error: \(String(describing: error))")
             }
+        }
             
-            // Set the social media links
-            let userSocialData = userData.collection("socials").document("links")
-            userSocialData.getDocument { (document, error) in
+        // Set the social media links
+        let userSocialData = userData.collection("socials").document("links")
+        userSocialData.getDocument { (document, error) in
+            if error == nil {
                 if let document = document, document.exists {
                     if let twitter = document.get("twitter") {
                         self.twitterLink = twitter as? String ?? ""
@@ -116,10 +144,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     print("Social Media link doc doesn't exists")
                 }
+            } else {
+                print("Error in getting social document, error: \(String(describing: error))")
             }
-            
-            
         }
+            
+        
     }
  
     @IBAction func to_lobby(_ sender: Any) {
@@ -173,41 +203,120 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             firstnameTextField.resignFirstResponder()
         case lastnameTextField:
             lastnameTextField.resignFirstResponder()
-        case emailTextField:
-            emailTextField.resignFirstResponder()
+//        case emailTextField:
+//            emailTextField.resignFirstResponder()
         case passwordTextField:
             passwordTextField.resignFirstResponder()
+        case socialLinkTextField:
+            socialLinkTextField.resignFirstResponder()
         default:
             usernameTextField.resignFirstResponder()
         }
         
+        // Update the appropriate social media links
+        if textField == socialLinkTextField {
+
+            switch socialLabel.text {
+            case "Twitter":
+                self.twitterLink = socialLinkTextField.text ?? ""
+            case "Facebook":
+                self.facebookLink = socialLinkTextField.text ?? ""
+            case "Snapchat":
+                self.snapchatLink = socialLinkTextField.text ?? ""
+            case "Instagram":
+                self.instagramLink = socialLinkTextField.text ?? ""
+            case "LinkedIn":
+                self.linkedinLink = socialLinkTextField.text ?? ""
+            default:
+                print("Doesn't match any of the social media")
+            }
+            
+        }
+        
         // Make the api request here to send the data to db
-        let sendData = ["username" : usernameTextField.text, "first name" : firstnameTextField.text, "last name" : lastnameTextField.text, "email" : emailTextField.text]
-        let newDoc = db.collection("users").document("testing-user-profile")
-        newDoc.setData(sendData as [String : Any])
-        print("db sent?")
+        storeData()
         return true
     }
     
-    
-    
-    
     @IBAction func twitterClicked() {
-        // call twitter pop
+        displayPopUp("Twitter", twitterLink);
     }
     
     
     @IBAction func facebookClicked() {
+        displayPopUp("Facebook", facebookLink)
     }
     
-    
     @IBAction func snapchatClicked() {
+        displayPopUp("Snapchat", snapchatLink)
     }
     
     @IBAction func instagramClicked() {
+        displayPopUp("Instagram", instagramLink)
     }
     
     @IBAction func linkedinClicked() {
+        displayPopUp("LinkedIn", linkedinLink)
+    }
+    
+    
+    @IBAction func closePopUp() {
+        print("closePopUp called")
+        // Clean up this code later
+        socialPopUpView.isHidden = true
+        usernameTextField.isUserInteractionEnabled = true
+        firstnameTextField.isUserInteractionEnabled = true
+        lastnameTextField.isUserInteractionEnabled = true
+        passwordTextField.isUserInteractionEnabled = true
+        settingBtn.isUserInteractionEnabled = true
+        signoutBtn.isUserInteractionEnabled = true
+        lobbyBtn.isUserInteractionEnabled = true
+        twitterBtn.isUserInteractionEnabled = true
+        facebookBtn.isUserInteractionEnabled = true
+        snapchatBtn.isUserInteractionEnabled = true
+        instagramBtn.isUserInteractionEnabled = true
+        linkedinBtn.isUserInteractionEnabled = true
+        
+        storeData()
+
+    }
+    
+    // Display pop up view
+    func displayPopUp(_ social: String, _ link: String) {
+        // Disable all the other functions
+        usernameTextField.isUserInteractionEnabled = false
+        firstnameTextField.isUserInteractionEnabled = false
+        lastnameTextField.isUserInteractionEnabled = false
+        passwordTextField.isUserInteractionEnabled = false
+        signoutBtn.isUserInteractionEnabled = false
+        settingBtn.isUserInteractionEnabled = false
+        lobbyBtn.isUserInteractionEnabled = false
+        twitterBtn.isUserInteractionEnabled = false
+        facebookBtn.isUserInteractionEnabled = false
+        snapchatBtn.isUserInteractionEnabled = false
+        instagramBtn.isUserInteractionEnabled = false
+        linkedinBtn.isUserInteractionEnabled = false
+        
+        socialPopUpView.isHidden = false
+        socialLabel.text = social
+        socialLinkTextField.text = link
+
+    }
+    
+    func storeData() {
+        
+        // Make the request to store the data
+        let userData = ["username" : usernameTextField.text, "first name" : firstnameTextField.text, "last name" : lastnameTextField.text, "email" : emailTextField.text]
+        let userDoc = db.collection("users").document("testing-user-profile")
+        userDoc.updateData(userData as [String : Any])
+        
+        
+        let socialData = ["twitter" : twitterLink, "facebook" : facebookLink, "snapchat" : snapchatLink, "instagram" : instagramLink, "linkedin" : linkedinLink]
+        let socialDoc = userDoc.collection("socials").document("links")
+        socialDoc.updateData(socialData)
+    
+        // keep the user data updated the new
+        displayUserData()
     }
     
     /*

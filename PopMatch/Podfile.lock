@@ -218,6 +218,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - DLRadioButton (1.4.12)
   - Firebase/Auth (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.9.2)
@@ -304,6 +305,7 @@ PODS:
   - TwilioVideo (4.3.0)
 
 DEPENDENCIES:
+  - DLRadioButton (~> 1.4)
   - Firebase/Auth
   - Firebase/Firestore
   - TwilioVideo (~> 4.3)
@@ -312,6 +314,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - DLRadioButton
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -330,6 +333,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
   FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
@@ -345,6 +349,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   TwilioVideo: 1ece3d954245b02244ea613408f6a4413ff54987
 
-PODFILE CHECKSUM: 90ab1c2cc4ef65918856dfaea61028854a888858
+PODFILE CHECKSUM: cd6e1c7ecf3ada1feb1d64f070995b0018844216
 
 COCOAPODS: 1.10.1
