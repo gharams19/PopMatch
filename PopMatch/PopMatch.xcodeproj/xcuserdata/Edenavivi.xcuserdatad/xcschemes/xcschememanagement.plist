@@ -7,7 +7,11 @@
 		<key>PopMatch.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>20</integer>
+=======
+			<integer>19</integer>
+>>>>>>> f0bee4a44ed1e53f7ff4270ac8eec27e15718e3c
 		</dict>
 	</dict>
 </dict>
