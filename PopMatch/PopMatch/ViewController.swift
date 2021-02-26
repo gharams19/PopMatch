@@ -21,8 +21,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signUpHereButton: UIButton!
     @IBOutlet weak var logInOutlet: UIButton!
     @IBOutlet weak var resetOutlet: UIButton!
-    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
+    @IBOutlet var tapGestureRecongizer: UITapGestureRecognizer!
     
     let showHideTitles: (String, String) = ("show", "hide")
     
@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         resetPasswordView.sizeToFit()
         resetPasswordView.isHidden = true
         resetErrLabel.text = nil
-        
+       
         //set delegates for textfields
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -59,18 +59,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //fix this forced unwrap
         Auth.auth().removeStateDidChangeListener(handle!)
     }
-    
     @IBAction func startEditing(_ sender: Any) {
-            self.tapGestureRecognizer.isEnabled = true
+        self.tapGestureRecongizer.isEnabled = true
     }
+    
     
     @IBAction func tap(_ sender: Any) {
         self.view.endEditing(true)
         resetPasswordView.endEditing(true)
-        self.tapGestureRecognizer.isEnabled = false
+        self.tapGestureRecongizer.isEnabled = false
     }
-    
-    
     
     func toggleButtonTitle(between titles:(String, String), on button: UIButton) -> Void {
         
@@ -185,5 +183,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+
 }
 

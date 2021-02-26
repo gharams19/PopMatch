@@ -8,6 +8,7 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
+
     @IBOutlet weak var bubbleView: UIView!
     
     override func viewDidLoad() {
@@ -26,10 +27,8 @@ class LobbyViewController: UIViewController {
             bubbleView.addSubview(array[i])
             animation(image: array[i])
         }
-        
-        
+       
     }
-   
     var previousAnimation = Int()
     
     func animation(image: UIImageView) {
@@ -93,11 +92,6 @@ class LobbyViewController: UIViewController {
         }
         )
     }
-    
-    func distance() {
-        
-    }
-    
 
     @IBAction func match_accepted(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

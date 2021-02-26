@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		065F0445E58F27C10A567C6F /* libPods-PopMatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C38BDBE71BE6BC10F91A80 /* libPods-PopMatch.a */; };
 		76412B9C25E387F400777066 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76412B9B25E387F400777066 /* GoogleService-Info.plist */; };
+		76412BC325E601D900777066 /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76412BC225E601D900777066 /* MatchingViewController.swift */; };
+		76412BDB25E6353000777066 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76412BDA25E6353000777066 /* RoundedImageView.swift */; };
 		7A560C3D25DB20FA00377699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C3C25DB20FA00377699 /* AppDelegate.swift */; };
 		7A560C3F25DB20FA00377699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C3E25DB20FA00377699 /* SceneDelegate.swift */; };
 		7A560C4125DB20FA00377699 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C4025DB20FA00377699 /* ViewController.swift */; };
@@ -18,21 +19,17 @@
 		7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5125DB25D200377699 /* SignUpViewController.swift */; };
 		7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5425DB2FFF00377699 /* MainViewController.swift */; };
 		7A7DDA8A25DC37F000D804CB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDA8925DC37F000D804CB /* Api.swift */; };
-		7A86DE0425E31C9700FFB75A /* ProfessionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0325E31C9700FFB75A /* ProfessionalViewController.swift */; };
-		7A86DE0725E31CDF00FFB75A /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0625E31CDF00FFB75A /* EditQuestionViewController.swift */; };
 		7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0925E31CF700FFB75A /* FriendViewController.swift */; };
 		7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */; };
 		D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121325E3333100EF46F3 /* LobbyViewController.swift */; };
 		D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */; };
+		FC6988E66DEE39F2D6A7BD61 /* Pods_PopMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02738B69DB9DDE5BEF5E0CD5 /* Pods-PopMatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopMatch.debug.xcconfig"; path = "Target Support Files/Pods-PopMatch/Pods-PopMatch.debug.xcconfig"; sourceTree = "<group>"; };
-		54C38BDBE71BE6BC10F91A80 /* libPods-PopMatch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopMatch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D09C60EBCAEC971F1AE5DC9 /* Pods-PopMatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopMatch.release.xcconfig"; path = "Target Support Files/Pods-PopMatch/Pods-PopMatch.release.xcconfig"; sourceTree = "<group>"; };
 		76412B9B25E387F400777066 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		76412BA225E388F100777066 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = ../../../../../../Fonts; sourceTree = "<group>"; };
-		76412BA525E388FA00777066 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = ../../../../../../Fonts; sourceTree = "<group>"; };
 		76412BAB25E3896A00777066 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
 		76412BAC25E3896A00777066 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
 		76412BAD25E3896B00777066 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -51,6 +48,8 @@
 		76412BBA25E3896C00777066 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
 		76412BBB25E3896C00777066 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		76412BBC25E3896C00777066 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		76412BC225E601D900777066 /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
+		76412BDA25E6353000777066 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		7A560C3925DB20FA00377699 /* PopMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A560C3C25DB20FA00377699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A560C3E25DB20FA00377699 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,10 +61,9 @@
 		7A560C5125DB25D200377699 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7A560C5425DB2FFF00377699 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A7DDA8925DC37F000D804CB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		7A86DE0325E31C9700FFB75A /* ProfessionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalViewController.swift; sourceTree = "<group>"; };
-		7A86DE0625E31CDF00FFB75A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		7A86DE0925E31CF700FFB75A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FE121325E3333100EF46F3 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				065F0445E58F27C10A567C6F /* libPods-PopMatch.a in Frameworks */,
+				FC6988E66DEE39F2D6A7BD61 /* Pods_PopMatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,14 +87,6 @@
 				6D09C60EBCAEC971F1AE5DC9 /* Pods-PopMatch.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		76412BA825E388FE00777066 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Fonts;
-			path = ../../../../../../Fonts;
 			sourceTree = "<group>";
 		};
 		76412BAA25E3892900777066 /* Fonts */ = {
@@ -160,9 +150,9 @@
 				7A560C5425DB2FFF00377699 /* MainViewController.swift */,
 				7A7DDA8925DC37F000D804CB /* Api.swift */,
 				7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */,
-				7A86DE0325E31C9700FFB75A /* ProfessionalViewController.swift */,
-				7A86DE0625E31CDF00FFB75A /* EditQuestionViewController.swift */,
 				7A86DE0925E31CF700FFB75A /* FriendViewController.swift */,
+				76412BC225E601D900777066 /* MatchingViewController.swift */,
+				76412BDA25E6353000777066 /* RoundedImageView.swift */,
 			);
 			path = PopMatch;
 			sourceTree = "<group>";
@@ -170,10 +160,7 @@
 		BD56D9BB08E6B83534A16ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				76412BA225E388F100777066 /* Fonts */,
-				76412BA525E388FA00777066 /* Fonts */,
-				76412BA825E388FE00777066 /* Fonts */,
-				54C38BDBE71BE6BC10F91A80 /* libPods-PopMatch.a */,
+				B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,7 +177,6 @@
 				7A560C3625DB20FA00377699 /* Frameworks */,
 				7A560C3725DB20FA00377699 /* Resources */,
 				2150B3F2A4B41A2A52CFD107 /* [CP] Embed Pods Frameworks */,
-				B1A9FABBCE0BFF3CF0D758EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,23 +273,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1A9FABBCE0BFF3CF0D758EE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopMatch/Pods-PopMatch-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -311,18 +280,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76412BC325E601D900777066 /* MatchingViewController.swift in Sources */,
 				7A7DDA8A25DC37F000D804CB /* Api.swift in Sources */,
 				7A560C4125DB20FA00377699 /* ViewController.swift in Sources */,
 				7A560C3D25DB20FA00377699 /* AppDelegate.swift in Sources */,
 				7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */,
 				7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */,
+				76412BDB25E6353000777066 /* RoundedImageView.swift in Sources */,
 				7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */,
 				D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */,
 				7A560C3F25DB20FA00377699 /* SceneDelegate.swift in Sources */,
 				D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */,
-				7A86DE0425E31C9700FFB75A /* ProfessionalViewController.swift in Sources */,
 				7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */,
-				7A86DE0725E31CDF00FFB75A /* EditQuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6FUG82M737;
+				DEVELOPMENT_TEAM = 6S3D6CCS6W;
 				INFOPLIST_FILE = PopMatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -491,7 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6FUG82M737;
+				DEVELOPMENT_TEAM = 6S3D6CCS6W;
 				INFOPLIST_FILE = PopMatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

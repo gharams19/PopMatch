@@ -23,11 +23,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
-    
     let showHideTitles: (String, String) = ("show", "hide")
     
     //handler for when the sign in state is changed
     var handle: AuthStateDidChangeListenerHandle?
+    var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         createPassTextField.delegate = self
         verifyPassTextField.delegate = self
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +68,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         self.tapGestureRecognizer.isEnabled = false
     }
-    
     
     func toggleButtonTitle(between titles:(String, String), on button: UIButton) -> Void {
         
@@ -134,7 +133,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     if error == nil {
                         //empty error
                         self.errLabel.text = nil
-                
+                        var ref: DocumentReference? = nil
+                        ref = self.db.collection("users").addDocument(data: [
+                            "first name": self.firstNameTextField.text,
+                            "last name": self.lastNameTextField.text,
+                            "username": "",
+                            "email": self.emailTextField.text
+                        ]) { err in
+                            if let err = err {
+                                print("Error adding document: \(err)")
+                            } else {
+                                print("Document added with ID: \(ref?.documentID)")
+                            }
+                        }
+                        
                         //go into next view controller
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
@@ -143,8 +155,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             }
                         //optional navigation controller
                         self.navigationController?.pushViewController(profileViewController, animated: true)
+                        let newProfileView = profileViewController
+                        profileViewController.docID = ref?.documentID ?? ""
                     } else {
+                        
                         //present error, that could not create an account
+                        print(error)
                         self.errLabel.text = "Could not create account"
                         self.errLabel.textColor = .red
                     }
@@ -153,7 +169,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
