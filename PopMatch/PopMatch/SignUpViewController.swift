@@ -146,7 +146,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                 print("Document added with ID: \(ref?.documentID)")
                             }
                         }
-
+                        
                         //go into next view controller
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
@@ -155,6 +155,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             }
                         //optional navigation controller
                         self.navigationController?.pushViewController(profileViewController, animated: true)
+                        let newProfileView = profileViewController
+                        profileViewController.docID = ref?.documentID ?? ""
                     } else {
                         
                         //present error, that could not create an account
