@@ -36,8 +36,6 @@ class TimerModel {
             addedTime = true;
         }
     }
-    func getStartTime () -> Int{
-        return startTime
-    }
+
    
 }

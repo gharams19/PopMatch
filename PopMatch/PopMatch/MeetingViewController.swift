@@ -31,7 +31,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     var remoteParticipant: RemoteParticipant?
     var vidTimer: Timer?
     var runCount = 300;
-    
+    var roomName: String = ""
     var accessToken : String = ""
     // Configure remote URL to fetch token from
     var tokenUrl = "http://localhost:8000/token.php"
@@ -48,7 +48,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         if(room?.remoteParticipants != nil){
             // This would create another timer model class, which would not synconize with the other timer model
             // We need to create a timer API so both devices would be accessing the same timer model API
-            timerModel.start();
+//            timerModel.start();
                 
         }
 
@@ -165,15 +165,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     func connect(){
         // Configure access token either from server or manually.
         // If the default wasn't changed, try fetching from server.
-        if (accessToken == "TWILIO_ACCESS_TOKEN") {
-            do {
-                accessToken = try TokenUtils.fetchToken(url: tokenUrl)
-            } catch {
-                let message = "Failed to fetch access token"
-                logMessage(messageText: message)
-                return
-            }
-        }
+       
         
         // Prepare local media which we will share with Room Participants.
        
@@ -184,7 +176,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
             // Use the local media that we prepared earlier.
             builder.audioTracks = self.localAudioTrack != nil ? [self.localAudioTrack!] : [LocalAudioTrack]()
             builder.videoTracks = self.localVideoTrack != nil ? [self.localVideoTrack!] : [LocalVideoTrack]()
-            
+            builder.roomName = self.roomName
    
          
         }
@@ -445,19 +437,3 @@ extension MeetingViewController : CameraSourceDelegate {
     }
 }
 
-struct TokenUtils {
-    static func fetchToken(url : String) throws -> String {
-        var token: String = "TWILIO_ACCESS_TOKEN"
-        let requestURL: URL = URL(string: url)!
-        do {
-            let data = try Data(contentsOf: requestURL)
-            if let tokenReponse = String(data: data, encoding: String.Encoding.utf8) {
-                token = tokenReponse
-            }
-        } catch let error as NSError {
-            print ("Invalid token url, error = \(error)")
-            throw error
-        }
-        return token
-    }
-}

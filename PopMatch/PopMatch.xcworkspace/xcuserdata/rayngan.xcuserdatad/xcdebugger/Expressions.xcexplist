@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "LobbyViewController.match_accepted(_:):LobbyViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "String(userToken.dropFirst(6))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LobbyViewController.getToken():LobbyViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "String(accessToken.dropFirst(10))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

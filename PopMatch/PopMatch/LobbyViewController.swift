@@ -8,7 +8,7 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
-
+    var username = "RayNgan"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,16 +17,50 @@ class LobbyViewController: UIViewController {
     
 
     @IBAction func match_accepted(_ sender: Any) {
+        let userToken = self.getToken()
+        print(userToken)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let meetingViewController = storyboard.instantiateViewController(withIdentifier: "meetingVC") as? MeetingViewController else {
             assertionFailure("couldn't find vc")
             return
         }
         // need to gernerate tokens for each user
-        meetingViewController.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2LTE2MTQyOTk5ODEiLCJpc3MiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2Iiwic3ViIjoiQUNjNmNjYWIzMjZkZTVlMDA0Y2U4OWNjYTA0MTA1MDljNSIsImV4cCI6MTYxNDMwMzU4MSwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiUmF5J3MgbWFjIiwidmlkZW8iOnsicm9vbSI6InBvcG1hdGNoIn19fQ.pMuQ0nLyH7dssdTZ-lokbaLKsOIuvzYw1ffPUF9w9DA"
+        meetingViewController.accessToken = userToken
+        meetingViewController.roomName = "PopRoom"
         navigationController?.pushViewController(meetingViewController, animated: true)
         
     }
     
+    func getToken() ->String{
+        var tokenURL = "https://glaucous-centipede-6895.twil.io/video-token?identity="
+        tokenURL.append(username)
+        var accessToken = ""
+        do {
+            accessToken = try fetchToken(url: tokenURL)
+        } catch {
+            print("Failed to fetch access token")
+            return ""
+        }
+        accessToken = String(accessToken.dropFirst(10))
+        return accessToken
+    }
+    
+    func fetchToken(url : String) throws -> String {
+            var token: String = "TWILIO_ACCESS_TOKEN"
+            let requestURL: URL = URL(string: url)!
+            do {
+                let data = try Data(contentsOf: requestURL)
+                if let tokenReponse = String(data: data, encoding: String.Encoding.utf8) {
+                    token = tokenReponse
+                }
+            } catch let error as NSError {
+                print ("Invalid token url, error = \(error)")
+                throw error
+            }
+            return token
+    }
+
 
 }
+
+
