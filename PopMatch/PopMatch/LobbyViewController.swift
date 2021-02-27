@@ -27,6 +27,16 @@ class LobbyViewController: UIViewController {
             bubbleView.addSubview(array[i])
             animation(image: array[i])
         }
+        //change this to when a match is found
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
+                assertionFailure("couldn't find vc")
+                return
+            }
+            
+                self.navigationController?.pushViewController(matchingViewController, animated: false)
+        }
        
     }
     var previousAnimation = Int()
@@ -92,7 +102,17 @@ class LobbyViewController: UIViewController {
         }
         )
     }
-
+    
+    @IBAction func backButton() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
+                assertionFailure("couldn't find vc") //will stop program
+                return
+            }
+        //optional navigation controller
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    
     @IBAction func match_accepted(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let meetingViewController = storyboard.instantiateViewController(withIdentifier: "meetingVC") as? MeetingViewController else {

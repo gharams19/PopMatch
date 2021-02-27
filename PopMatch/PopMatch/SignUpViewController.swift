@@ -56,8 +56,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         
         //detach the listener
-        //fix this forced unwrap
-        Auth.auth().removeStateDidChangeListener(handle!)
+        guard let handle1 = handle else {
+            return
+        }
+        Auth.auth().removeStateDidChangeListener(handle1)
     }
     
     @IBAction func startEditing(_ sender: Any) {
