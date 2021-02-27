@@ -45,12 +45,11 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
         timerModel.delegate = self
-        if(room?.remoteParticipants != nil){
-            // This would create another timer model class, which would not synconize with the other timer model
-            // We need to create a timer API so both devices would be accessing the same timer model API
-//            timerModel.start();
+        
+
+   
                 
-        }
+        
 
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
@@ -92,7 +91,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         let micOn = UIImage(named:"Microphone Icon")
         let micOff = UIImage(named: "mute Microphone Icon")
         if (self.localAudioTrack != nil) {
-            self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled)!
+            self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled ?? false)
             if(toggleMicState == 1){
                 micImage.setImage(micOff, for: .normal)
                 toggleMicState = 2
@@ -107,7 +106,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         let vidOn = UIImage(named:"Video Icon")
         let vidOff = UIImage(named: "Close View Icon")
         if (self.localVideoTrack != nil) {
-            self.localVideoTrack?.isEnabled = !(self.localVideoTrack?.isEnabled)!
+            self.localVideoTrack?.isEnabled = !(self.localVideoTrack?.isEnabled ?? false)
             if(toggleVidState == 1){
                 vidImage.setImage(vidOff, for: .normal)
                 toggleVidState = 2
@@ -122,13 +121,13 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         // Creating `VideoView` programmatically
         self.remoteView = VideoView(frame: CGRect.zero, delegate: self)
 
-        self.view.insertSubview(self.remoteView!, at: 0)
+        self.view.insertSubview(self.remoteView, at: 0)
         
         // `VideoView` supports scaleToFill, scaleAspectFill and scaleAspectFit
         // scaleAspectFit is the default mode when you create `VideoView` programmatically.
-        self.remoteView!.contentMode = .scaleAspectFill;
+        self.remoteView.contentMode = .scaleAspectFill;
 
-        let centerX = NSLayoutConstraint(item: self.remoteView!,
+        let centerX = NSLayoutConstraint(item: self.remoteView as Any,
                                          attribute: NSLayoutConstraint.Attribute.centerX,
                                          relatedBy: NSLayoutConstraint.Relation.equal,
                                          toItem: self.view,
@@ -136,7 +135,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
                                          multiplier: 1,
                                          constant: 0);
         self.view.addConstraint(centerX)
-        let centerY = NSLayoutConstraint(item: self.remoteView!,
+        let centerY = NSLayoutConstraint(item: self.remoteView as Any,
                                          attribute: NSLayoutConstraint.Attribute.centerY,
                                          relatedBy: NSLayoutConstraint.Relation.equal,
                                          toItem: self.view,
@@ -144,7 +143,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
                                          multiplier: 1,
                                          constant: 0);
         self.view.addConstraint(centerY)
-        let width = NSLayoutConstraint(item: self.remoteView!,
+        let width = NSLayoutConstraint(item: self.remoteView as Any,
                                        attribute: NSLayoutConstraint.Attribute.width,
                                        relatedBy: NSLayoutConstraint.Relation.equal,
                                        toItem: self.view,
@@ -152,7 +151,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
                                        multiplier: 1,
                                        constant: 0);
         self.view.addConstraint(width)
-        let height = NSLayoutConstraint(item: self.remoteView!,
+        let height = NSLayoutConstraint(item: self.remoteView as Any,
                                         attribute: NSLayoutConstraint.Attribute.height,
                                         relatedBy: NSLayoutConstraint.Relation.equal,
                                         toItem: self.view,
@@ -172,12 +171,15 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         
         // Preparing the connect options with the access token that we fetched (or hardcoded).
         let connectOptions = ConnectOptions(token: accessToken) { (builder) in
-            
-            // Use the local media that we prepared earlier.
-            builder.audioTracks = self.localAudioTrack != nil ? [self.localAudioTrack!] : [LocalAudioTrack]()
-            builder.videoTracks = self.localVideoTrack != nil ? [self.localVideoTrack!] : [LocalVideoTrack]()
             builder.roomName = self.roomName
-   
+           
+            // Use the local media that we prepared earlier.
+            if let audioTrack = self.localAudioTrack{
+                builder.audioTracks = [audioTrack]
+            }
+            if let videoTrack = self.localVideoTrack{
+                builder.videoTracks = [videoTrack]
+            }
          
         }
         
@@ -201,40 +203,39 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
                 logMessage(messageText: "Failed to create audio track")
             }
         }
-        let frontCamera = CameraSource.captureDevice(position: .front)
-        let backCamera = CameraSource.captureDevice(position: .back)
+        
+        guard let frontCamera = CameraSource.captureDevice(position: .front) else{
+            self.logMessage(messageText:"No front capture device found!")
+            return
+        }
+        
 
-        if (frontCamera != nil || backCamera != nil) {
 
-            let options = CameraSourceOptions { (builder) in
-                if #available(iOS 13.0, *) {
-                    // Track UIWindowScene events for the key window's scene.
-                    // The example app disables multi-window support in the .plist (see UIApplicationSceneManifestKey).
-                    builder.orientationTracker = UserInterfaceTracker(scene: UIApplication.shared.keyWindow!.windowScene!)
-                }
-            }
-            // Preview our local camera track in the local video preview view.
-            camera = CameraSource(options: options, delegate: self)
-            
-            localVideoTrack = LocalVideoTrack(source: camera!, enabled: true, name: "Camera")
-            localVideoTrack!.addRenderer(self.myView)
-            // Add renderer to video track for local preview
-            
-            logMessage(messageText: "Video track created")
+        
 
-            
+        let options = CameraSourceOptions { (builder) in
+        }
+        // Preview our local camera track in the local video preview view.
+        guard let camera = CameraSource(options: options, delegate: self) else{
+            self.logMessage(messageText:"No front capture device found!")
+            return
+        }
+        
+        localVideoTrack = LocalVideoTrack(source: camera, enabled: true, name: "Camera")
+        localVideoTrack?.addRenderer(self.myView)
+        // Add renderer to video track for local preview
+        
+        logMessage(messageText: "Video track created")
 
-            camera!.startCapture(device: frontCamera != nil ? frontCamera! : backCamera!) { (captureDevice, videoFormat, error) in
-                if let error = error {
-                    self.logMessage(messageText: "Capture failed with error.\ncode = \((error as NSError).code) error = \(error.localizedDescription)")
-                } else {
-                   
-                }
+        camera.startCapture(device: frontCamera) { (captureDevice, videoFormat, error) in
+            if let error = error {
+                self.logMessage(messageText: "Capture failed with error.\ncode = \((error as NSError).code) error = \(error.localizedDescription)")
+            } else {
+               
             }
         }
-        else {
-            self.logMessage(messageText:"No front or back capture device found!")
-        }
+        
+    
    }
     
     func logMessage(messageText: String) {
@@ -285,7 +286,9 @@ extension MeetingViewController: RoomDelegate {
         // This example only renders 1 RemoteVideoTrack at a time. Listen for all events to decide which track to render.
         for remoteParticipant in room.remoteParticipants {
             remoteParticipant.delegate = self
-            
+            // This would create another timer model class, which would not synconize with the other timer model
+            // We need to create a timer API so both devices would be accessing the same timer model API
+            timerModel.start();
         }
         
     }

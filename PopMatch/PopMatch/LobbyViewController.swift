@@ -8,7 +8,7 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
-    var username = "RayNgan"
+    var username = "Rayiphone"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,11 +32,10 @@ class LobbyViewController: UIViewController {
     }
     
     func getToken() ->String{
-        var tokenURL = "https://glaucous-centipede-6895.twil.io/video-token?identity="
-        tokenURL.append(username)
+        
         var accessToken = ""
         do {
-            accessToken = try fetchToken(url: tokenURL)
+            accessToken = try fetchToken()
         } catch {
             print("Failed to fetch access token")
             return ""
@@ -45,9 +44,14 @@ class LobbyViewController: UIViewController {
         return accessToken
     }
     
-    func fetchToken(url : String) throws -> String {
+    func fetchToken() throws -> String {
             var token: String = "TWILIO_ACCESS_TOKEN"
-            let requestURL: URL = URL(string: url)!
+            var tokenURL = "https://glaucous-centipede-6895.twil.io/video-token?identity="
+            tokenURL.append(username)
+            guard let requestURL: URL = URL(string: tokenURL) else{
+                print("Token URL not found")
+                return ""
+            }
             do {
                 let data = try Data(contentsOf: requestURL)
                 if let tokenReponse = String(data: data, encoding: String.Encoding.utf8) {
