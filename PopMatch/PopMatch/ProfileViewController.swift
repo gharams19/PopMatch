@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Photos
 import Firebase
+import FirebaseStorage
+import FirebaseUI
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var settingBtn: UIButton!
     @IBOutlet weak var signoutBtn: UIButton!
@@ -41,21 +44,28 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var popUpErrLabel: UILabel!
     @IBOutlet weak var popUpConfirmBtn: UIButton!
     
-    var twitterLink = ""  // 1
-    var facebookLink = ""  // 2
-    var snapchatLink = ""  // 3
-    var instagramLink = ""  // 4
-    var linkedinLink = ""  // 5
+    var twitterLink = ""
+    var facebookLink = ""
+    var snapchatLink = ""
+    var instagramLink = ""
+    var linkedinLink = ""
     
     var links: [String] = []
     
+    var imageURL: URL?
+    var imageText = ""
    
     var db = Firestore.firestore()
+    let storage = Storage.storage()
+    
+    var imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         styleSetUp()
+        
+        self.imagePickerController.delegate = self
         
         self.TFFields = [usernameTextField, firstnameTextField, lastnameTextField, emailTextField, popUpTextField]
         self.TFFields = self.TFFields.map({$0.delegate = self; return $0})
@@ -106,6 +116,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                 if let document = document, document.exists {
                     self.usernameTextField.text = document.get("username") as? String ?? ""
                     
+                   /* if let image = document.get("image") {
+                        self.imageText = image as? String ?? ""
+                        if let imageUrl = image as? URL { // make it a URL
+                            self.imageURL = imageUrl
+                            // Make it into a UIIMage
+                            if let imageView = try? Data(contentsOf: imageUrl) {
+                                if let imagePic = UIImage(data: imageView) {
+                                    self.profileImage.image = imagePic
+                                }
+                            }
+                            
+                        }
+                    }*/
+                    
                     if let firstname = document.get("first name") {
                         self.firstnameTextField.text = firstname as? String
                     }
@@ -117,6 +141,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                     if let email = document.get("email") {
                         self.emailTextField.text = email as? String
                     }
+                    
+                    // Display image
+                    let storageRef = self.storage.reference()
+                    let ref = storageRef.child("test-user-profile")
+                    self.profileImage.sd_setImage(with: ref)
+                    
                 } else {
                     print("User document doesn't exists")
                 }
@@ -220,6 +250,80 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - Profile Image
+    
+    
+    @IBAction func addProfileImage() {
+        print("addProfileImage called")
+        checkPermission()
+        self.imagePickerController.sourceType = .photoLibrary
+        self.present(self.imagePickerController, animated: true, completion: nil)
+        
+    }
+    
+    
+    func checkPermission() {
+        // Ask for permission if not available
+        if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
+            PHPhotoLibrary.requestAuthorization({
+                (status: PHAuthorizationStatus) -> Void in ()
+            })
+        }
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
+        } else {
+            PHPhotoLibrary.requestAuthorization(requestAuthorizationHandler)
+        }
+        
+    }
+    
+    func requestAuthorizationHandler(status: PHAuthorizationStatus) {
+        
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
+            print("We have access to photos")
+        } else {
+            print("We don't have access to photos")
+        }
+        
+    }
+    
+    // Get URL of selected image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            print("url: \(url)")
+            uploadToStorage(fileURL: url)
+        }
+        
+        imagePickerController.dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadToStorage(fileURL: URL) {
+        let _ = Data() //data
+        let storageRef = storage.reference()
+        
+        let localFile = fileURL
+        
+        let photoRef = storageRef.child("test-user-profile")
+        let _ = photoRef.putFile(from: localFile, metadata: nil) { (metadata, error) in
+            guard metadata != nil else {
+                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            /*DispatchQueue.main.async {
+                photoRef.downloadURL(completion: { (url, error) in
+                                if let urlText = url?.absoluteString {
+                                    self.imageText =  urlText
+                                    print("Image url in db: \(urlText)")
+                                }
+                            })
+                
+                print("Photo has been uploaded")
+                self.storeData()
+            }*/
+            
+        }
+        
+    }
     
     // MARK: - Social Media Button Clicked
     @IBAction func twitterClicked() {
@@ -308,9 +412,16 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     func storeData() {
         
         // Make the request to store the data
-        let userData = ["username" : usernameTextField.text, "first name" : firstnameTextField.text, "last name" : lastnameTextField.text, "email" : emailTextField.text]
+       // let userData = ["username" : usernameTextField.text,  "first name" : firstnameTextField.text, "last name" : lastnameTextField.text, "email" : emailTextField.text]
         let userDoc = db.collection("users").document("testing-user-profile")
-        userDoc.updateData(userData as [String : Any])
+       // userDoc.updateData(userData as [String : Any])
+        userDoc.updateData([
+            "username": usernameTextField.text ?? (Any).self,
+            "image": imageText,
+            "first name": firstnameTextField.text ?? (Any).self,
+            "last name": lastnameTextField.text ?? (Any).self,
+            "email": emailTextField.text ?? (Any).self
+            ])
         
         
         let socialData = ["twitter" : twitterLink, "facebook" : facebookLink, "snapchat" : snapchatLink, "instagram" : instagramLink, "linkedin" : linkedinLink]
@@ -362,6 +473,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         //optional navigation controller
         navigationController?.pushViewController(friendViewController, animated: true)
         
+    }
+    
+    @IBAction func toLogin(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let loginViewController = storyboard.instantiateViewController(identifier: "logInVC") as? ViewController else {
+            assertionFailure("couldn't find vc")
+            return }
+        //optional navigation controller
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
     
     
