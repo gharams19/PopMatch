@@ -17,7 +17,6 @@
 		7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5125DB25D200377699 /* SignUpViewController.swift */; };
 		7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5425DB2FFF00377699 /* MainViewController.swift */; };
 		7A7DDA8A25DC37F000D804CB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDA8925DC37F000D804CB /* Api.swift */; };
-		7A86DE0425E31C9700FFB75A /* ProfessionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0325E31C9700FFB75A /* ProfessionalViewController.swift */; };
 		7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0925E31CF700FFB75A /* FriendViewController.swift */; };
 		7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */; };
 		D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121325E3333100EF46F3 /* LobbyViewController.swift */; };
@@ -58,7 +57,6 @@
 		7A560C5125DB25D200377699 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7A560C5425DB2FFF00377699 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A7DDA8925DC37F000D804CB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		7A86DE0325E31C9700FFB75A /* ProfessionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalViewController.swift; sourceTree = "<group>"; };
 		7A86DE0925E31CF700FFB75A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AC36453726950856E28AC314 /* Pods_PopMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +154,6 @@
 				7A560C5425DB2FFF00377699 /* MainViewController.swift */,
 				7A7DDA8925DC37F000D804CB /* Api.swift */,
 				7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */,
-				7A86DE0325E31C9700FFB75A /* ProfessionalViewController.swift */,
 				7A86DE0925E31CF700FFB75A /* FriendViewController.swift */,
 			);
 			path = PopMatch;
@@ -295,7 +292,6 @@
 				D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */,
 				7A560C3F25DB20FA00377699 /* SceneDelegate.swift in Sources */,
 				D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */,
-				7A86DE0425E31C9700FFB75A /* ProfessionalViewController.swift in Sources */,
 				7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,12 +16,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBOutlet weak var resetBtn: UIButton!
+    
+    
     // TextFields
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
     var TFFields: [UITextField] = []
    
     // Social Media
@@ -32,10 +34,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var linkedinBtn: UIButton!
     
     // Pop Up View
-    @IBOutlet weak var socialPopUpView: UIView!
+    @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var closeViewBtn: UIButton!
-    @IBOutlet weak var socialLabel: UILabel!
-    @IBOutlet weak var socialLinkTextField: UITextField!
+    @IBOutlet weak var popUpLabel: UILabel!
+    @IBOutlet weak var popUpTextField: UITextField!
+    @IBOutlet weak var popUpErrLabel: UILabel!
+    @IBOutlet weak var popUpConfirmBtn: UIButton!
     
     var twitterLink = ""  // 1
     var facebookLink = ""  // 2
@@ -51,38 +55,39 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        // Styling
-        signoutBtn.layer.cornerRadius = 15
-        socialPopUpView.layer.cornerRadius = 15
-        socialPopUpView.layer.borderWidth = 1.5
-        socialPopUpView.layer.borderColor = UIColor.systemOrange.cgColor
-        bottomBorder(usernameTextField)
-        bottomBorder(firstnameTextField)
-        bottomBorder(lastnameTextField)
-        bottomBorder(emailTextField)
-        bottomBorder(passwordTextField)
-        bottomBorder(socialLinkTextField)
+        styleSetUp()
         
-        self.TFFields = [usernameTextField, firstnameTextField, lastnameTextField, emailTextField, socialLinkTextField]
+        self.TFFields = [usernameTextField, firstnameTextField, lastnameTextField, emailTextField, popUpTextField]
         self.TFFields = self.TFFields.map({$0.delegate = self; return $0})
         
         self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
-        // Delegate TextFields
-//        usernameTextField.delegate = self
-//        firstnameTextField.delegate = self
-//        lastnameTextField.delegate = self
-//        emailTextField.delegate = self
-//        socialLinkTextField.delegate = self
 
-        socialPopUpView.isHidden = true
+        popUpView.isHidden = true
+        popUpConfirmBtn.isHidden = true
+        popUpErrLabel.isHidden = true
         
         // Display the stored data of user if it exists
         displayUserData()
         
     }
     
-    // Styling
+    // MARK: - Styling
+    func styleSetUp() {
+        signoutBtn.layer.cornerRadius = 15
+        popUpView.layer.cornerRadius = 15
+        popUpView.layer.borderWidth = 1.5
+        popUpView.layer.borderColor = UIColor.systemOrange.cgColor
+        popUpConfirmBtn.layer.borderWidth = 1
+        popUpConfirmBtn.layer.borderColor = UIColor.systemOrange.cgColor
+        popUpConfirmBtn.layer.cornerRadius = 15
+        bottomBorder(usernameTextField)
+        bottomBorder(firstnameTextField)
+        bottomBorder(lastnameTextField)
+        bottomBorder(emailTextField)
+        bottomBorder(popUpTextField)
+    }
+    
+    // Styling - textfield
     func bottomBorder(_ textField: UITextField) {
         let layer = CALayer()
         layer.backgroundColor = UIColor.blue.cgColor
@@ -91,7 +96,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    
+    // MARK: - Display User Data
     // Make API call to database and display data
     func displayUserData () {
         print("displayUserData called")
@@ -148,30 +153,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                 print("Error in getting social document, error: \(String(describing: error))")
             }
         }
-            
-        
-    }
- 
-    @IBAction func to_lobby(_ sender: Any) {
-        // go to lobby view
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
-            assertionFailure("couldn't find vc")
-            return }
-        //optional navigation controller
-        navigationController?.pushViewController(lobbyViewController, animated: true)
-    }
-
-    @IBAction func toEditFriend() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let friendViewController = storyboard.instantiateViewController(identifier: "friendVC") as? FriendViewController else {
-            assertionFailure("couldn't find vc")
-            return }
-        //optional navigation controller
-        navigationController?.pushViewController(friendViewController, animated: true)
-        
     }
     
+  
+    // MARK: - Handling Textfield changes
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -203,91 +188,69 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             firstnameTextField.resignFirstResponder()
         case lastnameTextField:
             lastnameTextField.resignFirstResponder()
-//        case emailTextField:
-//            emailTextField.resignFirstResponder()
-        case passwordTextField:
-            passwordTextField.resignFirstResponder()
-        case socialLinkTextField:
-            socialLinkTextField.resignFirstResponder()
+        case popUpTextField:
+            popUpTextField.resignFirstResponder()
         default:
             usernameTextField.resignFirstResponder()
         }
         
         // Update the appropriate social media links
-        if textField == socialLinkTextField {
+        if textField == popUpTextField {
 
-            switch socialLabel.text {
+            switch popUpLabel.text {
             case "Twitter":
-                self.twitterLink = socialLinkTextField.text ?? ""
+                self.twitterLink = popUpTextField.text ?? ""
             case "Facebook":
-                self.facebookLink = socialLinkTextField.text ?? ""
+                self.facebookLink = popUpTextField.text ?? ""
             case "Snapchat":
-                self.snapchatLink = socialLinkTextField.text ?? ""
+                self.snapchatLink = popUpTextField.text ?? ""
             case "Instagram":
-                self.instagramLink = socialLinkTextField.text ?? ""
+                self.instagramLink = popUpTextField.text ?? ""
             case "LinkedIn":
-                self.linkedinLink = socialLinkTextField.text ?? ""
+                self.linkedinLink = popUpTextField.text ?? ""
             default:
-                print("Doesn't match any of the social media")
+                print("Doesn't match any of the social media, meaning it's for password reset")
             }
             
+        } else {
+            storeData()
         }
+
         
-        // Make the api request here to send the data to db
-        storeData()
         return true
     }
     
+    
+    // MARK: - Social Media Button Clicked
     @IBAction func twitterClicked() {
-        displayPopUp("Twitter", twitterLink);
+        displayPopUp("Twitter", twitterLink, false);
     }
     
-    
     @IBAction func facebookClicked() {
-        displayPopUp("Facebook", facebookLink)
+        displayPopUp("Facebook", facebookLink, false)
     }
     
     @IBAction func snapchatClicked() {
-        displayPopUp("Snapchat", snapchatLink)
+        displayPopUp("Snapchat", snapchatLink, false)
     }
     
     @IBAction func instagramClicked() {
-        displayPopUp("Instagram", instagramLink)
+        displayPopUp("Instagram", instagramLink, false)
     }
     
     @IBAction func linkedinClicked() {
-        displayPopUp("LinkedIn", linkedinLink)
+        displayPopUp("LinkedIn", linkedinLink, false)
     }
     
     
-    @IBAction func closePopUp() {
-        print("closePopUp called")
-        // Clean up this code later
-        socialPopUpView.isHidden = true
-        usernameTextField.isUserInteractionEnabled = true
-        firstnameTextField.isUserInteractionEnabled = true
-        lastnameTextField.isUserInteractionEnabled = true
-        passwordTextField.isUserInteractionEnabled = true
-        settingBtn.isUserInteractionEnabled = true
-        signoutBtn.isUserInteractionEnabled = true
-        lobbyBtn.isUserInteractionEnabled = true
-        twitterBtn.isUserInteractionEnabled = true
-        facebookBtn.isUserInteractionEnabled = true
-        snapchatBtn.isUserInteractionEnabled = true
-        instagramBtn.isUserInteractionEnabled = true
-        linkedinBtn.isUserInteractionEnabled = true
-        
-        storeData()
-
-    }
-    
+    // MARK: - Pop up for Social Media & Reset Password
     // Display pop up view
-    func displayPopUp(_ social: String, _ link: String) {
+    func displayPopUp(_ label: String, _ text: String, _ reset: Bool) {
         // Disable all the other functions
         usernameTextField.isUserInteractionEnabled = false
         firstnameTextField.isUserInteractionEnabled = false
         lastnameTextField.isUserInteractionEnabled = false
-        passwordTextField.isUserInteractionEnabled = false
+        resetBtn.isUserInteractionEnabled = false
         signoutBtn.isUserInteractionEnabled = false
         settingBtn.isUserInteractionEnabled = false
         lobbyBtn.isUserInteractionEnabled = false
@@ -297,12 +260,51 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         instagramBtn.isUserInteractionEnabled = false
         linkedinBtn.isUserInteractionEnabled = false
         
-        socialPopUpView.isHidden = false
-        socialLabel.text = social
-        socialLinkTextField.text = link
+        if reset {
+            popUpLabel.font = popUpLabel.font.withSize(16)
+            popUpConfirmBtn.isHidden = false
+            popUpConfirmBtn.isUserInteractionEnabled = true
+        } else {
+            popUpLabel.font.withSize(22)
+        }
+        
+        
+        popUpView.isHidden = false
+        popUpLabel.text = label
+        popUpTextField.text = text
 
     }
     
+    
+    @IBAction func closePopUp() {
+        print("closePopUp called")
+        // Clean up this code later
+        popUpView.isHidden = true
+        usernameTextField.isUserInteractionEnabled = true
+        firstnameTextField.isUserInteractionEnabled = true
+        lastnameTextField.isUserInteractionEnabled = true
+        resetBtn.isUserInteractionEnabled = true
+        settingBtn.isUserInteractionEnabled = true
+        signoutBtn.isUserInteractionEnabled = true
+        lobbyBtn.isUserInteractionEnabled = true
+        twitterBtn.isUserInteractionEnabled = true
+        facebookBtn.isUserInteractionEnabled = true
+        snapchatBtn.isUserInteractionEnabled = true
+        instagramBtn.isUserInteractionEnabled = true
+        linkedinBtn.isUserInteractionEnabled = true
+        
+        popUpConfirmBtn.isHidden = true
+        popUpConfirmBtn.isUserInteractionEnabled = false
+        popUpErrLabel.isHidden = true
+        popUpTextField.text = ""
+        
+        storeData()
+
+    }
+    
+    
+    
+    // MARK: - Updating the database
     func storeData() {
         
         // Make the request to store the data
@@ -318,6 +320,50 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         // keep the user data updated the new
         displayUserData()
     }
+    
+    
+    // MARK: - Reseting Password
+    // Reset button pressed
+    @IBAction func resetPassPress() {
+        displayPopUp("Enter the email to send the reset link", "", true)
+    }
+    
+    // Reset password confirm
+    @IBAction func confirmReset(_ sender: Any) {
+        
+        // Send email to reset password
+        Auth.auth().sendPasswordReset(withEmail: popUpTextField.text ?? "",  completion: { error in
+            if error == nil {
+                self.closePopUp()
+            } else {
+                self.popUpErrLabel.isHidden = false
+                self.popUpErrLabel.text = "Invalid email"
+            }
+        })
+    }
+    
+    
+    // MARK: - Navigation
+    @IBAction func to_lobby(_ sender: Any) {
+        // go to lobby view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
+            assertionFailure("couldn't find vc")
+            return }
+        //optional navigation controller
+        navigationController?.pushViewController(lobbyViewController, animated: true)
+    }
+
+    @IBAction func toEditFriend() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let friendViewController = storyboard.instantiateViewController(identifier: "friendVC") as? FriendViewController else {
+            assertionFailure("couldn't find vc")
+            return }
+        //optional navigation controller
+        navigationController?.pushViewController(friendViewController, animated: true)
+        
+    }
+    
     
     /*
     // MARK: - Navigation
