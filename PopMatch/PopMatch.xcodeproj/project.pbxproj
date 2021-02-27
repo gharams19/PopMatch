@@ -21,6 +21,7 @@
 		7A7DDA8A25DC37F000D804CB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDA8925DC37F000D804CB /* Api.swift */; };
 		7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0925E31CF700FFB75A /* FriendViewController.swift */; };
 		7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */; };
+		7ADA04DB25E9D29900E1CE50 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADA04DA25E9D29900E1CE50 /* TransitionViewController.swift */; };
 		D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121325E3333100EF46F3 /* LobbyViewController.swift */; };
 		D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */; };
 		FC6988E66DEE39F2D6A7BD61 /* Pods_PopMatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */; };
@@ -63,6 +64,7 @@
 		7A7DDA8925DC37F000D804CB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		7A86DE0925E31CF700FFB75A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7ADA04DA25E9D29900E1CE50 /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		B9B00860F4BD39E919C6F956 /* Pods_PopMatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopMatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FE121325E3333100EF46F3 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				7A86DE0925E31CF700FFB75A /* FriendViewController.swift */,
 				76412BC225E601D900777066 /* MatchingViewController.swift */,
 				76412BDA25E6353000777066 /* RoundedImageView.swift */,
+				7ADA04DA25E9D29900E1CE50 /* TransitionViewController.swift */,
 			);
 			path = PopMatch;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				7A560C3F25DB20FA00377699 /* SceneDelegate.swift in Sources */,
 				D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */,
 				7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */,
+				7ADA04DB25E9D29900E1CE50 /* TransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

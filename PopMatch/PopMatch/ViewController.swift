@@ -160,6 +160,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         resetOutlet.isUserInteractionEnabled = false
         
     }
+    
+    
+    @IBAction func resetPassXButton() {
+        self.resetPasswordView.isHidden = true
+        self.view.endEditing(true)
+        self.emailTextField.isUserInteractionEnabled = true
+        self.passwordTextField.isUserInteractionEnabled = true
+        self.signUpHereButton.isUserInteractionEnabled = true
+        self.logInOutlet.isUserInteractionEnabled = true
+        self.resetOutlet.isUserInteractionEnabled = true
+    }
+    
+    
     @IBAction func resetPassConfirm() {
         //send email to reset password
         Auth.auth().sendPasswordReset(withEmail: resetPasswordEmail.text ?? "", completion: { error in

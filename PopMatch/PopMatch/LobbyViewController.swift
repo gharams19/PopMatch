@@ -22,12 +22,26 @@ class LobbyViewController: UIViewController {
             bubbleImageView.translatesAutoresizingMaskIntoConstraints = false
             array.append(bubbleImageView)
         }
+        //change to when a match is found instead of in 10 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            //zoomin?
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let transitionViewController = storyboard.instantiateViewController(withIdentifier: "transitionVC") as? TransitionViewController else {
+                assertionFailure("couldn't find vc")
+                return
+            }
+                self.navigationController?.pushViewController(transitionViewController, animated: false)
+        }
+        
         for i in 0...userNumber-1 {
             array[i].frame = CGRect(x: bubbleView.center.x, y: bubbleView.center.y, width: 100, height: 100)
             bubbleView.addSubview(array[i])
             animation(image: array[i])
         }
-       
+        
+        
+        
+        
     }
     var previousAnimation = Int()
     
@@ -92,18 +106,27 @@ class LobbyViewController: UIViewController {
         }
         )
     }
-
-    @IBAction func match_accepted(_ sender: Any) {
+    @IBAction func backButton() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let meetingViewController = storyboard.instantiateViewController(withIdentifier: "meetingVC") as? MeetingViewController else {
-            assertionFailure("couldn't find vc")
-            return
-        }
-        // need to gernerate tokens for each user
-        meetingViewController.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2LTE2MTM5NDAwNjQiLCJpc3MiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2Iiwic3ViIjoiQUNjNmNjYWIzMjZkZTVlMDA0Y2U4OWNjYTA0MTA1MDljNSIsImV4cCI6MTYxMzk0MzY2NCwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiUGVyc29uIDIiLCJ2aWRlbyI6eyJyb29tIjoicG9wbWF0Y2gifX19.26qBdvdwHYeMQtT2_xrv23oWf0Sxb8B7v3t9JWOGukU"
-        navigationController?.pushViewController(meetingViewController, animated: true)
-        
+        guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
+                assertionFailure("couldn't find vc") //will stop program
+                return
+            }
+        //optional navigation controller
+        self.navigationController?.pushViewController(profileViewController, animated: true)
     }
+    
+//    @IBAction func match_accepted(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let meetingViewController = storyboard.instantiateViewController(withIdentifier: "meetingVC") as? MeetingViewController else {
+//            assertionFailure("couldn't find vc")
+//            return
+//        }
+//        // need to gernerate tokens for each user
+//        meetingViewController.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2LTE2MTM5NDAwNjQiLCJpc3MiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2Iiwic3ViIjoiQUNjNmNjYWIzMjZkZTVlMDA0Y2U4OWNjYTA0MTA1MDljNSIsImV4cCI6MTYxMzk0MzY2NCwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiUGVyc29uIDIiLCJ2aWRlbyI6eyJyb29tIjoicG9wbWF0Y2gifX19.26qBdvdwHYeMQtT2_xrv23oWf0Sxb8B7v3t9JWOGukU"
+//        navigationController?.pushViewController(meetingViewController, animated: true)
+//
+//    }
     
 
 }
