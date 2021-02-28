@@ -39,11 +39,13 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/d4c272729009c0461e
   - Created RounderImageView class that makes an image round if inherited
 - Setup Firestore
 - Researched Google Analytics to be used for finding the current user's in the lobby screen
+- Built Presence System using Firebase Realtime Database
 
-https://github.com/ECS189E/project-w21-big-bang-theory/commit/422b3759cd0ea5181dda001f2c43d49543cf63b6 (On my branch for now)
-https://github.com/ECS189E/project-w21-big-bang-theory/commit/56134b90c4605270fcfe5d7cfe8c73477496ef94 (On my branch for now)
-https://github.com/ECS189E/project-w21-big-bang-theory/commit/195649f9b29860ef52519ece19be62d69e63c5a0 (On my branch for now)
-https://github.com/ECS189E/project-w21-big-bang-theory/commit/d53267fdb7e1a0a0066b8b419477638f95a04891 (On my branch for now)
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/422b3759cd0ea5181dda001f2c43d49543cf63b6 
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/56134b90c4605270fcfe5d7cfe8c73477496ef94 
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/195649f9b29860ef52519ece19be62d69e63c5a0 
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/d53267fdb7e1a0a0066b8b419477638f95a04891 
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/19ff8bae88e7efe2e899ca5db33d6944fe13fde0
 
 **Ma Eint Poe** -
 - Implemented the navigation between Profile VC, Edit Question VC, Professional VC, and Friend VC
@@ -68,14 +70,13 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/d53267fdb7e1a0a006
 - Added timer model for video call countdown
   - https://github.com/ECS189E/project-w21-big-bang-theory/commit/c56b90c0686092dabee926fe5eed7e9e817542d6
 
-
 ### Plan to do:
 
 **Eden Avivi** - 
 Continue working on the lobby view controller by researching how to know how many users are in a specific view controller, have the matching process happen in the lobby view and have the lobby view controller stay until a match is found, in which case the match view controller will appear next.
 
 **Gharam Alsaedi** - 
-Will use Firebase Analytics' to get currently active users and connect their info to the matching UI. I will also implement the matching algorithm to check if the other user accepted or rejected the call and moved to the relative screens. Find a way to keep track of rejected matches such that they dont show up again in current setting. 
+I will  implement the matching algorithm to check if the other user accepted or rejected the call and moved to the relative screens. Find a way to keep track of rejected matches such that they dont show up again in current setting. 
 
 **Ma Eint Poe** -
 - Fix the friend VC questionnaire to nontextfield type answers
