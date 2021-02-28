@@ -643,13 +643,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding your next " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ais-Gb-vvp">
-                                <rect key="frame" x="54" y="44" width="306.5" height="39.5"/>
+                                <rect key="frame" x="78.5" y="44" width="257" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
                                 <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bubble..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LHQ-Ae-SsJ">
-                                <rect key="frame" x="135.5" y="91.5" width="143.5" height="39.5"/>
+                                <rect key="frame" x="144" y="89.5" width="126" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
                                 <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -666,7 +666,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iER-lr-YPz">
-                                <rect key="frame" x="0.0" y="139" width="414" height="682"/>
+                                <rect key="frame" x="0.0" y="135" width="414" height="686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bubble1" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-hM-T2D">
                                         <rect key="frame" x="57" y="81" width="300" height="300"/>
@@ -709,7 +709,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble1" translatesAutoresizingMaskIntoConstraints="NO" id="qks-m4-lqI" customClass="RoundedImageView" customModule="PopMatch" customModuleProvider="target">
-                                <rect key="frame" x="57" y="228.5" width="300" height="300"/>
+                                <rect key="frame" x="57" y="227" width="300" height="300"/>
                                 <color key="tintColor" red="0.90980392156862744" green="0.87058823529411766" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Kd9-Rd-Eil"/>
@@ -717,7 +717,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUG-DE-hiN">
-                                <rect key="frame" x="262" y="631.5" width="55" height="52"/>
+                                <rect key="frame" x="262" y="630" width="55" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="2Fa-aT-6hx"/>
                                     <constraint firstAttribute="width" constant="55" id="9l7-YP-XFk"/>
@@ -728,7 +728,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xM-st-LTi">
-                                <rect key="frame" x="98" y="631.5" width="55" height="52"/>
+                                <rect key="frame" x="98" y="630" width="55" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="Ybi-PA-JCF"/>
                                     <constraint firstAttribute="width" constant="55" id="m9j-Vm-tLT"/>
@@ -739,7 +739,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;USERNAME&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-ok-ejo">
-                                <rect key="frame" x="107" y="121" width="200" height="34.5"/>
+                                <rect key="frame" x="113" y="121" width="188.5" height="33"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="28"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -756,13 +756,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on image to view &lt;USERNAME&gt;'s information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSL-yn-xVI">
-                                <rect key="frame" x="17" y="173" width="380" height="19"/>
+                                <rect key="frame" x="17" y="171.5" width="380" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe right to accept, left to reject" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oc-m5-cZI">
-                                <rect key="frame" x="59" y="566" width="297" height="21"/>
+                                <rect key="frame" x="59" y="564.5" width="261.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -781,7 +781,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;USERNAME&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCP-op-DPa">
-                                        <rect key="frame" x="8" y="24" width="123" height="21"/>
+                                        <rect key="frame" x="8" y="25" width="114.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -794,49 +794,49 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Joke" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucd-1G-RaZ">
-                                        <rect key="frame" x="8" y="346.5" width="85" height="21"/>
+                                        <rect key="frame" x="8" y="340.5" width="76" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95a-Ju-y6n">
-                                        <rect key="frame" x="8" y="159.5" width="161" height="21"/>
+                                        <rect key="frame" x="8" y="157.5" width="141" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most used app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1s-Td-SgW">
-                                        <rect key="frame" x="8" y="253" width="130.5" height="21"/>
+                                        <rect key="frame" x="8" y="249" width="114.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ1-bb-BMR">
-                                        <rect key="frame" x="8" y="114" width="87" height="18.5"/>
+                                        <rect key="frame" x="8" y="113" width="82" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhG-Fk-p0y">
-                                        <rect key="frame" x="8" y="207.5" width="87" height="18.5"/>
+                                        <rect key="frame" x="8" y="204.5" width="82" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8n-2Q-EVr">
-                                        <rect key="frame" x="8" y="301" width="87" height="18.5"/>
+                                        <rect key="frame" x="8" y="296" width="82" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifv-KM-QqH">
-                                        <rect key="frame" x="8" y="394.5" width="87" height="18.5"/>
+                                        <rect key="frame" x="8" y="387.5" width="82" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLu-lG-1zd">
-                                        <rect key="frame" x="8" y="66" width="73" height="21"/>
+                                        <rect key="frame" x="8" y="66" width="64" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -910,73 +910,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLD-NY-qRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2466.666666666667" y="817.63392857142856"/>
-        </scene>
-        <!--Meeting View Controller-->
-        <scene sceneID="bUX-8R-uUa">
-            <objects>
-                <viewController storyboardIdentifier="meetingVC" id="8nw-Du-75w" customClass="MeetingViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nrh-LU-Kgi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIX-vP-2nv">
-                                <rect key="frame" x="85" y="738" width="73" height="71"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                </state>
-                                <connections>
-                                    <action selector="disconnectWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="qM5-td-ibz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5v-QJ-yzA">
-                                <rect key="frame" x="252" y="738" width="73" height="71"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="mic.circle" catalog="system" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                </state>
-                                <connections>
-                                    <action selector="toggleMicWithSender:" destination="8nw-Du-75w" eventType="touchUpInside" id="cj3-JE-JHB"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4f-ph-Vwh">
-                                <rect key="frame" x="20" y="74" width="375" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="ETI-62-Shn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" systemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8h-mm-oHB" customClass="TVIVideoView">
-                                <rect key="frame" x="0.0" y="144" width="414" height="586"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="hqT-Au-c8B"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="x8h-mm-oHB" firstAttribute="centerX" secondItem="o4f-ph-Vwh" secondAttribute="centerX" id="4bh-fS-Xts"/>
-                            <constraint firstItem="x8h-mm-oHB" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" id="CRx-K2-cfd"/>
-                            <constraint firstItem="jIX-vP-2nv" firstAttribute="baseline" secondItem="t5v-QJ-yzA" secondAttribute="baseline" id="EKm-Xf-7er"/>
-                            <constraint firstItem="jIX-vP-2nv" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="85" id="M7R-be-4vn"/>
-                            <constraint firstItem="hqT-Au-c8B" firstAttribute="trailing" secondItem="o4f-ph-Vwh" secondAttribute="trailing" constant="19" id="NhX-SC-VlX"/>
-                            <constraint firstItem="t5v-QJ-yzA" firstAttribute="leading" secondItem="jIX-vP-2nv" secondAttribute="trailing" constant="94" id="SBe-jE-GP2"/>
-                            <constraint firstItem="x8h-mm-oHB" firstAttribute="top" secondItem="hqT-Au-c8B" secondAttribute="top" constant="100" id="aMJ-di-zPF"/>
-                            <constraint firstItem="jIX-vP-2nv" firstAttribute="top" secondItem="x8h-mm-oHB" secondAttribute="bottom" constant="8" id="bb5-1g-HCM"/>
-                            <constraint firstItem="hqT-Au-c8B" firstAttribute="bottom" secondItem="jIX-vP-2nv" secondAttribute="bottom" constant="53" id="beR-OO-NR5"/>
-                            <constraint firstItem="o4f-ph-Vwh" firstAttribute="top" secondItem="hqT-Au-c8B" secondAttribute="top" constant="30" id="c58-W2-6Hq"/>
-                            <constraint firstItem="o4f-ph-Vwh" firstAttribute="leading" secondItem="hqT-Au-c8B" secondAttribute="leading" constant="20" id="qrd-k6-Jpa"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="messageLabel" destination="o4f-ph-Vwh" id="JbP-sE-tG1"/>
-                        <outlet property="vidView" destination="x8h-mm-oHB" id="k1u-1W-uHb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eRj-pw-Mtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3296" y="818"/>
         </scene>
         <!--Profile View Controller -->
         <scene sceneID="c6S-bp-ak7">
@@ -1324,6 +1257,132 @@
             </objects>
             <point key="canvasLocation" x="2428.985507246377" y="93.75"/>
         </scene>
+        <!--Meeting View Controller-->
+        <scene sceneID="Uin-or-gzK">
+            <objects>
+                <viewController storyboardIdentifier="meetingVC" id="07L-eJ-tnK" customClass="MeetingViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YIl-md-zTF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-nr-vbT">
+                                <rect key="frame" x="25" y="424" width="40" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FBu-YZ-yjm"/>
+                                    <constraint firstAttribute="width" constant="40" id="Nqv-ME-0vH"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="Microphone Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleMicWithSender:" destination="07L-eJ-tnK" eventType="touchUpInside" id="GxB-oN-9TN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awz-6w-1bC">
+                                <rect key="frame" x="23" y="374" width="50" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4ZN-lH-5xC"/>
+                                    <constraint firstAttribute="width" constant="50" id="fky-cI-msW"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="Video Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleVid:" destination="07L-eJ-tnK" eventType="touchUpInside" id="KU5-io-MSQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8t-xF-qBU">
+                                <rect key="frame" x="10" y="802" width="394" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Yev-th-FkP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VX-O5-Dpz" customClass="TVIVideoView">
+                                <rect key="frame" x="20" y="68" width="109" height="180"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="EWO-Iu-bFO"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: 5:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shZ-80-B2H">
+                                <rect key="frame" x="15" y="268" width="125" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OXt-88-VbP"/>
+                                    <constraint firstAttribute="width" constant="125" id="wMl-sB-jvB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFo-PT-2QZ">
+                                <rect key="frame" x="20" y="309" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8qb-fH-IKg"/>
+                                    <constraint firstAttribute="width" constant="50" id="eWQ-K7-BuM"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="addTime Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTime:" destination="07L-eJ-tnK" eventType="touchUpInside" id="GjC-kF-M1a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyd-KU-654">
+                                <rect key="frame" x="20" y="489" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="80e-HR-3QX"/>
+                                    <constraint firstAttribute="height" constant="50" id="B0o-mX-aas"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="end call Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnectWithSender:" destination="07L-eJ-tnK" eventType="touchUpInside" id="KDp-Nr-CL5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kOd-Ca-aFg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RFo-PT-2QZ" firstAttribute="leading" secondItem="kOd-Ca-aFg" secondAttribute="leading" constant="20" id="0Z5-ql-rQA"/>
+                            <constraint firstItem="shZ-80-B2H" firstAttribute="leading" secondItem="kOd-Ca-aFg" secondAttribute="leading" constant="15" id="0bA-KN-OgN"/>
+                            <constraint firstItem="4VX-O5-Dpz" firstAttribute="top" secondItem="kOd-Ca-aFg" secondAttribute="top" constant="24" id="5nA-oH-Bq4"/>
+                            <constraint firstItem="Awz-6w-1bC" firstAttribute="leading" secondItem="kOd-Ca-aFg" secondAttribute="leading" constant="23" id="ETz-gF-Lgo"/>
+                            <constraint firstItem="Awz-6w-1bC" firstAttribute="top" secondItem="RFo-PT-2QZ" secondAttribute="bottom" constant="15" id="H33-1d-eWZ"/>
+                            <constraint firstItem="vyd-KU-654" firstAttribute="leading" secondItem="kOd-Ca-aFg" secondAttribute="leading" constant="20" id="IvC-pZ-b5U"/>
+                            <constraint firstItem="4VX-O5-Dpz" firstAttribute="leading" secondItem="YIl-md-zTF" secondAttribute="leadingMargin" id="fYv-B6-5Dd"/>
+                            <constraint firstItem="Z8t-xF-qBU" firstAttribute="centerX" secondItem="YIl-md-zTF" secondAttribute="centerX" id="g1g-nx-PeN"/>
+                            <constraint firstItem="hNq-nr-vbT" firstAttribute="leading" secondItem="kOd-Ca-aFg" secondAttribute="leading" constant="25" id="kGN-KO-aVT"/>
+                            <constraint firstItem="RFo-PT-2QZ" firstAttribute="top" secondItem="shZ-80-B2H" secondAttribute="bottom" constant="20" id="nbe-m0-tdF"/>
+                            <constraint firstItem="vyd-KU-654" firstAttribute="top" secondItem="hNq-nr-vbT" secondAttribute="bottom" constant="15" id="obC-59-rkb"/>
+                            <constraint firstItem="kOd-Ca-aFg" firstAttribute="trailing" secondItem="4VX-O5-Dpz" secondAttribute="trailing" constant="285" id="p0b-O2-hNv"/>
+                            <constraint firstItem="Z8t-xF-qBU" firstAttribute="leading" secondItem="kOd-Ca-aFg" secondAttribute="leading" constant="10" id="qeW-em-A6l"/>
+                            <constraint firstItem="hNq-nr-vbT" firstAttribute="top" secondItem="Awz-6w-1bC" secondAttribute="bottom" constant="15" id="rEy-QB-TI6"/>
+                            <constraint firstItem="kOd-Ca-aFg" firstAttribute="trailing" secondItem="Z8t-xF-qBU" secondAttribute="trailing" constant="10" id="sSW-zh-zzZ"/>
+                            <constraint firstItem="shZ-80-B2H" firstAttribute="top" secondItem="4VX-O5-Dpz" secondAttribute="bottom" constant="20" id="z2l-zj-luj"/>
+                            <constraint firstItem="Z8t-xF-qBU" firstAttribute="bottom" secondItem="kOd-Ca-aFg" secondAttribute="bottom" id="z9q-18-5kB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addTimerButton" destination="RFo-PT-2QZ" id="iT0-ki-TM6"/>
+                        <outlet property="messageLabel" destination="Z8t-xF-qBU" id="weW-Iv-xtK"/>
+                        <outlet property="micImage" destination="hNq-nr-vbT" id="fB2-GS-Mlo"/>
+                        <outlet property="myView" destination="4VX-O5-Dpz" id="1Hf-XU-ypP"/>
+                        <outlet property="timerLabel" destination="shZ-80-B2H" id="Kdr-tr-BNO"/>
+                        <outlet property="vidImage" destination="Awz-6w-1bC" id="Olo-S4-mqT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIb-fu-pYF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3295.652173913044" y="817.63392857142856"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="qks-m4-lqI">
@@ -1333,20 +1392,19 @@
     <resources>
         <image name="Instagram Icon" width="173" height="162"/>
         <image name="LinkedIn Icon" width="153" height="148"/>
+        <image name="Microphone Icon" width="104" height="131"/>
+        <image name="Video Icon" width="140" height="96"/>
         <image name="accept Icon" width="143" height="138"/>
+        <image name="addTime Icon" width="115" height="113"/>
         <image name="backCircle" width="760" height="763"/>
         <image name="bubble1" width="1527" height="1509"/>
+        <image name="end call Icon" width="123" height="122"/>
         <image name="facebook Icon" width="191" height="193"/>
-        <image name="mic.circle" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="reject" width="512" height="512"/>
         <image name="settings Icon" width="206" height="206"/>
         <image name="snapchat Icon" width="181" height="184"/>
         <image name="twitter Icon" width="151" height="150"/>
-        <image name="xmark.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,43 +9,75 @@
 import UIKit
 import TwilioVideo
 
-class MeetingViewController: UIViewController {
+
+class MeetingViewController: UIViewController, TimerModelUpdates {
+    
+  
+    
     
 
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var vidView: VideoView!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var addTimerButton: UIButton!
+    @IBOutlet weak var myView: VideoView!
+    @IBOutlet weak var micImage: UIButton!
+    @IBOutlet weak var vidImage: UIButton!
     
+    var remoteView: VideoView!
     var room: Room?
     var camera: CameraSource?
     var localVideoTrack: LocalVideoTrack?
     var localAudioTrack: LocalAudioTrack?
     var remoteParticipant: RemoteParticipant?
-
-    
+    var vidTimer: Timer?
+    var runCount = 300;
+    var roomName: String = ""
     var accessToken : String = ""
-    // Configure remote URL to fetch token from
-    var tokenUrl = "http://localhost:8000/token.php"
+
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareLocalMedia()
-        
         self.connect()
-        
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
+        timerModel.delegate = self
         
+
+   
+                
+        
+
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
     }
-
+    
+    let timerModel = TimerModel()
+    
+    func currentTimeDidChange(_ currentTime: Int) {
+        timerLabel.text = "Timer: " + String(currentTime/60) + ":" + String(format: "%02d",currentTime % 60)
+        if(currentTime == 0){
+            self.room?.disconnect()
+            goBackToLobby()
+        }
+    }
+    
+   
+  
+    @IBAction func addTime(_ sender: Any) {
+        timerModel.addTime()
+    }
+    
+    
     @IBAction func disconnect(sender: AnyObject) {
         self.room?.disconnect()
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
-        // go to lobby view
+        goBackToLobby()
+    }
+    func goBackToLobby(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
             assertionFailure("couldn't find vc")
@@ -53,38 +85,100 @@ class MeetingViewController: UIViewController {
         //optional navigation controller
         navigationController?.pushViewController(lobbyViewController, animated: true)
     }
-    
+    var toggleMicState = 1;
     @IBAction func toggleMic(sender: AnyObject) {
+        let micOn = UIImage(named:"Microphone Icon")
+        let micOff = UIImage(named: "mute Microphone Icon")
         if (self.localAudioTrack != nil) {
-            self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled)!
-            
+            self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled ?? false)
+            if(toggleMicState == 1){
+                micImage.setImage(micOff, for: .normal)
+                toggleMicState = 2
+            }else{
+                micImage.setImage(micOn, for: .normal)
+                toggleMicState = 1
+            }
         }
     }
+    var toggleVidState = 1;
+    @IBAction func toggleVid(_ sender: Any) {
+        let vidOn = UIImage(named:"Video Icon")
+        let vidOff = UIImage(named: "Close View Icon")
+        if (self.localVideoTrack != nil) {
+            self.localVideoTrack?.isEnabled = !(self.localVideoTrack?.isEnabled ?? false)
+            if(toggleVidState == 1){
+                vidImage.setImage(vidOff, for: .normal)
+                toggleVidState = 2
+            }else{
+                vidImage.setImage(vidOn, for: .normal)
+                toggleVidState = 1
+            }
+        }
+    }
+    
+    func setupRemoteVideoView() {
+        // Creating `VideoView` programmatically
+        self.remoteView = VideoView(frame: CGRect.zero, delegate: self)
 
+        self.view.insertSubview(self.remoteView, at: 0)
+        
+        // `VideoView` supports scaleToFill, scaleAspectFill and scaleAspectFit
+        // scaleAspectFit is the default mode when you create `VideoView` programmatically.
+        self.remoteView.contentMode = .scaleAspectFill;
+
+        let centerX = NSLayoutConstraint(item: self.remoteView as Any,
+                                         attribute: NSLayoutConstraint.Attribute.centerX,
+                                         relatedBy: NSLayoutConstraint.Relation.equal,
+                                         toItem: self.view,
+                                         attribute: NSLayoutConstraint.Attribute.centerX,
+                                         multiplier: 1,
+                                         constant: 0);
+        self.view.addConstraint(centerX)
+        let centerY = NSLayoutConstraint(item: self.remoteView as Any,
+                                         attribute: NSLayoutConstraint.Attribute.centerY,
+                                         relatedBy: NSLayoutConstraint.Relation.equal,
+                                         toItem: self.view,
+                                         attribute: NSLayoutConstraint.Attribute.centerY,
+                                         multiplier: 1,
+                                         constant: 0);
+        self.view.addConstraint(centerY)
+        let width = NSLayoutConstraint(item: self.remoteView as Any,
+                                       attribute: NSLayoutConstraint.Attribute.width,
+                                       relatedBy: NSLayoutConstraint.Relation.equal,
+                                       toItem: self.view,
+                                       attribute: NSLayoutConstraint.Attribute.width,
+                                       multiplier: 1,
+                                       constant: 0);
+        self.view.addConstraint(width)
+        let height = NSLayoutConstraint(item: self.remoteView as Any,
+                                        attribute: NSLayoutConstraint.Attribute.height,
+                                        relatedBy: NSLayoutConstraint.Relation.equal,
+                                        toItem: self.view,
+                                        attribute: NSLayoutConstraint.Attribute.height,
+                                        multiplier: 1,
+                                        constant: 0);
+        self.view.addConstraint(height)
+    }
+    
     func connect(){
         // Configure access token either from server or manually.
         // If the default wasn't changed, try fetching from server.
-        if (accessToken == "TWILIO_ACCESS_TOKEN") {
-            do {
-                accessToken = try TokenUtils.fetchToken(url: tokenUrl)
-            } catch {
-                let message = "Failed to fetch access token"
-                logMessage(messageText: message)
-                return
-            }
-        }
+       
         
         // Prepare local media which we will share with Room Participants.
        
         
         // Preparing the connect options with the access token that we fetched (or hardcoded).
         let connectOptions = ConnectOptions(token: accessToken) { (builder) in
-            
+            builder.roomName = self.roomName
+           
             // Use the local media that we prepared earlier.
-            builder.audioTracks = self.localAudioTrack != nil ? [self.localAudioTrack!] : [LocalAudioTrack]()
-            builder.videoTracks = self.localVideoTrack != nil ? [self.localVideoTrack!] : [LocalVideoTrack]()
-            
-   
+            if let audioTrack = self.localAudioTrack{
+                builder.audioTracks = [audioTrack]
+            }
+            if let videoTrack = self.localVideoTrack{
+                builder.videoTracks = [videoTrack]
+            }
          
         }
         
@@ -108,40 +202,41 @@ class MeetingViewController: UIViewController {
                 logMessage(messageText: "Failed to create audio track")
             }
         }
-        let frontCamera = CameraSource.captureDevice(position: .front)
-        let backCamera = CameraSource.captureDevice(position: .back)
+        
+        guard let frontCamera = CameraSource.captureDevice(position: .front) else{
+            self.logMessage(messageText:"No front capture device found!")
+            return
+        }
+        
 
-        if (frontCamera != nil || backCamera != nil) {
 
-            let options = CameraSourceOptions { (builder) in
-                if #available(iOS 13.0, *) {
-                    // Track UIWindowScene events for the key window's scene.
-                    // The example app disables multi-window support in the .plist (see UIApplicationSceneManifestKey).
-                    builder.orientationTracker = UserInterfaceTracker(scene: UIApplication.shared.keyWindow!.windowScene!)
-                }
-            }
-            // Preview our local camera track in the local video preview view.
-            camera = CameraSource(options: options, delegate: self)
-            localVideoTrack = LocalVideoTrack(source: camera!, enabled: true, name: "Camera")
+        
 
-            // Add renderer to video track for local preview
-            
-            logMessage(messageText: "Video track created")
+        let options = CameraSourceOptions { (builder) in
+        }
+        // Preview our local camera track in the local video preview view.
+        guard let camera = CameraSource(options: options, delegate: self) else{
+            self.logMessage(messageText:"No front capture device found!")
+            return
+        }
+        
+        localVideoTrack = LocalVideoTrack(source: camera, enabled: true, name: "Camera")
+        localVideoTrack?.addRenderer(self.myView)
+        // Add renderer to video track for local preview
+        
+        logMessage(messageText: "Video track created")
 
-            
-
-            camera!.startCapture(device: frontCamera != nil ? frontCamera! : backCamera!) { (captureDevice, videoFormat, error) in
-                if let error = error {
-                    self.logMessage(messageText: "Capture failed with error.\ncode = \((error as NSError).code) error = \(error.localizedDescription)")
-                } else {
-                   
-                }
+        camera.startCapture(device: frontCamera) { (captureDevice, videoFormat, error) in
+            if let error = error {
+                self.logMessage(messageText: "Capture failed with error.\ncode = \((error as NSError).code) error = \(error.localizedDescription)")
+            } else {
+               
             }
         }
-        else {
-            self.logMessage(messageText:"No front or back capture device found!")
-        }
+        
+    
    }
+    
     func logMessage(messageText: String) {
         NSLog(messageText)
         messageLabel.text = messageText
@@ -152,8 +247,8 @@ class MeetingViewController: UIViewController {
         for publication in videoPublications {
             if let subscribedVideoTrack = publication.remoteTrack,
                 publication.isTrackSubscribed {
-                
-                subscribedVideoTrack.addRenderer(self.vidView)
+                setupRemoteVideoView()
+                subscribedVideoTrack.addRenderer(self.remoteView)
                 self.remoteParticipant = participant
                 return true
             }
@@ -173,8 +268,8 @@ class MeetingViewController: UIViewController {
 
     func cleanupRemoteParticipant() {
         if self.remoteParticipant != nil {
-            self.vidView?.removeFromSuperview()
-            self.vidView = nil
+            self.remoteView?.removeFromSuperview()
+            self.remoteView = nil
             self.remoteParticipant = nil
         }
     }
@@ -190,7 +285,11 @@ extension MeetingViewController: RoomDelegate {
         // This example only renders 1 RemoteVideoTrack at a time. Listen for all events to decide which track to render.
         for remoteParticipant in room.remoteParticipants {
             remoteParticipant.delegate = self
+            // This would create another timer model class, which would not synconize with the other timer model
+            // We need to create a timer API so both devices would be accessing the same timer model API
+            timerModel.start();
         }
+        
     }
 
     func roomDidDisconnect(room: Room, error: Error?) {
@@ -220,8 +319,10 @@ extension MeetingViewController: RoomDelegate {
     func participantDidConnect(room: Room, participant: RemoteParticipant) {
         // Listen for events from all Participants to decide which RemoteVideoTrack to render.
         participant.delegate = self
-
+        
         logMessage(messageText: "Participant \(participant.identity) connected with \(participant.remoteAudioTracks.count) audio and \(participant.remoteVideoTracks.count) video tracks")
+        timerModel.start()
+        
     }
 
     func participantDidDisconnect(room: Room, participant: RemoteParticipant) {
@@ -280,6 +381,7 @@ extension MeetingViewController : RemoteParticipantDelegate {
                let index = remainingParticipants.firstIndex(of: participant) {
                 remainingParticipants.remove(at: index)
                 renderRemoteParticipants(participants: remainingParticipants)
+                
             }
         }
     }
@@ -337,19 +439,3 @@ extension MeetingViewController : CameraSourceDelegate {
     }
 }
 
-struct TokenUtils {
-    static func fetchToken(url : String) throws -> String {
-        var token: String = "TWILIO_ACCESS_TOKEN"
-        let requestURL: URL = URL(string: url)!
-        do {
-            let data = try Data(contentsOf: requestURL)
-            if let tokenReponse = String(data: data, encoding: String.Encoding.utf8) {
-                token = tokenReponse
-            }
-        } catch let error as NSError {
-            print ("Invalid token url, error = \(error)")
-            throw error
-        }
-        return token
-    }
-}
