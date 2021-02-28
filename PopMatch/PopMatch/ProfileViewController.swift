@@ -13,6 +13,7 @@ import FirebaseUI
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var docID = "Ah33UF4du0PoOT7Lz4dz49o4brJ2"
     @IBOutlet weak var settingBtn: UIButton!
     @IBOutlet weak var signoutBtn: UIButton!
     @IBOutlet weak var lobbyBtn: UIButton!
@@ -57,12 +58,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
    
     var db = Firestore.firestore()
     let storage = Storage.storage()
+   
     
     var imagePickerController = UIImagePickerController()
+    let placeholderImage = UIImage(systemName: "person")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("Starting docID: \(docID)")
         styleSetUp()
         
         self.imagePickerController.delegate = self
@@ -110,25 +114,32 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // Make API call to database and display data
     func displayUserData () {
         print("displayUserData called")
-        let userData = db.collection("users").document("testing-user-profile")
+        let userData = db.collection("users").document(docID)
         userData.getDocument { (document, error) in
             if error == nil {
                 if let document = document, document.exists {
+                    
                     self.usernameTextField.text = document.get("username") as? String ?? ""
                     
-                   /* if let image = document.get("image") {
+                    if let image = document.get("image") {
                         self.imageText = image as? String ?? ""
-                        if let imageUrl = image as? URL { // make it a URL
+                      //  print("imageText: \(self.imageText)")
+                        
+                        self.profileImage.sd_setImage(with: URL(string: self.imageText), placeholderImage: self.placeholderImage)
+                        self.profileImage.frame.size =
+                       /* if let imageUrl = self.imageText as? URL { // make it a URL
+                            print("inside imageURL")
                             self.imageURL = imageUrl
                             // Make it into a UIIMage
                             if let imageView = try? Data(contentsOf: imageUrl) {
+                                print("inside imageView")
                                 if let imagePic = UIImage(data: imageView) {
                                     self.profileImage.image = imagePic
                                 }
                             }
                             
-                        }
-                    }*/
+                        }*/
+                    }
                     
                     if let firstname = document.get("first name") {
                         self.firstnameTextField.text = firstname as? String
@@ -143,9 +154,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                     }
                     
                     // Display image
-                    let storageRef = self.storage.reference()
-                    let ref = storageRef.child("test-user-profile")
-                    self.profileImage.sd_setImage(with: ref)
+                /*    print("before image display")
+                    DispatchQueue.main.async {
+                        print("inside dispatchqueue")
+                        let storageRef = self.storage.reference()
+//                        let ref = storageRef.child("testing-user-profile2")
+                        let ref = storageRef.child(self.docID)
+                        print("self.docID: \(self.docID)")
+                       self.profileImage.sd_setImage(with: ref, placeholderImage: self.placeholderImage)
+//                        self.profileImage.setNeedsDisplay()
+                    }*/
+                  
                     
                 } else {
                     print("User document doesn't exists")
@@ -211,7 +230,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         print("textFieldShouldReturn called")
         
         // Maybe switch to using a map instead?
-        switch textField {
+        /*switch textField {
         case usernameTextField:
             usernameTextField.resignFirstResponder()
         case firstnameTextField:
@@ -222,7 +241,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             popUpTextField.resignFirstResponder()
         default:
             usernameTextField.resignFirstResponder()
-        }
+        }*/
+        textField.resignFirstResponder()
         
         // Update the appropriate social media links
         if textField == popUpTextField {
@@ -252,7 +272,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     // MARK: - Profile Image
     
-    
+    // start the photo upload process
     @IBAction func addProfileImage() {
         print("addProfileImage called")
         checkPermission()
@@ -302,27 +322,25 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         let localFile = fileURL
         
-        let photoRef = storageRef.child("test-user-profile")
+        let photoRef = storageRef.child(docID)
         let _ = photoRef.putFile(from: localFile, metadata: nil) { (metadata, error) in
             guard metadata != nil else {
                 print("Error: \(String(describing: error?.localizedDescription))")
                 return
             }
-            
-            /*DispatchQueue.main.async {
-                photoRef.downloadURL(completion: { (url, error) in
-                                if let urlText = url?.absoluteString {
-                                    self.imageText =  urlText
-                                    print("Image url in db: \(urlText)")
-                                }
-                            })
-                
+    
+            photoRef.downloadURL(completion: { (url, error) in
+                            if let urlText = url?.absoluteString {
+                                self.imageText =  urlText
+                                print("Image url in db: \(urlText)")
+                                self.storeData()
+                            }
+                        })
+
                 print("Photo has been uploaded")
-                self.storeData()
-            }*/
-            
         }
         
+        profileImage.sd_setImage(with: photoRef, placeholderImage: placeholderImage)
     }
     
     // MARK: - Social Media Button Clicked
@@ -413,7 +431,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         // Make the request to store the data
        // let userData = ["username" : usernameTextField.text,  "first name" : firstnameTextField.text, "last name" : lastnameTextField.text, "email" : emailTextField.text]
-        let userDoc = db.collection("users").document("testing-user-profile")
+        let userDoc = db.collection("users").document(docID)
        // userDoc.updateData(userData as [String : Any])
         userDoc.updateData([
             "username": usernameTextField.text ?? (Any).self,
@@ -423,10 +441,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             "email": emailTextField.text ?? (Any).self
             ])
         
+        print("imageText: \(imageText)")
         
         let socialData = ["twitter" : twitterLink, "facebook" : facebookLink, "snapchat" : snapchatLink, "instagram" : instagramLink, "linkedin" : linkedinLink]
         let socialDoc = userDoc.collection("socials").document("links")
-        socialDoc.updateData(socialData)
+        socialDoc.setData(socialData)
     
         // keep the user data updated the new
         displayUserData()
