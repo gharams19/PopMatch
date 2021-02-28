@@ -23,7 +23,7 @@ class MatchingViewController: UIViewController {
     var matchName = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
-    
+    var username = "Username"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,7 @@ class MatchingViewController: UIViewController {
             }
         }
     }
-    var username = "Username"
+    
     func acceptMatch() {
         let userToken = self.getToken()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
