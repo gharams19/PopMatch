@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import Firebase
+
 
 class LobbyViewController: UIViewController {
 
     @IBOutlet weak var bubbleView: UIView!
     @IBOutlet weak var bubbleZoom: UIImageView!
     
+    var matches = [String: String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         //setup
         bubbleZoom.isHidden = true
         bubbleView.backgroundColor = .white
@@ -52,6 +56,7 @@ class LobbyViewController: UIViewController {
                     self.navigationController?.pushViewController(matchingViewController, animated: false)
             })
         }
+        findMatches()
        
     }
     var previousAnimation = Int()
@@ -137,6 +142,22 @@ class LobbyViewController: UIViewController {
         // need to gernerate tokens for each user
         meetingViewController.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2LTE2MTM5NDAwNjQiLCJpc3MiOiJTS2ZhY2FjOGE3OTRlNzM4MWZiNWZmODJjZGI3NzBmYmY2Iiwic3ViIjoiQUNjNmNjYWIzMjZkZTVlMDA0Y2U4OWNjYTA0MTA1MDljNSIsImV4cCI6MTYxMzk0MzY2NCwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiUGVyc29uIDIiLCJ2aWRlbyI6eyJyb29tIjoicG9wbWF0Y2gifX19.26qBdvdwHYeMQtT2_xrv23oWf0Sxb8B7v3t9JWOGukU"
         navigationController?.pushViewController(meetingViewController, animated: true)
+        
+    }
+    
+    func findMatches() {
+        let ref = Database.database().reference().child("status")
+
+        ref.observe(.childAdded, with: { snapshot in
+            if let userDict = snapshot.value as? [String: Any] {
+                let state = userDict["state"] as? String
+                let uid = userDict["uid"] as? String
+                self.matches[uid ?? ""] = state
+            }
+        })
+     
+      
+       
         
     }
     

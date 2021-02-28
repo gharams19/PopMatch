@@ -9,6 +9,7 @@ target 'PopMatch' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
 	pod 'FirebaseFirestoreSwift'
+	pod 'Firebase/Database'
 	pod 'TwilioVideo', '~> 4.3'
 	pod 'DLRadioButton', '~> 1.4'
 end
