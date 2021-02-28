@@ -10,11 +10,17 @@ import UIKit
 class LobbyViewController: UIViewController {
 
     @IBOutlet weak var bubbleView: UIView!
+    @IBOutlet weak var bubbleZoom: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //setup
+        bubbleZoom.isHidden = true
         bubbleView.backgroundColor = .white
         self.view.addSubview(bubbleView)
+        
+        //adding the floating bubbles with continuous animation
         var array: [UIImageView] = []
         let userNumber = 10
         for _ in 0...userNumber-1 {
@@ -27,15 +33,24 @@ class LobbyViewController: UIViewController {
             bubbleView.addSubview(array[i])
             animation(image: array[i])
         }
-        //change this to when a match is found
+        
+        //zoom into a new bubble and transition into the matchingVC after 10 secs
+        //change this to when a match is found later
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
-                assertionFailure("couldn't find vc")
-                return
-            }
-            
-                self.navigationController?.pushViewController(matchingViewController, animated: false)
+            self.bubbleZoom.transform = CGAffineTransform.identity
+            self.bubbleZoom.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut , animations: {
+                self.bubbleZoom.isHidden = false
+                self.bubbleZoom.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }, completion: { finished in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
+                    assertionFailure("couldn't find vc")
+                    return
+                }
+                
+                    self.navigationController?.pushViewController(matchingViewController, animated: false)
+            })
         }
        
     }
