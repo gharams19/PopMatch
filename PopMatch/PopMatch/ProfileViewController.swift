@@ -71,6 +71,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         // Display the stored data of user if it exists
         displayUserData()
         
+        buildPresence()
+        
     }
     
     // MARK: - Styling
@@ -388,5 +390,55 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func buildPresence() {
+        //MARK: Build Presence System
+         
+         /*Set up presence with realtime database*/
+         
+         // Fetch the current user's ID from Firebase Authentication.
+         
+         let uid = Firebase.Auth.auth().currentUser?.uid
+         
+         let path = "/status/" + String(uid ?? "")
+         
+         
+         // Create a reference to this user's specific status node.
+         // This is where we will store data about being online/offline.
+         let userStatusDatabaseRef = FirebaseDatabase.Database.database().reference(withPath: path)
+         
+         // We'll create two constants which we will write to
+         // the Realtime database when this device is offline
+         // or online.
+         var isOffline: [String: Any] = [
+            "uid": uid ?? "",
+             "state": "offline",
+         ]
+         var isOnline: [String: Any] = [
+            "uid": uid ?? "",
+             "state": "online",
+         ]
+         
+         // Create a reference to the special '.info/connected' path in
+         // Realtime Database. This path returns `true` when connected
+         // and `false` when disconnected.
+         let connectedRef = Database.database().reference(withPath: ".info/connected")
+         connectedRef.observeSingleEvent(of: .value, with: { snapshot in
+             if((snapshot.value != nil) == false) {
+                 
+                 return
+             }
+             
+         })
+         
+         // If we are currently connected, then use the 'onDisconnect()'
+             // method to add a set which will only trigger once this
+             // client has disconnected by closing the app,
+             // losing internet, or any other means.
+         userStatusDatabaseRef.onDisconnectSetValue(isOffline, withCompletionBlock: {_,_ in
+             userStatusDatabaseRef.setValue(isOnline)
+             
+             
+         })
+       
+    }
 }

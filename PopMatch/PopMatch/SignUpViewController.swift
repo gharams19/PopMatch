@@ -136,18 +136,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         //empty error
                         self.errLabel.text = nil
                         var ref: DocumentReference? = nil
-                        ref = self.db.collection("users").addDocument(data: [
+                        let uid = authResult?.user.uid ?? ""
+                        
+                        let docData: [String: Any] = [
                             "first name": self.firstNameTextField.text,
                             "last name": self.lastNameTextField.text,
                             "username": "",
-                            "email": self.emailTextField.text
-                        ]) { err in
+                            "email": self.emailTextField.text,
+                            "image": ""
+                        ]
+                        self.db.collection("users").document(uid).setData(docData) { err in
                             if let err = err {
-                                print("Error adding document: \(err)")
-                            } else {
-                                print("Document added with ID: \(ref?.documentID)")
+                                print("Error writing document: \(err)")
                             }
+                            else{
+                                print("Document successfullu written with id \(uid)")
+                            }
+                            
                         }
+                       
                         
                         //go into next view controller
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
