@@ -6,20 +6,21 @@
 //
 
 import UIKit
+import Photos
 import Firebase
+import FirebaseStorage
+import FirebaseUI
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+
+class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var docID: String = ""
     
     @IBOutlet weak var settingBtn: UIButton!
-    
     @IBOutlet weak var signoutBtn: UIButton!
     @IBOutlet weak var lobbyBtn: UIButton!
-    
+    @IBOutlet weak var profileBtn: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
-    
     @IBOutlet weak var resetBtn: UIButton!
-    
     
     // TextFields
     @IBOutlet weak var usernameTextField: UITextField!
@@ -34,6 +35,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var snapchatBtn: UIButton!
     @IBOutlet weak var instagramBtn: UIButton!
     @IBOutlet weak var linkedinBtn: UIButton!
+    var buttons: [UIButton] = []
     
     // Pop Up View
     @IBOutlet weak var popUpView: UIView!
@@ -43,32 +45,40 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var popUpErrLabel: UILabel!
     @IBOutlet weak var popUpConfirmBtn: UIButton!
     
-    var twitterLink = ""  // 1
-    var facebookLink = ""  // 2
-    var snapchatLink = ""  // 3
-    var instagramLink = ""  // 4
-    var linkedinLink = ""  // 5
+    var twitterLink: String = ""
+    var facebookLink: String = ""
+    var snapchatLink: String = ""
+    var instagramLink: String = ""
+    var linkedinLink: String = ""
     
     var links: [String] = []
     
+    var imageURL: URL?
+    var imageText: String = ""
    
     var db = Firestore.firestore()
+    var storage = Storage.storage()
+    
+    var imagePickerController = UIImagePickerController()
+    let placeholderImage = UIImage(systemName: "person")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         styleSetUp()
         
+        // Set Arrays & Delegates
         self.TFFields = [usernameTextField, firstnameTextField, lastnameTextField, emailTextField, popUpTextField]
-        self.TFFields = self.TFFields.map({$0.delegate = self; return $0})
-        
         self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
-
+        self.buttons = [twitterBtn, facebookBtn, snapchatBtn, instagramBtn, linkedinBtn, signoutBtn, resetBtn, settingBtn, popUpConfirmBtn, closeViewBtn, profileBtn, lobbyBtn]
+        self.TFFields = self.TFFields.map({$0.delegate = self; return $0})
+        self.imagePickerController.delegate = self
+        
+        // Hide pop until button press
         popUpView.isHidden = true
         popUpConfirmBtn.isHidden = true
         popUpErrLabel.isHidden = true
         
-        // Display the stored data of user if it exists
+        // Display the stored data
         displayUserData()
         
         buildPresence()
@@ -103,12 +113,18 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Display User Data
     // Make API call to database and display data
     func displayUserData () {
-        print("displayUserData called")
-        let userData = db.collection("users").document("testing-user-profile")
+       // print("displayUserData called")
+        let userData = db.collection("users").document(docID)
         userData.getDocument { (document, error) in
             if error == nil {
                 if let document = document, document.exists {
                     self.usernameTextField.text = document.get("username") as? String ?? ""
+                    
+                    if let image = document.get("image") {
+                        self.imageText = image as? String ?? ""
+                        self.profileImage.sd_setImage(with: URL(string: self.imageText), placeholderImage: self.placeholderImage)
+                        self.profileImage.sizeToFit()
+                    }
                     
                     if let firstname = document.get("first name") {
                         self.firstnameTextField.text = firstname as? String
@@ -151,7 +167,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                         self.linkedinLink = linkedin as? String ?? ""
                     }
                 } else {
-                    print("Social Media link doc doesn't exists")
+                    print("Social Media link doc doesn't exists, user hasn't inputted any")
                 }
             } else {
                 print("Error in getting social document, error: \(String(describing: error))")
@@ -170,37 +186,18 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             return true
         }
         
-        let newText = currentText.replacingCharacters(in: range, with: string)
-        
-        textField.text = newText
-        
-        // Store the new change into the api
-        
-        print("newText: \(newText)")
+        textField.text = currentText.replacingCharacters(in: range, with: string)
+    
         return false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        print("textFieldShouldReturn called")
-        
-        // Maybe switch to using a map instead?
-        switch textField {
-        case usernameTextField:
-            usernameTextField.resignFirstResponder()
-        case firstnameTextField:
-            firstnameTextField.resignFirstResponder()
-        case lastnameTextField:
-            lastnameTextField.resignFirstResponder()
-        case popUpTextField:
-            popUpTextField.resignFirstResponder()
-        default:
-            usernameTextField.resignFirstResponder()
-        }
+    //    print("textFieldShouldReturn called")
+
+        textField.resignFirstResponder()
         
         // Update the appropriate social media links
         if textField == popUpTextField {
-
             switch popUpLabel.text {
             case "Twitter":
                 self.twitterLink = popUpTextField.text ?? ""
@@ -215,15 +212,76 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             default:
                 print("Doesn't match any of the social media, meaning it's for password reset")
             }
-            
         } else {
+            // Store data right away if it's not the pop because pop would've stored already
             storeData()
         }
 
-        
         return true
     }
     
+    // MARK: - Profile Picture Related
+    @IBAction func addProfileImage() {
+     //   print("addProfileImage called")
+        checkPermission()
+        self.imagePickerController.sourceType = .photoLibrary
+        self.present(self.imagePickerController, animated: true, completion: nil)
+        
+    }
+    
+    func checkPermission() {
+        if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
+            PHPhotoLibrary.requestAuthorization({
+                (status: PHAuthorizationStatus) -> Void in ()
+            })
+        }
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {} else {
+            PHPhotoLibrary.requestAuthorization(requestAuthorization)
+        }
+    }
+    
+    func requestAuthorization(status: PHAuthorizationStatus) {
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
+            print("Have access to photos")
+        } else {
+            print("Don't have access to photos")
+        }
+    }
+    
+    // Get the url of selected image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL{
+            uploadToStorage(fileURL: url)
+        }
+        
+        imagePickerController.dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadToStorage(fileURL: URL) {
+        let _ = Data()
+        let storageRef = storage.reference()
+        
+        let localFile = fileURL
+        
+        let photoRef = storageRef.child(docID)
+        let _ = photoRef.putFile(from: localFile, metadata: nil) { (metadata, error) in
+            guard metadata != nil else {
+                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+        
+        // Photo downloaded, store the url to user data in db
+        photoRef.downloadURL(completion: { (url, error) in
+            if let urlText = url?.absoluteString {
+                self.imageText = urlText
+               // print("Image url in db: \(urlText)")
+                self.storeData()
+            }
+        })
+        print("Photo has been uploaded to storage")
+        }
+        profileImage.sd_setImage(with: photoRef, placeholderImage: placeholderImage)
+    }
     
     // MARK: - Social Media Button Clicked
     @IBAction func twitterClicked() {
@@ -250,19 +308,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Pop up for Social Media & Reset Password
     // Display pop up view
     func displayPopUp(_ label: String, _ text: String, _ reset: Bool) {
-        // Disable all the other functions
-        usernameTextField.isUserInteractionEnabled = false
-        firstnameTextField.isUserInteractionEnabled = false
-        lastnameTextField.isUserInteractionEnabled = false
-        resetBtn.isUserInteractionEnabled = false
-        signoutBtn.isUserInteractionEnabled = false
-        settingBtn.isUserInteractionEnabled = false
-        lobbyBtn.isUserInteractionEnabled = false
-        twitterBtn.isUserInteractionEnabled = false
-        facebookBtn.isUserInteractionEnabled = false
-        snapchatBtn.isUserInteractionEnabled = false
-        instagramBtn.isUserInteractionEnabled = false
-        linkedinBtn.isUserInteractionEnabled = false
+        // Disable all the background functions
+        TFFields = TFFields.map({ $0.isUserInteractionEnabled = false; return $0})
+        buttons = buttons.map({ $0.isUserInteractionEnabled = false; return $0})
+        
+        popUpTextField.isUserInteractionEnabled = true
+        closeViewBtn.isUserInteractionEnabled = true
         
         if reset {
             popUpLabel.font = popUpLabel.font.withSize(16)
@@ -272,7 +323,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             popUpLabel.font.withSize(22)
         }
         
-        
         popUpView.isHidden = false
         popUpLabel.text = label
         popUpTextField.text = text
@@ -281,29 +331,23 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func closePopUp() {
-        print("closePopUp called")
+      //  print("closePopUp called")
         // Clean up this code later
         popUpView.isHidden = true
-        usernameTextField.isUserInteractionEnabled = true
-        firstnameTextField.isUserInteractionEnabled = true
-        lastnameTextField.isUserInteractionEnabled = true
-        resetBtn.isUserInteractionEnabled = true
-        settingBtn.isUserInteractionEnabled = true
-        signoutBtn.isUserInteractionEnabled = true
-        lobbyBtn.isUserInteractionEnabled = true
-        twitterBtn.isUserInteractionEnabled = true
-        facebookBtn.isUserInteractionEnabled = true
-        snapchatBtn.isUserInteractionEnabled = true
-        instagramBtn.isUserInteractionEnabled = true
-        linkedinBtn.isUserInteractionEnabled = true
+        popUpConfirmBtn.isHidden = true
+        popUpErrLabel.isHidden = true
+        
+        TFFields = TFFields.map({ $0.isUserInteractionEnabled = true; return $0})
+        buttons = buttons.map({ $0.isUserInteractionEnabled = true; return $0})
         
         popUpConfirmBtn.isHidden = true
         popUpConfirmBtn.isUserInteractionEnabled = false
-        popUpErrLabel.isHidden = true
+        popUpTextField.isUserInteractionEnabled = false
+        emailTextField.isUserInteractionEnabled = false
+        
         popUpTextField.text = ""
         
         storeData()
-
     }
     
     
@@ -312,16 +356,23 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     func storeData() {
         
         // Make the request to store the data
-        let userData = ["username" : usernameTextField.text, "first name" : firstnameTextField.text, "last name" : lastnameTextField.text, "email" : emailTextField.text]
-        let userDoc = db.collection("users").document("testing-user-profile")
-        userDoc.updateData(userData as [String : Any])
         
+        // User Data
+        let userDoc = db.collection("users").document(docID)
+        userDoc.updateData([
+            "username": usernameTextField.text ?? (Any).self,
+            "image": imageText,
+            "first name": firstnameTextField.text ?? (Any).self,
+            "last name": lastnameTextField.text ?? (Any).self,
+            "email" : emailTextField.text ?? (Any).self,
+        ])
         
+        // Social Media links
         let socialData = ["twitter" : twitterLink, "facebook" : facebookLink, "snapchat" : snapchatLink, "instagram" : instagramLink, "linkedin" : linkedinLink]
         let socialDoc = userDoc.collection("socials").document("links")
-        socialDoc.updateData(socialData)
+        socialDoc.setData(socialData)
     
-        // keep the user data updated the new
+        // keep the user data updated with new info
         displayUserData()
     }
     
@@ -365,9 +416,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             assertionFailure("couldn't find vc")
             return }
         //optional navigation controller
-        navigationController?.viewControllers = [friendViewController]
-        
-        
+        navigationController?.pushViewController(friendViewController, animated: true)
     }
     
     // Sign out button pressed

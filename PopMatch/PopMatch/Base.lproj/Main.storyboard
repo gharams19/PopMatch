@@ -1014,13 +1014,26 @@
                                     <action selector="to_lobby:" destination="0PP-xd-bx0" eventType="touchUpInside" id="eSM-jp-rME"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tzf-UB-l8T" userLabel="Profile Image">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tzf-UB-l8T" userLabel="Profile Image" customClass="RoundedImageView" customModule="PopMatch" customModuleProvider="target">
                                 <rect key="frame" x="144.5" y="75.5" width="125" height="122.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="Rxk-X3-4mI"/>
                                     <constraint firstAttribute="width" constant="125" id="nJl-4O-CWP"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8P-rQ-4iu" userLabel="Photo Button">
+                                <rect key="frame" x="232" y="74" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VBj-xg-bva"/>
+                                    <constraint firstAttribute="width" constant="50" id="hEL-t2-KZX"/>
+                                </constraints>
+                                <state key="normal" image="camera Icon"/>
+                                <connections>
+                                    <action selector="addProfileImage" destination="0PP-xd-bx0" eventType="touchUpInside" id="gXV-ef-X0e"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdB-Dw-son">
                                 <rect key="frame" x="20" y="219" width="111.5" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
@@ -1181,6 +1194,7 @@
                             <constraint firstItem="irV-By-60A" firstAttribute="leading" secondItem="e6E-vt-KVB" secondAttribute="leading" constant="25" id="9YG-z3-5RT"/>
                             <constraint firstItem="o8U-31-2aO" firstAttribute="top" secondItem="0xr-fI-Y5H" secondAttribute="bottom" constant="15" id="Aql-Wg-tSN"/>
                             <constraint firstItem="Nje-GK-2KT" firstAttribute="leading" secondItem="e6E-vt-KVB" secondAttribute="leading" constant="20" id="CpY-QD-1wW"/>
+                            <constraint firstItem="p8P-rQ-4iu" firstAttribute="top" secondItem="e6E-vt-KVB" secondAttribute="top" constant="30" id="D3V-Lv-3my"/>
                             <constraint firstItem="JbF-6x-ysz" firstAttribute="centerX" secondItem="CjS-ky-SaK" secondAttribute="centerX" id="DwN-Fw-V0n"/>
                             <constraint firstItem="QH6-Uf-Y8N" firstAttribute="leading" secondItem="Udd-K9-mU6" secondAttribute="trailing" constant="10" id="EEn-o2-8zw"/>
                             <constraint firstItem="JbF-6x-ysz" firstAttribute="top" secondItem="0xm-2x-3bW" secondAttribute="bottom" constant="50" id="Goi-QB-9Ll"/>
@@ -1205,6 +1219,7 @@
                             <constraint firstItem="e6E-vt-KVB" firstAttribute="trailing" secondItem="wkM-HV-Aft" secondAttribute="trailing" constant="69" id="bel-Gx-ErH"/>
                             <constraint firstItem="e6E-vt-KVB" firstAttribute="trailing" secondItem="PkT-ed-4vw" secondAttribute="trailing" constant="30" id="cNe-ly-XHb"/>
                             <constraint firstItem="e6E-vt-KVB" firstAttribute="trailing" secondItem="0xr-fI-Y5H" secondAttribute="trailing" constant="25" id="e3B-jS-g7I"/>
+                            <constraint firstItem="p8P-rQ-4iu" firstAttribute="centerX" secondItem="CjS-ky-SaK" secondAttribute="centerX" constant="50" id="eY8-qS-xWB"/>
                             <constraint firstItem="e6E-vt-KVB" firstAttribute="trailing" secondItem="o8U-31-2aO" secondAttribute="trailing" constant="25" id="eYg-Y7-96J"/>
                             <constraint firstItem="mMp-3W-jZP" firstAttribute="centerY" secondItem="JE3-wX-h0Q" secondAttribute="centerY" id="ehq-Ea-iKF"/>
                             <constraint firstItem="y8a-MG-BP1" firstAttribute="top" secondItem="QH6-Uf-Y8N" secondAttribute="bottom" constant="15" id="ew4-8j-nSD"/>
@@ -1244,6 +1259,7 @@
                         <outlet property="popUpLabel" destination="2tP-M8-XFy" id="Gnu-1q-uM1"/>
                         <outlet property="popUpTextField" destination="Bxu-KV-9w0" id="MxX-zb-XDu"/>
                         <outlet property="popUpView" destination="irV-By-60A" id="tsi-12-VCh"/>
+                        <outlet property="profileBtn" destination="p8P-rQ-4iu" id="xVl-Qd-TCK"/>
                         <outlet property="profileImage" destination="tzf-UB-l8T" id="9AS-Yc-Aij"/>
                         <outlet property="resetBtn" destination="mMp-3W-jZP" id="1rh-um-D6C"/>
                         <outlet property="settingBtn" destination="PkT-ed-4vw" id="fee-X7-nGB"/>
@@ -1388,6 +1404,9 @@
         <designable name="qks-m4-lqI">
             <size key="intrinsicContentSize" width="1527" height="1509"/>
         </designable>
+        <designable name="tzf-UB-l8T">
+            <size key="intrinsicContentSize" width="19" height="20"/>
+        </designable>
     </designables>
     <resources>
         <image name="Instagram Icon" width="173" height="162"/>
@@ -1398,6 +1417,7 @@
         <image name="addTime Icon" width="115" height="113"/>
         <image name="backCircle" width="760" height="763"/>
         <image name="bubble1" width="1527" height="1509"/>
+        <image name="camera Icon" width="168" height="167"/>
         <image name="end call Icon" width="123" height="122"/>
         <image name="facebook Icon" width="191" height="193"/>
         <image name="person" catalog="system" width="128" height="117"/>

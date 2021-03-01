@@ -122,12 +122,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 //if there is no error with signing in
                 if error == nil {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let uid = authResult?.user.uid ?? ""
+                    
                     guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
                             assertionFailure("couldn't find vc") //will stop program
                             return
                         }
                     //optional navigation controller
                     self?.navigationController?.pushViewController(profileViewController, animated: true)
+
+                    profileViewController.docID = uid
             
                     //clear textfields and dismiss keyboard
                     self?.emailTextField.text = nil
