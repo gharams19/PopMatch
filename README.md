@@ -9,6 +9,7 @@ A video chatting app that allows users to have 1 on 1 meetings with new people a
 ### List of third party libraries and server support
 - Firebase
 - Twilio
+- DLRadioButtons
 
 Since we are using Firebase for our data storage and authentication of emails and passwords, and Twilio for the video aspect, we have not found an Api component needed to be implmeneted for now.
 
@@ -39,6 +40,8 @@ Delegates: (will keep updating)
 * UITextFieldDelegate 
 * UITableViewDelegate
 * UserDelegate 
+* UIImagePickerControllerDelegate
+* UINavigationControllerDelegate
 
 
 
