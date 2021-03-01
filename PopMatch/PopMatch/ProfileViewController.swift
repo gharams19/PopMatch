@@ -123,7 +123,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                     if let image = document.get("image") {
                         self.imageText = image as? String ?? ""
                         self.profileImage.sd_setImage(with: URL(string: self.imageText), placeholderImage: self.placeholderImage)
-                        self.profileImage.sizeToFit()
+                       // self.profileImage.sizeToFit()
+                        self.profileImage.contentMode = .scaleAspectFill
                     }
                     
                     if let firstname = document.get("first name") {
