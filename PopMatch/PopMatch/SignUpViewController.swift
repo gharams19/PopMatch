@@ -164,9 +164,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             }
                         //optional navigation controller
                         self.navigationController?.pushViewController(profileViewController, animated: true)
-                        let newProfileView = profileViewController
-//                        profileViewController.docID = ref?.documentID ?? ""
-                        profileViewController.docID = uid
                     } else {
                         
                         //present error, that could not create an account

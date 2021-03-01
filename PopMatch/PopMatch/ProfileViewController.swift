@@ -13,7 +13,6 @@ import FirebaseUI
 
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var docID: String = ""
     
     @IBOutlet weak var settingBtn: UIButton!
     @IBOutlet weak var signoutBtn: UIButton!
@@ -114,7 +113,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // Make API call to database and display data
     func displayUserData () {
        // print("displayUserData called")
-        let userData = db.collection("users").document(docID)
+        let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         userData.getDocument { (document, error) in
             if error == nil {
                 if let document = document, document.exists {
@@ -263,7 +262,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         let localFile = fileURL
         
-        let photoRef = storageRef.child(docID)
+        let photoRef = storageRef.child(Auth.auth().currentUser?.uid ?? "")
         let _ = photoRef.putFile(from: localFile, metadata: nil) { (metadata, error) in
             guard metadata != nil else {
                 print("Error: \(String(describing: error?.localizedDescription))")
@@ -358,7 +357,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         // Make the request to store the data
         
         // User Data
-        let userDoc = db.collection("users").document(docID)
+        let userDoc = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         userDoc.updateData([
             "username": usernameTextField.text ?? (Any).self,
             "image": imageText,

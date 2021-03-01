@@ -123,7 +123,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 if error == nil {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     
-                    let uid = authResult?.user.uid ?? ""
                     
                     guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
                             assertionFailure("couldn't find vc") //will stop program
@@ -131,8 +130,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }
                     //optional navigation controller
                     self?.navigationController?.pushViewController(profileViewController, animated: true)
-
-                    profileViewController.docID = uid
             
                     //clear textfields and dismiss keyboard
                     self?.emailTextField.text = nil
