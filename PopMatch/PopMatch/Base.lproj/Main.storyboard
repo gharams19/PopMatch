@@ -932,6 +932,7 @@
                         <outlet property="lastnameTextField" destination="Oir-uh-FxX" id="Er1-EW-vq5"/>
                         <outlet property="linkedinBtn" destination="Uud-tM-lve" id="sKf-8z-T7U"/>
                         <outlet property="lobbyBtn" destination="jDG-4b-pCy" id="h92-f9-wUk"/>
+                        <outlet property="photoBtn" destination="xb9-Jl-rIU" id="F0X-GI-LRl"/>
                         <outlet property="popUpConfirmBtn" destination="Pvc-Ub-R2w" id="nJu-t0-W97"/>
                         <outlet property="popUpErrLabel" destination="qYb-Pl-ZeX" id="pbS-lD-xeB"/>
                         <outlet property="popUpLabel" destination="S2h-61-tyD" id="jQU-AA-bBo"/>

@@ -14,13 +14,15 @@ import FirebaseUI
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var docID = "Ah33UF4du0PoOT7Lz4dz49o4brJ2"
-    @IBOutlet weak var settingBtn: UIButton!
-    @IBOutlet weak var signoutBtn: UIButton!
-    @IBOutlet weak var lobbyBtn: UIButton!
+    @IBOutlet weak var settingBtn: UIButton! //1
+    @IBOutlet weak var signoutBtn: UIButton! //2
+    @IBOutlet weak var lobbyBtn: UIButton!  //3
+    
+    @IBOutlet weak var photoBtn: UIButton!
     
     @IBOutlet weak var profileImage: UIImageView!
     
-    @IBOutlet weak var resetBtn: UIButton!
+    @IBOutlet weak var resetBtn: UIButton! //4
     
     
     // TextFields
@@ -31,19 +33,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     var TFFields: [UITextField] = []
    
     // Social Media
-    @IBOutlet weak var twitterBtn: UIButton!
-    @IBOutlet weak var facebookBtn: UIButton!
-    @IBOutlet weak var snapchatBtn: UIButton!
-    @IBOutlet weak var instagramBtn: UIButton!
-    @IBOutlet weak var linkedinBtn: UIButton!
+    @IBOutlet weak var twitterBtn: UIButton! //5
+    @IBOutlet weak var facebookBtn: UIButton! //6
+    @IBOutlet weak var snapchatBtn: UIButton! //7
+    @IBOutlet weak var instagramBtn: UIButton! //8
+    @IBOutlet weak var linkedinBtn: UIButton! //9
+    var buttons: [UIButton] = []
     
     // Pop Up View
     @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var closeViewBtn: UIButton!
+    @IBOutlet weak var closeViewBtn: UIButton! //10
     @IBOutlet weak var popUpLabel: UILabel!
     @IBOutlet weak var popUpTextField: UITextField!
     @IBOutlet weak var popUpErrLabel: UILabel!
-    @IBOutlet weak var popUpConfirmBtn: UIButton!
+    @IBOutlet weak var popUpConfirmBtn: UIButton! //11
     
     var twitterLink = ""
     var facebookLink = ""
@@ -74,7 +77,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         self.TFFields = [usernameTextField, firstnameTextField, lastnameTextField, emailTextField, popUpTextField]
         self.TFFields = self.TFFields.map({$0.delegate = self; return $0})
         
-        self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
+        self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, linkedinLink]
+        self.buttons = [twitterBtn, facebookBtn, snapchatBtn, instagramBtn, linkedinBtn, signoutBtn, resetBtn, settingBtn, popUpConfirmBtn, closeViewBtn, photoBtn, lobbyBtn]
 
         popUpView.isHidden = true
         popUpConfirmBtn.isHidden = true
@@ -99,6 +103,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         bottomBorder(lastnameTextField)
         bottomBorder(emailTextField)
         bottomBorder(popUpTextField)
+        
     }
     
     // Styling - textfield
@@ -126,7 +131,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                       //  print("imageText: \(self.imageText)")
                         
                         self.profileImage.sd_setImage(with: URL(string: self.imageText), placeholderImage: self.placeholderImage)
-                        self.profileImage.frame.size =
+//                        self.profileImage.frame.size = c
                        /* if let imageUrl = self.imageText as? URL { // make it a URL
                             print("inside imageURL")
                             self.imageURL = imageUrl
@@ -369,7 +374,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // Display pop up view
     func displayPopUp(_ label: String, _ text: String, _ reset: Bool) {
         // Disable all the other functions
-        usernameTextField.isUserInteractionEnabled = false
+       /* usernameTextField.isUserInteractionEnabled = false
         firstnameTextField.isUserInteractionEnabled = false
         lastnameTextField.isUserInteractionEnabled = false
         resetBtn.isUserInteractionEnabled = false
@@ -381,6 +386,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         snapchatBtn.isUserInteractionEnabled = false
         instagramBtn.isUserInteractionEnabled = false
         linkedinBtn.isUserInteractionEnabled = false
+        */
+        TFFields = TFFields.map({ $0.isUserInteractionEnabled = false; return $0})
+        buttons = buttons.map({ $0.isUserInteractionEnabled = false; return $0})
+
+        popUpTextField.isUserInteractionEnabled = true
+        closeViewBtn.isUserInteractionEnabled = true
+        
+        
+        
         
         if reset {
             popUpLabel.font = popUpLabel.font.withSize(16)
@@ -402,7 +416,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         print("closePopUp called")
         // Clean up this code later
         popUpView.isHidden = true
-        usernameTextField.isUserInteractionEnabled = true
+        popUpConfirmBtn.isHidden = true
+        popUpErrLabel.isHidden = true
+/*        usernameTextField.isUserInteractionEnabled = true
         firstnameTextField.isUserInteractionEnabled = true
         lastnameTextField.isUserInteractionEnabled = true
         resetBtn.isUserInteractionEnabled = true
@@ -414,11 +430,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         snapchatBtn.isUserInteractionEnabled = true
         instagramBtn.isUserInteractionEnabled = true
         linkedinBtn.isUserInteractionEnabled = true
+ */
         
-        popUpConfirmBtn.isHidden = true
+        TFFields = TFFields.map({ $0.isUserInteractionEnabled = true; return $0})
+        buttons = buttons.map({ $0.isUserInteractionEnabled = true; return $0})
+        
+     
+        popUpTextField.isUserInteractionEnabled = false
         popUpConfirmBtn.isUserInteractionEnabled = false
-        popUpErrLabel.isHidden = true
+
         popUpTextField.text = ""
+
         
         storeData()
 
