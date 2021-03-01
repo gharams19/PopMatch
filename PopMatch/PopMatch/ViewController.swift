@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var showHideButton: UIButton!
     
+    
+    @IBOutlet weak var confirmBtn: UIButton!
     @IBOutlet weak var resetPasswordView: UIView!
     @IBOutlet weak var resetErrLabel: UILabel!
     @IBOutlet weak var resetPasswordEmail: UITextField!
@@ -149,12 +151,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //add the custom popup
         resetPasswordView.isHidden = false
-        resetPasswordView.layer.shadowColor = UIColor.black.cgColor
-        resetPasswordView.layer.shadowOpacity = 0.3
-        resetPasswordView.layer.shadowOffset = .zero
-        resetPasswordView.layer.shadowRadius = 10
+//        resetPasswordView.layer.shadowColor = UIColor.black.cgColor
+//        resetPasswordView.layer.shadowOpacity = 0.3
+//        resetPasswordView.layer.shadowOffset = .zero
+//        resetPasswordView.layer.shadowRadius = 10
         resetPasswordView.backgroundColor = UIColor.white
-        resetPasswordView.layer.cornerRadius = 25
+//        resetPasswordView.layer.cornerRadius = 25
+        resetPasswordView.layer.cornerRadius = 15
+        resetPasswordView.layer.borderWidth = 1.5
+        resetPasswordView.layer.borderColor = UIColor.systemOrange.cgColor
+        confirmBtn.layer.borderWidth = 1
+        confirmBtn.layer.borderColor = UIColor.systemOrange.cgColor
+        confirmBtn.layer.cornerRadius = 15
         
         //diable background until done
         emailTextField.isUserInteractionEnabled = false
@@ -162,8 +170,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         signUpHereButton.isUserInteractionEnabled = false
         logInOutlet.isUserInteractionEnabled = false
         resetOutlet.isUserInteractionEnabled = false
-        
+        resetPasswordEmail.placeholder = nil
+        bottomBorder(resetPasswordEmail)
     }
+    
+    // Styling - textfield
+    func bottomBorder(_ textField: UITextField) {
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.blue.cgColor
+        layer.frame = CGRect(x: 0.0, y: textField.frame.size.height - 1.0, width: textField.frame.size.width, height: 1.0)
+        textField.layer.addSublayer(layer)
+    }
+    @IBAction func resetPassXBtn() {
+        self.resetPasswordView.isHidden = true
+        self.view.endEditing(true)
+        self.emailTextField.isUserInteractionEnabled = true
+        self.passwordTextField.isUserInteractionEnabled = true
+        self.signUpHereButton.isUserInteractionEnabled = true
+        self.logInOutlet.isUserInteractionEnabled = true
+        self.resetOutlet.isUserInteractionEnabled = true
+    }
+    
+    
+    
     @IBAction func resetPassConfirm() {
         //send email to reset password
         Auth.auth().sendPasswordReset(withEmail: resetPasswordEmail.text ?? "", completion: { error in
@@ -177,7 +206,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.resetOutlet.isUserInteractionEnabled = true
             } else {
                 self.resetErrLabel.text = "Invalid email"
-                self.resetErrLabel.textColor = .red
+//                self.resetErrLabel.textColor = .red
             }
         })
         
