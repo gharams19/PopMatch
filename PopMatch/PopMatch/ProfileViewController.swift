@@ -152,7 +152,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 if let document = document, document.exists {
                     if let twitter = document.get("twitter") {
                         self.twitterLink = twitter as? String ?? ""
-                        print("twitterLink: \(self.twitterLink)")
                     }
                     if let facebook = document.get("facebook") {
                         self.facebookLink = facebook as? String ?? ""
