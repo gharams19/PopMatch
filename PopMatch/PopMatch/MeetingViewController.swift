@@ -8,13 +8,11 @@
 
 import UIKit
 import TwilioVideo
-
+import Firebase
+import FirebaseStorage
+import FirebaseUI
 
 class MeetingViewController: UIViewController, TimerModelUpdates {
-    
-  
-    
-    
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -41,6 +39,16 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     @IBOutlet weak var linkedin: UIButton!
     @IBOutlet weak var urlTextView: UITextView!
     
+    var db = Firestore.firestore()
+    var storage = Storage.storage()
+    
+    var twitterLink: String = ""
+    var facebookLink: String = ""
+    var snapchatLink: String = ""
+    var instagramLink: String = ""
+    var linkedinLink: String = ""
+    
+    var links: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +62,36 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         snapchat.isHidden = true
         ig.isHidden = true
         linkedin.isHidden = true
+        
+        self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
+        
+        let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
+        let userSocialData = userData.collection("socials").document("links")
+        userSocialData.getDocument { (document, error) in
+            if error == nil {
+                if let document = document, document.exists {
+                    if let twitter = document.get("twitter") {
+                        self.twitterLink = twitter as? String ?? ""
+                    }
+                    if let facebook = document.get("facebook") {
+                        self.facebookLink = facebook as? String ?? ""
+                    }
+                    if let snapchat = document.get("snapchat") {
+                        self.snapchatLink = snapchat as? String ?? ""
+                    }
+                    if let instagram = document.get("instagram") {
+                        self.instagramLink = instagram as? String ?? ""
+                    }
+                    if let linkedin = document.get("linkedin") {
+                        self.linkedinLink = linkedin as? String ?? ""
+                    }
+                } else {
+                    print("Social Media link doc doesn't exists, user hasn't inputted any")
+                }
+            } else {
+                print("Error in getting social document, error: \(String(describing: error))")
+            }
+        }
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
@@ -77,23 +115,23 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     }
     
     @IBAction func sendTwitter(_ sender: Any) {
-        urlTextView.text += "Twitter \n"
+        urlTextView.text = twitterLink
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendFacebook(_ sender: Any) {
-        urlTextView.text += "Facebook \n"
+        urlTextView.text = facebookLink
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendIG(_ sender: Any) {
-        urlTextView.text += "Instagram \n"
+        urlTextView.text = instagramLink
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendLinkedin(_ sender: Any) {
-        urlTextView.text += "Linkedin \n"
+        urlTextView.text = linkedinLink
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendSnapchat(_ sender: Any) {
-        urlTextView.text += "Snapchat \n"
+        urlTextView.text = snapchatLink
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @objc func clearURL(){

@@ -202,15 +202,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         if textField == popUpTextField {
             switch popUpLabel.text {
             case "Twitter":
-                self.twitterLink = popUpTextField.text ?? ""
+                self.twitterLink = "http://twitter.com/" + (popUpTextField.text ?? "[username]")
             case "Facebook":
-                self.facebookLink = popUpTextField.text ?? ""
+                self.facebookLink = "https://www.facebook.com/" + (popUpTextField.text ?? "[username]")
             case "Snapchat":
-                self.snapchatLink = popUpTextField.text ?? ""
+                self.snapchatLink = "https://www.snapchat.com/add/" + (popUpTextField.text ?? "[username]")
             case "Instagram":
-                self.instagramLink = popUpTextField.text ?? ""
+                self.instagramLink = "https://www.instagram.com/" + (popUpTextField.text ?? "[username]")
             case "LinkedIn":
-                self.linkedinLink = popUpTextField.text ?? ""
+                self.linkedinLink = "www.linkedin.com/in/" + (popUpTextField.text ?? "[username]")
             default:
                 print("Doesn't match any of the social media, meaning it's for password reset")
             }
