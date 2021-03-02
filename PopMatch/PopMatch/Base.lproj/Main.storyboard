@@ -443,12 +443,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Answers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqK-WF-jPp">
-                                <rect key="frame" x="128.5" y="99" width="157" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" systemColor="systemIndigoColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsj-Lh-crg">
                                 <rect key="frame" x="167.5" y="761" width="79" height="51"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
@@ -457,137 +451,724 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="toProfile" destination="GaE-2k-0Rq" eventType="touchUpInside" id="d1a-hn-OXt"/>
+                                    <action selector="toProfile" destination="GaE-2k-0Rq" eventType="touchUpInside" id="cdd-1e-iEJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Age Group:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aya-A8-kOK" userLabel="Major">
-                                <rect key="frame" x="25" y="172.5" width="364" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Answers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqK-WF-jPp">
+                                <rect key="frame" x="112.5" y="89" width="189" height="34.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="28"/>
+                                <color key="textColor" systemColor="systemIndigoColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xis-Gi-rOR" userLabel="Age Textfield">
-                                <rect key="frame" x="25" y="199.5" width="364" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xis-Gi-rOR" userLabel="Major Textfield">
+                                <rect key="frame" x="25" y="189.5" width="364" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are your hobbies?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRE-IQ-FxF" userLabel="Hobbies">
-                                <rect key="frame" x="25" y="253.5" width="364" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your study/Area of interest/Major:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aya-A8-kOK" userLabel="Major">
+                                <rect key="frame" x="25" y="163.5" width="364" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aNG-mO-mXj" userLabel="Hobbies Textfield">
-                                <rect key="frame" x="25" y="280.5" width="364" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of music do you like?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvh-DO-19T" userLabel="Music">
-                                <rect key="frame" x="25" y="334.5" width="364" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are your hobbies? Check as apply." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNw-Je-C3t" userLabel="Hobbies">
+                                <rect key="frame" x="25" y="243.5" width="364" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6l-qJ-32Y" userLabel="Music Textfield">
-                                <rect key="frame" x="25" y="361.5" width="364" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What the best joke you've ever heard?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIc-Vv-Ss0" userLabel="Joke">
-                                <rect key="frame" x="25" y="496.5" width="364" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2iL-Nk-eGh" userLabel="Hobbies Stack">
+                                <rect key="frame" x="25" y="279.5" width="364" height="136"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="4z9-6z-8gC" userLabel="Row 1">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYP-T2-x4t" userLabel="Traveling Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+                                                <state key="normal" title="Traveling">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorSize">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="31K-ar-jdc"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="gnL-x6-uOz"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="R4J-xO-KCx"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="hnx-6a-uDv"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="ibq-pQ-onE"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="a1Q-QK-2ZU"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="016-cm-MPl"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="oef-xv-HPz"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="ski-13-8x9"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="ZSe-Ie-ikD"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="5Bo-M1-Ro9"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="Hfh-A4-ddZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjf-xK-bAz" userLabel="Working Out Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="118" y="0.0" width="163.5" height="34"/>
+                                                <state key="normal" title="Working Out">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="Op8-Uy-JGn"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="fBw-Wx-rze"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="CdP-bU-EWV"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="YEh-XO-GMY"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="VXV-d2-toM"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="kM6-2L-cUM"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="Rb5-NH-tMG"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="g7f-43-Fz7"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="4E6-e9-8vq"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="odf-Ey-5Dt"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="eOm-6r-8Wg"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hl4-R9-LiE" userLabel="Hiking Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="281.5" y="0.0" width="82.5" height="34"/>
+                                                <state key="normal" title="Hiking">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="cry-l6-y6d"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="tyV-hN-bst"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="cU0-n0-YPV"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="94J-0h-1i6"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="UPe-PP-aSk"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="byx-IF-L9C"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="dab-GZ-Rca"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="cG0-8A-g51"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="Jph-8Z-BPj"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="F2b-So-de7"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="Czb-H0-1Y9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dOF-bA-9DX" userLabel="Row 2">
+                                        <rect key="frame" x="0.0" y="34" width="364" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lku-1r-PZO" userLabel="Cooking Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="34"/>
+                                                <state key="normal" title="Cooking">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
+                                                        <real key="value" value="-1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="39E-PV-xWV"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="vEs-GU-XL3"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="vRk-2D-rWw"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="LU5-mU-Myd"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="d1p-iB-hNj"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="Tsn-be-eTs"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="Vrk-0e-Vkp"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="qXA-Ov-44P"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="Uw3-V7-QCT"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="vKW-nl-NJb"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="SaB-Hq-ts0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BK-7H-23q" userLabel="Reading Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="94" y="0.0" width="179" height="34"/>
+                                                <state key="normal" title="Reading/Writing">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="ywH-rL-pNa"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="Cf0-Yw-DDd"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="tJX-im-phl"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="OPE-YC-gmo"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="bHt-4P-XDv"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="Sh1-Ck-HFJ"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="lvb-Iz-4TD"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="b9S-LM-OZe"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="Klf-zL-kmW"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="nIF-sh-YaH"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="hdw-xU-VyW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="br5-qJ-bEj" userLabel="Crafting Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="273" y="0.0" width="91" height="34"/>
+                                                <state key="normal" title="Crafting">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="3v3-lG-kgh"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="ui7-1q-0Nq"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="19E-zZ-QJe"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="Z9b-De-rdP"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="EYu-LB-Nhc"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="v9z-1T-iZ7"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="20s-P4-2GH"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="NAy-5A-6ar"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="Rqo-pq-VrN"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="tZ7-tm-2V4"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="58K-AU-tYW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vE1-Rj-hRe" userLabel="Row 3">
+                                        <rect key="frame" x="0.0" y="68" width="364" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dT4-Ry-LBM" userLabel="Music Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="34"/>
+                                                <state key="normal" title="Music">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="TrK-oZ-A3E"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="evL-Fe-hRf"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="8EL-mX-nNm"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="cID-fJ-OrB"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="ivy-Zu-C5d"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="AIS-aM-3jh"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="MFc-Vy-Ph0"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="OSC-0R-Q1m"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="Tii-Uq-dZB"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="P3q-KG-tmt"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="glQ-Pv-JSc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6h8-TM-slG" userLabel="Video Games Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="67.5" y="0.0" width="150.5" height="34"/>
+                                                <state key="normal" title="Video Games">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="SyH-C9-8f9"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="SBV-Qv-4E5"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="4Vd-Zh-hV7"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="0vC-Id-CC2"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="MCW-eK-dhc"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="X2v-tw-zz1"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="KrX-zx-Yp9"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="aPp-Uy-0r3"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="aaN-Az-2b9"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="qb0-xh-LNM"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="BSb-vY-beQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-VQ-Rh3" userLabel="Photography Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="218" y="0.0" width="146" height="34"/>
+                                                <state key="normal" title="Photography">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="kdL-WB-jqk"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="0pW-UT-DRP"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="hdy-Ur-3xf"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="SsG-q8-ff2"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="l9U-sB-uw8"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="XIs-1Z-SI0"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="IHL-br-NEr"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="oE6-Je-5YG"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="LmH-Ks-PDb"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="xD9-GA-Gj6"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="A8k-vh-6GS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="UeO-rM-TpE" userLabel="Row 4">
+                                        <rect key="frame" x="0.0" y="102" width="364" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgz-8K-7nE" userLabel="Netflix Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="99" height="34"/>
+                                                <state key="normal" title="Netflix">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="hT0-gK-Iqd"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="fJr-yA-Vi9"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="u9P-7D-oJf"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="jYy-gD-ebS"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="fBi-5P-IL3"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="Xhl-3X-1y6"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="oq3-dq-IBW"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="0zT-Wc-lHx"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="wqY-aR-fxT"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="s9f-3s-oxG"/>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="nXs-j2-qbc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUt-Gk-XfE" userLabel="Other Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="99" y="0.0" width="88" height="34"/>
+                                                <state key="normal" title="Other">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="eL5-b0-eIo"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="3tu-RO-dX7"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="Wqc-dO-Aed"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="s6g-6L-C9q"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="g7X-e8-wBG"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="lsD-gB-Ild"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="xdL-16-COn"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="Thz-PZ-zvk"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="szs-eg-P0l"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="8B0-xN-nHE"/>
+                                                    <outletCollection property="otherButtons" destination="jgF-JK-ZEI" id="HWA-nC-tF3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgF-JK-ZEI" userLabel="Don't Know Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="187" y="0.0" width="177" height="34"/>
+                                                <state key="normal" title="Don't Know">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="pYP-T2-x4t" id="eWL-A1-JR3"/>
+                                                    <outletCollection property="otherButtons" destination="Mjf-xK-bAz" id="hlB-jb-UlZ"/>
+                                                    <outletCollection property="otherButtons" destination="Hl4-R9-LiE" id="BAA-Tm-49F"/>
+                                                    <outletCollection property="otherButtons" destination="lku-1r-PZO" id="YMC-Ob-prb"/>
+                                                    <outletCollection property="otherButtons" destination="3BK-7H-23q" id="5oC-2G-2gO"/>
+                                                    <outletCollection property="otherButtons" destination="br5-qJ-bEj" id="4fF-3B-eJr"/>
+                                                    <outletCollection property="otherButtons" destination="dT4-Ry-LBM" id="fio-VZ-8lQ"/>
+                                                    <outletCollection property="otherButtons" destination="6h8-TM-slG" id="22J-67-jfW"/>
+                                                    <outletCollection property="otherButtons" destination="LNN-VQ-Rh3" id="V1Z-8b-fI8"/>
+                                                    <outletCollection property="otherButtons" destination="Kgz-8K-7nE" id="DQ8-dL-k9Q"/>
+                                                    <outletCollection property="otherButtons" destination="nUt-Gk-XfE" id="W5L-GJ-4gB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of music do you listen to?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLs-NC-Fsl" userLabel="Music">
+                                <rect key="frame" x="25" y="489.5" width="364" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5A-Qq-IfY" userLabel="Joke Textfield">
-                                <rect key="frame" x="25" y="523.5" width="364" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your most used app?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDh-Jx-rla" userLabel="App">
-                                <rect key="frame" x="25" y="415.5" width="364" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MQX-to-Mmf" userLabel="Music Stack">
+                                <rect key="frame" x="25" y="525.5" width="364" height="102"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dsd-xT-k99" userLabel="Row 1 - Music">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1d9-J0-AEq" userLabel="Pop Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="34"/>
+                                                <state key="normal" title="Pop">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="EmV-aK-JTy"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="52O-9r-OPw"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="O2m-s6-YqT"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="IkE-sK-VDI"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="26r-1u-mSz"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="eDo-jQ-yeX"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="N9D-XB-yXa"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="rsf-T6-VPe"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="iQh-Q3-a6M"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="eTy-hf-LnD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5i9-0c-TJ1" userLabel="EDM Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="69" y="0.0" width="84" height="34"/>
+                                                <state key="normal" title="EDM">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="UaD-yT-u6c"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="Yx1-D8-uSz"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="9CK-2y-V8l"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="PnQ-g9-46h"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="lzJ-cC-vID"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="dYF-q9-M5o"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="FeM-yx-fhs"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="dJJ-pb-HsD"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="Jal-Ib-00w"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="ziv-d4-VzL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPB-nf-zgZ" userLabel="Hip Hop Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="153" y="0.0" width="142" height="34"/>
+                                                <state key="normal" title="Hip Hop">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="ri2-OZ-spK"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="JU8-Sa-a4q"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="rjz-Fx-nqy"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="zDt-Vq-9sl"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="ene-tw-D0L"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="i6F-he-LXN"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="Rkl-Wa-5ZK"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="mXj-mH-Vui"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="03W-qS-bzw"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="FKa-vw-Rab"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFV-R6-BsZ" userLabel="Rap Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="295" y="0.0" width="69" height="34"/>
+                                                <state key="normal" title="Rap">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="1KT-Rn-evb"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="7Jn-US-Mpv"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="8bj-nU-4Pr"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="kqq-5w-ofs"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="c6C-UB-Ezv"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="mkl-az-QjX"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="Uf9-16-rq2"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="E30-P3-FQ4"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="reW-ix-XYw"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="t5m-sa-uvV"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="aoe-Th-yxq" userLabel="Row 2 - Music">
+                                        <rect key="frame" x="0.0" y="34" width="364" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieu-Gz-vpP" userLabel="Rock Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="34"/>
+                                                <state key="normal" title="Rock">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="1Hk-WE-j7y"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="ufb-sA-ciL"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="lsd-8G-lLh"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="d6b-ku-aJu"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="Kz3-qe-lf1"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="17b-QG-VDS"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="YKk-ly-f3b"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="SV7-Yi-Aoc"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="Sfo-X9-FWb"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="iW8-dN-bmV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUm-lX-8PK" userLabel="R&amp;B Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="83" y="0.0" width="70.5" height="34"/>
+                                                <state key="normal" title="R&amp;B">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="YZm-FF-abP"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="fPW-C9-lXt"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="5FV-EH-BCU"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="H2t-YE-pfL"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="FYt-rU-Fy6"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="D1d-pb-QLe"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="aLP-B6-LEk"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="iGV-6a-pcH"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="VnR-Ft-wnL"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="o2e-DO-b06"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noR-VX-TJ2" userLabel="Country Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="153.5" y="0.0" width="131.5" height="34"/>
+                                                <state key="normal" title="Country">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="9O8-jh-rdL"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="vvM-54-vVx"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="Hev-mZ-0O4"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="mqb-Jg-ccu"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="hUM-eo-KPh"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="kmG-4N-EWc"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="fsW-XE-reJ"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="DQN-f7-RZz"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="pgY-AB-Kp4"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="DV3-WC-QmI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXK-VK-bUX" userLabel="Indie Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="285" y="0.0" width="79" height="34"/>
+                                                <state key="normal" title="Indie">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="wwa-ig-JGV"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="ONG-TE-fpw"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="FxC-2N-xTQ"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="7Sa-gd-oj7"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="AgL-de-RYf"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="4x8-7k-OJ4"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="YxH-vn-ebI"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="pg5-Vq-yf1"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="HUH-lT-ZVm"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="XhE-yh-UP9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dwu-cB-YVQ" userLabel="Row 3 - Music">
+                                        <rect key="frame" x="0.0" y="68" width="364" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rvu-S0-Icd" userLabel="Classical Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="34"/>
+                                                <state key="normal" title="Classical">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="D49-0g-Bcr"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="gj1-na-H36"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="xKc-Xz-8Zr"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="gYU-9F-mGm"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="g0c-xM-Elj"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="Y2e-ZD-q41"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="Ap3-Kg-M6Z"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="AzD-Cb-EPR"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="LUa-D4-tIT"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="DGg-mC-O9B"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5L-zh-6BN" userLabel="Other Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="111.5" y="0.0" width="72" height="34"/>
+                                                <state key="normal" title="Other">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="N4Y-yk-N1j"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="a2X-Dj-5g8"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="p7a-Bj-ARY"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="yei-GS-Hya"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="MKe-kW-ABO"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="3Wg-H1-Tnd"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="wqH-yT-8ef"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="Lnz-Br-WZI"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="V0U-ZW-h3a"/>
+                                                    <outletCollection property="otherButtons" destination="vH9-pc-ED6" id="ERM-6c-SuJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vH9-pc-ED6" userLabel="No Preference Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="183.5" y="0.0" width="180.5" height="34"/>
+                                                <state key="normal" title="No preference">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outletCollection property="otherButtons" destination="1d9-J0-AEq" id="sC4-V0-8cU"/>
+                                                    <outletCollection property="otherButtons" destination="5i9-0c-TJ1" id="tP7-xZ-mFJ"/>
+                                                    <outletCollection property="otherButtons" destination="NPB-nf-zgZ" id="gJF-E8-urT"/>
+                                                    <outletCollection property="otherButtons" destination="AFV-R6-BsZ" id="PCB-I1-Qfr"/>
+                                                    <outletCollection property="otherButtons" destination="ieu-Gz-vpP" id="V4t-jR-lt4"/>
+                                                    <outletCollection property="otherButtons" destination="fUm-lX-8PK" id="NfM-EE-ZEa"/>
+                                                    <outletCollection property="otherButtons" destination="noR-VX-TJ2" id="j4A-nU-r00"/>
+                                                    <outletCollection property="otherButtons" destination="rXK-VK-bUX" id="q3F-6I-Er5"/>
+                                                    <outletCollection property="otherButtons" destination="Rvu-S0-Icd" id="Xfa-5b-Zz4"/>
+                                                    <outletCollection property="otherButtons" destination="U5L-zh-6BN" id="ZZZ-Wv-67e"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Does pineapple belong on pizza?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkW-SD-TKI" userLabel="PIzza">
+                                <rect key="frame" x="25" y="647.5" width="364" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ck0-I1-O6U" userLabel="App Textfield">
-                                <rect key="frame" x="25" y="442.5" width="364" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYP-T2-x4t" customClass="DLRadioButton" customModule="PopMatch" customModuleProvider="target">
-                                <rect key="frame" x="41" y="594" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEs-uR-AC7" userLabel="Yes Pizza" customClass="DLRadioButton">
+                                <rect key="frame" x="25" y="678.5" width="161" height="34"/>
+                                <state key="normal" title="Yes, of course">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <outletCollection property="otherButtons" destination="OqF-N7-dyx" id="gnq-Wn-0gH"/>
+                                </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqF-N7-dyx" userLabel="No Pizza" customClass="DLRadioButton">
+                                <rect key="frame" x="228" y="678.5" width="161" height="34"/>
+                                <state key="normal" title="No, absolutely not">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <outletCollection property="otherButtons" destination="IEs-uR-AC7" id="j57-ck-AGw"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ASO-z9-iQr" userLabel="Water Stack">
+                                <rect key="frame" x="25" y="435.5" width="364" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is water wet?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYq-N4-bLB" userLabel="Water ">
+                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                        <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RL-0g-ybR" userLabel="Yes Water" customClass="DLRadioButton">
+                                        <rect key="frame" x="121.5" y="0.0" width="121" height="34"/>
+                                        <state key="normal" title="Yes">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="waterBtnsClicked:" destination="GaE-2k-0Rq" eventType="touchUpInside" id="L4C-XP-pBy"/>
+                                            <outletCollection property="otherButtons" destination="7Nl-cr-0Wn" id="lOc-ys-sOC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Nl-cr-0Wn" userLabel="No Water" customClass="DLRadioButton">
+                                        <rect key="frame" x="242.5" y="0.0" width="121.5" height="34"/>
+                                        <state key="normal" title="No">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="waterBtnsClicked:" destination="GaE-2k-0Rq" eventType="touchUpInside" id="but-X4-GeG"/>
+                                            <outletCollection property="otherButtons" destination="7RL-0g-ybR" id="Ibm-kj-iUj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xfT-zn-AXw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="i5A-Qq-IfY" firstAttribute="top" secondItem="kIc-Vv-Ss0" secondAttribute="bottom" constant="5" id="0Ii-tv-NaY"/>
-                            <constraint firstItem="ck0-I1-O6U" firstAttribute="top" secondItem="CDh-Jx-rla" secondAttribute="bottom" constant="5" id="1Td-p6-OcW"/>
-                            <constraint firstItem="gqK-WF-jPp" firstAttribute="top" secondItem="xfT-zn-AXw" secondAttribute="top" constant="55" id="5Hy-yk-c3f"/>
+                            <constraint firstItem="IEs-uR-AC7" firstAttribute="top" secondItem="NkW-SD-TKI" secondAttribute="bottom" constant="10" id="054-aC-Rd7"/>
+                            <constraint firstItem="MQX-to-Mmf" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="3CU-B9-9VD"/>
+                            <constraint firstItem="NkW-SD-TKI" firstAttribute="top" secondItem="MQX-to-Mmf" secondAttribute="bottom" constant="20" id="4hZ-oM-ocR"/>
+                            <constraint firstItem="gqK-WF-jPp" firstAttribute="top" secondItem="xfT-zn-AXw" secondAttribute="top" constant="45" id="5Hy-yk-c3f"/>
                             <constraint firstItem="Aya-A8-kOK" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="5RA-2G-Bmq"/>
-                            <constraint firstItem="ck0-I1-O6U" firstAttribute="top" secondItem="CDh-Jx-rla" secondAttribute="bottom" constant="5" id="76U-eP-zze"/>
-                            <constraint firstItem="ck0-I1-O6U" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="8YG-L5-F9V"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="c6l-qJ-32Y" secondAttribute="trailing" constant="25" id="BbO-Rm-xWq"/>
-                            <constraint firstItem="kIc-Vv-Ss0" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="ChH-iC-VnL"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="aNG-mO-mXj" secondAttribute="trailing" constant="25" id="Cnt-LL-nnD"/>
+                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="rLs-NC-Fsl" secondAttribute="trailing" constant="25" id="5yN-9e-ppO"/>
+                            <constraint firstItem="rLs-NC-Fsl" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="8rC-4e-RpR"/>
+                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="2iL-Nk-eGh" secondAttribute="trailing" constant="25" id="Ard-OD-6nN"/>
+                            <constraint firstItem="gNw-Je-C3t" firstAttribute="top" secondItem="xis-Gi-rOR" secondAttribute="bottom" constant="20" id="C2S-F6-0yP"/>
+                            <constraint firstItem="OqF-N7-dyx" firstAttribute="height" secondItem="IEs-uR-AC7" secondAttribute="height" id="CHD-gL-gn1"/>
+                            <constraint firstItem="NkW-SD-TKI" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="Caq-Po-VRV"/>
                             <constraint firstItem="xis-Gi-rOR" firstAttribute="top" secondItem="Aya-A8-kOK" secondAttribute="bottom" constant="5" id="FP3-5m-RO9"/>
-                            <constraint firstItem="c6l-qJ-32Y" firstAttribute="top" secondItem="tvh-DO-19T" secondAttribute="bottom" constant="5" id="H0w-py-MN2"/>
-                            <constraint firstItem="ck0-I1-O6U" firstAttribute="top" secondItem="CDh-Jx-rla" secondAttribute="bottom" constant="5" id="IsK-yz-WMF"/>
-                            <constraint firstItem="ck0-I1-O6U" firstAttribute="top" secondItem="CDh-Jx-rla" secondAttribute="bottom" constant="5" id="KQP-tw-FFH"/>
+                            <constraint firstItem="OqF-N7-dyx" firstAttribute="width" secondItem="IEs-uR-AC7" secondAttribute="width" id="I2u-Zp-bMc"/>
+                            <constraint firstItem="2iL-Nk-eGh" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="I8x-pW-yjA"/>
+                            <constraint firstItem="rLs-NC-Fsl" firstAttribute="top" secondItem="ASO-z9-iQr" secondAttribute="bottom" constant="20" id="Ih2-Mb-DGY"/>
                             <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="xis-Gi-rOR" secondAttribute="trailing" constant="25" id="LPg-aG-R3h"/>
-                            <constraint firstItem="i5A-Qq-IfY" firstAttribute="top" secondItem="kIc-Vv-Ss0" secondAttribute="bottom" constant="5" id="LXW-2Z-OTL"/>
-                            <constraint firstItem="aNG-mO-mXj" firstAttribute="top" secondItem="eRE-IQ-FxF" secondAttribute="bottom" constant="5" id="LlH-ST-qFR"/>
-                            <constraint firstItem="tvh-DO-19T" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="MDJ-eX-RXX"/>
-                            <constraint firstItem="c6l-qJ-32Y" firstAttribute="top" secondItem="tvh-DO-19T" secondAttribute="bottom" constant="5" id="PJy-WV-kGI"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="CDh-Jx-rla" secondAttribute="trailing" constant="25" id="RkM-IM-bGj"/>
-                            <constraint firstItem="i5A-Qq-IfY" firstAttribute="top" secondItem="kIc-Vv-Ss0" secondAttribute="bottom" constant="5" id="UPx-54-Yf6"/>
-                            <constraint firstItem="aNG-mO-mXj" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="UQR-r9-bA2"/>
-                            <constraint firstItem="CDh-Jx-rla" firstAttribute="top" secondItem="c6l-qJ-32Y" secondAttribute="bottom" constant="20" id="VaZ-Y0-V5B"/>
-                            <constraint firstItem="i5A-Qq-IfY" firstAttribute="top" secondItem="kIc-Vv-Ss0" secondAttribute="bottom" constant="5" id="WiK-IU-QdZ"/>
-                            <constraint firstItem="ck0-I1-O6U" firstAttribute="top" secondItem="CDh-Jx-rla" secondAttribute="bottom" constant="5" id="Yq9-Xj-Q2a"/>
-                            <constraint firstItem="c6l-qJ-32Y" firstAttribute="top" secondItem="tvh-DO-19T" secondAttribute="bottom" constant="5" id="ZRb-Db-iLo"/>
-                            <constraint firstItem="ck0-I1-O6U" firstAttribute="top" secondItem="CDh-Jx-rla" secondAttribute="bottom" constant="5" id="aMa-TQ-eLQ"/>
-                            <constraint firstItem="kIc-Vv-Ss0" firstAttribute="top" secondItem="ck0-I1-O6U" secondAttribute="bottom" constant="20" id="cjE-eK-mhG"/>
+                            <constraint firstItem="ASO-z9-iQr" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="T3M-AR-JME"/>
+                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="gNw-Je-C3t" secondAttribute="trailing" constant="25" id="U7s-uo-bMg"/>
+                            <constraint firstItem="MQX-to-Mmf" firstAttribute="top" secondItem="rLs-NC-Fsl" secondAttribute="bottom" constant="15" id="VnM-Ee-lgU"/>
+                            <constraint firstItem="OqF-N7-dyx" firstAttribute="top" secondItem="NkW-SD-TKI" secondAttribute="bottom" constant="10" id="X7r-NI-ILC"/>
+                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="NkW-SD-TKI" secondAttribute="trailing" constant="25" id="YCU-7J-B8Q"/>
+                            <constraint firstItem="ASO-z9-iQr" firstAttribute="top" secondItem="2iL-Nk-eGh" secondAttribute="bottom" constant="20" id="YGk-kX-WPz"/>
+                            <constraint firstItem="OqF-N7-dyx" firstAttribute="leading" secondItem="IEs-uR-AC7" secondAttribute="trailing" constant="42" id="ahi-wV-Jlx"/>
+                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="ASO-z9-iQr" secondAttribute="trailing" constant="25" id="eqI-8u-PqX"/>
                             <constraint firstItem="zsj-Lh-crg" firstAttribute="centerX" secondItem="JNL-yh-gTK" secondAttribute="centerX" id="eqp-Nr-KTR"/>
-                            <constraint firstItem="i5A-Qq-IfY" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="er6-ht-oxE"/>
-                            <constraint firstItem="tvh-DO-19T" firstAttribute="top" secondItem="aNG-mO-mXj" secondAttribute="bottom" constant="20" id="fa1-Jo-tr8"/>
-                            <constraint firstItem="eRE-IQ-FxF" firstAttribute="top" secondItem="xis-Gi-rOR" secondAttribute="bottom" constant="20" id="g8o-Ge-a20"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="i5A-Qq-IfY" secondAttribute="trailing" constant="25" id="gcG-fi-Azh"/>
+                            <constraint firstItem="gNw-Je-C3t" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="fEZ-7m-1qU"/>
+                            <constraint firstItem="IEs-uR-AC7" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="fNB-Cn-h1S"/>
+                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="OqF-N7-dyx" secondAttribute="trailing" constant="25" id="hLt-SL-2cL"/>
                             <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="Aya-A8-kOK" secondAttribute="trailing" constant="25" id="iW9-nr-LVc"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="kIc-Vv-Ss0" secondAttribute="trailing" constant="25" id="jGo-Xb-n1F"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="tvh-DO-19T" secondAttribute="trailing" constant="25" id="jV3-rJ-8rk"/>
-                            <constraint firstItem="aNG-mO-mXj" firstAttribute="top" secondItem="eRE-IQ-FxF" secondAttribute="bottom" constant="5" id="jv4-UZ-zbU"/>
-                            <constraint firstItem="c6l-qJ-32Y" firstAttribute="top" secondItem="tvh-DO-19T" secondAttribute="bottom" constant="5" id="kx2-En-8Hb"/>
                             <constraint firstItem="gqK-WF-jPp" firstAttribute="centerX" secondItem="JNL-yh-gTK" secondAttribute="centerX" id="lN8-PJ-Fka"/>
                             <constraint firstItem="Aya-A8-kOK" firstAttribute="top" secondItem="gqK-WF-jPp" secondAttribute="bottom" constant="40" id="m39-ag-xQa"/>
                             <constraint firstItem="xfT-zn-AXw" firstAttribute="bottom" secondItem="zsj-Lh-crg" secondAttribute="bottom" constant="50" id="mII-dG-Lqw"/>
-                            <constraint firstItem="xis-Gi-rOR" firstAttribute="top" secondItem="Aya-A8-kOK" secondAttribute="bottom" constant="5" id="nPG-VW-cKv"/>
-                            <constraint firstItem="aNG-mO-mXj" firstAttribute="top" secondItem="eRE-IQ-FxF" secondAttribute="bottom" constant="5" id="oW8-kx-wbi"/>
-                            <constraint firstItem="c6l-qJ-32Y" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="p7B-u0-JX8"/>
-                            <constraint firstItem="CDh-Jx-rla" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="tXa-V0-wDS"/>
+                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="MQX-to-Mmf" secondAttribute="trailing" constant="25" id="p79-UV-4Kb"/>
                             <constraint firstItem="xis-Gi-rOR" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="tdw-Qu-kt0"/>
-                            <constraint firstItem="i5A-Qq-IfY" firstAttribute="top" secondItem="kIc-Vv-Ss0" secondAttribute="bottom" constant="5" id="vlE-Uf-fUz"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="eRE-IQ-FxF" secondAttribute="trailing" constant="25" id="xqY-c6-It9"/>
-                            <constraint firstItem="xfT-zn-AXw" firstAttribute="trailing" secondItem="ck0-I1-O6U" secondAttribute="trailing" constant="25" id="yL7-Lc-Xf2"/>
-                            <constraint firstItem="eRE-IQ-FxF" firstAttribute="leading" secondItem="xfT-zn-AXw" secondAttribute="leading" constant="25" id="yVo-r3-l0u"/>
+                            <constraint firstItem="2iL-Nk-eGh" firstAttribute="top" secondItem="gNw-Je-C3t" secondAttribute="bottom" constant="15" id="x6c-XN-2IP"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friend" id="UZc-Xv-BJr"/>
                     <connections>
-                        <outlet property="ageTextField" destination="xis-Gi-rOR" id="tmv-Vz-CY4"/>
-                        <outlet property="appTextField" destination="ck0-I1-O6U" id="a4i-oL-r9M"/>
-                        <outlet property="friendshipDoneBtn" destination="zsj-Lh-crg" id="OBI-eh-ci4"/>
-                        <outlet property="hobbiesTextField" destination="aNG-mO-mXj" id="ieM-7D-qpE"/>
-                        <outlet property="jokeTextField" destination="i5A-Qq-IfY" id="YW0-0x-ugM"/>
-                        <outlet property="musicTextField" destination="c6l-qJ-32Y" id="z3V-Gt-1E7"/>
+                        <outlet property="classicalBtn" destination="Rvu-S0-Icd" id="FlW-8S-tZq"/>
+                        <outlet property="cookingBtn" destination="lku-1r-PZO" id="oMA-Cb-o5R"/>
+                        <outlet property="countryBtn" destination="noR-VX-TJ2" id="ayD-Yj-66S"/>
+                        <outlet property="craftingBtn" destination="br5-qJ-bEj" id="Gvk-c0-Qtq"/>
+                        <outlet property="doneBtn" destination="zsj-Lh-crg" id="gde-vk-kbX"/>
+                        <outlet property="dontKnowBtn" destination="jgF-JK-ZEI" id="jLu-6K-lln"/>
+                        <outlet property="edmBtn" destination="5i9-0c-TJ1" id="TvP-iZ-APw"/>
+                        <outlet property="hikingBtn" destination="Hl4-R9-LiE" id="w9w-WC-00f"/>
+                        <outlet property="hiphopBtn" destination="NPB-nf-zgZ" id="CD7-vp-1La"/>
+                        <outlet property="hobbyMusicBtn" destination="dT4-Ry-LBM" id="mxu-ro-2JH"/>
+                        <outlet property="hobbyOtherBtn" destination="nUt-Gk-XfE" id="9hr-Oe-ibD"/>
+                        <outlet property="indieBtn" destination="rXK-VK-bUX" id="D2e-9A-149"/>
+                        <outlet property="majorTextField" destination="xis-Gi-rOR" id="e8f-x3-tb0"/>
+                        <outlet property="musicOtherBtn" destination="U5L-zh-6BN" id="P29-ra-Tp7"/>
+                        <outlet property="netflixBtn" destination="Kgz-8K-7nE" id="GGd-sY-LYf"/>
+                        <outlet property="noPizzaBtn" destination="OqF-N7-dyx" id="b1O-o5-ClM"/>
+                        <outlet property="noPreferenceBtn" destination="vH9-pc-ED6" id="HBM-oM-63m"/>
+                        <outlet property="noWaterBtn" destination="7Nl-cr-0Wn" id="j88-xW-vRJ"/>
+                        <outlet property="photographyBtn" destination="LNN-VQ-Rh3" id="vuU-aE-K9B"/>
+                        <outlet property="popBtn" destination="1d9-J0-AEq" id="0IK-qx-fp8"/>
+                        <outlet property="rapBtn" destination="AFV-R6-BsZ" id="fXS-Ju-Q83"/>
+                        <outlet property="readingBtn" destination="3BK-7H-23q" id="2pK-XX-jAV"/>
+                        <outlet property="rnbBtn" destination="fUm-lX-8PK" id="RAL-ch-XFk"/>
+                        <outlet property="rockBtn" destination="ieu-Gz-vpP" id="FIZ-Rt-YL1"/>
+                        <outlet property="travelingBtn" destination="pYP-T2-x4t" id="Dp0-1l-sN0"/>
+                        <outlet property="videoGamesBtn" destination="6h8-TM-slG" id="blw-CJ-ChH"/>
+                        <outlet property="workingOutBtn" destination="Mjf-xK-bAz" id="LxL-Yf-4W9"/>
+                        <outlet property="yesPizzaBtn" destination="IEs-uR-AC7" id="fjU-hZ-dPa"/>
+                        <outlet property="yesWaterBtn" destination="7RL-0g-ybR" id="tpa-NB-ozC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZNz-mS-c9L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3507" y="-82"/>
+            <point key="canvasLocation" x="3505.7971014492755" y="-82.366071428571431"/>
         </scene>
         <!--Profile View Controller -->
         <scene sceneID="6Tf-wj-UsG">
@@ -632,7 +1213,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7E-9o-XQR" userLabel="Twitter Button">
-                                <rect key="frame" x="70" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="70" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="MwU-TP-wkz"/>
                                     <constraint firstAttribute="width" constant="35" id="wiU-8Y-com"/>
@@ -646,7 +1227,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSx-zU-OpC" userLabel="Facebook Button">
-                                <rect key="frame" x="130" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="130" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="7Wk-ht-MQ2"/>
                                     <constraint firstAttribute="height" constant="35" id="hNL-8G-UrF"/>
@@ -660,7 +1241,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uud-tM-lve" userLabel="LinkedIn Button">
-                                <rect key="frame" x="310" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="310" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="GVF-w3-UMF"/>
                                     <constraint firstAttribute="width" constant="35" id="olr-Si-JGf"/>
@@ -674,7 +1255,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbX-jr-26u" userLabel="Snapchat Button">
-                                <rect key="frame" x="190" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="190" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="5gU-Ol-TSN"/>
                                     <constraint firstAttribute="width" constant="35" id="ZWh-R3-F67"/>
@@ -688,7 +1269,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWE-LD-blm" userLabel="Instagram Button">
-                                <rect key="frame" x="250" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="250" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="bkR-5Y-P79"/>
                                     <constraint firstAttribute="height" constant="35" id="siL-I0-A1R"/>
@@ -713,61 +1294,61 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tm-qz-3k7">
-                                <rect key="frame" x="20" y="219" width="111.5" height="24.5"/>
+                                <rect key="frame" x="20" y="219" width="97.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-sC-CHi" userLabel="Username Textfield">
-                                <rect key="frame" x="141.5" y="219" width="247.5" height="26"/>
+                                <rect key="frame" x="127.5" y="219" width="261.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AE8-NC-pSg" userLabel="First Name ">
-                                <rect key="frame" x="20" y="260" width="118" height="24.5"/>
+                                <rect key="frame" x="20" y="259" width="103" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ao5-hK-DCG" userLabel="First Name Textfield">
-                                <rect key="frame" x="148" y="260" width="241" height="26"/>
+                                <rect key="frame" x="133" y="259" width="256" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05J-gS-78p" userLabel="Last Name ">
-                                <rect key="frame" x="20" y="301" width="115.5" height="24.5"/>
+                                <rect key="frame" x="20" y="299" width="102.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oir-uh-FxX" userLabel="Last Name Textfield">
-                                <rect key="frame" x="145.5" y="301" width="243.5" height="26"/>
+                                <rect key="frame" x="132.5" y="299" width="256.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzi-14-rC9" userLabel="Email">
-                                <rect key="frame" x="20" y="342" width="63.5" height="24.5"/>
+                                <rect key="frame" x="20" y="339" width="54.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aap-kT-wfw" userLabel="Email Textfield">
-                                <rect key="frame" x="93.5" y="342" width="295.5" height="26"/>
+                                <rect key="frame" x="84.5" y="339" width="304.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ej1-Db-svf" userLabel="Password">
-                                <rect key="frame" x="20" y="383" width="105" height="24.5"/>
+                                <rect key="frame" x="20" y="379" width="94.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl5-vc-HnG">
-                                <rect key="frame" x="135" y="377" width="254" height="37"/>
+                                <rect key="frame" x="124.5" y="373" width="264.5" height="36"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <state key="normal" title="Reset Password"/>
                                 <connections>
@@ -775,13 +1356,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social Media Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5M-Kp-eJS" userLabel="Social Label">
-                                <rect key="frame" x="20" y="464" width="369" height="24.5"/>
+                                <rect key="frame" x="20" y="459" width="369" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the icon of the social link you'd like to edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alG-j9-vw4" userLabel="Social Instructions Label">
-                                <rect key="frame" x="20" y="493.5" width="369" height="15"/>
+                                <rect key="frame" x="20" y="487.5" width="369" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -790,13 +1371,13 @@
                                 <rect key="frame" x="25" y="343" width="364" height="210"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Pop Up Label&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2h-61-tyD" userLabel="Pop Up Label">
-                                        <rect key="frame" x="95.5" y="25" width="173.5" height="27"/>
+                                        <rect key="frame" x="101.5" y="25" width="161.5" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                         <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Pop Up TextField&gt;" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9w-2U-COC" userLabel="Pop Up Textfield">
-                                        <rect key="frame" x="15" y="87" width="334" height="22.5"/>
+                                        <rect key="frame" x="15" y="86" width="334" height="21.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -811,7 +1392,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvc-Ub-R2w" userLabel="Pop Up Confirm Button">
-                                        <rect key="frame" x="100" y="165.5" width="164" height="30"/>
+                                        <rect key="frame" x="100" y="163.5" width="164" height="30"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <state key="normal" title="Confirm">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -821,7 +1402,7 @@
                                         </connections>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Error Label&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYb-Pl-ZeX" userLabel="Pop Up Error Label">
-                                        <rect key="frame" x="130" y="129.5" width="104" height="21"/>
+                                        <rect key="frame" x="130" y="127.5" width="104" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -845,7 +1426,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rN-XO-5HI">
-                                <rect key="frame" x="160.5" y="613.5" width="93" height="45"/>
+                                <rect key="frame" x="161" y="606.5" width="92" height="45"/>
                                 <color key="backgroundColor" red="0.99651342629999995" green="0.59027928110000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="DIo-kV-Eou"/>
@@ -1071,6 +1652,9 @@
         <image name="twitter Icon" width="151" height="150"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">

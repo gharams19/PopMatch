@@ -13,7 +13,7 @@ import FirebaseUI
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    var docID = "Ah33UF4du0PoOT7Lz4dz49o4brJ2"
+    var docID = "uGoAdixi2lWxnfy8XVtNUjFoV2r2"
     @IBOutlet weak var settingBtn: UIButton! //1
     @IBOutlet weak var signoutBtn: UIButton! //2
     @IBOutlet weak var lobbyBtn: UIButton!  //3
@@ -98,6 +98,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         popUpConfirmBtn.layer.borderWidth = 1
         popUpConfirmBtn.layer.borderColor = UIColor.systemOrange.cgColor
         popUpConfirmBtn.layer.cornerRadius = 15
+        
+        // Make Image Round
+        profileImage.layer.cornerRadius = 0.5 * profileImage.bounds.size.width
+   
+        profileImage.layer.borderWidth = 8.0
+    
+        profileImage.layer.borderColor = UIColor(displayP3Red: 0.91, green: 0.87, blue: 1.0, alpha: 1.0).cgColor
         bottomBorder(usernameTextField)
         bottomBorder(firstnameTextField)
         bottomBorder(lastnameTextField)
