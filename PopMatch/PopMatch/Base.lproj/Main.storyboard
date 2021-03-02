@@ -1467,11 +1467,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dum-D4-ke4" userLabel="Hobbies Stack">
                                 <rect key="frame" x="25" y="279.5" width="364" height="136"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="duB-vP-J9G" userLabel="Row 1">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="duB-vP-J9G" userLabel="Row 1">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kr-i2-fc3" userLabel="Traveling Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kr-i2-fc3" userLabel="Traveling Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Traveling">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1496,8 +1496,8 @@
                                                     <outletCollection property="otherButtons" destination="t4M-Dh-cTC" id="VlU-Ma-Gd0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-Cp-kD5" userLabel="Working Out Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="118" y="0.0" width="163.5" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-Cp-kD5" userLabel="Working Out Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="121.5" y="0.0" width="121" height="34"/>
                                                 <state key="normal" title="Working Out">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1519,7 +1519,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQl-dr-IKs" userLabel="Hiking Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="281.5" y="0.0" width="82.5" height="34"/>
+                                                <rect key="frame" x="242.5" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Hiking">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1542,18 +1542,22 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="qRr-Cp-kD5" firstAttribute="width" secondItem="0Kr-i2-fc3" secondAttribute="width" id="Zqy-uT-S1r"/>
+                                            <constraint firstItem="WQl-dr-IKs" firstAttribute="width" secondItem="0Kr-i2-fc3" secondAttribute="width" id="zYP-LI-tOL"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="g49-CG-Kvl" userLabel="Row 2">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g49-CG-Kvl" userLabel="Row 2">
                                         <rect key="frame" x="0.0" y="34" width="364" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mg4-jh-qlo" userLabel="Cooking Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="94" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mg4-jh-qlo" userLabel="Cooking Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Cooking">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
-                                                        <real key="value" value="-1"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
@@ -1571,9 +1575,9 @@
                                                     <outletCollection property="otherButtons" destination="t4M-Dh-cTC" id="Pu4-PW-KLo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-qL-1EE" userLabel="Reading Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="94" y="0.0" width="179" height="34"/>
-                                                <state key="normal" title="Reading/Writing">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUD-qL-1EE" userLabel="Reading Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="121.5" y="0.0" width="121" height="34"/>
+                                                <state key="normal" title="Reading">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -1593,8 +1597,8 @@
                                                     <outletCollection property="otherButtons" destination="t4M-Dh-cTC" id="dwt-wG-uSF"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lb-dD-qeo" userLabel="Crafting Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="273" y="0.0" width="91" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lb-dD-qeo" userLabel="Crafting Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="242.5" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Crafting">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1617,12 +1621,16 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="1lb-dD-qeo" firstAttribute="width" secondItem="Mg4-jh-qlo" secondAttribute="width" id="OFV-Mv-1mH"/>
+                                            <constraint firstItem="fUD-qL-1EE" firstAttribute="width" secondItem="Mg4-jh-qlo" secondAttribute="width" id="S2O-FA-ytV"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="odL-ZC-EH9" userLabel="Row 3">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="odL-ZC-EH9" userLabel="Row 3">
                                         <rect key="frame" x="0.0" y="68" width="364" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vA-eb-Wie" userLabel="Music Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vA-eb-Wie" userLabel="Music Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Music">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1643,9 +1651,9 @@
                                                     <outletCollection property="otherButtons" destination="t4M-Dh-cTC" id="QOj-12-fjx"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgR-5P-cbJ" userLabel="Video Games Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="67.5" y="0.0" width="150.5" height="34"/>
-                                                <state key="normal" title="Video Games">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgR-5P-cbJ" userLabel="Video Games Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="121.5" y="0.0" width="121" height="34"/>
+                                                <state key="normal" title="Video Game">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -1665,8 +1673,8 @@
                                                     <outletCollection property="otherButtons" destination="t4M-Dh-cTC" id="XBY-t3-pDT"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS6-qo-sT6" userLabel="Photography Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="218" y="0.0" width="146" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS6-qo-sT6" userLabel="Photography Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="242.5" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Photography">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1689,12 +1697,16 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="CS6-qo-sT6" firstAttribute="width" secondItem="9vA-eb-Wie" secondAttribute="width" id="5cg-Vb-8l8"/>
+                                            <constraint firstItem="TgR-5P-cbJ" firstAttribute="width" secondItem="9vA-eb-Wie" secondAttribute="width" id="OhC-q8-jRS"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LAb-Zc-Dmn" userLabel="Row 4">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LAb-Zc-Dmn" userLabel="Row 4">
                                         <rect key="frame" x="0.0" y="102" width="364" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFd-IN-uhI" userLabel="Netflix Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="99" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFd-IN-uhI" userLabel="Netflix Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Netflix">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1715,8 +1727,8 @@
                                                     <outletCollection property="otherButtons" destination="0Kr-i2-fc3" id="AyN-Db-bcA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-Nj-7Ss" userLabel="Other Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="99" y="0.0" width="88" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWq-Nj-7Ss" userLabel="Other Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="121.5" y="0.0" width="121" height="34"/>
                                                 <state key="normal" title="Other">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1737,8 +1749,8 @@
                                                     <outletCollection property="otherButtons" destination="t4M-Dh-cTC" id="XJb-Tk-33Q"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-Dh-cTC" userLabel="Don't Know Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="187" y="0.0" width="177" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-Dh-cTC" userLabel="Don't Know Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="242.5" y="0.0" width="121.5" height="34"/>
                                                 <state key="normal" title="Don't Know">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1761,6 +1773,10 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="t4M-Dh-cTC" firstAttribute="width" secondItem="zFd-IN-uhI" secondAttribute="width" id="cLm-gv-ksP"/>
+                                            <constraint firstItem="eWq-Nj-7Ss" firstAttribute="width" secondItem="zFd-IN-uhI" secondAttribute="width" id="pvP-ye-jws"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1777,8 +1793,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LDA-c0-AkC" userLabel="Row 1 - Music">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaj-Pd-5mn" userLabel="Pop Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="69" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaj-Pd-5mn" userLabel="Pop Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="34"/>
                                                 <state key="normal" title="Pop">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1798,8 +1814,8 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="YgD-3e-Yfi"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fJ-Zu-noK" userLabel="EDM Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="69" y="0.0" width="84" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fJ-Zu-noK" userLabel="EDM Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="91" y="0.0" width="91" height="34"/>
                                                 <state key="normal" title="EDM">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1819,8 +1835,8 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="7W6-ug-206"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPT-fi-5Mg" userLabel="Hip Hop Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="153" y="0.0" width="142" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPT-fi-5Mg" userLabel="Hip Hop Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="182" y="0.0" width="91" height="34"/>
                                                 <state key="normal" title="Hip Hop">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1840,8 +1856,8 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="gNU-Bn-EuI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdB-Jb-3zg" userLabel="Rap Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="295" y="0.0" width="69" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdB-Jb-3zg" userLabel="Rap Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="273" y="0.0" width="91" height="34"/>
                                                 <state key="normal" title="Rap">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1862,11 +1878,16 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="BdB-Jb-3zg" firstAttribute="width" secondItem="xaj-Pd-5mn" secondAttribute="width" id="0fJ-gG-k5F"/>
+                                            <constraint firstItem="RPT-fi-5Mg" firstAttribute="width" secondItem="xaj-Pd-5mn" secondAttribute="width" id="6MZ-q1-OdY"/>
+                                            <constraint firstItem="2fJ-Zu-noK" firstAttribute="width" secondItem="xaj-Pd-5mn" secondAttribute="width" id="xQu-x6-HPh"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Mwy-SO-RZo" userLabel="Row 2 - Music">
                                         <rect key="frame" x="0.0" y="34" width="364" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irX-Cy-tzm" userLabel="Rock Button" customClass="DLRadioButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irX-Cy-tzm" userLabel="Rock Button" customClass="DLRadioButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="34"/>
                                                 <state key="normal" title="Rock">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -1887,8 +1908,8 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="6e7-6p-WnC"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr3-T7-KGu" userLabel="R&amp;B Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="83" y="0.0" width="70.5" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr3-T7-KGu" userLabel="R&amp;B Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="83" y="0.0" width="93.5" height="34"/>
                                                 <state key="normal" title="R&amp;B">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1908,8 +1929,8 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="hj2-p0-ksD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIL-jn-iID" userLabel="Country Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="153.5" y="0.0" width="131.5" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIL-jn-iID" userLabel="Country Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="176.5" y="0.0" width="94" height="34"/>
                                                 <state key="normal" title="Country">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1929,8 +1950,8 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="4Rl-xO-LZx"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcT-1t-8Rv" userLabel="Indie Button" customClass="DLRadioButton">
-                                                <rect key="frame" x="285" y="0.0" width="79" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcT-1t-8Rv" userLabel="Indie Button" customClass="DLRadioButton">
+                                                <rect key="frame" x="270.5" y="0.0" width="93.5" height="34"/>
                                                 <state key="normal" title="Indie">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
@@ -1952,11 +1973,15 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="VIL-jn-iID" firstAttribute="width" secondItem="Zr3-T7-KGu" secondAttribute="width" id="JVR-bd-Kkh"/>
+                                            <constraint firstItem="zcT-1t-8Rv" firstAttribute="width" secondItem="Zr3-T7-KGu" secondAttribute="width" id="aiA-JW-PU1"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="PGp-er-udI" userLabel="Row 3 - Music">
                                         <rect key="frame" x="0.0" y="68" width="364" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDN-Is-gAg" userLabel="Classical Button" customClass="DLRadioButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDN-Is-gAg" userLabel="Classical Button" customClass="DLRadioButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="111.5" height="34"/>
                                                 <state key="normal" title="Classical">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -1977,7 +2002,7 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="j9c-1E-Q0x"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RtK-UT-DVK" userLabel="Other Button" customClass="DLRadioButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RtK-UT-DVK" userLabel="Other Button" customClass="DLRadioButton">
                                                 <rect key="frame" x="111.5" y="0.0" width="72" height="34"/>
                                                 <state key="normal" title="Other">
                                                     <color key="titleColor" systemColor="labelColor"/>
@@ -1998,7 +2023,7 @@
                                                     <outletCollection property="otherButtons" destination="Sjq-Xv-svg" id="x9S-t6-g4b"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjq-Xv-svg" userLabel="No Preference Button" customClass="DLRadioButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjq-Xv-svg" userLabel="No Preference Button" customClass="DLRadioButton">
                                                 <rect key="frame" x="183.5" y="0.0" width="180.5" height="34"/>
                                                 <state key="normal" title="No preference">
                                                     <color key="titleColor" systemColor="labelColor"/>

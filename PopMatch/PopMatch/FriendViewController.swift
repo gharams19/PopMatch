@@ -58,9 +58,8 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     var db = Firestore.firestore()
     
-    var majorData = [String] (arrayLiteral: "Technology", "Business/Economics", "Healthcare", "Education", "Engineering", "Agriculture", "Legal/Politcal Science", "Entertainment/Media", "Art", "Languages/Literature", "Research")
-    
-   // let ageData = [String](arrayLiteral: "18-20 years old", "21-22 years old", "23-24 years old", "25-26 years old", "27+ years old")
+    var majorData: [String] = ["Technology", "Business/Economics", "Healthcare", "Education", "Engineering", "Agriculture", "Legal/Politcal Science", "Entertainment/Media", "Art", "Languages/Literature", "Research"]
+  
     let majorPicker = UIPickerView()
     
     override func viewDidLoad() {
@@ -124,7 +123,7 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         var selectedArray: [String] = []
         if(selections.isMultipleSelectionEnabled) {
             for chosen in selections.selectedButtons() {
-                print("chose: \(chosen.titleLabel?.text)")
+//                print("chose: \(chosen.titleLabel?.text)")
                 selectedArray.append(chosen.titleLabel?.text ?? "")
             }
         }
