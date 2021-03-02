@@ -33,8 +33,13 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     var runCount = 300;
     var roomName: String = ""
     var accessToken : String = ""
-
-
+    @IBOutlet weak var dropdown: UIButton!
+    @IBOutlet weak var twitter: UIButton!
+    @IBOutlet weak var facebook: UIButton!
+    @IBOutlet weak var snapchat: UIButton!
+    @IBOutlet weak var ig: UIButton!
+    @IBOutlet weak var linkedin: UIButton!
+    @IBOutlet weak var urlTextView: UITextView!
     
     
     override func viewDidLoad() {
@@ -44,15 +49,58 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
         timerModel.delegate = self
-        
-
-   
-                
-        
-
+        twitter.isHidden = true
+        facebook.isHidden = true
+        snapchat.isHidden = true
+        ig.isHidden = true
+        linkedin.isHidden = true
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
+    }
+    
+    @IBAction func dropdown_menu(_ sender: Any) {
+        twitter.isHidden = false
+        facebook.isHidden = false
+        snapchat.isHidden = false
+        ig.isHidden = false
+        linkedin.isHidden = false
+        dropdown.isHidden = true
+    }
+    @IBAction func tapGesture(_ sender: Any) {
+        twitter.isHidden = true
+        facebook.isHidden = true
+        snapchat.isHidden = true
+        ig.isHidden = true
+        linkedin.isHidden = true
+        dropdown.isHidden = false
+    }
+    
+    @IBAction func sendTwitter(_ sender: Any) {
+        urlTextView.text += "Twitter \n"
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+    }
+    @IBAction func sendFacebook(_ sender: Any) {
+        urlTextView.text += "Facebook \n"
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+    }
+    @IBAction func sendIG(_ sender: Any) {
+        urlTextView.text += "Instagram \n"
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+    }
+    @IBAction func sendLinkedin(_ sender: Any) {
+        urlTextView.text += "Linkedin \n"
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+    }
+    @IBAction func sendSnapchat(_ sender: Any) {
+        urlTextView.text += "Snapchat \n"
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+    }
+    @objc func clearURL(){
+        var str = String(urlTextView.text)
+        guard let index = str.firstIndex(of: "\n") else { return }
+        str.removeSubrange(str.startIndex...index)
+        urlTextView.text = str
     }
     
     let timerModel = TimerModel()
