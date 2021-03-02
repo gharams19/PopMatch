@@ -76,9 +76,124 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         majorPicker.delegate = self
         majorTextField.inputView = majorPicker
         majorPicker.dataSource = majorData as? UIPickerViewDataSource
+        
+        
+        displayData()
     }
     
-    
+    // MARK: - Display stored data
+    func displayData() {
+        let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
+        let userQuestions = userData.collection("questions").document("friendship")
+        userQuestions.getDocument { (document, error) in
+            if error == nil {
+                if let document = document, document.exists {
+                    if let major = document.get("major") {
+                        self.majorTextField.text = major as? String ?? ""
+                    }
+                    
+                    // Think of a better way to do this
+                    if let hobbies = document.get("hobbies") as? [Any] {
+//                        print("hobbies to display: \(hobbies)")
+                        for hobby in hobbies {
+//                            let hobby = hobby as? String
+//                            self.hobbies = hobbies.map{ ($0.titleLabel?.text == hob ? {$0.isSelected = true;return $0} : return $0}
+//                            print("hobby: \(hobby)")
+                            switch hobby as? String {
+                            case "Traveling":
+                                self.travelingBtn.isSelected = true
+                            case "Working Out":
+                                self.workingOutBtn.isSelected = true
+                            case "Hiking":
+                                self.hikingBtn.isSelected = true
+                            case "Cooking":
+                                self.cookingBtn.isSelected = true
+                            case "Reading":
+                                self.readingBtn.isSelected = true
+                            case "Crafting":
+                                self.craftingBtn.isSelected = true
+                            case "Music":
+                                self.hobbyMusicBtn.isSelected = true
+                            case "Video Game":
+                                self.videoGamesBtn.isSelected = true
+                            case "Photography":
+                                self.photographyBtn.isSelected = true
+                            case "Netflix":
+                                self.netflixBtn.isSelected = true
+                            case "Other":
+                                self.hobbyOtherBtn.isSelected = true
+                            case "Don't Know":
+                                self.dontKnowBtn.isSelected = true
+                            default:
+                                print("None selected")
+                            }
+                        }
+                    }
+                    
+                    if let water = document.get("water") {
+                        if self.yesWaterBtn.titleLabel?.text == water as? String {
+                            self.yesWaterBtn.isSelected = true
+                        } else if self.noWaterBtn.titleLabel?.text == water as? String {
+                            self.noWaterBtn.isSelected = true
+                        } else {
+                            self.yesWaterBtn.isSelected = false
+                            self.noWaterBtn.isSelected = false
+                        }
+                    }
+                    
+                    // Note - Try to do with map instead
+                    if let music = document.get("music") as? [Any] {
+//                        print("genres to display: \(music)")
+                        for genre in music {
+                            switch genre as? String {
+                            case "Pop":
+                                self.popBtn.isSelected = true
+                            case "EDM":
+                                self.edmBtn.isSelected = true
+                            case "Hip Hop":
+                                self.hiphopBtn.isSelected = true
+                            case "Rap":
+                                self.rapBtn.isSelected = true
+                            case "Rock":
+                                self.rockBtn.isSelected = true
+                            case "R&B":
+                                self.rnbBtn.isSelected = true
+                            case "Country":
+                                self.countryBtn.isSelected = true
+                            case "Indie":
+                                self.indieBtn.isSelected = true
+                            case "Classical":
+                                self.classicalBtn.isSelected = true
+                            case "Other":
+                                self.musicOtherBtn.isSelected = true
+                            case "No preference":
+                                self.noPreferenceBtn.isSelected = true
+                            default:
+                                print("None selected")
+                                
+                            }
+                        }
+                    }
+                    
+                    if let pizza = document.get("pizza") {
+                        if self.yesPizzaBtn.titleLabel?.text == pizza as? String {
+                            self.yesPizzaBtn.isSelected = true
+                        } else if self.noPizzaBtn.titleLabel?.text == pizza as? String {
+                            self.noPizzaBtn.isSelected = true
+                        } else {
+                            self.yesPizzaBtn.isSelected = false
+                            self.noPizzaBtn.isSelected = false
+                        }
+                    }
+                    
+                } else {
+                    print("User document doesn't exists")
+                }
+            } else {
+                print ("Error in user document, error: \(String(describing: error))")
+            }
+        }
+    }
     
 
     // MARK: - Picker Delegate Methods
