@@ -63,42 +63,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleSetUp()
-        
-        // Set Arrays & Delegates
-        self.TFFields = [usernameTextField, firstnameTextField, lastnameTextField, emailTextField, popUpTextField]
-        self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
-        self.buttons = [twitterBtn, facebookBtn, snapchatBtn, instagramBtn, linkedinBtn, signoutBtn, resetBtn, settingBtn, popUpConfirmBtn, closeViewBtn, profileBtn, lobbyBtn]
-        self.TFFields = self.TFFields.map({$0.delegate = self; return $0})
-        self.imagePickerController.delegate = self
-        
-        // Hide pop until button press
-        popUpView.isHidden = true
-        popUpConfirmBtn.isHidden = true
-        popUpErrLabel.isHidden = true
-        
-        // Display the stored data
-        displayUserData()
-        
-        buildPresence()
+       
         
     }
     
     // MARK: - Styling
-    func styleSetUp() {
-        signoutBtn.layer.cornerRadius = 15
-        popUpView.layer.cornerRadius = 15
-        popUpView.layer.borderWidth = 1.5
-        popUpView.layer.borderColor = UIColor.systemOrange.cgColor
-        popUpConfirmBtn.layer.borderWidth = 1
-        popUpConfirmBtn.layer.borderColor = UIColor.systemOrange.cgColor
-        popUpConfirmBtn.layer.cornerRadius = 15
-        bottomBorder(usernameTextField)
-        bottomBorder(firstnameTextField)
-        bottomBorder(lastnameTextField)
-        bottomBorder(emailTextField)
-        bottomBorder(popUpTextField)
-    }
+   
     
     // Styling - textfield
     func bottomBorder(_ textField: UITextField) {
