@@ -93,6 +93,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         popUpConfirmBtn.layer.borderWidth = 1
         popUpConfirmBtn.layer.borderColor = UIColor.systemOrange.cgColor
         popUpConfirmBtn.layer.cornerRadius = 15
+        profileImage.layer.cornerRadius = 0.5 * profileImage.layer.bounds.size.width
+        profileImage.layer.borderWidth = 8.0
+        profileImage.layer.borderColor = UIColor(displayP3Red: 0.91, green: 0.87, blue: 1.0, alpha: 1.0).cgColor
         bottomBorder(usernameTextField)
         bottomBorder(firstnameTextField)
         bottomBorder(lastnameTextField)
