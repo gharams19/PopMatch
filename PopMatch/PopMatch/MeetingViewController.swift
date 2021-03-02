@@ -92,6 +92,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
                 print("Error in getting social document, error: \(String(describing: error))")
             }
         }
+        urlTextView.isEditable = false;
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
@@ -115,23 +116,38 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     }
     
     @IBAction func sendTwitter(_ sender: Any) {
-        urlTextView.text = twitterLink
+        if(twitterLink == ""){
+            return
+        }
+        urlTextView.text += twitterLink + "\n"
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendFacebook(_ sender: Any) {
-        urlTextView.text = facebookLink
+        if(facebookLink == ""){
+            return
+        }
+        urlTextView.text += facebookLink + "\n"
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendIG(_ sender: Any) {
-        urlTextView.text = instagramLink
+        if(instagramLink == ""){
+            return
+        }
+        urlTextView.text += instagramLink + "\n"
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendLinkedin(_ sender: Any) {
-        urlTextView.text = linkedinLink
+        if(linkedinLink == ""){
+            return
+        }
+        urlTextView.text += linkedinLink + "\n"
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @IBAction func sendSnapchat(_ sender: Any) {
-        urlTextView.text = snapchatLink
+        if(snapchatLink == ""){
+            return
+        }
+        urlTextView.text += snapchatLink + "\n"
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
     }
     @objc func clearURL(){
