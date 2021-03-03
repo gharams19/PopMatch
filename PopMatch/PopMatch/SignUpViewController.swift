@@ -135,14 +135,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     if error == nil {
                         //empty error
                         self.errLabel.text = nil
-                        var ref: DocumentReference? = nil
+//                        var ref: DocumentReference? = nil
                         let uid = authResult?.user.uid ?? ""
                         
                         let docData: [String: Any] = [
-                            "first name": self.firstNameTextField.text,
-                            "last name": self.lastNameTextField.text,
+                            "first name": self.firstNameTextField.text ?? "",
+                            "last name": self.lastNameTextField.text ?? "",
                             "username": "",
-                            "email": self.emailTextField.text,
+                            "email": self.emailTextField.text ?? "",
                             "image": ""
                         ]
                         self.db.collection("users").document(uid).setData(docData) { err in
@@ -167,7 +167,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     } else {
                         
                         //present error, that could not create an account
-                        print(error)
+                        print(error ?? "")
                         self.errLabel.text = "Could not create account"
                         self.errLabel.textColor = .red
                     }

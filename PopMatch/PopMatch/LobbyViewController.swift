@@ -7,7 +7,7 @@
 
 import UIKit
 import Firebase
-
+import AVFoundation
 
 class LobbyViewController: UIViewController {
 
@@ -15,10 +15,20 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var bubbleZoom: UIImageView!
     
     var matches = [String: String]()
+    var audioPlayer = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+        let sound = Bundle.main.path(forResource: "mixkit-soap-bubble-sound-2925", ofType: "wav")
+        do {
+            //try to initialize to sound above
+            audioPlayer = try AVPlayer(url: URL(fileURLWithPath: sound ?? ""))
+        }
+        catch{
+            print(error)
+        }
+        
         //setup
         bubbleZoom.isHidden = true
         bubbleView.backgroundColor = .white
@@ -46,6 +56,7 @@ class LobbyViewController: UIViewController {
             UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut , animations: {
                 self.bubbleZoom.isHidden = false
                 self.bubbleZoom.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self.audioPlayer.play()
             }, completion: { finished in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
