@@ -30,6 +30,14 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/c89e49e86ae3898d7d
 **Ma Eint Poe** - 
 
 **Wai Hei Ngan** -
+* Created token for each user for the video conference room
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/dc8979335c2136eb32c5f566905b767b5cf1a4df
+* Created Timer Model
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/97a8d97eeb7fc846880902dd12c64a4f9542e512
+* Added social media features in video calls
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/ee72fe0a398d040b8237e8878f8f77939ec79000#diff-4ce7730f27878279fa1b97010b05b5e92e67dca94d9e89c5621fc4a57c190bc7
+* Modifed video confoness room and improve video calling experience
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/72488d742c1adbc0fa2189e8c664493e6aeaca71
 
 ### Plan to do:
 
@@ -40,3 +48,6 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/c89e49e86ae3898d7d
 **Ma Eint Poe** - 
 
 **Wai Hei Ngan** -
+* Create timer Model API
+* Create chatting/ firestore where users can share soical media links in video conference room
+
