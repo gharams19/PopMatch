@@ -9,13 +9,19 @@ https://trello.com/b/Ctr0GQnf/ecs-189e-project
 ### What was done with commit links and descriptions:
 
 **Eden Avivi** - 
+* I worked on modifying the Lobby view controller a bit by fixing some contraints and changing the flow so that there is no button to go stright into the video call, now it goes to the matching view controller instead after 10 seconds (temporary, will be replaced by when a match is found). 
+* I added a transition between LobbyVC and matchingVC in which I zoom in on a bubble that is not in the LobbyVC as if that bubble is a match and then that gets into the size of the bubble in the matchingVC and added a bubble popping sound effect.
+*  I fixed a forced unwrap that was in the usage of Firebase Authentication, tried to help passing the user's ID from the signupVC into the profileVC, but that didn't turn out well so I helped fix the bug that it created.
+*  I noticed that the two custom pop ups for resetting a password did not match, so I matched them up and made small touch ups like adding the url before the username entered in the social media pop ups and passed them into the meetingVC.
+*  Added questions to our document to help with the idea of having a question presented at the beginning of each video chat.
+
+Commits:
 
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/53cb1c61461dc5be685910fd135234f0c6adb85c
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/a43b4679eb3fc77950fe18224b56f63b6b98756e
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/9c8264d6217300c5590c61425bb988b482273673
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/0ceefc6aa934a45ce6f313d468688acf706e112e
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/fbc916c3d0b1c4373a30bcd20cc0d9d222417939
-https://github.com/ECS189E/project-w21-big-bang-theory/commit/41be86671aa300772cd386ad21f1bb489ba36841
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/d2afbf98f19e08d7a6a65caaf0b1ec16374d756a
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/c89e49e86ae3898d7d7e667fa5d7b8eeab6c06e2
 
@@ -27,7 +33,7 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/c89e49e86ae3898d7d
 
 ### Plan to do:
 
-**Eden Avivi** - 
+**Eden Avivi** - Help out with the matching algorithm if needed and testing it, look into having the user sign up with another social media app instead of entering username as mentioned in milestone 2, fix more autolayout to reduce our warnings, and fix the trello board to be better documented.
 
 **Gharam Alsaedi** - 
 
