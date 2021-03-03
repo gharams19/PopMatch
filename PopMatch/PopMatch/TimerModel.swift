@@ -14,7 +14,7 @@ protocol TimerModelUpdates: class {
 }
 
 class TimerModel {
-    var startTime = 300
+    var startTime = 1000
     var addedTime = false;
     weak var delegate: TimerModelUpdates?
     

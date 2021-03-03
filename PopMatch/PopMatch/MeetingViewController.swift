@@ -29,7 +29,6 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     var localAudioTrack: LocalAudioTrack?
     var remoteParticipant: RemoteParticipant?
     var vidTimer: Timer?
-    var runCount = 300;
     var roomName: String = ""
     var accessToken : String = ""
    
@@ -59,7 +58,19 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
         timerModel.delegate = self
-        
+        db.collection(roomName).document("Timer").getDocument{
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Time") != nil{
+                        let time = document.get("Time")
+                        self.timerModel.startTime = Int(time as? String ?? "1000" ) ?? 1000
+                        
+                    }
+                }
+            }
+        }
+       
         self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
         
         let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
@@ -155,17 +166,45 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     let timerModel = TimerModel()
     
     func currentTimeDidChange(_ currentTime: Int) {
-        timerLabel.text = "Timer: " + String(currentTime/60) + ":" + String(format: "%02d",currentTime % 60)
+        db.collection(roomName).document("Timer").getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Time") != nil{
+                        let time = document.get("Time")
+                        let curTime = Int(time as? String ?? "1000" ) ?? 1000
+                        self.timerLabel.text = "Timer: " + String(curTime/60) + ":" + String(format: "%02d",curTime % 60)
+                    }
+                }
+            }
+        }
+        let time = String(currentTime)
+        db.collection("PopRoom").document("Timer").setData(["Time": time])
+        
         if(currentTime == 0){
             self.room?.disconnect()
             goBackToLobby()
         }
     }
-    
+
    
   
     @IBAction func addTime(_ sender: Any) {
         timerModel.addTime()
+        print(String(timerModel.startTime))
+        db.collection("PopRoom").document("Timer").setData(["Time": String(timerModel.startTime)])
+        db.collection(roomName).document("Timer").getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Time") != nil{
+                        let time = document.get("Time")
+                        let curTime = Int(time as? String ?? "1000" ) ?? 1000
+                        print(curTime)
+                    }
+                }
+            }
+        }
     }
     
     

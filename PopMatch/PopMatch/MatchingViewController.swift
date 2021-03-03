@@ -23,7 +23,7 @@ class MatchingViewController: UIViewController {
     var matchName = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
-    var username = "Username"
+    var username = "Username2"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +106,7 @@ class MatchingViewController: UIViewController {
         // need to gernerate tokens for each user
         meetingViewController.accessToken = userToken
         meetingViewController.roomName = "PopRoom"
+        db.collection("PopRoom").document("Timer").setData(["Time":"300"])
         navigationController?.pushViewController(meetingViewController, animated: true)
     }
     func getToken() ->String{

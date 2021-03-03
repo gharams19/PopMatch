@@ -825,7 +825,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44P-qz-hNv" userLabel="Twitter Button">
-                                <rect key="frame" x="70" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="70" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="KKD-VD-BK5"/>
                                     <constraint firstAttribute="width" constant="35" id="tX5-4F-S7g"/>
@@ -839,7 +839,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xm-2x-3bW" userLabel="Facebook Button">
-                                <rect key="frame" x="130" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="130" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="Ulw-nc-E06"/>
                                     <constraint firstAttribute="height" constant="35" id="xX9-qr-xLA"/>
@@ -853,7 +853,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkM-HV-Aft" userLabel="LinkedIn Button">
-                                <rect key="frame" x="310" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="310" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="YVR-GH-VsB"/>
                                     <constraint firstAttribute="height" constant="35" id="js9-9p-USL"/>
@@ -867,7 +867,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zu-9G-QZy" userLabel="Snapchat Button">
-                                <rect key="frame" x="190" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="190" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="3jS-cD-VEK"/>
                                     <constraint firstAttribute="width" constant="35" id="cEb-dP-h22"/>
@@ -881,7 +881,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3K-st-Ad9" userLabel="Instagram Button">
-                                <rect key="frame" x="250" y="528.5" width="35" height="35"/>
+                                <rect key="frame" x="250" y="521.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="dqa-Vw-Kdu"/>
                                     <constraint firstAttribute="height" constant="35" id="nWA-ur-9IV"/>
@@ -926,61 +926,61 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdB-Dw-son">
-                                <rect key="frame" x="20" y="219" width="111.5" height="24.5"/>
+                                <rect key="frame" x="20" y="219" width="97.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0xr-fI-Y5H" userLabel="Username Textfield">
-                                <rect key="frame" x="141.5" y="219" width="247.5" height="26"/>
+                                <rect key="frame" x="127.5" y="219" width="261.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jK-l2-HfA" userLabel="First Name ">
-                                <rect key="frame" x="20" y="260" width="118" height="24.5"/>
+                                <rect key="frame" x="20" y="259" width="103" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o8U-31-2aO" userLabel="First Name Textfield">
-                                <rect key="frame" x="148" y="260" width="241" height="26"/>
+                                <rect key="frame" x="133" y="259" width="256" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udd-K9-mU6" userLabel="Last Name ">
-                                <rect key="frame" x="20" y="301" width="115.5" height="24.5"/>
+                                <rect key="frame" x="20" y="299" width="102.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QH6-Uf-Y8N" userLabel="Last Name Textfield">
-                                <rect key="frame" x="145.5" y="301" width="243.5" height="26"/>
+                                <rect key="frame" x="132.5" y="299" width="256.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8a-MG-BP1" userLabel="Email">
-                                <rect key="frame" x="20" y="342" width="63.5" height="24.5"/>
+                                <rect key="frame" x="20" y="339" width="54.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVQ-X4-35m" userLabel="Email Textfield">
-                                <rect key="frame" x="93.5" y="342" width="295.5" height="26"/>
+                                <rect key="frame" x="84.5" y="339" width="304.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE3-wX-h0Q" userLabel="Password">
-                                <rect key="frame" x="20" y="383" width="105" height="24.5"/>
+                                <rect key="frame" x="20" y="379" width="94.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMp-3W-jZP">
-                                <rect key="frame" x="135" y="377" width="254" height="37"/>
+                                <rect key="frame" x="124.5" y="373" width="264.5" height="36"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <state key="normal" title="Reset Password"/>
                                 <connections>
@@ -988,13 +988,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social Media Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nje-GK-2KT" userLabel="Social Label">
-                                <rect key="frame" x="20" y="464" width="369" height="24.5"/>
+                                <rect key="frame" x="20" y="459" width="369" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the icon of the social link you'd like to edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEW-4A-n7K" userLabel="Social Instructions Label">
-                                <rect key="frame" x="20" y="493.5" width="369" height="15"/>
+                                <rect key="frame" x="20" y="487.5" width="369" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1003,13 +1003,13 @@
                                 <rect key="frame" x="25" y="343" width="364" height="210"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Pop Up Label&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tP-M8-XFy" userLabel="Pop Up Label">
-                                        <rect key="frame" x="95.5" y="25" width="173.5" height="27"/>
+                                        <rect key="frame" x="101.5" y="25" width="161.5" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
                                         <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Pop Up TextField&gt;" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bxu-KV-9w0" userLabel="Pop Up Textfield">
-                                        <rect key="frame" x="15" y="87" width="334" height="22.5"/>
+                                        <rect key="frame" x="15" y="86" width="334" height="21.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -1024,7 +1024,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUG-wx-8JI" userLabel="Pop Up Confirm Button">
-                                        <rect key="frame" x="100" y="165.5" width="164" height="30"/>
+                                        <rect key="frame" x="100" y="163.5" width="164" height="30"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <state key="normal" title="Confirm">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1034,7 +1034,7 @@
                                         </connections>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Error Label&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toR-85-FXX" userLabel="Pop Up Error Label">
-                                        <rect key="frame" x="130" y="129.5" width="104" height="21"/>
+                                        <rect key="frame" x="130" y="127.5" width="104" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -1058,7 +1058,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbF-6x-ysz">
-                                <rect key="frame" x="160.5" y="613.5" width="93" height="45"/>
+                                <rect key="frame" x="161" y="606.5" width="92" height="45"/>
                                 <color key="backgroundColor" red="0.99651342629999995" green="0.59027928110000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Ern-sG-fty"/>
@@ -2170,7 +2170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0p-Ey-jvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3505.7971014492755" y="-82.366071428571431"/>
+            <point key="canvasLocation" x="3313" y="94"/>
         </scene>
     </scenes>
     <resources>
