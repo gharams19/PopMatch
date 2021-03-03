@@ -50,4 +50,5 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/72488d742c1adbc0fa
 **Wai Hei Ngan** -
 * Create timer Model API
 * Create chatting/ firestore where users can share soical media links in video conference room
+* Add ice breaker questions duing video call
 
