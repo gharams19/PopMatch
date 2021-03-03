@@ -6,32 +6,22 @@ An app that uses an unique queue matching system to allow users to have 1 on 1 v
 ### Trello Link:
 https://trello.com/b/Ctr0GQnf/ecs-189e-project
 
-### What was done:
+### What was done with commit links and descriptions:
 
-Eden Avivi - 
+**Eden Avivi** - 
 
-Gharam Alsaedi - 
+**Gharam Alsaedi** - 
 
-Ma Eint Poe - 
+**Ma Eint Poe** - 
 
-Wai Hei Ngan -
+**Wai Hei Ngan** -
 
 ### Plan to do:
 
-Eden Avivi - 
+**Eden Avivi** - 
 
-Gharam Alsaedi - 
+**Gharam Alsaedi** - 
 
-Ma Eint Poe - 
+**Ma Eint Poe** - 
 
-Wai Hei Ngan -
-
-### Commit links and descriptions:
-
-Eden Avivi - 
-
-Gharam Alsaedi - 
-
-Ma Eint Poe - 
-
-Wai Hei Ngan -
+**Wai Hei Ngan** -
