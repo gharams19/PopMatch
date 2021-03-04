@@ -14,6 +14,8 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
    
     
     // Variables Here
+    @IBOutlet weak var pronounTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var majorTextField: UITextField!
 
     // Hobby Buttons
@@ -41,25 +43,40 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var countryBtn: DLRadioButton!
     @IBOutlet weak var indieBtn: DLRadioButton!
     @IBOutlet weak var classicalBtn: DLRadioButton!
+    @IBOutlet weak var kpopBtn: DLRadioButton!
     @IBOutlet weak var musicOtherBtn: DLRadioButton!
-    @IBOutlet weak var noPreferenceBtn: DLRadioButton!
+    @IBOutlet weak var musicNABtn: DLRadioButton!
     var musicGenres: [DLRadioButton] = []
     
-    // Water
-    @IBOutlet weak var yesWaterBtn: DLRadioButton!
-    @IBOutlet weak var noWaterBtn: DLRadioButton!
+    // Tv Show Genres
+    @IBOutlet weak var actionBtn: DLRadioButton!
+    @IBOutlet weak var comedyBtn: DLRadioButton!
+    @IBOutlet weak var dramaBtn: DLRadioButton!
+    @IBOutlet weak var documentaryBtn: DLRadioButton!
+    @IBOutlet weak var romanceBtn: DLRadioButton!
+    @IBOutlet weak var fantasyBtn: DLRadioButton!
+    @IBOutlet weak var horrorBtn: DLRadioButton!
+    @IBOutlet weak var tvOtherBtn: DLRadioButton!
+    var tvGenres: [DLRadioButton] = []
     
-    // Pizza
-    @IBOutlet weak var yesPizzaBtn: DLRadioButton!
-    @IBOutlet weak var noPizzaBtn: DLRadioButton!
-    
+    // Diet
+    @IBOutlet weak var veganBtn: DLRadioButton!
+    @IBOutlet weak var vegetarianBtn: DLRadioButton!
+    @IBOutlet weak var dietNABtn: DLRadioButton!
+    var dietBtns: [DLRadioButton] = []
     
     @IBOutlet weak var doneBtn: UIButton!
     
     var db = Firestore.firestore()
     
-    var majorData: [String] = ["Technology", "Business/Economics", "Healthcare", "Education", "Engineering", "Agriculture", "Legal/Politcal Science", "Entertainment/Media", "Art", "Languages/Literature", "Research"]
+    var pronounData: [String] = ["She/Her", "He/Him", "They/Them", "Decline to state"]
+    
+    var ageData: [String] = ["Under 18", "18-20", "21-23", "24+"]
+    
+    var majorData: [String] = ["Business/Economics", "Technology", "Healthcare", "Education", "Engineering", "Agriculture", "Legal/Politcal Science", "Entertainment/Media", "Art", "Languages/Literature", "Research"]
   
+    let pronounPicker = UIPickerView()
+    let agePicker = UIPickerView()
     let majorPicker = UIPickerView()
     
     override func viewDidLoad() {
@@ -68,15 +85,27 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         doneBtn.layer.cornerRadius = 15
         
         hobbies = [travelingBtn, workingOutBtn, hikingBtn, cookingBtn, readingBtn, craftingBtn, hobbyMusicBtn, videoGamesBtn, photographyBtn, netflixBtn, hobbyOtherBtn, dontKnowBtn]
-        musicGenres = [popBtn, edmBtn, hiphopBtn, rapBtn, rockBtn, rnbBtn, countryBtn, indieBtn, classicalBtn, musicOtherBtn, noPreferenceBtn]
+        musicGenres = [popBtn, edmBtn, hiphopBtn, rapBtn, rockBtn, rnbBtn, countryBtn, indieBtn, classicalBtn, kpopBtn, musicOtherBtn, musicNABtn]
+        tvGenres = [actionBtn, comedyBtn, dramaBtn, documentaryBtn, romanceBtn, fantasyBtn, horrorBtn, tvOtherBtn]
+        dietBtns = [veganBtn, vegetarianBtn, dietNABtn]
         hobbies = hobbies.map({$0.isMultipleSelectionEnabled = true; return $0 })
         musicGenres = musicGenres.map({$0.isMultipleSelectionEnabled = true; return $0})
+        tvGenres = tvGenres.map({$0.isMultipleSelectionEnabled = true; return $0})
+        
+        pronounTextField.delegate = self
+        pronounPicker.delegate = self
+        pronounTextField.inputView = pronounPicker
+        pronounPicker.dataSource = pronounData as? UIPickerViewDataSource
+        
+        ageTextField.delegate = self
+        agePicker.delegate = self
+        ageTextField.inputView = agePicker
+        agePicker.dataSource = ageData as? UIPickerViewDataSource
         
         majorTextField.delegate = self
         majorPicker.delegate = self
         majorTextField.inputView = majorPicker
         majorPicker.dataSource = majorData as? UIPickerViewDataSource
-        
         
         displayData()
     }
@@ -88,103 +117,46 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         userQuestions.getDocument { (document, error) in
             if error == nil {
                 if let document = document, document.exists {
-                    if let major = document.get("major") {
-                        self.majorTextField.text = major as? String ?? ""
-                    }
-                    
-                    // Think of a better way to do this
-                    if let hobbies = document.get("hobbies") as? [Any] {
-//                        print("hobbies to display: \(hobbies)")
+                    let docData = document.data()
+                    self.pronounTextField.text = docData?["pronoun"] as? String ?? ""
+                    self.ageTextField.text = docData?["ageGroup"] as? String ?? ""
+                    self.majorTextField.text = docData?["major"] as? String ?? ""
+                   
+                    if let hobbies = docData?["hobbies"] as? [String] {
                         for hobby in hobbies {
-//                            let hobby = hobby as? String
-//                            self.hobbies = hobbies.map{ ($0.titleLabel?.text == hob ? {$0.isSelected = true;return $0} : return $0}
-//                            print("hobby: \(hobby)")
-                            switch hobby as? String {
-                            case "Traveling":
-                                self.travelingBtn.isSelected = true
-                            case "Working Out":
-                                self.workingOutBtn.isSelected = true
-                            case "Hiking":
-                                self.hikingBtn.isSelected = true
-                            case "Cooking":
-                                self.cookingBtn.isSelected = true
-                            case "Reading":
-                                self.readingBtn.isSelected = true
-                            case "Crafting":
-                                self.craftingBtn.isSelected = true
-                            case "Music":
-                                self.hobbyMusicBtn.isSelected = true
-                            case "Video Game":
-                                self.videoGamesBtn.isSelected = true
-                            case "Photography":
-                                self.photographyBtn.isSelected = true
-                            case "Netflix":
-                                self.netflixBtn.isSelected = true
-                            case "Other":
-                                self.hobbyOtherBtn.isSelected = true
-                            case "Don't Know":
-                                self.dontKnowBtn.isSelected = true
-                            default:
-                                print("None selected")
+                            self.hobbies = self.hobbies.map({
+                                if($0.titleLabel?.text == hobby) { $0.isSelected = true }
+                                return $0
+                            })
+                        }
+                    }
+                  
+                    if let music = docData?["music"] as? [String] {
+                            for genre in music {
+                                self.musicGenres = self.musicGenres.map({
+                                    if ($0.titleLabel?.text == genre) {$0.isSelected = true}
+                                    return $0
+                                })
                             }
+                    }
+                    
+                    if let tvShows = docData?["tvShows"] as? [String] {
+                        for genre in tvShows {
+                            self.tvGenres = self.tvGenres.map({
+                                if ($0.titleLabel?.text == genre) {$0.isSelected = true}
+                                return $0
+                            })
                         }
                     }
                     
-                    if let water = document.get("water") {
-                        if self.yesWaterBtn.titleLabel?.text == water as? String {
-                            self.yesWaterBtn.isSelected = true
-                        } else if self.noWaterBtn.titleLabel?.text == water as? String {
-                            self.noWaterBtn.isSelected = true
-                        } else {
-                            self.yesWaterBtn.isSelected = false
-                            self.noWaterBtn.isSelected = false
-                        }
+                    if let dietChoice = docData?["diet"] as? String {
+                        print("dietChoice: \(dietChoice)")
+                       self.dietBtns = self.dietBtns.map({
+                            if (dietChoice == $0.titleLabel?.text) {$0.isSelected = true}
+                            return $0
+                        })
                     }
                     
-                    // Note - Try to do with map instead
-                    if let music = document.get("music") as? [Any] {
-//                        print("genres to display: \(music)")
-                        for genre in music {
-                            switch genre as? String {
-                            case "Pop":
-                                self.popBtn.isSelected = true
-                            case "EDM":
-                                self.edmBtn.isSelected = true
-                            case "Hip Hop":
-                                self.hiphopBtn.isSelected = true
-                            case "Rap":
-                                self.rapBtn.isSelected = true
-                            case "Rock":
-                                self.rockBtn.isSelected = true
-                            case "R&B":
-                                self.rnbBtn.isSelected = true
-                            case "Country":
-                                self.countryBtn.isSelected = true
-                            case "Indie":
-                                self.indieBtn.isSelected = true
-                            case "Classical":
-                                self.classicalBtn.isSelected = true
-                            case "Other":
-                                self.musicOtherBtn.isSelected = true
-                            case "No preference":
-                                self.noPreferenceBtn.isSelected = true
-                            default:
-                                print("None selected")
-                                
-                            }
-                        }
-                    }
-                    
-                    if let pizza = document.get("pizza") {
-                        if self.yesPizzaBtn.titleLabel?.text == pizza as? String {
-                            self.yesPizzaBtn.isSelected = true
-                        } else if self.noPizzaBtn.titleLabel?.text == pizza as? String {
-                            self.noPizzaBtn.isSelected = true
-                        } else {
-                            self.yesPizzaBtn.isSelected = false
-                            self.noPizzaBtn.isSelected = false
-                        }
-                    }
                     
                 } else {
                     print("User document doesn't exists")
@@ -202,35 +174,43 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return majorData.count
+        switch pickerView {
+        case pronounPicker:
+            return pronounData.count
+        case agePicker:
+            return ageData.count
+        default:
+            return majorData.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return majorData[row]
+        switch pickerView {
+        case pronounPicker:
+            return pronounData[row]
+        case agePicker:
+            return ageData[row]
+        default:
+            return majorData[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        majorTextField.text = majorData[row]
+        switch pickerView{
+        case pronounPicker:
+            pronounTextField.text = pronounData[row]
+            pronounTextField.resignFirstResponder()
+        case agePicker:
+            ageTextField.text = ageData[row]
+            ageTextField.resignFirstResponder()
+        default:
+            majorTextField.text = majorData[row]
+            majorTextField.resignFirstResponder()
+        }
         
         // Hide picker
         self.view.endEditing(true)
-        majorTextField.resignFirstResponder()
-    }
-    
-    
-    //MARK: - Radio Buttons Selections - Prob delete after testing
-    
-
-    @IBAction func waterBtnsClicked(_ radioButton: DLRadioButton) {
-
-        if (radioButton.isMultipleSelectionEnabled) {
-                   for button in radioButton.selectedButtons() {
-                       print(String(format: "%@ is selected.\n", button.titleLabel!.text!));
-                   }
-               } else {
-                   print(String(format: "%@ is selected.\n", radioButton.selected()!.titleLabel!.text!));
-               }
     }
     
     // MARK: - Retrieve selected data & save to db
@@ -238,7 +218,6 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         var selectedArray: [String] = []
         if(selections.isMultipleSelectionEnabled) {
             for chosen in selections.selectedButtons() {
-//                print("chose: \(chosen.titleLabel?.text)")
                 selectedArray.append(chosen.titleLabel?.text ?? "")
             }
         }
@@ -247,25 +226,25 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     func sendToDatabase() {
         
+        let pronoun = pronounTextField.text ?? ""
+        let age = ageTextField.text ?? ""
         let major = majorTextField.text ?? ""
-        
         let hobbies = getSelection(travelingBtn)
-        
-        let water = yesWaterBtn.selected()?.titleLabel?.text ?? noWaterBtn.selected()?.titleLabel?.text ?? ""
-        
         let music = getSelection(popBtn)
-        
-        let pizza = yesPizzaBtn.selected()?.titleLabel?.text ?? noPizzaBtn.selected()?.titleLabel?.text ?? ""
+        let tvShows = getSelection(actionBtn)
+        let diet = veganBtn.selected()?.titleLabel?.text ?? ""
         
         let userDoc = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         let friendshipDoc = userDoc.collection("questions").document("friendship")
         
         friendshipDoc.setData([
+            "pronoun" : pronoun,
+            "ageGroup" : age,
             "major" : major,
             "hobbies" : hobbies,
-            "water" : water,
             "music" : music,
-            "pizza" : pizza
+            "tvShows" : tvShows,
+            "diet" : diet
         ])
     }
     

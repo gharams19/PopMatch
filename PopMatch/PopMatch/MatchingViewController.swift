@@ -21,7 +21,7 @@ class MatchingViewController: UIViewController {
     @IBOutlet weak var acceptButton: UIButton!
     
     @IBOutlet weak var popUpName: UILabel!
-    @IBOutlet weak var popUpGender: UILabel!
+    @IBOutlet weak var popUpPronoun: UILabel!
     @IBOutlet weak var popUpAge: UILabel!
     @IBOutlet weak var hobbiesAnswer: UILabel!
     @IBOutlet weak var showAnswer: UILabel!
@@ -43,7 +43,7 @@ class MatchingViewController: UIViewController {
         self.matchUsername.text = ""
         self.popUpName.text = ""
         self.popUpAge.text = ""
-        self.popUpGender.text = ""
+        self.popUpPronoun.text = ""
         self.hobbiesAnswer.text = ""
         self.showAnswer.text = ""
         self.dietAnswer.text = ""
@@ -151,9 +151,9 @@ class MatchingViewController: UIViewController {
                     if(self.popUpAge.text != "") {
                         self.popUpAge.text = ",\(self.popUpAge.text)"
                     }
-                    self.popUpGender.text = data?["gender"] as? String ?? ""
-                    if(self.popUpGender.text != "") {
-                        self.popUpGender.text = ",\(self.popUpGender.text)"
+                    self.popUpPronoun.text = data?["pronoun"] as? String ?? ""
+                    if(self.popUpPronoun.text != "" || self.popUpPronoun.text != "Decline to state") {
+                        self.popUpPronoun.text = ",\(self.popUpPronoun.text)"
                     }
                 }
             }
