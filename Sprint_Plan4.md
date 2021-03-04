@@ -33,6 +33,12 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/4749e42ce9ef1950ab
 
 
 **Ma Eint Poe** - 
+* Updated the different VC connections based on milestone 1 meeting suggestions - removed the Edit Page VC & Professional Question VC, and rewired Friend VC
+* Changed the Friendship question VC to non-textfield type questions and implemented the functionalities - Storing to Firestore db and retrieving from db
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/61b6a8b11773f1dc1603b455baad12a435529d38
+* Implemented the Profile VC UIs to store display user's data, added the updatable profile picture, and the pop up views to handle reseting password and displaying/editing different social media links clicks
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/a91729469347b6ed2ecbd64517e583b67af8c30d
+* Structured the user's social media and question data collection/document for firestore
 
 **Wai Hei Ngan** -
 * Created token for each user for the video conference room
@@ -53,6 +59,8 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/72488d742c1adbc0fa
 * Find a way to wait for other user to accept match and check if both accepted before moving to meetingVC.
 
 **Ma Eint Poe** - 
+* Add in the new suggestions for personal questions 
+* Fix some of the autolayouts for different screens  
 
 **Wai Hei Ngan** -
 * Create timer Model API
