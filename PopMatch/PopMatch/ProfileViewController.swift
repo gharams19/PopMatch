@@ -461,11 +461,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
          // the Realtime database when this device is offline
          // or online.
          var isOffline: [String: Any] = [
-            "uid": uid ?? "",
              "state": "offline",
          ]
          var isOnline: [String: Any] = [
-            "uid": uid ?? "",
              "state": "online",
          ]
          

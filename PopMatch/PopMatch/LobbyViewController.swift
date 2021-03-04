@@ -13,12 +13,19 @@ class LobbyViewController: UIViewController {
 
     @IBOutlet weak var bubbleView: UIView!
     @IBOutlet weak var bubbleZoom: UIImageView!
+    @IBOutlet weak var headerLabel1: UILabel!
+    @IBOutlet weak var headerLabel2: UILabel!
     
     var matches = [String: String]()
+    var answers = [String: [String]] ()
+    var currUid = ""
     var audioPlayer = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.currUid = Firebase.Auth.auth().currentUser?.uid ?? ""
+        getUserInfo()
         
         let sound = Bundle.main.path(forResource: "mixkit-soap-bubble-sound-2925", ofType: "wav")
         do {
@@ -48,26 +55,7 @@ class LobbyViewController: UIViewController {
             animation(image: array[i])
         }
         
-        //zoom into a new bubble and transition into the matchingVC after 10 secs
-        //change this to when a match is found later
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.bubbleZoom.transform = CGAffineTransform.identity
-            self.bubbleZoom.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut , animations: {
-                self.bubbleZoom.isHidden = false
-                self.bubbleZoom.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                self.audioPlayer.play()
-            }, completion: { finished in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
-                    assertionFailure("couldn't find vc")
-                    return
-                }
-                
-                    self.navigationController?.pushViewController(matchingViewController, animated: false)
-            })
-        }
-        findMatches()
+        
        
     }
     var previousAnimation = Int()
@@ -144,22 +132,310 @@ class LobbyViewController: UIViewController {
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
     
-    
-    func findMatches() {
-        let ref = Database.database().reference().child("status")
-
-        ref.observe(.childAdded, with: { snapshot in
-            if let userDict = snapshot.value as? [String: Any] {
-                let state = userDict["state"] as? String
-                let uid = userDict["uid"] as? String
-                self.matches[uid ?? ""] = state
+    /*Get current user's answers to questions*/
+    func getUserInfo() {
+        let db = Firestore.firestore()
+        db.collection("users").document(self.currUid).collection("questions").document("friendship").getDocument{(document, error) in
+            if let document = document, document.exists {
+                let data = document.data() as? [String: Any]
+                
+                self.answers["major"] = [data?["major"] as? String ?? ""]
+                self.answers["hobbies"] = data?["hobbies"] as? [String]
+                self.answers["music"] = data?["music"] as? [String]
             }
-        })
-     
-      
-       
+           
+            self.findMatches()
+           
+        }
         
+       
     }
     
+    func findMatches() {
+        let db = Firestore.firestore()
+        
+        DispatchQueue.global().async(execute: {
+            
+            /*Check if they matched with someone already */
+            var semaphore = DispatchSemaphore(value: 0)
+            
+            var prevmatchId = ""
+            var matchState = ""
+            
+            db.collection("users").document(self.currUid).collection("matches").document("current match").getDocument{(document, error) in
+                if let document = document, document.exists {
+                    let data = document.data() as? [String: String]
+                    
+                    /*Matched with someone, gget that user's id*/
+                    if data?["match id"] ?? "" != "" {
+                        prevmatchId = data?["match id"] ?? ""
+                        Database.database().reference().child("status").child(prevmatchId).observe(.value, with: { (snapshot) in
+                            let value = snapshot.value as? [String:Any]
+                            matchState = value?.first?.value as? String ?? ""
+                            semaphore.signal()
+                        })
+                    }
+                    else {
+                        semaphore.signal()
+                    }
+                }
+                else {
+                    semaphore.signal()
+                }
+            }
+            
+            // wait for previous task to finish
+            semaphore.wait()
+            
+            /*They weren't matched with anyone before, find a new match*/
+            if prevmatchId == "" || (matchState == "offline") {
+                
+                semaphore = DispatchSemaphore(value: 0)
+                
+                /*Get all users from realtime database and only add people that are online*/
+                let ref = Database.database().reference().child("status")
+                ref.observeSingleEvent(of:.value, with: { snapshot in
+                    let children = snapshot.children.allObjects as? [DataSnapshot] ?? [DataSnapshot()]
+                    for child in children {
+                        
+                        let uid = child.key
+                        let value = child.value as? [String:Any]
+                        let state = value?.values.first as? String ?? ""
+                        
+                        if uid == self.currUid  {
+                            continue
+                        }
+                        if state == "online" {
+                            self.matches[uid] = ""
+                        }
+                        
+                    }
+                    
+                    semaphore.signal()
+                })
+                
+                semaphore.wait()
 
+                /*No users are online*/
+                if(self.matches.isEmpty) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        print("No Matches Found!")
+                        self.headerLabel1.text = "No bubbles to pop"
+                        self.headerLabel2.text = "Try again later"
+                        return
+                    }
+                    return
+                }
+                semaphore = DispatchSemaphore(value: 0)
+                var i = 0
+                
+                /*get the bool variable isOnCall that is true if user is unavailable */
+                for match in self.matches {
+                
+                    let docRef = db.collection("users").document(match.key)
+                    
+                    
+                    docRef.getDocument {(document, error) in
+                        i+=1
+                        if i == self.matches.count {
+                            semaphore.signal()
+                        }
+                        if let document = document, document.exists {
+                            var isOnCall = document.get("isOnCall") as? String ?? "false"
+                            if isOnCall == "" {
+                                isOnCall = "false"
+                            }
+                            self.matches.updateValue(isOnCall, forKey: match.key)
+                            
+                        }
+                        
+                    }
+                    
+                }
+
+                
+                semaphore.wait()
+
+                /*Remove matches that are busy*/
+                self.matches = self.matches.filter{$0.value == "false" || $0.value == ""}
+                
+                var matchId = ""
+                var matchedOn = ""
+                
+                /*No matches left*/
+                if(self.matches.isEmpty) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        print("No Matches Found!")
+                        self.headerLabel1.text = "No bubbles to pop"
+                        self.headerLabel2.text = "Try again later"
+                        return
+                    }
+                    return
+                   
+                }
+                else {
+                    /*Find the most ideal match, if not found match with first person*/
+                    for match in self.matches {
+                        var matchAnswers = [String:[String]]()
+                        
+                        db.collection("users").document(match.key).collection("questions").document("friendship").getDocument{(document, error) in
+                            if let document = document, document.exists {
+                                
+                                let data = document.data() as? [String: Any]
+                                
+                                matchAnswers["major"] = [data?["major"] as? String ?? ""]
+                                matchAnswers["hobbies"] = data?["hobbies"] as? [String]
+                                matchAnswers["music"] = data?["music"] as? [String]
+                            }
+                            if self.answers["major"] == matchAnswers["major"] {
+                                matchId = match.key
+                                matchedOn = "major"
+                                print(matchId)
+                            }
+                            else {
+                                for hobby in matchAnswers["hobbies"] ?? [] {
+                                    if self.answers["hobbies"]?.contains(hobby) == true {
+                                        if matchId == "" {
+                                            matchId = match.key
+                                            matchedOn = "hobby: \(hobby)"
+                                            break
+                                        }
+                                        
+                                    }
+                                }
+                                for music in matchAnswers["music"] ?? [] {
+                                    if self.answers["music"]?.contains(music) == true {
+                                        if matchId == "" {
+                                            matchId = match.key
+                                            matchedOn = "music: \(music)"
+                                            break
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                            /*Found a match*/
+                            if matchId != "" {
+                                print("Ideal Match Found")
+                                
+                                /*set current match variable in firestore */
+                                let docData1: [String: Any] = [
+                                    "match id": matchId,
+                                    "matched on": matchedOn,
+                                ]
+                                let docData2: [String: Any] = [
+                                    "match id": self.currUid,
+                                    "matched on": matchedOn,
+                                ]
+                                db.collection("users").document(self.currUid).collection("matches").document("current match").setData(docData1) { err in
+                                    if let err = err {
+                                        print("Error writing document: \(err)")
+                                    }
+                                    else{
+                                        print("Document successfully written with id \(self.currUid)")
+                                    }
+                                    
+                                }
+                                db.collection("users").document(matchId).collection("matches").document("current match").setData(docData2) { err in
+                                    if let err = err {
+                                        print("Error writing document: \(err)")
+                                    }
+                                    else{
+                                        print("Document successfully written with id \(matchId)")
+                                    }
+                                    /*Move to matchhingVC*/
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                                        self.bubbleZoom.transform = CGAffineTransform.identity
+                                        self.bubbleZoom.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+                                        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut , animations: {
+                                            self.bubbleZoom.isHidden = false
+                                            self.bubbleZoom.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                                        }, completion: { finished in
+                                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                            guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
+                                                assertionFailure("couldn't find vc")
+                                                return
+                                            }
+                                            
+                                            self.navigationController?.pushViewController(matchingViewController, animated: false)
+                                        })
+                                    }                            }
+                                
+                                
+                            }
+                            else {
+                                /*Match is not ideal*/
+                                print("Match Found")
+                                matchId = self.matches.first?.key ?? ""
+                                matchedOn = "nothing"
+                                
+                                let docData1: [String: Any] = [
+                                    "match id": matchId,
+                                    "matched on": matchedOn,
+                                ]
+                                let docData2: [String: Any] = [
+                                    "match id": self.currUid,
+                                    "matched on": matchedOn,
+                                ]
+                                db.collection("users").document(self.currUid).collection("matches").document("current match").setData(docData1) { err in
+                                    if let err = err {
+                                        print("Error writing document: \(err)")
+                                    }
+                                    else{
+                                        print("Document successfully written with id \(self.currUid)")
+                                    }
+                                    
+                                }
+                                db.collection("users").document(matchId).collection("matches").document("current match").setData(docData2) { err in
+                                    if let err = err {
+                                        print("Error writing document: \(err)")
+                                    }
+                                    else{
+                                        print("Document successfully written with id \(matchId)")
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                                        self.bubbleZoom.transform = CGAffineTransform.identity
+                                        self.bubbleZoom.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+                                        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut , animations: {
+                                            self.bubbleZoom.isHidden = false
+                                            self.bubbleZoom.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                                        }, completion: { finished in
+                                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                            guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
+                                                assertionFailure("couldn't find vc")
+                                                return
+                                            }
+                                            
+                                            self.navigationController?.pushViewController(matchingViewController, animated: false)
+                                        })
+                                    }                            }
+                            }
+                        }
+                        
+                    }
+                    
+                    
+                }
+            }
+            else {
+                /*Matched already from other person*/
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                    self.bubbleZoom.transform = CGAffineTransform.identity
+                    self.bubbleZoom.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+                    UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut , animations: {
+                        self.bubbleZoom.isHidden = false
+                        self.bubbleZoom.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    }, completion: { finished in
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        guard let matchingViewController = storyboard.instantiateViewController(withIdentifier: "matchingVC") as? MatchingViewController else {
+                            assertionFailure("couldn't find vc")
+                            return
+                        }
+                        
+                        self.navigationController?.pushViewController(matchingViewController, animated: false)
+                    })
+                }
+            }
+        })
+    }
 }

@@ -20,56 +20,144 @@ class MatchingViewController: UIViewController {
     @IBOutlet weak var rejectButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
     
+    @IBOutlet weak var popUpName: UILabel!
+    @IBOutlet weak var popUpGender: UILabel!
+    @IBOutlet weak var popUpAge: UILabel!
+    @IBOutlet weak var hobbiesAnswer: UILabel!
+    @IBOutlet weak var showAnswer: UILabel!
+    @IBOutlet weak var dietAnswer: UILabel!
+    @IBOutlet weak var musicAnswer: UILabel!
+    @IBOutlet weak var majorAnswer: UILabel!
+    
+    var matchId = ""
     var matchName = ""
+    var matchedOn = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
     var username = "Username"
+    let placeholderImage = UIImage(named: "bubble1")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.matchUsername.text = ""
+        self.popUpName.text = ""
+        self.popUpAge.text = ""
+        self.popUpGender.text = ""
+        self.hobbiesAnswer.text = ""
+        self.showAnswer.text = ""
+        self.dietAnswer.text = ""
+        self.musicAnswer.text = ""
+        self.majorAnswer.text = ""
         
-        let docRef = db.collection("users").document("Lr4b4gJoa9aM9qtD0LVX")
-        docRef.getDocument { (document, error) in
-            
-            if let document = document, document.exists {
-                self.matchName = document.get("first name") as? String ?? ""
-                
-                let username = document.get("username") as? String ?? ""
-                if username.count == 0 {
-                    self.matchUsername.text = self.matchName
-                    self.instruction.text = "Tap on image to view \(self.matchName)'s information"
-                }
-                else {
-                    self.matchUsername.text = username
-                    self.instruction.text = "Tap on image to view \(username)'s information"
-                }
-            } else {
-                print("Document does not exist")
-            }
-            
-        }
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
-        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-        self.view.addGestureRecognizer(swipeLeft)
-        
+        setup()
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-
+        
         matchImage.addGestureRecognizer(imageTap)
         matchImage.isUserInteractionEnabled = true
         
         popUpView.layer.borderWidth = 2.5
         popUpView.layer.borderColor = UIColor(displayP3Red: 1.0, green: 0.54, blue: 0.11, alpha: 1.0).cgColor
-          
+        
         popUpView.isHidden = true
+        
+    }
     
-        
-        
+    func setup() {
+        let db = Firestore.firestore()
+        db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("current match").getDocument{ (document, error) in
+            if let document = document, document.exists {
+                self.matchId = document.get("match id") as? String ?? ""
+                db.collection("users").document(self.matchId).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        self.matchName = document.get("first name") as? String ?? ""
+                        
+                        let username = document.get("username") as? String ?? ""
+                        if username.count == 0 {
+                            self.matchUsername.text = self.matchName
+                            self.instruction.text = "Tap on image to view \(self.matchName)'s information"
+                            self.popUpName.text = self.matchName
+                        }
+                        else {
+                            self.matchUsername.text = username
+                            self.instruction.text = "Tap on image to view \(username)'s information"
+                            self.popUpName.text = username
+                            
+                        }
+                        if let image = document.get("image") {
+                            let imageUrl = image as? String ?? ""
+                            self.matchImage.sd_setImage(with: URL(string: imageUrl), placeholderImage: self.placeholderImage)
+                            // self.profileImage.sizeToFit()
+                            self.matchImage.layer.cornerRadius = 0.5 * self.matchImage.layer.bounds.size.width
+                            self.matchImage.layer.borderWidth = 8.0
+                            self.matchImage.layer.borderColor = UIColor(displayP3Red: 0.91, green: 0.87, blue: 1.0, alpha: 1.0).cgColor
+                            self.matchImage.contentMode = .scaleAspectFill
+                        }
+                    }
+                    
+                    
+                }
+                
+                
+            }
+            db.collection("users").document(self.matchId).collection("questions").document("friendship").getDocument{(document, error) in
+                if let document = document, document.exists {
+                    
+                    let data = document.data() as? [String: Any]
+                    
+                    self.majorAnswer.text = data?["major"] as? String ?? ""
+                    let hobbies = data?["hobbies"] as? [String] ?? []
+                    var hobbiesText = ""
+                    var musicText = ""
+                    var showsText = ""
+                    
+                    for hobby in hobbies{
+                        if hobby != hobbies.first {
+                            hobbiesText += "\n"
+                        }
+                        hobbiesText += "-\(hobby)"
+                    }
+                    
+                    self.hobbiesAnswer.numberOfLines = 0
+                    self.hobbiesAnswer.text = hobbiesText
+                    
+                    let music = data?["music"] as? [String] ?? []
+                    
+                    for genre in music{
+                        if genre != music.first {
+                            musicText += "\n"
+                        }
+                        musicText += "-\(genre)"
+                        
+                    }
+                    self.musicAnswer.numberOfLines = 0
+                    self.musicAnswer.text = musicText
+                    
+                    let shows = data?["tvShows"] as? [String] ?? []
+                    
+                    for show in shows {
+                        if show != shows.first {
+                            showsText += "\n"
+                        }
+                        showsText += "-\(show)"
+                    }
+                    
+                    self.showAnswer.numberOfLines = 0
+                    self.showAnswer.text = showsText
+                    
+                    self.dietAnswer.text = data?["diet"] as? String ?? ""
+                    
+                    self.popUpAge.text = data?["ageGroup"] as? String ?? ""
+                    if(self.popUpAge.text != "") {
+                        self.popUpAge.text = ",\(self.popUpAge.text)"
+                    }
+                    self.popUpGender.text = data?["gender"] as? String ?? ""
+                    if(self.popUpGender.text != "") {
+                        self.popUpGender.text = ",\(self.popUpGender.text)"
+                    }
+                }
+            }
+        }
     }
     
     
@@ -81,19 +169,6 @@ class MatchingViewController: UIViewController {
             return
         }
         self.navigationController?.pushViewController(profileViewController, animated: true)
-    }
-    @objc func swipe(gesture: UISwipeGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            
-            switch swipeGesture.direction {
-            case .right:
-                acceptMatch()
-            case .left:
-                rejectMatch()
-            default:
-                break
-            }
-        }
     }
     
     func acceptMatch() {
@@ -122,25 +197,25 @@ class MatchingViewController: UIViewController {
     }
     
     func fetchToken() throws -> String {
-            var token: String = "TWILIO_ACCESS_TOKEN"
-            var tokenURL = "https://glaucous-centipede-6895.twil.io/video-token?identity="
-            tokenURL.append(username)
-            guard let requestURL: URL = URL(string: tokenURL) else{
-                print("Token URL not found")
-                return ""
+        var token: String = "TWILIO_ACCESS_TOKEN"
+        var tokenURL = "https://glaucous-centipede-6895.twil.io/video-token?identity="
+        tokenURL.append(username)
+        guard let requestURL: URL = URL(string: tokenURL) else{
+            print("Token URL not found")
+            return ""
+        }
+        do {
+            let data = try Data(contentsOf: requestURL)
+            if let tokenReponse = String(data: data, encoding: String.Encoding.utf8) {
+                token = tokenReponse
             }
-            do {
-                let data = try Data(contentsOf: requestURL)
-                if let tokenReponse = String(data: data, encoding: String.Encoding.utf8) {
-                    token = tokenReponse
-                }
-            } catch let error as NSError {
-                print ("Invalid token url, error = \(error)")
-                throw error
-            }
-            return token
+        } catch let error as NSError {
+            print ("Invalid token url, error = \(error)")
+            throw error
+        }
+        return token
     }
-
+    
     func rejectMatch() {
         /*Add user to rejectedMatches array*/
         rejectedMatches.append(matchName)
@@ -148,9 +223,9 @@ class MatchingViewController: UIViewController {
         /*Go to lobbyVC to find another */
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let lobbyViewController = storyboard.instantiateViewController(withIdentifier: "lobbyVC") as? LobbyViewController else {
-                assertionFailure("couldn't find vc") //will stop program
-                return
-            }
+            assertionFailure("couldn't find vc") //will stop program
+            return
+        }
         //optional navigation controller
         self.navigationController?.pushViewController(lobbyViewController, animated: true)
         

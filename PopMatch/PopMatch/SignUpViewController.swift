@@ -143,7 +143,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             "last name": self.lastNameTextField.text ?? "",
                             "username": "",
                             "email": self.emailTextField.text ?? "",
-                            "image": ""
+                            "image": "",
+                            "isOnCall": ""
                         ]
                         self.db.collection("users").document(uid).setData(docData) { err in
                             if let err = err {
@@ -154,6 +155,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             }
                             
                         }
+                        let docData1: [String: Any] = [
+                            "match id": "",
+                            "matched on": "",
+                        ]
+                        
+                        self.db.collection("users").document(uid).collection("matches").document("current match").setData(docData1)
                        
                         
                         //go into next view controller
