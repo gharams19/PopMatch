@@ -26,6 +26,12 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/d2afbf98f19e08d7a6
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/c89e49e86ae3898d7d7e667fa5d7b8eeab6c06e2
 
 **Gharam Alsaedi** - 
+* Worked on finding matches depending for user depending on three categories; major, hobbies, music preferences. I had to first make sure they dont already have a match by keeping track of "current match" variable. If not, I had to get all users and filter out users that are offline and users that are currently chatting with someone. Then with all the users left, I first check if majors match, if not I check hobbies, if not I check for music preferences. If no matches are found, I match the user with the first user in matches array. I then save current match id to be used in matchingVC and move to matchingVC. I had to use semaphores to synchronize these tasks. 
+* Connected match's info to matchingVC UI.
+* 
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/eeea8358eacaecab901db2925f3ded4d103c0745
+https://github.com/ECS189E/project-w21-big-bang-theory/commit/4749e42ce9ef1950ab051bce76d6d1867630300e
+
 
 **Ma Eint Poe** - 
 
@@ -44,6 +50,8 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/72488d742c1adbc0fa
 **Eden Avivi** - Help out with the matching algorithm if needed and testing it, look into having the user sign up with another social media app instead of entering username as mentioned in milestone 2, fix more autolayout to reduce our warnings, and fix the trello board to be better documented.
 
 **Gharam Alsaedi** - 
+* Keep track of rejected matches and reset when user goes offline.
+* Find a way to wait for other user to accept match and check if both accepted before moving to meetingVC.
 
 **Ma Eint Poe** - 
 
