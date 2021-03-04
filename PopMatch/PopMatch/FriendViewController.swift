@@ -274,7 +274,13 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBAction func toProfile() {
         // Pop off the friend VC that was pushed from profile
         sendToDatabase()
-        navigationController?.popViewController(animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
+                assertionFailure("couldn't find vc") //will stop program
+                return
+            }
+        //optional navigation controller
+        self.navigationController?.pushViewController(profileViewController, animated: true)
     }
     
 }

@@ -165,14 +165,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         
                         //go into next view controller
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
+                        guard let friendViewController = storyboard.instantiateViewController(withIdentifier: "friendVC") as? FriendViewController else {
                                 assertionFailure("couldn't find vc") //will stop program
                                 return
                             }
                         //optional navigation controller
-                        self.navigationController?.pushViewController(profileViewController, animated: true)
+                        self.navigationController?.pushViewController(friendViewController, animated: true)
                     } else {
-                        
+                        //add message about what password needs to contain?
                         //present error, that could not create an account
                         print(error ?? "")
                         self.errLabel.text = "Could not create account"
