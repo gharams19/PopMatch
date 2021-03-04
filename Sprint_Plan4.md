@@ -28,7 +28,6 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/c89e49e86ae3898d7d
 **Gharam Alsaedi** - 
 * Worked on finding matches depending for user depending on three categories; major, hobbies, music preferences. I had to first make sure they dont already have a match by keeping track of "current match" variable. If not, I had to get all users and filter out users that are offline and users that are currently chatting with someone. Then with all the users left, I first check if majors match, if not I check hobbies, if not I check for music preferences. If no matches are found, I match the user with the first user in matches array. I then save current match id to be used in matchingVC and move to matchingVC. I had to use semaphores to synchronize these tasks. 
 * Connected match's info to matchingVC UI.
-* 
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/eeea8358eacaecab901db2925f3ded4d103c0745
 https://github.com/ECS189E/project-w21-big-bang-theory/commit/4749e42ce9ef1950ab051bce76d6d1867630300e
 
