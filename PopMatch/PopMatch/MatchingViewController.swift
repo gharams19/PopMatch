@@ -34,7 +34,8 @@ class MatchingViewController: UIViewController {
     var matchedOn = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
-    var username = "Username"
+    var username = "Username2"
+    var roomName = "PopRoom"
     let placeholderImage = UIImage(named: "bubble1")
     
     override func viewDidLoad() {
@@ -171,7 +172,31 @@ class MatchingViewController: UIViewController {
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
     
+    
+    
+    
+    @objc func currentTimeDidChange() {
+        db.collection(roomName).document("Timer").getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Time") != nil{
+                        let time = document.get("Time")
+                        var curTime = Int(time as? String ?? "1000" ) ?? 1000
+                        curTime = curTime - 1
+                        self.db.collection(self.roomName).document("Timer").setData(["Time":String(curTime)])
+                    }
+                }
+            }
+        }
+    }
+    func startTimer(){
+        db.collection(roomName).document("Timer").setData(["Time":"300"])
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.currentTimeDidChange), userInfo: nil, repeats: true)
+    }
+    
     func acceptMatch() {
+        startTimer()
         let userToken = self.getToken()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let meetingViewController = storyboard.instantiateViewController(withIdentifier: "meetingVC") as? MeetingViewController else {

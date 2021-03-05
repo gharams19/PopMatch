@@ -532,13 +532,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding your next " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ais-Gb-vvp">
-                                <rect key="frame" x="54" y="44" width="306.5" height="39.5"/>
+                                <rect key="frame" x="78.5" y="44" width="257" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
                                 <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bubble..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LHQ-Ae-SsJ">
-                                <rect key="frame" x="135.5" y="91.5" width="143.5" height="39.5"/>
+                                <rect key="frame" x="144" y="89.5" width="126" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
                                 <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -555,7 +555,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iER-lr-YPz">
-                                <rect key="frame" x="0.0" y="139" width="414" height="682"/>
+                                <rect key="frame" x="0.0" y="135" width="414" height="686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-hM-T2D">
                                         <rect key="frame" x="57" y="81" width="300" height="300"/>
@@ -953,271 +953,6 @@
             </objects>
             <point key="canvasLocation" x="2428.985507246377" y="93.75"/>
         </scene>
-        <!--Meeting View Controller-->
-        <scene sceneID="wdo-Rq-wsH">
-            <objects>
-                <viewController storyboardIdentifier="meetingVC" id="uqc-P9-jYU" customClass="MeetingViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5Pe-XR-gIj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1g-Y2-lrv">
-                                <rect key="frame" x="25" y="424" width="40" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="DUL-b1-L4v"/>
-                                    <constraint firstAttribute="height" constant="50" id="poh-Ue-8bs"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="Microphone Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                </state>
-                                <connections>
-                                    <action selector="toggleMicWithSender:" destination="uqc-P9-jYU" eventType="touchUpInside" id="uGg-9G-e1w"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DkK-qE-kzf">
-                                <rect key="frame" x="23" y="374" width="50" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="IjZ-Jg-JUm"/>
-                                    <constraint firstAttribute="width" constant="50" id="pgg-Y5-bwv"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="Video Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                </state>
-                                <connections>
-                                    <action selector="toggleVid:" destination="uqc-P9-jYU" eventType="touchUpInside" id="CmL-Uy-70D"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL8-b0-8vD">
-                                <rect key="frame" x="10" y="802" width="394" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ffp-bZ-rAF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6q-lj-ok7" customClass="TVIVideoView">
-                                <rect key="frame" x="20" y="68" width="109" height="180"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="FRJ-gG-jBy"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: 5:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8c-wv-LhB">
-                                <rect key="frame" x="15" y="268" width="125" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="SlM-0c-n0w"/>
-                                    <constraint firstAttribute="width" constant="125" id="d99-28-GLx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Social Media" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLg-H5-hj0">
-                                <rect key="frame" x="309" y="194" width="100" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="AAe-SD-TGV"/>
-                                    <constraint firstAttribute="height" constant="50" id="Hkd-5B-FgO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" red="0.76791840789999999" green="0.66131496430000003" blue="0.99670916799999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUo-ef-VQF">
-                                <rect key="frame" x="20" y="309" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="WD8-Gg-vz2"/>
-                                    <constraint firstAttribute="height" constant="50" id="r1n-9W-GwG"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="addTime Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                </state>
-                                <connections>
-                                    <action selector="addTime:" destination="uqc-P9-jYU" eventType="touchUpInside" id="zFi-5a-9zs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09e-jv-y3w">
-                                <rect key="frame" x="20" y="489" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="DtE-FI-lx6"/>
-                                    <constraint firstAttribute="height" constant="50" id="fmD-2M-mqT"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="end call Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
-                                </state>
-                                <connections>
-                                    <action selector="disconnectWithSender:" destination="uqc-P9-jYU" eventType="touchUpInside" id="TuC-ok-lDe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePk-uk-SAw">
-                                <rect key="frame" x="334" y="259" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="6je-Zu-R52"/>
-                                    <constraint firstAttribute="height" constant="50" id="mtb-Io-iBB"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="twitter Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendTwitter:" destination="uqc-P9-jYU" eventType="touchUpInside" id="PUQ-4O-AEI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqP-pN-T0r">
-                                <rect key="frame" x="334" y="259" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="JPZ-et-2YH"/>
-                                    <constraint firstAttribute="height" constant="50" id="Lah-qF-Ezj"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="bubble1" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                </state>
-                                <connections>
-                                    <action selector="dropdown_menu:" destination="uqc-P9-jYU" eventType="touchUpInside" id="KLs-1e-Xbg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cs-hK-TzP">
-                                <rect key="frame" x="334" y="324" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="9OT-2q-5bd"/>
-                                    <constraint firstAttribute="height" constant="50" id="KRm-P4-tiy"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="facebook Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendFacebook:" destination="uqc-P9-jYU" eventType="touchUpInside" id="xx0-CH-kGr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p4-Lw-e0G">
-                                <rect key="frame" x="334" y="454" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9ap-WA-fUa"/>
-                                    <constraint firstAttribute="width" constant="50" id="j07-QI-W8Z"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="Instagram Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendIG:" destination="uqc-P9-jYU" eventType="touchUpInside" id="uEt-a3-FiJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFc-45-2KW">
-                                <rect key="frame" x="334" y="519" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1LR-8j-x4p"/>
-                                    <constraint firstAttribute="width" constant="50" id="MCo-wY-zVi"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="LinkedIn Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendLinkedin:" destination="uqc-P9-jYU" eventType="touchUpInside" id="BjM-P1-zsQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hf-ez-JxB">
-                                <rect key="frame" x="334" y="389" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="HeC-Zm-Vnb"/>
-                                    <constraint firstAttribute="height" constant="50" id="QfD-3s-Tyt"/>
-                                </constraints>
-                                <state key="normal">
-                                    <imageReference key="image" image="snapchat Icon" symbolScale="large" renderingMode="original"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendSnapchat:" destination="uqc-P9-jYU" eventType="touchUpInside" id="AZD-Zp-GgG"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dde-d4-MPk">
-                                <rect key="frame" x="20" y="672" width="374" height="120"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="PFF-L5-sjo"/>
-                                </constraints>
-                                <color key="textColor" red="0.76791840789999999" green="0.66131496430000003" blue="0.99670916799999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="OW2-CH-OjR"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="2cs-hK-TzP" firstAttribute="top" secondItem="ePk-uk-SAw" secondAttribute="bottom" constant="15" id="2Bb-sM-W4p"/>
-                            <constraint firstItem="S8c-wv-LhB" firstAttribute="top" secondItem="H6q-lj-ok7" secondAttribute="bottom" constant="20" id="4xj-wA-8k3"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="XL8-b0-8vD" secondAttribute="trailing" constant="10" id="5C9-h2-9LZ"/>
-                            <constraint firstItem="U1g-Y2-lrv" firstAttribute="top" secondItem="DkK-qE-kzf" secondAttribute="bottom" constant="15" id="5Dr-Lh-uZB"/>
-                            <constraint firstItem="H6q-lj-ok7" firstAttribute="top" secondItem="OW2-CH-OjR" secondAttribute="top" constant="24" id="5RJ-qT-eLv"/>
-                            <constraint firstItem="4p4-Lw-e0G" firstAttribute="top" secondItem="1hf-ez-JxB" secondAttribute="bottom" constant="15" id="5ed-vl-uBP"/>
-                            <constraint firstItem="XL8-b0-8vD" firstAttribute="bottom" secondItem="OW2-CH-OjR" secondAttribute="bottom" id="711-PB-9LJ"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="4p4-Lw-e0G" secondAttribute="trailing" constant="30" id="7i2-tp-Zam"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="H6q-lj-ok7" secondAttribute="trailing" constant="285" id="97s-Lq-Jf9"/>
-                            <constraint firstItem="XL8-b0-8vD" firstAttribute="top" secondItem="dde-d4-MPk" secondAttribute="bottom" constant="10" id="9kC-WX-gly"/>
-                            <constraint firstItem="LFc-45-2KW" firstAttribute="top" secondItem="4p4-Lw-e0G" secondAttribute="bottom" constant="15" id="AMF-B3-VQd"/>
-                            <constraint firstItem="DkK-qE-kzf" firstAttribute="top" secondItem="DUo-ef-VQF" secondAttribute="bottom" constant="15" id="CAY-aZ-NR3"/>
-                            <constraint firstItem="DUo-ef-VQF" firstAttribute="top" secondItem="S8c-wv-LhB" secondAttribute="bottom" constant="20" id="FvI-4z-TIu"/>
-                            <constraint firstAttribute="trailing" secondItem="jLg-H5-hj0" secondAttribute="trailing" constant="5" id="K8N-2o-s94"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="dde-d4-MPk" secondAttribute="trailing" constant="20" id="NsG-Rn-vH3"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="LFc-45-2KW" secondAttribute="trailing" constant="30" id="OIB-6Q-Z7f"/>
-                            <constraint firstItem="09e-jv-y3w" firstAttribute="leading" secondItem="OW2-CH-OjR" secondAttribute="leading" constant="20" id="OsC-8M-hZq"/>
-                            <constraint firstItem="U1g-Y2-lrv" firstAttribute="leading" secondItem="OW2-CH-OjR" secondAttribute="leading" constant="25" id="Owp-SN-2Bv"/>
-                            <constraint firstItem="XL8-b0-8vD" firstAttribute="leading" secondItem="OW2-CH-OjR" secondAttribute="leading" constant="10" id="Ptx-Wt-ABh"/>
-                            <constraint firstItem="XL8-b0-8vD" firstAttribute="centerX" secondItem="5Pe-XR-gIj" secondAttribute="centerX" id="SBa-7k-NWS"/>
-                            <constraint firstItem="dde-d4-MPk" firstAttribute="leading" secondItem="OW2-CH-OjR" secondAttribute="leading" constant="20" id="TG8-Od-NPr"/>
-                            <constraint firstItem="S8c-wv-LhB" firstAttribute="leading" secondItem="OW2-CH-OjR" secondAttribute="leading" constant="15" id="adv-Cw-ecX"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="2cs-hK-TzP" secondAttribute="trailing" constant="30" id="bpQ-rn-PuW"/>
-                            <constraint firstItem="09e-jv-y3w" firstAttribute="top" secondItem="U1g-Y2-lrv" secondAttribute="bottom" constant="15" id="d0Y-zT-rWI"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="EqP-pN-T0r" secondAttribute="trailing" constant="30" id="dQP-eG-gTc"/>
-                            <constraint firstItem="1hf-ez-JxB" firstAttribute="top" secondItem="2cs-hK-TzP" secondAttribute="bottom" constant="15" id="dyQ-5B-9Pd"/>
-                            <constraint firstItem="LFc-45-2KW" firstAttribute="top" secondItem="4p4-Lw-e0G" secondAttribute="bottom" constant="15" id="hJ1-re-RU7"/>
-                            <constraint firstItem="H6q-lj-ok7" firstAttribute="leading" secondItem="5Pe-XR-gIj" secondAttribute="leadingMargin" id="kSq-4O-Mbb"/>
-                            <constraint firstItem="jLg-H5-hj0" firstAttribute="top" secondItem="OW2-CH-OjR" secondAttribute="top" constant="150" id="qc7-uy-Vom"/>
-                            <constraint firstItem="DUo-ef-VQF" firstAttribute="leading" secondItem="OW2-CH-OjR" secondAttribute="leading" constant="20" id="r7I-xZ-wQh"/>
-                            <constraint firstItem="DkK-qE-kzf" firstAttribute="leading" secondItem="OW2-CH-OjR" secondAttribute="leading" constant="23" id="tCc-AQ-Ctq"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="1hf-ez-JxB" secondAttribute="trailing" constant="30" id="vBX-Aw-0ky"/>
-                            <constraint firstItem="OW2-CH-OjR" firstAttribute="trailing" secondItem="ePk-uk-SAw" secondAttribute="trailing" constant="30" id="xiL-TQ-Jk1"/>
-                            <constraint firstItem="ePk-uk-SAw" firstAttribute="top" secondItem="jLg-H5-hj0" secondAttribute="bottom" constant="15" id="z9s-4B-9d5"/>
-                            <constraint firstItem="EqP-pN-T0r" firstAttribute="top" secondItem="jLg-H5-hj0" secondAttribute="bottom" constant="15" id="zbe-D0-u3O"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="fuX-kP-nF5" appends="YES" id="rRl-z3-qKC"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="addTimerButton" destination="DUo-ef-VQF" id="f0z-ZI-Rnn"/>
-                        <outlet property="dropdown" destination="EqP-pN-T0r" id="Ykn-6p-ti1"/>
-                        <outlet property="facebook" destination="2cs-hK-TzP" id="Bdv-QU-dzO"/>
-                        <outlet property="ig" destination="4p4-Lw-e0G" id="FTK-jg-Ezs"/>
-                        <outlet property="linkedin" destination="LFc-45-2KW" id="1Al-kK-1Z6"/>
-                        <outlet property="messageLabel" destination="XL8-b0-8vD" id="Fa0-d4-l8F"/>
-                        <outlet property="micImage" destination="U1g-Y2-lrv" id="UeZ-YA-6Ak"/>
-                        <outlet property="myView" destination="H6q-lj-ok7" id="xzg-J1-4MJ"/>
-                        <outlet property="snapchat" destination="1hf-ez-JxB" id="BY4-Az-mVQ"/>
-                        <outlet property="timerLabel" destination="S8c-wv-LhB" id="qWj-qQ-k5b"/>
-                        <outlet property="twitter" destination="ePk-uk-SAw" id="bWo-VN-aAH"/>
-                        <outlet property="urlTextView" destination="dde-d4-MPk" id="rhA-WA-or5"/>
-                        <outlet property="vidImage" destination="DkK-qE-kzf" id="iiS-3u-2B9"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xMd-Jn-N78" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="fuX-kP-nF5">
-                    <connections>
-                        <action selector="tapGesture:" destination="uqc-P9-jYU" id="Fcx-S2-sUN"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="3295.652173913044" y="817.63392857142856"/>
-        </scene>
         <!--Matching View Controller-->
         <scene sceneID="3Dx-qS-UJo">
             <objects>
@@ -1300,7 +1035,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite TV Shows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="491-26-ih4">
-                                        <rect key="frame" x="16" y="355" width="162" height="21"/>
+                                        <rect key="frame" x="16" y="355" width="161.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -1342,13 +1077,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=",&lt;GEN&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IMI-J8-6K0">
-                                        <rect key="frame" x="139" y="24" width="63" height="21"/>
+                                        <rect key="frame" x="139" y="24" width="62.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=",&lt;AGEGROUP&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xY3-9P-AQk">
-                                        <rect key="frame" x="210" y="24" width="127" height="21"/>
+                                        <rect key="frame" x="209.5" y="24" width="127" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1360,7 +1095,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Od-yf-gcb">
-                                        <rect key="frame" x="16" y="77" width="52" height="21"/>
+                                        <rect key="frame" x="16" y="77" width="51.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -1440,8 +1175,8 @@
                         <outlet property="matchUsername" destination="Ndd-mx-uL4" id="dq6-sH-ORQ"/>
                         <outlet property="musicAnswer" destination="4a8-ds-2tb" id="BI4-wr-Dab"/>
                         <outlet property="popUpAge" destination="xY3-9P-AQk" id="1f1-mf-hVA"/>
-                        <outlet property="popUpGender" destination="IMI-J8-6K0" id="2cb-8R-72a"/>
                         <outlet property="popUpName" destination="C3S-vB-Zbe" id="Or6-Zd-kkz"/>
+                        <outlet property="popUpPronoun" destination="IMI-J8-6K0" id="uvr-4O-Ehz"/>
                         <outlet property="popUpView" destination="mEY-d8-fXw" id="C55-87-oSD"/>
                         <outlet property="rejectButton" destination="hb5-ed-H5a" id="Hv7-Y0-2wY"/>
                         <outlet property="showAnswer" destination="9tZ-88-NGQ" id="Pc7-wK-ihA"/>
@@ -2647,6 +2382,256 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmR-e4-Isg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3505.7971014492755" y="-82.366071428571431"/>
+        </scene>
+        <!--Meeting View Controller-->
+        <scene sceneID="Ekb-gG-DFx">
+            <objects>
+                <viewController storyboardIdentifier="meetingVC" id="0b6-Sm-No0" customClass="MeetingViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rWc-ja-B7u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C11-0b-khU">
+                                <rect key="frame" x="25" y="424" width="40" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Fd9-G4-Mdg"/>
+                                    <constraint firstAttribute="height" constant="50" id="gNP-Xn-63a"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="Microphone Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleMicWithSender:" destination="0b6-Sm-No0" eventType="touchUpInside" id="02H-hA-VVX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-1s-oB5">
+                                <rect key="frame" x="23" y="374" width="50" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Qkt-P1-b28"/>
+                                    <constraint firstAttribute="height" constant="35" id="hhK-5L-hEF"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="Video Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleVid:" destination="0b6-Sm-No0" eventType="touchUpInside" id="3LD-Sc-mgS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TwilioVideo APIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T32-Gz-k4z">
+                                <rect key="frame" x="10" y="802" width="394" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XpA-1i-7mI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bui-Fg-Qa5" customClass="TVIVideoView">
+                                <rect key="frame" x="20" y="68" width="124" height="180"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="JFx-Yk-1LG"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: 5:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDs-da-PIB">
+                                <rect key="frame" x="15" y="268" width="125" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="L9j-P2-8GN"/>
+                                    <constraint firstAttribute="width" constant="125" id="eCB-ic-qSy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.17059129479999999" green="0.37107327579999999" blue="0.68311679359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Social Media" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgE-Ix-lqh">
+                                <rect key="frame" x="309" y="194" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="YAU-M1-Ds7"/>
+                                    <constraint firstAttribute="height" constant="50" id="bzp-HE-Of7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.76791840789999999" green="0.66131496430000003" blue="0.99670916799999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPF-dm-Ruy">
+                                <rect key="frame" x="20" y="309" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DeN-ch-ctC"/>
+                                    <constraint firstAttribute="width" constant="50" id="LcP-wb-OLk"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="addTime Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTime:" destination="0b6-Sm-No0" eventType="touchUpInside" id="FjI-Dq-py6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YqP-gC-Gyq">
+                                <rect key="frame" x="20" y="489" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NFC-9d-GPE"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ndo-Cm-IXr"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="end call Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnectWithSender:" destination="0b6-Sm-No0" eventType="touchUpInside" id="7rX-9f-nKG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMn-ZB-7qi">
+                                <rect key="frame" x="334" y="259" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="LT5-rK-j3L"/>
+                                    <constraint firstAttribute="height" constant="50" id="O1m-9x-lKC"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="twitter Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendTwitter:" destination="0b6-Sm-No0" eventType="touchUpInside" id="bSw-c4-WmH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zj6-NA-609">
+                                <rect key="frame" x="334" y="324" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3aS-eH-Hbw"/>
+                                    <constraint firstAttribute="width" constant="50" id="o6O-gu-f9o"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="facebook Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendFacebook:" destination="0b6-Sm-No0" eventType="touchUpInside" id="sW9-VC-DOm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xB-Jx-aCF">
+                                <rect key="frame" x="334" y="454" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HmG-dP-ytW"/>
+                                    <constraint firstAttribute="width" constant="50" id="O8f-cM-4kJ"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="Instagram Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendIG:" destination="0b6-Sm-No0" eventType="touchUpInside" id="nlT-Eo-daD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCQ-yk-ty2">
+                                <rect key="frame" x="334" y="519" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="03y-rq-FLj"/>
+                                    <constraint firstAttribute="width" constant="50" id="QG0-wo-mIR"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="LinkedIn Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendLinkedin:" destination="0b6-Sm-No0" eventType="touchUpInside" id="cl6-dt-2Vf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYk-xb-vwq">
+                                <rect key="frame" x="334" y="389" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Buc-yA-3gL"/>
+                                    <constraint firstAttribute="height" constant="50" id="qNg-1c-0PR"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="snapchat Icon" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendSnapchat:" destination="0b6-Sm-No0" eventType="touchUpInside" id="4hd-jU-3lK"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gyx-LV-1QO">
+                                <rect key="frame" x="20" y="674" width="374" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="fnO-MK-zz1"/>
+                                </constraints>
+                                <color key="textColor" red="0.76791840789999999" green="0.66131496430000003" blue="0.99670916799999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Qc-O2-Dan"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="hYk-xb-vwq" firstAttribute="top" secondItem="zj6-NA-609" secondAttribute="bottom" constant="15" id="0eq-6H-bAp"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="Gyx-LV-1QO" secondAttribute="trailing" constant="20" id="2Oa-l5-Bam"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="bui-Fg-Qa5" secondAttribute="trailing" constant="270" id="3Wn-T4-xfO"/>
+                            <constraint firstItem="T32-Gz-k4z" firstAttribute="leading" secondItem="7Qc-O2-Dan" secondAttribute="leading" constant="10" id="4rt-Mh-u4l"/>
+                            <constraint firstItem="T32-Gz-k4z" firstAttribute="centerX" secondItem="rWc-ja-B7u" secondAttribute="centerX" id="502-zk-NDe"/>
+                            <constraint firstItem="T32-Gz-k4z" firstAttribute="top" secondItem="Gyx-LV-1QO" secondAttribute="bottom" constant="10" id="6fL-8E-RB7"/>
+                            <constraint firstItem="C11-0b-khU" firstAttribute="leading" secondItem="7Qc-O2-Dan" secondAttribute="leading" constant="25" id="7a1-fb-KVH"/>
+                            <constraint firstItem="nCQ-yk-ty2" firstAttribute="top" secondItem="8xB-Jx-aCF" secondAttribute="bottom" constant="15" id="CQj-cp-2Qb"/>
+                            <constraint firstItem="T32-Gz-k4z" firstAttribute="bottom" secondItem="7Qc-O2-Dan" secondAttribute="bottom" id="DD6-cv-p8R"/>
+                            <constraint firstItem="yDs-da-PIB" firstAttribute="leading" secondItem="7Qc-O2-Dan" secondAttribute="leading" constant="15" id="Etr-WV-zob"/>
+                            <constraint firstItem="Gyx-LV-1QO" firstAttribute="leading" secondItem="7Qc-O2-Dan" secondAttribute="leading" constant="20" id="Fbb-96-huX"/>
+                            <constraint firstItem="BPF-dm-Ruy" firstAttribute="top" secondItem="yDs-da-PIB" secondAttribute="bottom" constant="20" id="HQa-oY-Vbq"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="hYk-xb-vwq" secondAttribute="trailing" constant="30" id="HYb-Lb-Cva"/>
+                            <constraint firstItem="pgE-Ix-lqh" firstAttribute="top" secondItem="7Qc-O2-Dan" secondAttribute="top" constant="150" id="Lez-CB-z2Q"/>
+                            <constraint firstItem="yDs-da-PIB" firstAttribute="top" secondItem="bui-Fg-Qa5" secondAttribute="bottom" constant="20" id="Q5i-vB-tsn"/>
+                            <constraint firstItem="eRT-1s-oB5" firstAttribute="leading" secondItem="7Qc-O2-Dan" secondAttribute="leading" constant="23" id="QyZ-SO-7DZ"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="8xB-Jx-aCF" secondAttribute="trailing" constant="30" id="Vzd-Fr-5cb"/>
+                            <constraint firstItem="8xB-Jx-aCF" firstAttribute="top" secondItem="hYk-xb-vwq" secondAttribute="bottom" constant="15" id="Yzw-2p-BBx"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="QMn-ZB-7qi" secondAttribute="trailing" constant="30" id="Z1c-in-7IL"/>
+                            <constraint firstItem="YqP-gC-Gyq" firstAttribute="leading" secondItem="7Qc-O2-Dan" secondAttribute="leading" constant="20" id="cWJ-hO-NBt"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="T32-Gz-k4z" secondAttribute="trailing" constant="10" id="dEA-pr-xlu"/>
+                            <constraint firstItem="QMn-ZB-7qi" firstAttribute="top" secondItem="pgE-Ix-lqh" secondAttribute="bottom" constant="15" id="fIm-Q2-yT9"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="zj6-NA-609" secondAttribute="trailing" constant="30" id="gN7-2E-zgg"/>
+                            <constraint firstItem="bui-Fg-Qa5" firstAttribute="top" secondItem="7Qc-O2-Dan" secondAttribute="top" constant="24" id="ggu-zT-Ctc"/>
+                            <constraint firstItem="eRT-1s-oB5" firstAttribute="top" secondItem="BPF-dm-Ruy" secondAttribute="bottom" constant="15" id="ian-6h-Bm7"/>
+                            <constraint firstItem="nCQ-yk-ty2" firstAttribute="top" secondItem="8xB-Jx-aCF" secondAttribute="bottom" constant="15" id="ibM-iv-iTF"/>
+                            <constraint firstItem="BPF-dm-Ruy" firstAttribute="leading" secondItem="7Qc-O2-Dan" secondAttribute="leading" constant="20" id="kMd-t8-Rhh"/>
+                            <constraint firstItem="C11-0b-khU" firstAttribute="top" secondItem="eRT-1s-oB5" secondAttribute="bottom" constant="15" id="kSN-X9-hWE"/>
+                            <constraint firstItem="zj6-NA-609" firstAttribute="top" secondItem="QMn-ZB-7qi" secondAttribute="bottom" constant="15" id="mCS-jO-69Q"/>
+                            <constraint firstItem="bui-Fg-Qa5" firstAttribute="leading" secondItem="rWc-ja-B7u" secondAttribute="leadingMargin" id="mfw-sQ-27L"/>
+                            <constraint firstItem="7Qc-O2-Dan" firstAttribute="trailing" secondItem="nCQ-yk-ty2" secondAttribute="trailing" constant="30" id="nPu-Sm-MFo"/>
+                            <constraint firstAttribute="trailing" secondItem="pgE-Ix-lqh" secondAttribute="trailing" constant="5" id="pzt-X2-T6a"/>
+                            <constraint firstItem="YqP-gC-Gyq" firstAttribute="top" secondItem="C11-0b-khU" secondAttribute="bottom" constant="15" id="wmN-16-viW"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Mby-bq-Sjg" appends="YES" id="UBq-zb-gqd"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="addTimerButton" destination="BPF-dm-Ruy" id="GKQ-FC-dMh"/>
+                        <outlet property="endImage" destination="YqP-gC-Gyq" id="MvJ-eK-5R1"/>
+                        <outlet property="facebook" destination="zj6-NA-609" id="Hez-hA-3N7"/>
+                        <outlet property="ig" destination="8xB-Jx-aCF" id="hlK-O2-6Ap"/>
+                        <outlet property="linkedin" destination="nCQ-yk-ty2" id="bXB-vL-zLh"/>
+                        <outlet property="messageLabel" destination="T32-Gz-k4z" id="zB1-gW-3BL"/>
+                        <outlet property="micImage" destination="C11-0b-khU" id="vmi-eH-nuf"/>
+                        <outlet property="myView" destination="bui-Fg-Qa5" id="pel-yw-IaT"/>
+                        <outlet property="sendMediaText" destination="pgE-Ix-lqh" id="6Lv-N8-Dj0"/>
+                        <outlet property="snapchat" destination="hYk-xb-vwq" id="Ep9-Zs-dHv"/>
+                        <outlet property="timerLabel" destination="yDs-da-PIB" id="Nm3-Nk-CWv"/>
+                        <outlet property="twitter" destination="QMn-ZB-7qi" id="SG2-4m-X96"/>
+                        <outlet property="urlTextView" destination="Gyx-LV-1QO" id="0Ry-ZR-5Z3"/>
+                        <outlet property="vidImage" destination="eRT-1s-oB5" id="ST0-pq-F9a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q88-xF-RTc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Mby-bq-Sjg">
+                    <connections>
+                        <action selector="tapGesture:" destination="0b6-Sm-No0" id="5n7-BX-3GV"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3280" y="899"/>
         </scene>
     </scenes>
     <resources>

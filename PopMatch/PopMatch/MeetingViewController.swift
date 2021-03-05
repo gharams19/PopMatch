@@ -12,14 +12,15 @@ import Firebase
 import FirebaseStorage
 import FirebaseUI
 
-class MeetingViewController: UIViewController, TimerModelUpdates {
+class MeetingViewController: UIViewController {
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var addTimerButton: UIButton!
     @IBOutlet weak var myView: VideoView!
+    @IBOutlet weak var addTimerButton: UIButton!
     @IBOutlet weak var micImage: UIButton!
     @IBOutlet weak var vidImage: UIButton!
+    @IBOutlet weak var endImage: UIButton!
     
     var remoteView: VideoView!
     var room: Room?
@@ -28,10 +29,10 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
     var localAudioTrack: LocalAudioTrack?
     var remoteParticipant: RemoteParticipant?
     var vidTimer: Timer?
-    var runCount = 300;
     var roomName: String = ""
     var accessToken : String = ""
-    @IBOutlet weak var dropdown: UIButton!
+   
+    @IBOutlet weak var sendMediaText: UILabel!
     @IBOutlet weak var twitter: UIButton!
     @IBOutlet weak var facebook: UIButton!
     @IBOutlet weak var snapchat: UIButton!
@@ -56,15 +57,7 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         self.connect()
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
-        timerModel.delegate = self
-        twitter.isHidden = true
-        facebook.isHidden = true
-        snapchat.isHidden = true
-        ig.isHidden = true
-        linkedin.isHidden = true
-        
         self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
-        
         let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         let userSocialData = userData.collection("socials").document("links")
         userSocialData.getDocument { (document, error) in
@@ -93,26 +86,25 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
             }
         }
         urlTextView.isEditable = false;
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
     }
     
-    @IBAction func dropdown_menu(_ sender: Any) {
-        twitter.isHidden = false
-        facebook.isHidden = false
-        snapchat.isHidden = false
-        ig.isHidden = false
-        linkedin.isHidden = false
-        dropdown.isHidden = true
-    }
+    var flip = 0;
     @IBAction func tapGesture(_ sender: Any) {
-        twitter.isHidden = true
-        facebook.isHidden = true
-        snapchat.isHidden = true
-        ig.isHidden = true
-        linkedin.isHidden = true
-        dropdown.isHidden = false
+        twitter.isHidden = flip == 0 ? true:false
+        facebook.isHidden = flip == 0 ? true:false
+        snapchat.isHidden = flip == 0 ? true:false
+        ig.isHidden = flip == 0 ? true:false
+        linkedin.isHidden = flip == 0 ? true:false
+        sendMediaText.isHidden = flip == 0 ? true:false
+        addTimerButton.isHidden = flip == 0 ? true:false
+        vidImage.isHidden = flip == 0 ? true:false
+        micImage.isHidden = flip == 0 ? true:false
+        endImage.isHidden = flip == 0 ? true:false
+        flip = flip == 0 ? 1 : 0
     }
     
     @IBAction func sendTwitter(_ sender: Any) {
@@ -157,20 +149,42 @@ class MeetingViewController: UIViewController, TimerModelUpdates {
         urlTextView.text = str
     }
     
-    let timerModel = TimerModel()
     
-    func currentTimeDidChange(_ currentTime: Int) {
-        timerLabel.text = "Timer: " + String(currentTime/60) + ":" + String(format: "%02d",currentTime % 60)
-        if(currentTime == 0){
-            self.room?.disconnect()
-            goBackToLobby()
-        }
-    }
     
    
-  
+    @objc func updateTimer(){
+        db.collection(roomName).document("Timer").getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Time") != nil{
+                        let time = document.get("Time")
+                        let curTime = Int(time as? String ?? "1000" ) ?? 1000
+                        self.timerLabel.text = "Timer: " + String(curTime/60) + ":" + String(format: "%02d",curTime % 60)
+                        if(curTime == 0){
+                            self.room?.disconnect()
+                            self.goBackToLobby()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @IBAction func addTime(_ sender: Any) {
-        timerModel.addTime()
+        db.collection(roomName).document("Timer").getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Time") != nil{
+                        let time = document.get("Time")
+                        var curTime = Int(time as? String ?? "1000" ) ?? 1000
+                        curTime = curTime + 60
+                        self.db.collection(self.roomName).document("Timer").setData(["Time":String(curTime)])
+                    }
+                }
+            }
+        }
     }
     
     
@@ -389,7 +403,7 @@ extension MeetingViewController: RoomDelegate {
             remoteParticipant.delegate = self
             // This would create another timer model class, which would not synconize with the other timer model
             // We need to create a timer API so both devices would be accessing the same timer model API
-            timerModel.start();
+            
         }
         
     }
@@ -417,13 +431,13 @@ extension MeetingViewController: RoomDelegate {
     func roomDidReconnect(room: Room) {
         logMessage(messageText: "Reconnected to room \(room.name)")
     }
-
+    
     func participantDidConnect(room: Room, participant: RemoteParticipant) {
         // Listen for events from all Participants to decide which RemoteVideoTrack to render.
         participant.delegate = self
         
         logMessage(messageText: "Participant \(participant.identity) connected with \(participant.remoteAudioTracks.count) audio and \(participant.remoteVideoTracks.count) video tracks")
-        timerModel.start()
+        db.collection("PopRoom").document("Timer").setData(["Time":"300"])
         
     }
 
