@@ -52,7 +52,10 @@ https://github.com/ECS189E/project-w21-big-bang-theory/commit/72488d742c1adbc0fa
 
 ### Plan to do:
 
-**Eden Avivi** - Help out with the matching algorithm if needed and testing it, look into having the user sign up with another social media app instead of entering username as mentioned in milestone 2, fix more autolayout to reduce our warnings, and fix the trello board to be better documented.
+**Eden Avivi** - 
+* Help out with the matching algorithm if needed and testing it
+* look into having the user sign up with another social media app instead of entering username as mentioned in milestone 2.
+* Add the number of users currently online to the lobby screen and limit it between 5-30 if possible.
 
 **Gharam Alsaedi** - 
 * Keep track of rejected matches and reset when user goes offline.
