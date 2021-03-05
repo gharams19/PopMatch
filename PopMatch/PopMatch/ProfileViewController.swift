@@ -330,7 +330,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     func getFBData(){
         if let token = AccessToken.current, !token.isExpired {
-            print("inside token")
             let token = token.tokenString
             let request = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, link" ], tokenString: token, version: nil, httpMethod: .get)
             request.start(completionHandler: { (connection, result, error) in
