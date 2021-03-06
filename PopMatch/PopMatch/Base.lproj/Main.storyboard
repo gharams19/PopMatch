@@ -553,7 +553,7 @@
                                     <action selector="backButton" destination="blZ-jM-pcS" eventType="touchUpInside" id="uTy-z5-wSR"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iER-lr-YPz">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iER-lr-YPz">
                                 <rect key="frame" x="0.0" y="139" width="414" height="682"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-hM-T2D">
@@ -575,6 +575,7 @@
                             <constraint firstItem="Ais-Gb-vvp" firstAttribute="top" secondItem="z80-n9-iSJ" secondAttribute="top" id="OjC-aw-t8Y"/>
                             <constraint firstItem="Ais-Gb-vvp" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="ToN-1d-zfZ"/>
                             <constraint firstItem="iER-lr-YPz" firstAttribute="centerX" secondItem="LHQ-Ae-SsJ" secondAttribute="centerX" id="Vc8-pv-v7C"/>
+                            <constraint firstItem="vjh-rQ-nlk" firstAttribute="top" secondItem="iER-lr-YPz" secondAttribute="bottom" constant="6" id="hFl-Sw-3OZ"/>
                             <constraint firstItem="vjh-rQ-nlk" firstAttribute="bottom" secondItem="z80-n9-iSJ" secondAttribute="bottom" id="hqg-Aj-xfh"/>
                             <constraint firstItem="LHQ-Ae-SsJ" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="iDV-wa-Rwq"/>
                         </constraints>
