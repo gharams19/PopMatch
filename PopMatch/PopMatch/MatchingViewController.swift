@@ -190,15 +190,15 @@ class MatchingViewController: UIViewController {
     
     
     @objc func currentTimeDidChange() {
-        db.collection(roomName).document("Timer").getDocument(){
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
-                    if document.get("Time") != nil{
-                        let time = document.get("Time")
+                    if document.get("Timer") != nil{
+                        let time = document.get("Timer")
                         var curTime = Int(time as? String ?? "1000" ) ?? 1000
                         curTime = curTime - 1
-                        self.db.collection(self.roomName).document("Timer").setData(["Time":String(curTime)])
+                        self.db.collection("Rooms").document(self.roomName).setData(["Timer":String(curTime)], merge: true)
                     }
                 }
             }
@@ -206,7 +206,7 @@ class MatchingViewController: UIViewController {
     }
     var vidTimer : Timer?
     func startTimer(){
-        db.collection(roomName).document("Timer").setData(["Time":"300"])
+        db.collection("Rooms").document(roomName).setData(["Timer":"300"], merge: true)
         vidTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.currentTimeDidChange), userInfo: nil, repeats: true)
     }
     
@@ -220,24 +220,25 @@ class MatchingViewController: UIViewController {
     
     func acceptMatch() {
         
-        db.collection(roomName).document("People").getDocument(){
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
                     //If opponent is in waiting room
                     if document.get(self.matchName) != nil{
-                        self.db.collection(self.roomName).document("People").setData(["Entered":"1"])
+                        self.db.collection("Rooms").document(self.roomName).setData(["Entered":"1"], merge: true)
                         self.enterVideo()
                         self.startTimer()
                     }
                     //If opponent rejected
                     if document.get("Rejected") != nil{
-                        self.db.collection(self.roomName).document("People").delete()
+                        self.db.collection("Rooms").document(self.roomName).delete()
                         self.goToLobby()
                     }
                 }else{
                     // Go to waiting room to wait for the others response
-                    self.db.collection(self.roomName).document("People").setData([self.username:"1"])
+                    self.db.collection("Rooms").document(self.roomName).setData([self.username:"1"], merge: true)
+                   
                     self.enterWaitingRoom()
                 }
             }
@@ -304,18 +305,18 @@ class MatchingViewController: UIViewController {
     }
     
     func rejectMatch() {
-        db.collection(roomName).document("People").getDocument(){
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
                     if document.get("Rejected") != nil{
-                        self.db.collection(self.roomName).document("People").delete()
+                        self.db.collection("Rooms").document(self.roomName).delete()
                     }else{
-                        self.db.collection(self.roomName).document("People").setData(["Rejected":"1"])
+                        self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
                     }
                 }
                 else{
-                    self.db.collection(self.roomName).document("People").setData(["Rejected":"1"])
+                    self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
                 }
             }
         }

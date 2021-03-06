@@ -94,6 +94,7 @@ class MeetingViewController: UIViewController {
                 print("Error in getting social document, error: \(String(describing: error))")
             }
         }
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
         urlTextView.isEditable = false;
         
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
@@ -102,6 +103,9 @@ class MeetingViewController: UIViewController {
         return self.room != nil
     }
     
+    @objc func hideInfo(){
+        messageLabel.isHidden = true
+    }
     var flip = 0;
     @IBAction func tapGesture(_ sender: Any) {
         twitter.isHidden = flip == 0 ? true:false
@@ -163,17 +167,17 @@ class MeetingViewController: UIViewController {
     
    
     @objc func updateTimer(){
-        db.collection(roomName).document("Timer").getDocument(){ [self]
+        db.collection("Rooms").document(roomName).getDocument(){ [self]
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
-                    if document.get("Time") != nil{
-                        let time = document.get("Time")
+                    if document.get("Timer") != nil{
+                        let time = document.get("Timer")
                         let curTime = Int(time as? String ?? "1000" ) ?? 1000
                         self.timerLabel.text = "Timer: " + String(curTime/60) + ":" + String(format: "%02d",curTime % 60)
                         if(curTime == 0){
                             self.room?.disconnect()
-                            self.db.collection(self.roomName).document("People").delete()
+                            self.db.collection("Rooms").document(roomName).delete()
                             let roomDict:[String: String] = ["room": self.roomName]
                             NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
                             self.goBackToLobby()
@@ -185,15 +189,15 @@ class MeetingViewController: UIViewController {
     }
 
     @IBAction func addTime(_ sender: Any) {
-        db.collection(roomName).document("Timer").getDocument(){
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
-                    if document.get("Time") != nil{
-                        let time = document.get("Time")
+                    if document.get("Timer") != nil{
+                        let time = document.get("Timer")
                         var curTime = Int(time as? String ?? "1000" ) ?? 1000
                         curTime = curTime + 60
-                        self.db.collection(self.roomName).document("Timer").setData(["Time":String(curTime)])
+                        self.db.collection("Rooms").document(self.roomName).setData(["Timer":String(curTime)])
                     }
                 }
             }
@@ -209,7 +213,7 @@ class MeetingViewController: UIViewController {
     
     func exitRoom(){
         self.room?.disconnect()
-        self.db.collection(self.roomName).document("People").delete()
+        self.db.collection("Rooms").document(roomName).delete()
         let roomDict:[String: String] = ["room": roomName]
         NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")

@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1919D2F0-E085-4234-94F8-58A892F94C74"
+            uuid = "2B897BBD-7665-4FC3-B723-F12ADC6DDE3C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PopMatch/MatchingViewController.swift"
+            filePath = "PopMatch/MeetingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "acceptMatch()"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "addTime(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

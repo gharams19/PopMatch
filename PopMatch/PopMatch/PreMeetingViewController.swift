@@ -39,7 +39,7 @@ class PreMeetingViewController: UIViewController {
         }
     }
     @objc func checkIfRoomIsReady(){
-        db.collection(roomName).document("People").getDocument(){
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
@@ -48,26 +48,20 @@ class PreMeetingViewController: UIViewController {
                         self.waitTimer?.invalidate()
                     }
                     if document.get("Rejected") != nil{
-                        self.db.collection(self.roomName).document("People").delete()
+                        self.db.collection("Rooms").document(self.roomName).delete()
                         self.goBackToLobby()
                     }
+                    
                 }
+                
             }
+            
         }
-//        db.collection(roomName).document(self.matchName).getDocument(){
-//            (document, error) in
-//            if(error == nil){
-//                if let document = document, document.exists {
-//                    self.enterVideo()
-//                    self.waitTimer?.invalidate()
-//                }
-//            }
+//        waitTime += 1
+//        if(waitTime == 15){
+//            self.db.collection("Rooms").document(self.roomName).delete()
+//            goBackToLobby()
 //        }
-        waitTime += 1
-        if(waitTime == 15){
-            self.db.collection(self.roomName).document("People").delete()
-            goBackToLobby()
-        }
     }
     
     func enterVideo(){
