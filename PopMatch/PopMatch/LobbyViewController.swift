@@ -260,87 +260,87 @@ class LobbyViewController: UIViewController {
                 
                 semaphore = DispatchSemaphore(value: 0)
                 
-//                /*Get all users from realtime database and only add people that are online*/
-//                let ref = Database.database().reference().child("status")
-//                ref.observeSingleEvent(of:.value, with: { snapshot in
-//                    let children = snapshot.children.allObjects as? [DataSnapshot] ?? [DataSnapshot()]
-//                    for child in children {
-//
-//                        let uid = child.key
-//                        let value = child.value as? [String:Any]
-//                        let state = value?.values.first as? String ?? ""
-//
-//                        if uid == self.currUid  {
-//                            continue
-//                        }
-//                        if state == "online" {
-//                            self.matches[uid] = ""
-//                        }
-//
-//                    }
-//
-//                    semaphore.signal()
-//                })
-//
-//                semaphore.wait()
-//
-//                /*No users are online*/
-//                if(self.matches.isEmpty) {
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                        print("No Matches Found!")
-//                        self.headerLabel1.text = "No bubbles to pop"
-//                        self.headerLabel2.text = "Try again later"
-//                        return
-//                    }
-//                    return
-//                }
-//                semaphore = DispatchSemaphore(value: 0)
-//                var i = 0
-//
-//                /*get the bool variable isOnCall that is true if user is unavailable */
-//                for match in self.matches {
-//
-//                    let docRef = db.collection("users").document(match.key)
-//
-//
-//                    docRef.getDocument {(document, error) in
-//                        i+=1
-//                        if i == self.matches.count {
-//                            semaphore.signal()
-//                        }
-//                        if let document = document, document.exists {
-//                            var isOnCall = document.get("isOnCall") as? String ?? "false"
-//                            if isOnCall == "" {
-//                                isOnCall = "false"
-//                            }
-//                            self.matches.updateValue(isOnCall, forKey: match.key)
-//
-//                        }
-//
-//                    }
-//
-//                }
-//
-//
-//                semaphore.wait()
-//
-//                /*Remove matches that are busy*/
-//                self.matches = self.matches.filter{$0.value == "false" || $0.value == ""}
+                /*Get all users from realtime database and only add people that are online*/
+                let ref = Database.database().reference().child("status")
+                ref.observeSingleEvent(of:.value, with: { snapshot in
+                    let children = snapshot.children.allObjects as? [DataSnapshot] ?? [DataSnapshot()]
+                    for child in children {
+
+                        let uid = child.key
+                        let value = child.value as? [String:Any]
+                        let state = value?.values.first as? String ?? ""
+
+                        if uid == self.currUid  {
+                            continue
+                        }
+                        if state == "online" {
+                            self.matches[uid] = ""
+                        }
+
+                    }
+
+                    semaphore.signal()
+                })
+
+                semaphore.wait()
+
+                /*No users are online*/
+                if(self.matches.isEmpty) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        print("No Matches Found!")
+                        self.headerLabel1.text = "No bubbles to pop"
+                        self.headerLabel2.text = "Try again later"
+                        return
+                    }
+                    return
+                }
+                semaphore = DispatchSemaphore(value: 0)
+                var i = 0
+
+                /*get the bool variable isOnCall that is true if user is unavailable */
+                for match in self.matches {
+
+                    let docRef = db.collection("users").document(match.key)
+
+
+                    docRef.getDocument {(document, error) in
+                        i+=1
+                        if i == self.matches.count {
+                            semaphore.signal()
+                        }
+                        if let document = document, document.exists {
+                            var isOnCall = document.get("isOnCall") as? String ?? "false"
+                            if isOnCall == "" {
+                                isOnCall = "false"
+                            }
+                            self.matches.updateValue(isOnCall, forKey: match.key)
+
+                        }
+
+                    }
+
+                }
+
+
+                semaphore.wait()
+
+                /*Remove matches that are busy*/
+                self.matches = self.matches.filter{$0.value == "false" || $0.value == ""}
                 
                 var matchId = ""
                 var matchedOn = ""
                 
-//                /*No matches left*/
-//                if(self.matches.isEmpty) {
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                        print("No Matches Found!")
-//                        self.headerLabel1.text = "No bubbles to pop"
-//                        self.headerLabel2.text = "Try again later"
-//                        return
-//                    }
-//                    return
+                /*No matches left*/
+                if(self.matches.isEmpty) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        print("No Matches Found!")
+                        self.headerLabel1.text = "No bubbles to pop"
+                        self.headerLabel2.text = "Try again later"
+                        return
+                    }
+                    return
                    
-//                else {
+                } else {
                     /*Find the most ideal match, if not found match with first person*/
                     for match in self.matches {
                         var matchAnswers = [String:[String]]()
@@ -479,7 +479,7 @@ class LobbyViewController: UIViewController {
                                         })
                                     }                            }
                             }
-//                        }
+                        }
                         
                     }
                     

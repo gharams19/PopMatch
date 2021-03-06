@@ -122,6 +122,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if createPassTextField.text != verifyPassTextField.text {
             errLabel.textColor = .red
             errLabel.text = "Password does not match"
+        } else if (createPassTextField.text ?? "").count < 6 {
+            errLabel.textColor = .red
+            errLabel.text = "Password must be 6 characters long"
+        
         } else {
             
             //check that all fields are full before proceeding
