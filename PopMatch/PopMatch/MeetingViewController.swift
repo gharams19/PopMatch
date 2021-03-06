@@ -12,7 +12,14 @@ import Firebase
 import FirebaseStorage
 import FirebaseUI
 
+
+protocol TimerUpdates: class {
+    func stopTimer()
+}
+
+
 class MeetingViewController: UIViewController {
+    
 
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -22,6 +29,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var vidImage: UIButton!
     @IBOutlet weak var endImage: UIButton!
     
+    weak var delegate: TimerUpdates?
     var remoteView: VideoView!
     var room: Room?
     var camera: CameraSource?
@@ -50,6 +58,7 @@ class MeetingViewController: UIViewController {
     var linkedinLink: String = ""
     
     var links: [String] = []
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +95,7 @@ class MeetingViewController: UIViewController {
             }
         }
         urlTextView.isEditable = false;
+        
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
@@ -153,7 +163,7 @@ class MeetingViewController: UIViewController {
     
    
     @objc func updateTimer(){
-        db.collection(roomName).document("Timer").getDocument(){
+        db.collection(roomName).document("Timer").getDocument(){ [self]
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
@@ -163,6 +173,9 @@ class MeetingViewController: UIViewController {
                         self.timerLabel.text = "Timer: " + String(curTime/60) + ":" + String(format: "%02d",curTime % 60)
                         if(curTime == 0){
                             self.room?.disconnect()
+                            self.db.collection(self.roomName).document("People").delete()
+                            let roomDict:[String: String] = ["room": self.roomName]
+                            NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
                             self.goBackToLobby()
                         }
                     }
@@ -186,10 +199,19 @@ class MeetingViewController: UIViewController {
             }
         }
     }
+
     
+  
     
     @IBAction func disconnect(sender: AnyObject) {
+        exitRoom()
+    }
+    
+    func exitRoom(){
         self.room?.disconnect()
+        self.db.collection(self.roomName).document("People").delete()
+        let roomDict:[String: String] = ["room": roomName]
+        NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
         goBackToLobby()
     }
@@ -302,7 +324,6 @@ class MeetingViewController: UIViewController {
         room = TwilioVideoSDK.connect(options: connectOptions, delegate: self)
         
         logMessage(messageText: "Attempting to connect to room")
-        
         
     }
     
@@ -431,7 +452,7 @@ extension MeetingViewController: RoomDelegate {
     func roomDidReconnect(room: Room) {
         logMessage(messageText: "Reconnected to room \(room.name)")
     }
-    
+   
     func participantDidConnect(room: Room, participant: RemoteParticipant) {
         // Listen for events from all Participants to decide which RemoteVideoTrack to render.
         participant.delegate = self
@@ -439,10 +460,13 @@ extension MeetingViewController: RoomDelegate {
         logMessage(messageText: "Participant \(participant.identity) connected with \(participant.remoteAudioTracks.count) audio and \(participant.remoteVideoTracks.count) video tracks")
         db.collection("PopRoom").document("Timer").setData(["Time":"300"])
         
+        
     }
 
     func participantDidDisconnect(room: Room, participant: RemoteParticipant) {
+        
         logMessage(messageText: "Room \(room.name), Participant \(participant.identity) disconnected")
+       
 
         // Nothing to do in this example. Subscription events are used to add/remove renderers.
     }

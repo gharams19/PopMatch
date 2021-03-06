@@ -34,7 +34,7 @@ class MatchingViewController: UIViewController {
     var matchedOn = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
-    var username = "Username2"
+    var username = "Username"
     var roomName = "PopRoom"
     let placeholderImage = UIImage(named: "bubble1")
     
@@ -50,7 +50,7 @@ class MatchingViewController: UIViewController {
         self.dietAnswer.text = ""
         self.musicAnswer.text = ""
         self.majorAnswer.text = ""
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.stopTimer(_:)), name: Notification.Name("didStopTimer"), object: nil)
         setup()
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         
@@ -190,13 +190,42 @@ class MatchingViewController: UIViewController {
             }
         }
     }
+    var vidTimer : Timer?
     func startTimer(){
         db.collection(roomName).document("Timer").setData(["Time":"300"])
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.currentTimeDidChange), userInfo: nil, repeats: true)
+        vidTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.currentTimeDidChange), userInfo: nil, repeats: true)
+    }
+    
+    @objc func stopTimer(_ notification: Notification){
+        if let room = notification.userInfo?["room"] as? String {
+            if(room == self.roomName){
+                vidTimer?.invalidate()
+            }
+          }
     }
     
     func acceptMatch() {
-        startTimer()
+        db.collection(roomName).document("People").getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Count") != nil{
+                        self.db.collection(self.roomName).document("People").setData(["Entered":"1"])
+                        self.startTimer()
+                        self.enterVideo()
+                    }
+                    if document.get("Rejected") != nil{
+                        self.db.collection(self.roomName).document("People").delete()
+                        self.goToLobby()
+                    }
+                }else{
+                    self.db.collection(self.roomName).document("People").setData(["Count":"1"])
+                    self.enterWaitingRoom()
+                }
+            }
+        }
+    }
+    func enterVideo(){
         let userToken = self.getToken()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let meetingViewController = storyboard.instantiateViewController(withIdentifier: "meetingVC") as? MeetingViewController else {
@@ -205,8 +234,21 @@ class MatchingViewController: UIViewController {
         }
         // need to gernerate tokens for each user
         meetingViewController.accessToken = userToken
-        meetingViewController.roomName = "PopRoom"
+        meetingViewController.roomName = roomName
         navigationController?.pushViewController(meetingViewController, animated: true)
+    }
+    
+    func enterWaitingRoom(){
+        let userToken = self.getToken()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let preMeetingViewController = storyboard.instantiateViewController(withIdentifier: "preMeetingVC") as? PreMeetingViewController else {
+            assertionFailure("couldn't find vc")
+            return
+        }
+        // need to gernerate tokens for each user
+        preMeetingViewController.accessToken = userToken
+        preMeetingViewController.roomName = "PopRoom"
+        navigationController?.pushViewController(preMeetingViewController, animated: true)
     }
     func getToken() ->String{
         
@@ -242,9 +284,31 @@ class MatchingViewController: UIViewController {
     }
     
     func rejectMatch() {
+        db.collection(roomName).document("People").getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Rejected") != nil{
+                        self.db.collection(self.roomName).document("People").delete()
+                    }else{
+                        self.db.collection(self.roomName).document("People").setData(["Rejected":"1"])
+                    }
+                }
+                else{
+                    self.db.collection(self.roomName).document("People").setData(["Rejected":"1"])
+                }
+            }
+        }
+        
+                    
+        
         /*Add user to rejectedMatches array*/
         rejectedMatches.append(matchName)
+        goToLobby()
+       
         
+    }
+    func goToLobby(){
         /*Go to lobbyVC to find another */
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let lobbyViewController = storyboard.instantiateViewController(withIdentifier: "lobbyVC") as? LobbyViewController else {
@@ -253,7 +317,6 @@ class MatchingViewController: UIViewController {
         }
         //optional navigation controller
         self.navigationController?.pushViewController(lobbyViewController, animated: true)
-        
     }
     @IBAction func invokeAcceptMatchFunc(_ sender: Any) {
         acceptMatch()
