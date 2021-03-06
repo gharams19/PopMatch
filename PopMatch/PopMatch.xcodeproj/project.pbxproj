@@ -149,13 +149,13 @@
 				7A560C4A25DB20FB00377699 /* Info.plist */,
 				7A560C5125DB25D200377699 /* SignUpViewController.swift */,
 				D4FE121325E3333100EF46F3 /* LobbyViewController.swift */,
-				D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */,
 				7A560C5425DB2FFF00377699 /* MainViewController.swift */,
 				7A7DDA8925DC37F000D804CB /* Api.swift */,
 				7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */,
 				7A86DE0925E31CF700FFB75A /* FriendViewController.swift */,
 				76412BC225E601D900777066 /* MatchingViewController.swift */,
 				D43AAD3525F36B6700501A4D /* PreMeetingViewController.swift */,
+				D4FE121625E3333D00EF46F3 /* MeetingViewController.swift */,
 			);
 			path = PopMatch;
 			sourceTree = "<group>";

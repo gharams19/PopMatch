@@ -34,7 +34,7 @@ class MatchingViewController: UIViewController {
     var matchedOn = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
-    var username = "Username"
+    var username = ""
     var roomName = "PopRoom"
     let placeholderImage = UIImage(named: "bubble1")
     
@@ -51,6 +51,7 @@ class MatchingViewController: UIViewController {
         self.musicAnswer.text = ""
         self.majorAnswer.text = ""
         NotificationCenter.default.addObserver(self, selector: #selector(self.stopTimer(_:)), name: Notification.Name("didStopTimer"), object: nil)
+        
         setup()
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         
@@ -64,8 +65,21 @@ class MatchingViewController: UIViewController {
         
     }
     
+    
     func setup() {
         let db = Firestore.firestore()
+        
+        //set username for auth token
+        db.collection("users").document(Auth.auth().currentUser?.uid ?? "").getDocument{ (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    self.username = document.get("first name") as? String ?? ""
+                }
+            }
+            
+        }
+        
+        
         db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("current match").getDocument{ (document, error) in
             if let document = document, document.exists {
                 self.matchId = document.get("match id") as? String ?? ""
@@ -205,21 +219,25 @@ class MatchingViewController: UIViewController {
     }
     
     func acceptMatch() {
+        
         db.collection(roomName).document("People").getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
-                    if document.get("Count") != nil{
+                    //If opponent is in waiting room
+                    if document.get(self.matchName) != nil{
                         self.db.collection(self.roomName).document("People").setData(["Entered":"1"])
-                        self.startTimer()
                         self.enterVideo()
+                        self.startTimer()
                     }
+                    //If opponent rejected
                     if document.get("Rejected") != nil{
                         self.db.collection(self.roomName).document("People").delete()
                         self.goToLobby()
                     }
                 }else{
-                    self.db.collection(self.roomName).document("People").setData(["Count":"1"])
+                    // Go to waiting room to wait for the others response
+                    self.db.collection(self.roomName).document("People").setData([self.username:"1"])
                     self.enterWaitingRoom()
                 }
             }
@@ -248,6 +266,8 @@ class MatchingViewController: UIViewController {
         // need to gernerate tokens for each user
         preMeetingViewController.accessToken = userToken
         preMeetingViewController.roomName = "PopRoom"
+        preMeetingViewController.username = username
+        preMeetingViewController.matchName = matchName
         navigationController?.pushViewController(preMeetingViewController, animated: true)
     }
     func getToken() ->String{

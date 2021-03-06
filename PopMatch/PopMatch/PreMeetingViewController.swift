@@ -20,6 +20,8 @@ class PreMeetingViewController: UIViewController {
     var accessToken : String = ""
     var waitTimer : Timer?
     var db = Firestore.firestore()
+    var username = ""
+    var matchName = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         displayLink = CADisplayLink(target: self, selector: #selector(handleAnimations))
@@ -52,8 +54,18 @@ class PreMeetingViewController: UIViewController {
                 }
             }
         }
+//        db.collection(roomName).document(self.matchName).getDocument(){
+//            (document, error) in
+//            if(error == nil){
+//                if let document = document, document.exists {
+//                    self.enterVideo()
+//                    self.waitTimer?.invalidate()
+//                }
+//            }
+//        }
         waitTime += 1
         if(waitTime == 15){
+            self.db.collection(self.roomName).document("People").delete()
             goBackToLobby()
         }
     }
