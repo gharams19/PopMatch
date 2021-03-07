@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import KCCircularTimer
 
 class MatchingViewController: UIViewController {
     
@@ -34,12 +35,20 @@ class MatchingViewController: UIViewController {
     var matchedOn = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
-    var username = "Username2"
-    var roomName = "PopRoom"
+    var selfName = ""
+    var roomName = "123"
     let placeholderImage = UIImage(named: "bubble1")
+    var vidTimer : Timer?
+    var matchTimer: Timer?
+    var checkTimer: Timer?
+    @IBOutlet weak var countdownTimer: KCCircularTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        countdownTimer.maximumValue = 30
+        countdownTimer.animate(from: 30, to: 0)
+        matchTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(self.timeOut), userInfo: nil, repeats: false)
+        checkTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.checkReject), userInfo: nil, repeats: true)
         
         self.matchUsername.text = ""
         self.popUpName.text = ""
@@ -50,7 +59,6 @@ class MatchingViewController: UIViewController {
         self.dietAnswer.text = ""
         self.musicAnswer.text = ""
         self.majorAnswer.text = ""
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.stopTimer(_:)), name: Notification.Name("didStopTimer"), object: nil)
         
         setup()
@@ -63,18 +71,38 @@ class MatchingViewController: UIViewController {
         popUpView.layer.borderColor = UIColor(displayP3Red: 1.0, green: 0.54, blue: 0.11, alpha: 1.0).cgColor
         
         popUpView.isHidden = true
+        //set room name
         
     }
     
+    
     func setup() {
         let db = Firestore.firestore()
+        
+        //set username for auth token
+        db.collection("users").document(Auth.auth().currentUser?.uid ?? "").getDocument{ (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    self.selfName = document.get("first name") as? String ?? ""
+                }
+            }
+            
+        }
+        
+       
+       
+        
+        
         db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("current match").getDocument{ (document, error) in
             if let document = document, document.exists {
                 self.matchId = document.get("match id") as? String ?? ""
                 db.collection("users").document(self.matchId).getDocument { (document, error) in
                     if let document = document, document.exists {
                         self.matchName = document.get("first name") as? String ?? ""
-                        
+                        //set room name
+                        var generateRoomName = self.selfName
+                        generateRoomName += self.matchName
+                        self.roomName = String(generateRoomName.sorted())
                         let username = document.get("username") as? String ?? ""
                         if username.count == 0 {
                             self.matchUsername.text = self.matchName
@@ -161,6 +189,7 @@ class MatchingViewController: UIViewController {
                 }
             }
         }
+        
     }
     
     
@@ -174,27 +203,60 @@ class MatchingViewController: UIViewController {
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
     
-    
-    
-    
-    @objc func currentTimeDidChange() {
-        db.collection(roomName).document("Timer").getDocument(){
+    @objc func checkReject(){
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
-                    if document.get("Time") != nil{
-                        let time = document.get("Time")
-                        var curTime = Int(time as? String ?? "1000" ) ?? 1000
-                        curTime = curTime - 1
-                        self.db.collection(self.roomName).document("Timer").setData(["Time":String(curTime)])
+                    //If opponent rejected
+                    if document.get("Rejected") != nil{
+                        self.db.collection("Rooms").document(self.roomName).delete()
+                        self.goToLobby()
+                        self.matchTimer?.invalidate()
                     }
                 }
             }
         }
     }
-    var vidTimer : Timer?
+    @objc func timeOut(){
+        
+        db.collection("Rooms").document(roomName).getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Rejected") != nil{
+                        self.db.collection("Rooms").document(self.roomName).delete()
+                    }else{
+                        self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
+                    }
+                }
+                else{
+                    self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
+                }
+            }
+        }
+        goToLobby()
+    }
+    
+    
+    @objc func currentTimeDidChange() {
+        db.collection("Rooms").document(roomName).getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Timer") != nil{
+                        let time = document.get("Timer")
+                        var curTime = Int(time as? String ?? "1000" ) ?? 1000
+                        curTime = curTime - 1
+                        self.db.collection("Rooms").document(self.roomName).setData(["Timer":String(curTime)], merge: true)
+                    }
+                }
+            }
+        }
+    }
+    
     func startTimer(){
-        db.collection(roomName).document("Timer").setData(["Time":"300"])
+        db.collection("Rooms").document(roomName).setData(["Timer":"300"], merge: true)
         vidTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.currentTimeDidChange), userInfo: nil, repeats: true)
     }
     
@@ -207,22 +269,36 @@ class MatchingViewController: UIViewController {
     }
     
     func acceptMatch() {
-        db.collection(roomName).document("People").getDocument(){
+        self.matchTimer?.invalidate()
+        self.checkTimer?.invalidate()
+        let generateRoomName = (selfName + matchName).sorted()
+        roomName = String(generateRoomName)
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
-                    if document.get("Count") != nil{
-                        self.db.collection(self.roomName).document("People").setData(["Entered":"1"])
-                        self.startTimer()
+                    //If opponent is in waiting room
+                    if document.get(self.matchName) != nil{
+                        self.db.collection("Rooms").document(self.roomName).setData(["Entered":"1"], merge: true)
                         self.enterVideo()
+                        self.startTimer()
+                        
+                    }
+                    //If opponent rejected
+                    if document.get("Rejected") != nil{
+                        self.db.collection("Rooms").document(self.roomName).delete()
+                        self.goToLobby()
+                       
                     }
                 }else{
-                    self.db.collection(self.roomName).document("People").setData(["Count":"1"])
+                    // Go to waiting room to wait for the others response
+                    self.db.collection("Rooms").document(self.roomName).setData([self.selfName:"1"], merge: true)
+                   
+                    self.enterWaitingRoom()
+                    
                 }
             }
         }
-        self.enterWaitingRoom()
-        
     }
     func enterVideo(){
         let userToken = self.getToken()
@@ -246,7 +322,9 @@ class MatchingViewController: UIViewController {
         }
         // need to gernerate tokens for each user
         preMeetingViewController.accessToken = userToken
-        preMeetingViewController.roomName = "PopRoom"
+        preMeetingViewController.roomName = roomName
+        preMeetingViewController.username = selfName
+        preMeetingViewController.matchName = matchName
         navigationController?.pushViewController(preMeetingViewController, animated: true)
     }
     func getToken() ->String{
@@ -265,7 +343,7 @@ class MatchingViewController: UIViewController {
     func fetchToken() throws -> String {
         var token: String = "TWILIO_ACCESS_TOKEN"
         var tokenURL = "https://glaucous-centipede-6895.twil.io/video-token?identity="
-        tokenURL.append(username)
+        tokenURL.append(selfName)
         guard let requestURL: URL = URL(string: tokenURL) else{
             print("Token URL not found")
             return ""
@@ -283,9 +361,33 @@ class MatchingViewController: UIViewController {
     }
     
     func rejectMatch() {
+        
+        self.matchTimer?.invalidate()
+        self.checkTimer?.invalidate()
+        db.collection("Rooms").document(roomName).getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    if document.get("Rejected") != nil{
+                        self.db.collection("Rooms").document(self.roomName).delete()
+                    }else{
+                        self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
+                    }
+                }
+                else{
+                    self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
+                }
+            }
+        }
+                    
+        
         /*Add user to rejectedMatches array*/
         rejectedMatches.append(matchName)
+        goToLobby()
+       
         
+    }
+    func goToLobby(){
         /*Go to lobbyVC to find another */
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let lobbyViewController = storyboard.instantiateViewController(withIdentifier: "lobbyVC") as? LobbyViewController else {
@@ -294,7 +396,6 @@ class MatchingViewController: UIViewController {
         }
         //optional navigation controller
         self.navigationController?.pushViewController(lobbyViewController, animated: true)
-        
     }
     @IBAction func invokeAcceptMatchFunc(_ sender: Any) {
         acceptMatch()

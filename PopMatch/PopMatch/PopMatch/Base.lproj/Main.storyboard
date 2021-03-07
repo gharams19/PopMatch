@@ -280,7 +280,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1000" y="94"/>
+            <point key="canvasLocation" x="1005.7971014492755" y="93.75"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="oNq-gV-zfT">
@@ -378,13 +378,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-0c-icJ">
-                                <rect key="frame" x="161" y="425" width="92" height="45"/>
+                                <rect key="frame" x="152" y="426" width="110" height="50"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.60784313725490191" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="KlC-pQ-yaF"/>
-                                    <constraint firstAttribute="height" constant="45" id="tr4-1s-SWQ"/>
+                                    <constraint firstAttribute="width" constant="110" id="KlC-pQ-yaF"/>
+                                    <constraint firstAttribute="height" constant="50" id="tr4-1s-SWQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -442,7 +442,6 @@
                             <constraint firstItem="3GC-x2-RYu" firstAttribute="leading" secondItem="WSr-I5-gB1" secondAttribute="leading" constant="20" id="0DK-s6-jgq"/>
                             <constraint firstItem="2kY-UL-zGz" firstAttribute="leading" secondItem="WwO-AC-kLc" secondAttribute="trailing" constant="20" id="14Z-iT-OoH"/>
                             <constraint firstItem="WSr-I5-gB1" firstAttribute="trailing" secondItem="BtL-2t-xaP" secondAttribute="trailing" constant="28" id="1Ml-IJ-1qS"/>
-                            <constraint firstItem="WSr-I5-gB1" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y0n-0c-icJ" secondAttribute="trailing" symbolic="YES" id="2YS-vW-A8m"/>
                             <constraint firstItem="WwO-AC-kLc" firstAttribute="top" secondItem="hUp-nc-IZS" secondAttribute="bottom" constant="21" id="3k6-xB-ffB"/>
                             <constraint firstItem="Psn-hI-LBM" firstAttribute="top" secondItem="XBU-Fe-Nsx" secondAttribute="bottom" constant="21" id="5zl-9a-3wr"/>
                             <constraint firstItem="XhK-9f-SkG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CXC-hJ-If7" secondAttribute="trailing" constant="8" symbolic="YES" id="7dF-16-2v9"/>
@@ -462,9 +461,8 @@
                             <constraint firstItem="lFe-aO-fpz" firstAttribute="leading" secondItem="WSr-I5-gB1" secondAttribute="leading" constant="20" id="Qkm-mc-HJX"/>
                             <constraint firstItem="CXC-hJ-If7" firstAttribute="top" secondItem="Psn-hI-LBM" secondAttribute="bottom" constant="14" id="Rhy-Ow-ltQ"/>
                             <constraint firstItem="WSr-I5-gB1" firstAttribute="trailing" secondItem="JBX-r2-L09" secondAttribute="trailing" constant="28" id="S7s-Bv-YGy"/>
-                            <constraint firstItem="y0n-0c-icJ" firstAttribute="top" secondItem="XhK-9f-SkG" secondAttribute="bottom" constant="9" id="SC9-xA-pE9"/>
+                            <constraint firstItem="y0n-0c-icJ" firstAttribute="top" secondItem="XhK-9f-SkG" secondAttribute="bottom" constant="10" id="SC9-xA-pE9"/>
                             <constraint firstItem="VTQ-2d-dLP" firstAttribute="top" secondItem="WSr-I5-gB1" secondAttribute="top" constant="22" id="SM5-eA-B3p"/>
-                            <constraint firstItem="y0n-0c-icJ" firstAttribute="leading" secondItem="WSr-I5-gB1" secondAttribute="leading" constant="161" id="Tvh-3J-YAp"/>
                             <constraint firstItem="53w-hk-V0y" firstAttribute="top" secondItem="rFc-dZ-c2N" secondAttribute="bottom" constant="8" symbolic="YES" id="Uvu-0Z-hvq"/>
                             <constraint firstItem="rFc-dZ-c2N" firstAttribute="leading" secondItem="lFe-aO-fpz" secondAttribute="trailing" constant="86" id="VA8-S7-vFJ"/>
                             <constraint firstItem="hUp-nc-IZS" firstAttribute="leading" secondItem="WSr-I5-gB1" secondAttribute="leading" constant="20" id="VEy-vj-mh1"/>
@@ -473,6 +471,7 @@
                             <constraint firstItem="WSr-I5-gB1" firstAttribute="trailing" secondItem="rFc-dZ-c2N" secondAttribute="trailing" constant="20" id="hKJ-Rg-ZRP"/>
                             <constraint firstItem="3GC-x2-RYu" firstAttribute="top" secondItem="WwO-AC-kLc" secondAttribute="bottom" constant="21" id="hWG-0j-ELh"/>
                             <constraint firstItem="WSr-I5-gB1" firstAttribute="trailing" secondItem="XBU-Fe-Nsx" secondAttribute="trailing" constant="20" id="lsC-LO-bDC"/>
+                            <constraint firstItem="y0n-0c-icJ" firstAttribute="centerX" secondItem="uYC-xW-7hr" secondAttribute="centerX" id="mHA-EE-jcX"/>
                             <constraint firstItem="EBD-aP-JGq" firstAttribute="top" secondItem="lFe-aO-fpz" secondAttribute="bottom" constant="21" id="oqb-FK-KUH"/>
                             <constraint firstItem="XBU-Fe-Nsx" firstAttribute="leading" secondItem="3GC-x2-RYu" secondAttribute="trailing" constant="40.5" id="sfi-vC-ijq"/>
                             <constraint firstItem="r3v-1d-BiK" firstAttribute="top" secondItem="53w-hk-V0y" secondAttribute="bottom" constant="8" symbolic="YES" id="t2Q-hb-J7t"/>
@@ -532,22 +531,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding your next " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ais-Gb-vvp">
-                                <rect key="frame" x="54" y="44" width="306.5" height="39.5"/>
+                                <rect key="frame" x="78.5" y="44" width="257" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
                                 <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bubble..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LHQ-Ae-SsJ">
-                                <rect key="frame" x="135.5" y="91.5" width="143.5" height="39.5"/>
+                                <rect key="frame" x="144" y="89.5" width="126" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="32"/>
                                 <color key="textColor" red="0.31548374890000003" green="0.44756913189999997" blue="0.7019898295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjh-rQ-nlk">
-                                <rect key="frame" x="20" y="830" width="34" height="32"/>
+                                <rect key="frame" x="20" y="827" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="Dyz-Yw-pLh"/>
-                                    <constraint firstAttribute="height" constant="32" id="d9g-ew-8tr"/>
+                                    <constraint firstAttribute="width" constant="35" id="Dyz-Yw-pLh"/>
+                                    <constraint firstAttribute="height" constant="35" id="d9g-ew-8tr"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="backCircle"/>
                                 <connections>
@@ -555,7 +554,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iER-lr-YPz">
-                                <rect key="frame" x="0.0" y="139" width="414" height="682"/>
+                                <rect key="frame" x="0.0" y="135" width="414" height="686"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ss-hM-T2D">
                                         <rect key="frame" x="57" y="81" width="300" height="300"/>
@@ -569,7 +568,6 @@
                         <viewLayoutGuide key="safeArea" id="z80-n9-iSJ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vjh-rQ-nlk" firstAttribute="top" secondItem="iER-lr-YPz" secondAttribute="bottom" constant="9" id="5Gv-qD-oVd"/>
                             <constraint firstItem="iER-lr-YPz" firstAttribute="top" secondItem="LHQ-Ae-SsJ" secondAttribute="bottom" constant="8" symbolic="YES" id="7mE-Af-htr"/>
                             <constraint firstItem="LHQ-Ae-SsJ" firstAttribute="top" secondItem="Ais-Gb-vvp" secondAttribute="bottom" constant="8" symbolic="YES" id="8AZ-wA-JLz"/>
                             <constraint firstItem="iER-lr-YPz" firstAttribute="leading" secondItem="sbC-eb-nZ8" secondAttribute="leading" id="9VP-aN-1gy"/>
@@ -577,6 +575,7 @@
                             <constraint firstItem="Ais-Gb-vvp" firstAttribute="top" secondItem="z80-n9-iSJ" secondAttribute="top" id="OjC-aw-t8Y"/>
                             <constraint firstItem="Ais-Gb-vvp" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="ToN-1d-zfZ"/>
                             <constraint firstItem="iER-lr-YPz" firstAttribute="centerX" secondItem="LHQ-Ae-SsJ" secondAttribute="centerX" id="Vc8-pv-v7C"/>
+                            <constraint firstItem="vjh-rQ-nlk" firstAttribute="top" secondItem="iER-lr-YPz" secondAttribute="bottom" constant="6" id="hFl-Sw-3OZ"/>
                             <constraint firstItem="vjh-rQ-nlk" firstAttribute="bottom" secondItem="z80-n9-iSJ" secondAttribute="bottom" id="hqg-Aj-xfh"/>
                             <constraint firstItem="LHQ-Ae-SsJ" firstAttribute="centerX" secondItem="sbC-eb-nZ8" secondAttribute="centerX" id="iDV-wa-Rwq"/>
                         </constraints>
@@ -712,7 +711,8 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0xr-fI-Y5H" userLabel="Username Textfield">
                                 <rect key="frame" x="127.5" y="219" width="261.5" height="25"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -724,7 +724,8 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o8U-31-2aO" userLabel="First Name Textfield">
                                 <rect key="frame" x="133" y="259" width="256" height="25"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -737,6 +738,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QH6-Uf-Y8N" userLabel="Last Name Textfield">
                                 <rect key="frame" x="132.5" y="299" width="256.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -749,6 +751,7 @@
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVQ-X4-35m" userLabel="Email Textfield">
                                 <rect key="frame" x="84.5" y="339" width="304.5" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -772,7 +775,7 @@
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the icon of the social link you'd like to edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEW-4A-n7K" userLabel="Social Instructions Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on the icon of the social link you'd like to link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEW-4A-n7K" userLabel="Social Instructions Label">
                                 <rect key="frame" x="20" y="487.5" width="369" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.2462256253" green="0.47368717189999998" blue="0.72690451150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -789,6 +792,8 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Pop Up TextField&gt;" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bxu-KV-9w0" userLabel="Pop Up Textfield">
                                         <rect key="frame" x="15" y="86" width="334" height="21.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -819,7 +824,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="toR-85-FXX" firstAttribute="centerX" secondItem="irV-By-60A" secondAttribute="centerX" id="1B2-BW-Cl8"/>
                                     <constraint firstItem="cUG-wx-8JI" firstAttribute="leading" secondItem="irV-By-60A" secondAttribute="leading" constant="100" id="CUW-Js-ReU"/>
@@ -837,13 +842,13 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbF-6x-ysz">
-                                <rect key="frame" x="161" y="606.5" width="92" height="45"/>
+                                <rect key="frame" x="152" y="606.5" width="110" height="55"/>
                                 <color key="backgroundColor" red="0.99651342629999995" green="0.59027928110000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Ern-sG-fty"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="n8K-TB-Lir"/>
+                                    <constraint firstAttribute="height" constant="55" id="Ern-sG-fty"/>
+                                    <constraint firstAttribute="width" constant="110" id="n8K-TB-Lir"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="Sign Out">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -852,10 +857,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L92-Dx-wGg">
-                                <rect key="frame" x="352" y="830" width="34" height="32"/>
+                                <rect key="frame" x="359" y="827" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="GcH-Hh-hmp"/>
-                                    <constraint firstAttribute="width" constant="34" id="Jth-rD-p26"/>
+                                    <constraint firstAttribute="height" constant="35" id="GcH-Hh-hmp"/>
+                                    <constraint firstAttribute="width" constant="35" id="Jth-rD-p26"/>
                                 </constraints>
                                 <state key="normal" title="To Lobby" image="nextCircle"/>
                                 <connections>
@@ -866,7 +871,7 @@
                         <viewLayoutGuide key="safeArea" id="e6E-vt-KVB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="e6E-vt-KVB" firstAttribute="trailing" secondItem="L92-Dx-wGg" secondAttribute="trailing" constant="28" id="1fR-GW-1Ry"/>
+                            <constraint firstItem="e6E-vt-KVB" firstAttribute="trailing" secondItem="L92-Dx-wGg" secondAttribute="trailing" constant="20" id="1fR-GW-1Ry"/>
                             <constraint firstItem="JE3-wX-h0Q" firstAttribute="leading" secondItem="e6E-vt-KVB" secondAttribute="leading" constant="20" id="2bj-jh-Rz0"/>
                             <constraint firstItem="e6E-vt-KVB" firstAttribute="trailing" secondItem="QH6-Uf-Y8N" secondAttribute="trailing" constant="25" id="3Ny-TH-tBL"/>
                             <constraint firstItem="0xr-fI-Y5H" firstAttribute="leading" secondItem="GdB-Dw-son" secondAttribute="trailing" constant="10" id="3W6-S2-Dge"/>
@@ -961,8 +966,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Os-iY-Xua" customClass="KCCircularTimer" customModule="KCCircularTimer">
+                                <rect key="frame" x="297" y="219" width="80" height="74"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sNa-Qf-WLJ" customClass="RoundedImageView" customModule="PopMatch" customModuleProvider="target">
-                                <rect key="frame" x="57" y="227" width="300" height="300"/>
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
                                 <color key="tintColor" red="0.90980392160000001" green="0.87058823529999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="FPv-e8-FjY"/>
@@ -971,7 +980,7 @@
                                 <imageReference key="image" image="bubble1" symbolScale="large" renderingMode="original"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1a-0l-787">
-                                <rect key="frame" x="262" y="630" width="55" height="52"/>
+                                <rect key="frame" x="262" y="678" width="55" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="071-Rs-3m3"/>
                                     <constraint firstAttribute="width" constant="55" id="EAe-Gs-8hS"/>
@@ -982,7 +991,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hb5-ed-H5a">
-                                <rect key="frame" x="98" y="630" width="55" height="52"/>
+                                <rect key="frame" x="98" y="678" width="55" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="LrH-SS-Bgz"/>
                                     <constraint firstAttribute="height" constant="52" id="qum-RX-miJ"/>
@@ -993,16 +1002,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;USERNAME&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-mx-uL4">
-                                <rect key="frame" x="113" y="121" width="188.5" height="33"/>
+                                <rect key="frame" x="107" y="121" width="200" height="34.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="28"/>
                                 <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDL-8f-MGw">
-                                <rect key="frame" x="20" y="819" width="34" height="32"/>
+                                <rect key="frame" x="20" y="817" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="9U8-ys-c74"/>
-                                    <constraint firstAttribute="height" constant="32" id="vvl-Go-4vl"/>
+                                    <constraint firstAttribute="width" constant="35" id="9U8-ys-c74"/>
+                                    <constraint firstAttribute="height" constant="35" id="vvl-Go-4vl"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="backCircle"/>
                                 <connections>
@@ -1010,7 +1019,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on image to view &lt;USERNAME&gt;'s information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-ia-BTb">
-                                <rect key="frame" x="17" y="171.5" width="380" height="17.5"/>
+                                <rect key="frame" x="17" y="173" width="380" height="18.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1035,73 +1044,73 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite TV Shows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="491-26-ih4">
-                                        <rect key="frame" x="16" y="347" width="142.5" height="20"/>
+                                        <rect key="frame" x="16" y="355" width="161.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxi-sc-GLz">
-                                        <rect key="frame" x="16" y="212" width="141" height="20"/>
+                                        <rect key="frame" x="16" y="216" width="161" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvn-2n-txc">
-                                        <rect key="frame" x="16" y="279.5" width="30.5" height="20"/>
+                                        <rect key="frame" x="16" y="285.5" width="37" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cU5-V1-1IH">
-                                        <rect key="frame" x="16" y="174.5" width="82" height="17.5"/>
+                                        <rect key="frame" x="16" y="177.5" width="87" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a8-ds-2tb">
-                                        <rect key="frame" x="16" y="242" width="82" height="17.5"/>
+                                        <rect key="frame" x="16" y="247" width="87" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ze7-Fo-ajm">
-                                        <rect key="frame" x="16" y="309.5" width="82" height="17.5"/>
+                                        <rect key="frame" x="16" y="316.5" width="87" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-q2-2xE">
-                                        <rect key="frame" x="16" y="144.5" width="64" height="20"/>
+                                        <rect key="frame" x="16" y="146.5" width="72.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=",&lt;GEN&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IMI-J8-6K0">
-                                        <rect key="frame" x="139" y="24" width="61" height="20"/>
+                                        <rect key="frame" x="139" y="24" width="62.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=",&lt;AGEGROUP&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xY3-9P-AQk">
-                                        <rect key="frame" x="208" y="24" width="120.5" height="20"/>
+                                        <rect key="frame" x="209.5" y="24" width="127" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tZ-88-NGQ">
-                                        <rect key="frame" x="16" y="377" width="82" height="17.5"/>
+                                        <rect key="frame" x="16" y="386" width="87" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Od-yf-gcb">
-                                        <rect key="frame" x="16" y="77" width="43.5" height="20"/>
+                                        <rect key="frame" x="16" y="77" width="51.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBoldItalic" family="Montserrat" pointSize="17"/>
                                         <color key="textColor" red="0.69190031289999998" green="0.62869596480000001" blue="0.99864608050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;ANSWER&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUm-Nh-129">
-                                        <rect key="frame" x="16" y="107" width="82" height="17.5"/>
+                                        <rect key="frame" x="16" y="108" width="87" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.37254901959999998" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1145,28 +1154,33 @@
                         <viewLayoutGuide key="safeArea" id="33A-AA-FhP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="3Os-iY-Xua" firstAttribute="leading" secondItem="33A-AA-FhP" secondAttribute="leading" constant="297" id="0mz-eg-iqJ"/>
                             <constraint firstItem="OVS-ia-BTb" firstAttribute="top" secondItem="Ndd-mx-uL4" secondAttribute="bottom" constant="17.5" id="197-2Z-nzR"/>
                             <constraint firstItem="mEY-d8-fXw" firstAttribute="centerX" secondItem="lwf-mX-825" secondAttribute="centerX" id="38G-lw-f3w"/>
+                            <constraint firstItem="Ndd-mx-uL4" firstAttribute="centerX" secondItem="lwf-mX-825" secondAttribute="centerX" id="42v-JW-tau"/>
+                            <constraint firstItem="K1a-0l-787" firstAttribute="top" secondItem="sNa-Qf-WLJ" secondAttribute="bottom" constant="80" id="5To-Wh-d0f"/>
                             <constraint firstItem="OVS-ia-BTb" firstAttribute="centerX" secondItem="lwf-mX-825" secondAttribute="centerX" id="7sZ-KB-3cq"/>
-                            <constraint firstItem="sNa-Qf-WLJ" firstAttribute="top" secondItem="Ndd-mx-uL4" secondAttribute="bottom" constant="73" id="B1Z-ST-bQO"/>
+                            <constraint firstItem="hb5-ed-H5a" firstAttribute="top" secondItem="sNa-Qf-WLJ" secondAttribute="bottom" constant="80" id="9xe-Z1-ncN"/>
                             <constraint firstItem="mEY-d8-fXw" firstAttribute="centerY" secondItem="lwf-mX-825" secondAttribute="centerY" constant="23" id="D14-0m-crF"/>
                             <constraint firstItem="UDL-8f-MGw" firstAttribute="leading" secondItem="33A-AA-FhP" secondAttribute="leading" constant="20" id="DTi-At-6uV"/>
-                            <constraint firstItem="Ndd-mx-uL4" firstAttribute="centerX" secondItem="sNa-Qf-WLJ" secondAttribute="centerX" id="IH9-vY-mev"/>
-                            <constraint firstItem="33A-AA-FhP" firstAttribute="bottom" secondItem="UDL-8f-MGw" secondAttribute="bottom" constant="11" id="Iq4-un-DxK"/>
+                            <constraint firstItem="sNa-Qf-WLJ" firstAttribute="top" secondItem="OVS-ia-BTb" secondAttribute="bottom" constant="106.5" id="HGC-XA-HG3"/>
+                            <constraint firstItem="33A-AA-FhP" firstAttribute="bottom" secondItem="UDL-8f-MGw" secondAttribute="bottom" constant="10" id="Iq4-un-DxK"/>
                             <constraint firstItem="33A-AA-FhP" firstAttribute="trailing" secondItem="K1a-0l-787" secondAttribute="trailing" constant="97" id="PCg-zy-Gcg"/>
                             <constraint firstItem="sNa-Qf-WLJ" firstAttribute="centerX" secondItem="lwf-mX-825" secondAttribute="centerX" id="PZe-Ny-5p1"/>
-                            <constraint firstItem="hb5-ed-H5a" firstAttribute="top" secondItem="sNa-Qf-WLJ" secondAttribute="bottom" constant="103" id="Pu2-ho-aIe"/>
                             <constraint firstItem="mEY-d8-fXw" firstAttribute="leading" secondItem="33A-AA-FhP" secondAttribute="leading" constant="20" id="Qzw-lH-e6d"/>
                             <constraint firstItem="hb5-ed-H5a" firstAttribute="leading" secondItem="33A-AA-FhP" secondAttribute="leading" constant="98" id="Uft-k5-aHM"/>
+                            <constraint firstItem="sNa-Qf-WLJ" firstAttribute="top" secondItem="3Os-iY-Xua" secondAttribute="bottom" constant="5" id="WH4-vZ-2Nd"/>
                             <constraint firstItem="Ndd-mx-uL4" firstAttribute="top" secondItem="33A-AA-FhP" secondAttribute="top" constant="77" id="d0T-Vu-IaX"/>
+                            <constraint firstItem="3Os-iY-Xua" firstAttribute="top" secondItem="OVS-ia-BTb" secondAttribute="bottom" constant="27.5" id="fz3-aD-n9V"/>
+                            <constraint firstItem="33A-AA-FhP" firstAttribute="trailing" secondItem="3Os-iY-Xua" secondAttribute="trailing" constant="37" id="pV6-Ww-TjY"/>
                             <constraint firstItem="33A-AA-FhP" firstAttribute="trailing" secondItem="mEY-d8-fXw" secondAttribute="trailing" constant="20" id="tAb-Pq-90X"/>
-                            <constraint firstItem="K1a-0l-787" firstAttribute="top" secondItem="sNa-Qf-WLJ" secondAttribute="bottom" constant="103" id="wr1-hn-kmw"/>
                             <constraint firstItem="OVS-ia-BTb" firstAttribute="leading" secondItem="33A-AA-FhP" secondAttribute="leading" constant="17" id="zeo-Io-lMr"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="acceptButton" destination="K1a-0l-787" id="ajU-hV-rx7"/>
                         <outlet property="backButton" destination="UDL-8f-MGw" id="gOZ-VF-mJA"/>
+                        <outlet property="countdownTimer" destination="3Os-iY-Xua" id="JXl-gq-ard"/>
                         <outlet property="dietAnswer" destination="ze7-Fo-ajm" id="ORy-87-JdI"/>
                         <outlet property="hobbiesAnswer" destination="cU5-V1-1IH" id="2bB-iE-kg1"/>
                         <outlet property="instruction" destination="OVS-ia-BTb" id="qeT-Na-kDm"/>
@@ -1184,7 +1198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TwY-VB-B4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2370" y="899"/>
+            <point key="canvasLocation" x="2373.913043478261" y="817.63392857142856"/>
         </scene>
         <!--Friend View Controller-->
         <scene sceneID="BVV-EZ-2rd">
@@ -1200,10 +1214,14 @@
                                 <color key="textColor" systemColor="systemIndigoColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgf-iN-et8">
-                                <rect key="frame" x="167.5" y="791" width="79" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgf-iN-et8">
+                                <rect key="frame" x="167" y="792" width="80" height="50"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fYc-az-7M6"/>
+                                    <constraint firstAttribute="width" constant="80" id="hys-jQ-IHO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1222,6 +1240,8 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tdc-fE-wPa">
                                         <rect key="frame" x="131.5" y="0.0" width="232.5" height="34"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -1242,6 +1262,8 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mg0-TK-PhD" userLabel="Age Textfield">
                                         <rect key="frame" x="149.5" y="0.0" width="214.5" height="34"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -1259,6 +1281,8 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W9i-Pp-oOm" userLabel="Major Textfield">
                                 <rect key="frame" x="25" y="253" width="364" height="34"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1278,7 +1302,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Traveling">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="indicatorSize">
@@ -1305,7 +1329,7 @@
                                                 <rect key="frame" x="121.5" y="0.0" width="121" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Working Out">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1328,7 +1352,7 @@
                                                 <rect key="frame" x="242.5" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Hiking">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1361,7 +1385,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Cooking">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
@@ -1387,7 +1411,7 @@
                                                 <rect key="frame" x="121.5" y="0.0" width="121" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Reading">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1410,7 +1434,7 @@
                                                 <rect key="frame" x="242.5" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Crafting">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1443,7 +1467,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Music">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1466,7 +1490,7 @@
                                                 <rect key="frame" x="121.5" y="0.0" width="121" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Video Game">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1489,7 +1513,7 @@
                                                 <rect key="frame" x="242.5" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Photography">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1522,7 +1546,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Netflix">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1545,7 +1569,7 @@
                                                 <rect key="frame" x="121.5" y="0.0" width="121" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Other">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1568,7 +1592,7 @@
                                                 <rect key="frame" x="242.5" y="0.0" width="121.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Don't Know">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1613,7 +1637,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Pop">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1642,7 +1666,7 @@
                                                 <rect key="frame" x="91" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="EDM">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1671,7 +1695,7 @@
                                                 <rect key="frame" x="182" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Hip Hop">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1700,7 +1724,7 @@
                                                 <rect key="frame" x="273" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Rap">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1739,7 +1763,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="91" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Rock">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1768,7 +1792,7 @@
                                                 <rect key="frame" x="91" y="0.0" width="91" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="R&amp;B">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1797,7 +1821,7 @@
                                                 <rect key="frame" x="182" y="0.0" width="91" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Country">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1826,7 +1850,7 @@
                                                 <rect key="frame" x="273" y="0.0" width="91" height="29"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Indie">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1866,7 +1890,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Classical">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1895,7 +1919,7 @@
                                                 <rect key="frame" x="91" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Kpop">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1924,7 +1948,7 @@
                                                 <rect key="frame" x="182" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Other">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -1953,7 +1977,7 @@
                                                 <rect key="frame" x="273" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="N/A">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2003,7 +2027,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Action">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2028,7 +2052,7 @@
                                                 <rect key="frame" x="91" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Comedy">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2053,7 +2077,7 @@
                                                 <rect key="frame" x="182" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Drama">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2078,7 +2102,7 @@
                                                 <rect key="frame" x="273" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Docu">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2113,7 +2137,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Romance">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2138,7 +2162,7 @@
                                                 <rect key="frame" x="91" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Fantasy">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2163,7 +2187,7 @@
                                                 <rect key="frame" x="182" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Horror">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2188,7 +2212,7 @@
                                                 <rect key="frame" x="273" y="0.0" width="91" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Other ">
-                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
@@ -2226,7 +2250,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="121.5" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Vegan">
-                                            <color key="titleColor" systemColor="labelColor"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="icon">
@@ -2245,7 +2269,7 @@
                                         <rect key="frame" x="121.5" y="0.0" width="121" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Vegetarian">
-                                            <color key="titleColor" systemColor="labelColor"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="icon">
@@ -2264,7 +2288,7 @@
                                         <rect key="frame" x="242.5" y="0.0" width="121.5" height="31"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="N/A">
-                                            <color key="titleColor" systemColor="labelColor"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="icon">
@@ -2381,56 +2405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmR-e4-Isg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3230" y="94"/>
-        </scene>
-        <!--Pre Meeting View Controller-->
-        <scene sceneID="iCI-cK-ne9">
-            <objects>
-                <viewController storyboardIdentifier="preMeetingVC" id="jng-lw-Ghk" customClass="PreMeetingViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wXJ-AA-Ixf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDC-hN-Xbc">
-                                <rect key="frame" x="82" y="323" width="250" height="250"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble1" translatesAutoresizingMaskIntoConstraints="NO" id="QKk-rz-DxE">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="NRt-Sp-Mft"/>
-                                            <constraint firstAttribute="width" constant="250" id="V6m-lM-1Af"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="QKk-rz-DxE" firstAttribute="top" secondItem="GDC-hN-Xbc" secondAttribute="top" id="Ajb-rE-x2g"/>
-                                    <constraint firstAttribute="height" constant="250" id="BwD-SU-7xK"/>
-                                    <constraint firstItem="QKk-rz-DxE" firstAttribute="centerX" secondItem="GDC-hN-Xbc" secondAttribute="centerX" id="GkS-ap-34T"/>
-                                    <constraint firstAttribute="width" constant="250" id="Id5-aq-7IW"/>
-                                    <constraint firstAttribute="bottom" secondItem="QKk-rz-DxE" secondAttribute="bottom" id="N7j-Mc-5cu"/>
-                                    <constraint firstItem="QKk-rz-DxE" firstAttribute="top" secondItem="GDC-hN-Xbc" secondAttribute="top" id="g7Y-0D-cKR"/>
-                                    <constraint firstItem="QKk-rz-DxE" firstAttribute="leading" secondItem="GDC-hN-Xbc" secondAttribute="leading" id="k5X-2i-k35"/>
-                                    <constraint firstAttribute="trailing" secondItem="QKk-rz-DxE" secondAttribute="trailing" id="kKn-tE-SHu"/>
-                                    <constraint firstAttribute="bottom" secondItem="QKk-rz-DxE" secondAttribute="bottom" id="tQv-Dw-rAu"/>
-                                    <constraint firstItem="QKk-rz-DxE" firstAttribute="centerY" secondItem="GDC-hN-Xbc" secondAttribute="centerY" id="yka-iI-OCg"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="LCb-iM-vUj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="GDC-hN-Xbc" firstAttribute="centerX" secondItem="wXJ-AA-Ixf" secondAttribute="centerX" id="MgX-v4-S5v"/>
-                            <constraint firstItem="GDC-hN-Xbc" firstAttribute="centerY" secondItem="wXJ-AA-Ixf" secondAttribute="centerY" id="agz-Ym-cfj"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="bubble" destination="QKk-rz-DxE" id="7RL-YJ-18z"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iAt-d3-g98" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3375" y="900"/>
+            <point key="canvasLocation" x="3432" y="94"/>
         </scene>
         <!--Meeting View Controller-->
         <scene sceneID="Ekb-gG-DFx">
@@ -2680,7 +2655,57 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4171" y="899"/>
+            <point key="canvasLocation" x="3893" y="818"/>
+        </scene>
+        <!--Pre Meeting View Controller-->
+        <scene sceneID="o5k-9c-HmL">
+            <objects>
+                <viewController storyboardIdentifier="preMeetingVC" id="22E-Vg-05q" customClass="PreMeetingViewController" customModule="PopMatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZrK-ic-iV7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xM-zn-x4M">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2bI-ov-Ch0">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="0si-9Y-Bnb"/>
+                                            <constraint firstAttribute="width" constant="250" id="gnw-E5-Yxa"/>
+                                        </constraints>
+                                        <imageReference key="image" image="bubble1" symbolScale="large" renderingMode="original"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="2bI-ov-Ch0" firstAttribute="centerX" secondItem="9xM-zn-x4M" secondAttribute="centerX" id="09T-3K-V5a"/>
+                                    <constraint firstItem="2bI-ov-Ch0" firstAttribute="top" secondItem="9xM-zn-x4M" secondAttribute="top" id="0jR-In-qOW"/>
+                                    <constraint firstAttribute="bottom" secondItem="2bI-ov-Ch0" secondAttribute="bottom" id="BAK-ke-xRL"/>
+                                    <constraint firstAttribute="trailing" secondItem="2bI-ov-Ch0" secondAttribute="trailing" id="IGI-8i-dlx"/>
+                                    <constraint firstItem="2bI-ov-Ch0" firstAttribute="leading" secondItem="9xM-zn-x4M" secondAttribute="leading" id="Pkf-jY-ANX"/>
+                                    <constraint firstItem="2bI-ov-Ch0" firstAttribute="centerY" secondItem="9xM-zn-x4M" secondAttribute="centerY" id="UFG-sJ-aaG"/>
+                                    <constraint firstItem="2bI-ov-Ch0" firstAttribute="top" secondItem="9xM-zn-x4M" secondAttribute="top" id="Vu1-bt-Qaf"/>
+                                    <constraint firstAttribute="height" constant="250" id="oFa-x0-cYs"/>
+                                    <constraint firstAttribute="width" constant="250" id="p31-NC-tYB"/>
+                                    <constraint firstAttribute="bottom" secondItem="2bI-ov-Ch0" secondAttribute="bottom" id="xN4-lw-cd0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RCa-ck-2kI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9xM-zn-x4M" firstAttribute="centerX" secondItem="ZrK-ic-iV7" secondAttribute="centerX" id="A7t-Jf-AHl"/>
+                            <constraint firstItem="9xM-zn-x4M" firstAttribute="centerY" secondItem="ZrK-ic-iV7" secondAttribute="centerY" id="qUQ-7g-okb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bubble" destination="2bI-ov-Ch0" id="wXZ-9m-unI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7v-T7-xQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3139" y="818"/>
         </scene>
     </scenes>
     <resources>
@@ -2707,9 +2732,6 @@
         <image name="tv" catalog="system" width="128" height="97"/>
         <image name="tv.fill" catalog="system" width="128" height="97"/>
         <image name="twitter Icon" width="151" height="150"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

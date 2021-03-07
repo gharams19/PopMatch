@@ -20,12 +20,14 @@ class LobbyViewController: UIViewController {
     var answers = [String: [String]] ()
     var currUid = ""
     var audioPlayer = AVPlayer()
+    var userNumber = 0
+    var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        var dontSearch = false
         self.currUid = Firebase.Auth.auth().currentUser?.uid ?? ""
-        getUserInfo()
+        
         
         let sound = Bundle.main.path(forResource: "mixkit-soap-bubble-sound-2925", ofType: "wav")
         do {
@@ -42,18 +44,84 @@ class LobbyViewController: UIViewController {
         self.view.addSubview(bubbleView)
         
         //adding the floating bubbles with continuous animation
-        var array: [UIImageView] = []
-        let userNumber = 10
-        for _ in 0...userNumber-1 {
-            let bubbleImageView = UIImageView(image: #imageLiteral(resourceName: "bubble2 copy"))
-            bubbleImageView.translatesAutoresizingMaskIntoConstraints = false
-            array.append(bubbleImageView)
-        }
-        for i in 0...userNumber-1 {
-            array[i].frame = CGRect(x: bubbleView.center.x, y: bubbleView.center.y, width: 100, height: 100)
-            bubbleView.addSubview(array[i])
-            animation(image: array[i])
-        }
+        //check for online users
+        Database.database().reference().child("status").observe(.value, with: { (snapshot) in
+            var array: [UIImageView] = []
+            var count = 0
+            let children = snapshot.children.allObjects as? [DataSnapshot] ?? [DataSnapshot()]
+            for child in children {
+                let uid = child.key
+                let value = child.value as? [String:Any]
+                let state = value?.values.first as? String ?? ""
+                if uid == self.currUid  {
+                    //if it is the current user, skip them
+                    continue
+                }
+                if state == "online" {
+                    count += 1
+                    self.matches[uid] = ""
+                }
+            }
+            var i = 0
+            for match in self.matches {
+            
+                let docRef = self.db.collection("users").document(match.key)
+                
+                
+                docRef.getDocument {(document, error) in
+                    i+=1
+                    if i == self.matches.count {
+                        return
+                    }
+                    if let document = document, document.exists {
+                        var isOnCall = document.get("isOnCall") as? String ?? "false"
+                        if isOnCall == "" {
+                            isOnCall = "false"
+                        }
+                        self.matches.updateValue(isOnCall, forKey: match.key)
+                        
+                    }
+                    
+                }
+                
+            }
+
+            /*Remove matches that are busy*/
+            self.matches = self.matches.filter{$0.value == "false" || $0.value == ""}
+            print(count)
+            self.userNumber = count - (count - self.matches.count)
+            
+            if self.userNumber < 5 {
+                if self.userNumber == 0 {
+                    dontSearch = true
+                }
+                self.userNumber = 5
+            }
+            if self.userNumber > 30 {
+                self.userNumber = 30
+            }
+            
+            
+            for _ in 0...self.userNumber-1 {
+                let bubbleImageView = UIImageView(image: #imageLiteral(resourceName: "bubble2 copy"))
+                bubbleImageView.translatesAutoresizingMaskIntoConstraints = false
+                array.append(bubbleImageView)
+            }
+            for i in 0...self.userNumber-1 {
+                array[i].frame = CGRect(x: self.bubbleView.center.x, y: self.bubbleView.center.y, width: 100, height: 100)
+                self.bubbleView.addSubview(array[i])
+                self.animation(image: array[i])
+            }
+            
+            if dontSearch == false {
+                self.getUserInfo()
+            } else {
+                print("No one online!")
+                self.headerLabel1.text = "No bubbles to pop"
+                self.headerLabel2.text = "Try again later"
+            }
+            
+        })
         
         
        
@@ -197,23 +265,23 @@ class LobbyViewController: UIViewController {
                 ref.observeSingleEvent(of:.value, with: { snapshot in
                     let children = snapshot.children.allObjects as? [DataSnapshot] ?? [DataSnapshot()]
                     for child in children {
-                        
+
                         let uid = child.key
                         let value = child.value as? [String:Any]
                         let state = value?.values.first as? String ?? ""
-                        
+
                         if uid == self.currUid  {
                             continue
                         }
                         if state == "online" {
                             self.matches[uid] = ""
                         }
-                        
+
                     }
-                    
+
                     semaphore.signal()
                 })
-                
+
                 semaphore.wait()
 
                 /*No users are online*/
@@ -228,13 +296,13 @@ class LobbyViewController: UIViewController {
                 }
                 semaphore = DispatchSemaphore(value: 0)
                 var i = 0
-                
+
                 /*get the bool variable isOnCall that is true if user is unavailable */
                 for match in self.matches {
-                
+
                     let docRef = db.collection("users").document(match.key)
-                    
-                    
+
+
                     docRef.getDocument {(document, error) in
                         i+=1
                         if i == self.matches.count {
@@ -246,14 +314,14 @@ class LobbyViewController: UIViewController {
                                 isOnCall = "false"
                             }
                             self.matches.updateValue(isOnCall, forKey: match.key)
-                            
+
                         }
-                        
+
                     }
-                    
+
                 }
 
-                
+
                 semaphore.wait()
 
                 /*Remove matches that are busy*/
@@ -272,8 +340,7 @@ class LobbyViewController: UIViewController {
                     }
                     return
                    
-                }
-                else {
+                } else {
                     /*Find the most ideal match, if not found match with first person*/
                     for match in self.matches {
                         var matchAnswers = [String:[String]]()

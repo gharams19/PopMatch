@@ -10,6 +10,7 @@ import Photos
 import Firebase
 import FirebaseStorage
 import FirebaseUI
+import FBSDKLoginKit
 
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -291,7 +292,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func facebookClicked() {
-        displayPopUp("Facebook", facebookLink, false)
+        //   displayPopUp("Facebook", facebookLink, false)
+           if (AccessToken.current == nil) {
+               loginFB()
+           } else {
+               logoutFB()
+           }
     }
     
     @IBAction func snapchatClicked() {
@@ -304,6 +310,50 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     @IBAction func linkedinClicked() {
         displayPopUp("LinkedIn", linkedinLink, false)
+    }
+    
+    // MARK: - Facebook Login
+    func loginFB() {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) { (result) in
+            switch result {
+            case .cancelled:
+                print("User canceled login")
+            case .failed(let error):
+                print("here in failed")
+                print(error.localizedDescription)
+            case .success(_, _, _):
+                self.getFBData()
+            }
+        }
+    }
+    
+    func getFBData(){
+        if let token = AccessToken.current, !token.isExpired {
+            let token = token.tokenString
+            let request = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, link" ], tokenString: token, version: nil, httpMethod: .get)
+            request.start(completionHandler: { (connection, result, error) in
+                if error == nil {
+                    let data = result as? [String:Any]
+                    if let link = data?["link"] as? String {
+                        self.facebookLink = link
+                        self.storeData()
+                    }
+                } else {
+                    print("Error: \(String(describing: error?.localizedDescription))")
+                }
+            })
+        } else {
+            print("no token")
+        }
+    }
+    
+    func logoutFB() {
+        let logoutManager = LoginManager()
+        logoutManager.logOut()
+        let alert = UIAlertController(title: "Logout", message: "You've been logged out.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     

@@ -14,17 +14,22 @@ class PreMeetingViewController: UIViewController {
     @IBOutlet weak var bubble: UIImageView!
     var displayLink: CADisplayLink!
     var value: CGFloat = 0.0
+    var waitTime = 0
     var invert: Bool = false
     var roomName: String = ""
     var accessToken : String = ""
     var waitTimer : Timer?
     var db = Firestore.firestore()
+    var username = ""
+    var matchName = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         displayLink = CADisplayLink(target: self, selector: #selector(handleAnimations))
         displayLink.add(to: RunLoop.main, forMode: .default)
         waitTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.checkIfRoomIsReady), userInfo: nil, repeats: true)
     }
+    
+    
     
     @objc func handleAnimations() {
         invert ? (value -= 1) : (value += 1)
@@ -34,18 +39,24 @@ class PreMeetingViewController: UIViewController {
         }
     }
     @objc func checkIfRoomIsReady(){
-        db.collection(roomName).document("People").getDocument(){
+        db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
                     if document.get("Entered") != nil{
                         self.enterVideo()
                         self.waitTimer?.invalidate()
+                        self.db.collection("Rooms").document(self.roomName).setData(["Timer":"300"], merge: false)
                     }
-                }else{
-                    self.db.collection(self.roomName).document("People").setData(["Count":"1"])
+                    if document.get("Rejected") != nil{
+                        self.db.collection("Rooms").document(self.roomName).delete()
+                        self.goBackToLobby()
+                    }
+                    
                 }
+                
             }
+            
         }
     }
     
@@ -60,5 +71,12 @@ class PreMeetingViewController: UIViewController {
         meetingViewController.roomName =  roomName
         navigationController?.pushViewController(meetingViewController, animated: true)
     }
-
+    func goBackToLobby(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
+            assertionFailure("couldn't find vc")
+            return }
+        //optional navigation controller
+        navigationController?.pushViewController(lobbyViewController, animated: true)
+    }
 }
