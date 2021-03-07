@@ -46,6 +46,7 @@ class PreMeetingViewController: UIViewController {
                     if document.get("Entered") != nil{
                         self.enterVideo()
                         self.waitTimer?.invalidate()
+                        self.db.collection("Rooms").document(self.roomName).setData(["Timer":"300"], merge: false)
                     }
                     if document.get("Rejected") != nil{
                         self.db.collection("Rooms").document(self.roomName).delete()
@@ -57,11 +58,6 @@ class PreMeetingViewController: UIViewController {
             }
             
         }
-//        waitTime += 1
-//        if(waitTime == 15){
-//            self.db.collection("Rooms").document(self.roomName).delete()
-//            goBackToLobby()
-//        }
     }
     
     func enterVideo(){

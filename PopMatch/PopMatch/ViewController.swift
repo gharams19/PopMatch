@@ -47,6 +47,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         resetPasswordEmail.delegate = self
+        
+        passwordTextField.text = "Aa263350"
+        emailTextField.text = "rayngan999@gmail.com"
     }
     
     override func viewWillAppear(_ animated: Bool) {
