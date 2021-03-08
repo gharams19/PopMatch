@@ -4,7 +4,6 @@
 //
 //  Created by Gharam Alsaedi on 2/23/21.
 //
-
 import UIKit
 import Firebase
 import KCCircularTimer
@@ -33,6 +32,7 @@ class MatchingViewController: UIViewController {
     var matchId = ""
     var matchName = ""
     var matchedOn = ""
+    var currUId = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
     var selfName = ""
@@ -59,6 +59,7 @@ class MatchingViewController: UIViewController {
         self.dietAnswer.text = ""
         self.musicAnswer.text = ""
         self.majorAnswer.text = ""
+        currUId = Auth.auth().currentUser?.uid ?? ""
         NotificationCenter.default.addObserver(self, selector: #selector(self.stopTimer(_:)), name: Notification.Name("didStopTimer"), object: nil)
         
         setup()
@@ -191,7 +192,35 @@ class MatchingViewController: UIViewController {
         }
         
     }
-    
+    func setIsOnCall() {
+        self.db.collection("users").document(self.currUId).getDocument{(document, error) in
+            if let document = document, document.exists {
+                document.reference.updateData([
+                    "isOnCall": "false"
+                ])
+            }
+        }
+    }
+
+    func addMatchToPrevMatches() {
+        self.db.collection("users").document(self.currUId).collection("matches").document("previous matches").getDocument {(document, error)  in
+            if let document = document, document.exists {
+                var prev_matches = document.get("prev_matches") as? [String] ?? []
+                prev_matches.append(self.matchId)
+                self.db.collection("users").document(self.currUId).collection("matches").document("previous matches").setData(["prev_matches": prev_matches])
+            }
+        }
+    }
+    func deleteCurrentMatch() {
+        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+
+    }
     
     
     @IBAction func goBackToProfileVC(_ sender: Any) {
@@ -211,6 +240,19 @@ class MatchingViewController: UIViewController {
                     //If opponent rejected
                     if document.get("Rejected") != nil{
                         self.db.collection("Rooms").document(self.roomName).delete()
+                        /*Add user to previous matches */
+                        self.addMatchToPrevMatches()
+                        
+                        /*Delete fields of current match for myself*/
+                        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                        /* set is on call to false*/
+                        self.setIsOnCall()
                         self.goToLobby()
                         self.matchTimer?.invalidate()
                     }
@@ -226,6 +268,7 @@ class MatchingViewController: UIViewController {
                 if let document = document, document.exists {
                     if document.get("Rejected") != nil{
                         self.db.collection("Rooms").document(self.roomName).delete()
+                        
                     }else{
                         self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
                     }
@@ -235,6 +278,19 @@ class MatchingViewController: UIViewController {
                 }
             }
         }
+        /*Add user to previous matches */
+        self.addMatchToPrevMatches()
+        
+        /*Delete fields of current match for myself*/
+        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        /* set is on call to false*/
+        self.setIsOnCall()
         goToLobby()
     }
     
@@ -271,6 +327,7 @@ class MatchingViewController: UIViewController {
     func acceptMatch() {
         self.matchTimer?.invalidate()
         self.checkTimer?.invalidate()
+        print("here")
         let generateRoomName = (selfName + matchName).sorted()
         roomName = String(generateRoomName)
         db.collection("Rooms").document(roomName).getDocument(){
@@ -287,6 +344,19 @@ class MatchingViewController: UIViewController {
                     //If opponent rejected
                     if document.get("Rejected") != nil{
                         self.db.collection("Rooms").document(self.roomName).delete()
+                        /*Add user to previous matches */
+                        self.addMatchToPrevMatches()
+                        
+                        /*Delete fields of current match for myself*/
+                        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                        /* set is on call to false*/
+                        self.setIsOnCall()
                         self.goToLobby()
                        
                     }
@@ -310,6 +380,7 @@ class MatchingViewController: UIViewController {
         // need to gernerate tokens for each user
         meetingViewController.accessToken = userToken
         meetingViewController.roomName = roomName
+        meetingViewController.matchId = matchId
         navigationController?.pushViewController(meetingViewController, animated: true)
     }
     
@@ -325,6 +396,7 @@ class MatchingViewController: UIViewController {
         preMeetingViewController.roomName = roomName
         preMeetingViewController.username = selfName
         preMeetingViewController.matchName = matchName
+        preMeetingViewController.matchId = matchId
         navigationController?.pushViewController(preMeetingViewController, animated: true)
     }
     func getToken() ->String{
@@ -370,6 +442,8 @@ class MatchingViewController: UIViewController {
                 if let document = document, document.exists {
                     if document.get("Rejected") != nil{
                         self.db.collection("Rooms").document(self.roomName).delete()
+                      
+                       
                     }else{
                         self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
                     }
@@ -379,10 +453,21 @@ class MatchingViewController: UIViewController {
                 }
             }
         }
-                    
+                
+        /*Add user to previous matches */
+        self.addMatchToPrevMatches()
         
-        /*Add user to rejectedMatches array*/
-        rejectedMatches.append(matchName)
+        /*Delete fields of current match for myself*/
+        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        /* set is on call to false*/
+        self.setIsOnCall()
+        
         goToLobby()
        
         

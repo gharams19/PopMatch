@@ -4,7 +4,6 @@
 //
 //  Created by Ma Eint Poe on 2/21/21.
 //
-
 import UIKit
 import Photos
 import Firebase
@@ -196,7 +195,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     //    print("textFieldShouldReturn called")
-
         textField.resignFirstResponder()
         
         // Update the appropriate social media links
@@ -473,6 +471,19 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     // Sign out button pressed
     @IBAction func toLogin(_ sender: Any) {
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        let db = Firestore.firestore()
+        /*Delete fields of current match for myself*/
+        db.collection("users").document(uid).collection("matches").document("current match").delete()
+        db.collection("users").document(uid).collection("matches").document("previous matches").delete()
+        /* set is on call to false*/
+        db.collection("users").document(uid).getDocument{(document, error) in
+            if let document = document, document.exists {
+                document.reference.updateData([
+                    "isOnCall": "false"
+                ])
+            }
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let loginViewController = storyboard.instantiateViewController(identifier: "logInVC") as? ViewController else {
             assertionFailure("couldn't find vc")
@@ -484,7 +495,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -533,8 +543,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
              // method to add a set which will only trigger once this
              // client has disconnected by closing the app,
              // losing internet, or any other means.
+ 
          userStatusDatabaseRef.onDisconnectSetValue(isOffline, withCompletionBlock: {_,_ in
              userStatusDatabaseRef.setValue(isOnline)
+            
+            
              
              
          })

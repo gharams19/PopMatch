@@ -4,7 +4,6 @@
 //
 //  Created by Ray Ngan on 3/5/21.
 //
-
 import UIKit
 import Firebase
 
@@ -22,11 +21,35 @@ class PreMeetingViewController: UIViewController {
     var db = Firestore.firestore()
     var username = ""
     var matchName = ""
+    var matchId = ""
+    var currUId = ""
+    var enteredRoom = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.currUId = Auth.auth().currentUser?.uid ?? ""
         displayLink = CADisplayLink(target: self, selector: #selector(handleAnimations))
         displayLink.add(to: RunLoop.main, forMode: .default)
         waitTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.checkIfRoomIsReady), userInfo: nil, repeats: true)
+        print("here1")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            if self.enteredRoom ==  false {
+                self.db.collection("Rooms").document(self.roomName).delete()
+                /*Add user to previous matches */
+                self.addMatchToPrevMatches()
+
+                /*Delete fields of current match for myself*/
+                self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                    }
+                }
+                /* set is on call to false*/
+                self.setIsOnCall()
+                self.goBackToLobby()
+            }
+        }
     }
     
     
@@ -38,8 +61,37 @@ class PreMeetingViewController: UIViewController {
             invert = !invert
         }
     }
-    @objc func checkIfRoomIsReady(){
-        db.collection("Rooms").document(roomName).getDocument(){
+    func setIsOnCall() {
+        self.db.collection("users").document(self.currUId).getDocument{(document, error) in
+            if let document = document, document.exists {
+                document.reference.updateData([
+                    "isOnCall": "false"
+                ])
+            }
+        }
+    }
+
+    func addMatchToPrevMatches() {
+        self.db.collection("users").document(self.currUId).collection("matches").document("previous matches").getDocument {(document, error)  in
+            if let document = document, document.exists {
+                var prev_matches = document.get("prev_matches") as? [String] ?? []
+                prev_matches.append(self.matchId)
+                self.db.collection("users").document(self.currUId).collection("matches").document("previous matches").setData(["prev_matches": prev_matches])
+            }
+        }
+    }
+    func deleteCurrentMatch() {
+        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+
+    }
+    @objc func checkIfRoomIsReady() {
+        db.collection("Rooms").document(roomName).getDocument() {
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
@@ -47,9 +99,25 @@ class PreMeetingViewController: UIViewController {
                         self.enterVideo()
                         self.waitTimer?.invalidate()
                         self.db.collection("Rooms").document(self.roomName).setData(["Timer":"300"], merge: false)
+                        self.enteredRoom = true
+
                     }
                     if document.get("Rejected") != nil{
                         self.db.collection("Rooms").document(self.roomName).delete()
+                        /*Add user to previous matches */
+                        self.addMatchToPrevMatches()
+                        
+                        /*Delete fields of current match for myself*/
+                        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                        self.enteredRoom = true
+                        /* set is on call to false*/
+                        self.setIsOnCall()
                         self.goBackToLobby()
                     }
                     
@@ -69,6 +137,7 @@ class PreMeetingViewController: UIViewController {
         // need to gernerate tokens for each user
         meetingViewController.accessToken = accessToken
         meetingViewController.roomName =  roomName
+        meetingViewController.matchId = matchId
         navigationController?.pushViewController(meetingViewController, animated: true)
     }
     func goBackToLobby(){

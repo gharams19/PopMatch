@@ -5,7 +5,6 @@
 //  Created by Ray Ngan on 2/21/21.
 //
 
-
 import UIKit
 import TwilioVideo
 import Firebase
@@ -39,6 +38,7 @@ class MeetingViewController: UIViewController {
     var vidTimer: Timer?
     var roomName: String = ""
     var accessToken : String = ""
+    var matchId = ""
    
     @IBOutlet weak var sendMediaText: UILabel!
     @IBOutlet weak var twitter: UIButton!
@@ -206,7 +206,35 @@ class MeetingViewController: UIViewController {
 
     
   
-    
+    func setIsOnCall() {
+        self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").getDocument{(document, error) in
+            if let document = document, document.exists {
+                document.reference.updateData([
+                    "isOnCall": "false"
+                ])
+            }
+        }
+    }
+
+    func addMatchToPrevMatches() {
+        self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("previous matches").getDocument {(document, error)  in
+            if let document = document, document.exists {
+                var prev_matches = document.get("prev_matches") as? [String] ?? []
+                prev_matches.append(self.matchId)
+                self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("previous matches").setData(["prev_matches": prev_matches])
+            }
+        }
+    }
+    func deleteCurrentMatch() {
+        self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("current match").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+
+    }
     @IBAction func disconnect(sender: AnyObject) {
         exitRoom()
     }
@@ -214,6 +242,19 @@ class MeetingViewController: UIViewController {
     func exitRoom(){
         self.room?.disconnect()
         self.db.collection("Rooms").document(roomName).delete()
+        /*Add user to previous matches */
+        self.addMatchToPrevMatches()
+        
+        /*Delete fields of current match for myself*/
+        self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("current match").delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        /* set is on call to false*/
+        self.setIsOnCall()
         let roomDict:[String: String] = ["room": roomName]
         NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
@@ -334,7 +375,6 @@ class MeetingViewController: UIViewController {
     func prepareLocalMedia() {
 
         // We will share local audio and video when we connect to the Room.
-
         // Create an audio track.
         if (localAudioTrack == nil) {
             localAudioTrack = LocalAudioTrack(options: nil, enabled: true, name: "Microphone")
@@ -486,13 +526,11 @@ extension MeetingViewController : RemoteParticipantDelegate {
 
     func remoteParticipantDidUnpublishVideoTrack(participant: RemoteParticipant, publication: RemoteVideoTrackPublication) {
         // Remote Participant has stopped sharing the video Track.
-
         logMessage(messageText: "Participant \(participant.identity) unpublished \(publication.trackName) video track")
     }
 
     func remoteParticipantDidPublishAudioTrack(participant: RemoteParticipant, publication: RemoteAudioTrackPublication) {
         // Remote Participant has offered to share the audio Track.
-
         logMessage(messageText: "Participant \(participant.identity) published \(publication.trackName) audio track")
     }
 
@@ -504,7 +542,6 @@ extension MeetingViewController : RemoteParticipantDelegate {
 
     func didSubscribeToVideoTrack(videoTrack: RemoteVideoTrack, publication: RemoteVideoTrackPublication, participant: RemoteParticipant) {
         // The LocalParticipant is subscribed to the RemoteParticipant's video Track. Frames will begin to arrive now.
-
         logMessage(messageText: "Subscribed to \(publication.trackName) video track for Participant \(participant.identity)")
         
         if (self.remoteParticipant == nil) {
@@ -582,4 +619,3 @@ extension MeetingViewController : CameraSourceDelegate {
         logMessage(messageText: "Camera source failed with error: \(error.localizedDescription)")
     }
 }
-
