@@ -15,4 +15,6 @@ target 'PopMatch' do
 	pod 'Firebase/Analytics'
 	pod 'TwilioVideo', '~> 4.3'
 	pod 'DLRadioButton', '~> 1.4'
+	pod 'FBSDKLoginKit'
+	pod 'KCCircularTimer'
 end
