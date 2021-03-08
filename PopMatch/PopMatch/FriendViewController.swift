@@ -71,7 +71,7 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     var pronounData: [String] = ["She/Her", "He/Him", "They/Them", "Decline to state"]
     
-    var ageData: [String] = ["Under 18", "18-20", "21-23", "24+"]
+    var ageData: [String] = ["Freshman", "Sophomore", "Junior", "Senior", "Super Senior"]
     
     var majorData: [String] = ["Business/Economics", "Technology", "Healthcare", "Education", "Engineering", "Agriculture", "Legal/Politcal Science", "Entertainment/Media", "Art", "Languages/Literature", "Research"]
   

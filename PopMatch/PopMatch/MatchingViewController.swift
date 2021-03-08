@@ -136,43 +136,54 @@ class MatchingViewController: UIViewController {
             db.collection("users").document(self.matchId).collection("questions").document("friendship").getDocument{(document, error) in
                 if let document = document, document.exists {
                     
-                    let data = document.data() as? [String: Any]
+                    let data = document.data()
                     
                     self.majorAnswer.text = data?["major"] as? String ?? ""
                     let hobbies = data?["hobbies"] as? [String] ?? []
                     var hobbiesText = ""
                     var musicText = ""
                     var showsText = ""
-                    
+                    var i = 0
                     for hobby in hobbies{
                         if hobby != hobbies.first {
+                            hobbiesText += ", "
+                        }
+                        if i % 3 == 0 {
                             hobbiesText += "\n"
                         }
-                        hobbiesText += "-\(hobby)"
+                        hobbiesText += "\(hobby)"
+                        i += 1
                     }
                     
                     self.hobbiesAnswer.numberOfLines = 0
                     self.hobbiesAnswer.text = hobbiesText
                     
                     let music = data?["music"] as? [String] ?? []
-                    
+                    i = 0
                     for genre in music{
                         if genre != music.first {
+                            musicText += ", "
+                        }
+                        if i % 5 == 0 {
                             musicText += "\n"
                         }
-                        musicText += "-\(genre)"
-                        
+                        musicText += "\(genre)"
+                        i += 1
                     }
                     self.musicAnswer.numberOfLines = 0
                     self.musicAnswer.text = musicText
                     
                     let shows = data?["tvShows"] as? [String] ?? []
-                    
+                    i = 0
                     for show in shows {
                         if show != shows.first {
+                            showsText += ", "
+                        }
+                        if i % 3 == 0 {
                             showsText += "\n"
                         }
-                        showsText += "-\(show)"
+                        showsText += "\(show)"
+                        i += 1
                     }
                     
                     self.showAnswer.numberOfLines = 0
@@ -182,11 +193,11 @@ class MatchingViewController: UIViewController {
                     
                     self.popUpAge.text = data?["ageGroup"] as? String ?? ""
                     if(self.popUpAge.text != "") {
-                        self.popUpAge.text = ",\(self.popUpAge.text)"
+                        self.popUpAge.text = ", \(self.popUpAge.text ?? "")"
                     }
                     self.popUpPronoun.text = data?["pronoun"] as? String ?? ""
                     if(self.popUpPronoun.text != "" || self.popUpPronoun.text != "Decline to state") {
-                        self.popUpPronoun.text = ",\(self.popUpPronoun.text)"
+                        self.popUpPronoun.text = ", \(self.popUpPronoun.text ?? "")"
                     }
                 }
             }
