@@ -229,6 +229,10 @@ PODS:
     - FBSDKLoginKit/Login (= 9.0.1)
   - FBSDKLoginKit/Login (9.0.1):
     - FBSDKCoreKit (~> 9.0.1)
+  - FBSDKShareKit (9.0.1):
+    - FBSDKShareKit/Share (= 9.0.1)
+  - FBSDKShareKit/Share (9.0.1):
+    - FBSDKCoreKit (~> 9.0.1)
   - Firebase/Analytics (6.34.0):
     - Firebase/Core
   - Firebase/Auth (6.34.0):
@@ -366,7 +370,9 @@ PODS:
 
 DEPENDENCIES:
   - DLRadioButton (~> 1.4)
+  - FBSDKCoreKit
   - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
@@ -384,6 +390,7 @@ SPEC REPOS:
     - DLRadioButton
     - FBSDKCoreKit
     - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -414,6 +421,7 @@ SPEC CHECKSUMS:
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   FBSDKCoreKit: fada1a6a0076724678993ff05a633848765ff18c
   FBSDKLoginKit: d5ffe6d808897019ccf16feb6f0a7ab260bc5cd6
+  FBSDKShareKit: 6a85acb92eaf43a0b6dfa2ba6106eb74c7f10d30
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
@@ -438,6 +446,6 @@ SPEC CHECKSUMS:
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   TwilioVideo: 1ece3d954245b02244ea613408f6a4413ff54987
 
-PODFILE CHECKSUM: b1a008cbce5961790810dadc75f4c5090524fcb7
+PODFILE CHECKSUM: 81004297e402725a77987d517290e2d183902836
 
 COCOAPODS: 1.10.1

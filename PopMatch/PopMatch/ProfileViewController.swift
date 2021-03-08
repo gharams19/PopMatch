@@ -44,6 +44,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var popUpTextField: UITextField!
     @IBOutlet weak var popUpErrLabel: UILabel!
     @IBOutlet weak var popUpConfirmBtn: UIButton!
+    @IBOutlet weak var promptLabel: UILabel!
     
     var twitterLink: String = ""
     var facebookLink: String = ""
@@ -77,6 +78,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         popUpView.isHidden = true
         popUpConfirmBtn.isHidden = true
         popUpErrLabel.isHidden = true
+        
+        //set up prompt for username
+        promptLabel.text = "Please enter your username"
+        promptLabel.textColor = .orange
         
         // Display the stored data
         displayUserData()
@@ -205,13 +210,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             case "Twitter":
                 self.twitterLink = "http://twitter.com/" + (popUpTextField.text ?? "[username]")
             case "Facebook":
-                self.facebookLink = "https://www.facebook.com/" + (popUpTextField.text ?? "[username]")
+                self.facebookLink = popUpTextField.text ?? "[username]"
             case "Snapchat":
                 self.snapchatLink = "https://www.snapchat.com/add/" + (popUpTextField.text ?? "[username]")
             case "Instagram":
                 self.instagramLink = "https://www.instagram.com/" + (popUpTextField.text ?? "[username]")
             case "LinkedIn":
-                self.linkedinLink = "www.linkedin.com/in/" + (popUpTextField.text ?? "[username]")
+                self.linkedinLink = popUpTextField.text ?? "[username]"
             default:
                 print("Doesn't match any of the social media, meaning it's for password reset")
             }
@@ -288,16 +293,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     // MARK: - Social Media Button Clicked
     @IBAction func twitterClicked() {
-        displayPopUp("Twitter", twitterLink, false);
+        displayPopUp("Twitter", twitterLink, false)
     }
     
     @IBAction func facebookClicked() {
-        //   displayPopUp("Facebook", facebookLink, false)
-           if (AccessToken.current == nil) {
-               loginFB()
-           } else {
-               logoutFB()
-           }
+        promptLabel.text = "Please enter your full name"
+           displayPopUp("Facebook", facebookLink, false)
+//           if (AccessToken.current == nil) {
+//               loginFB()
+//           } else {
+//               logoutFB()
+//           }
     }
     
     @IBAction func snapchatClicked() {
@@ -309,52 +315,56 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func linkedinClicked() {
+        promptLabel.text = "Please enter your full name"
         displayPopUp("LinkedIn", linkedinLink, false)
     }
     
     // MARK: - Facebook Login
-    func loginFB() {
-        let loginManager = LoginManager()
-        loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) { (result) in
-            switch result {
-            case .cancelled:
-                print("User canceled login")
-            case .failed(let error):
-                print("here in failed")
-                print(error.localizedDescription)
-            case .success(_, _, _):
-                self.getFBData()
-            }
-        }
-    }
-    
-    func getFBData(){
-        if let token = AccessToken.current, !token.isExpired {
-            let token = token.tokenString
-            let request = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, link" ], tokenString: token, version: nil, httpMethod: .get)
-            request.start(completionHandler: { (connection, result, error) in
-                if error == nil {
-                    let data = result as? [String:Any]
-                    if let link = data?["link"] as? String {
-                        self.facebookLink = link
-                        self.storeData()
-                    }
-                } else {
-                    print("Error: \(String(describing: error?.localizedDescription))")
-                }
-            })
-        } else {
-            print("no token")
-        }
-    }
-    
-    func logoutFB() {
-        let logoutManager = LoginManager()
-        logoutManager.logOut()
-        let alert = UIAlertController(title: "Logout", message: "You've been logged out.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+//    func loginFB() {
+//        let loginManager = LoginManager()
+//        loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) { (result) in
+//            switch result {
+//            case .cancelled:
+//                print("User canceled login")
+//            case .failed(let error):
+//                print("here in failed")
+//                print(error.localizedDescription)
+//            case .success(_, _, _):
+//                self.getFBData()
+//            }
+//        }
+//    }
+//
+//    func getFBData(){
+//        if let token = AccessToken.current, !token.isExpired {
+//            let token = token.tokenString
+//            let request = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, link" ], tokenString: token, version: nil, httpMethod: .get)
+//            request.start(completionHandler: { (connection, result, error) in
+//                if error == nil {
+//                    let data = result as? [String:Any]
+//                    if let link = data?["link"] as? String {
+//                        self.facebookLink = link
+//                        print(self.facebookLink)
+//                        self.storeData()
+//                    }
+//                } else {
+//                    print("Error: \(String(describing: error?.localizedDescription))")
+//                }
+//            })
+//        } else {
+//            print("no token")
+//        }
+//    }
+//
+//    func logoutFB() {
+//        let logoutManager = LoginManager()
+//        logoutManager.logOut()
+//        let alert = UIAlertController(title: "Logout", message: "You've been logged out.", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//        self.facebookLink = ""
+//        storeData()
+//    }
     
     
     // MARK: - Pop up for Social Media & Reset Password
@@ -377,7 +387,19 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         popUpView.isHidden = false
         popUpLabel.text = label
-        popUpTextField.text = text
+        switch label {
+        case "Twitter":
+            let t = "http://twitter.com/"
+            popUpTextField.text = String(text.dropFirst(t.count))
+        case "Snapchat":
+            let s = "https://www.snapchat.com/add/"
+            popUpTextField.text = String(text.dropFirst(s.count))
+        case "Instagram":
+            let i = "https://www.instagram.com/"
+            popUpTextField.text = String(text.dropFirst(i.count))
+        default:
+            popUpTextField.text = text
+        }
 
     }
     
@@ -523,10 +545,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
          // We'll create two constants which we will write to
          // the Realtime database when this device is offline
          // or online.
-         var isOffline: [String: Any] = [
+        let isOffline: [String: Any] = [
              "state": "offline",
          ]
-         var isOnline: [String: Any] = [
+        let isOnline: [String: Any] = [
              "state": "online",
          ]
          

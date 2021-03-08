@@ -17,4 +17,6 @@ target 'PopMatch' do
 	pod 'DLRadioButton', '~> 1.4'
 	pod 'FBSDKLoginKit'
 	pod 'KCCircularTimer'
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKShareKit'
 end
