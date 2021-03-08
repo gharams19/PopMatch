@@ -4,6 +4,7 @@
 //
 //  Created by Ma Eint Poe on 2/21/21.
 //
+
 import UIKit
 import Photos
 import Firebase
@@ -195,6 +196,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     //    print("textFieldShouldReturn called")
+
         textField.resignFirstResponder()
         
         // Update the appropriate social media links
@@ -495,6 +497,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     /*
     // MARK: - Navigation
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

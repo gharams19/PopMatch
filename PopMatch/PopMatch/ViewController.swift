@@ -49,7 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         resetPasswordEmail.delegate = self
         
         passwordTextField.text = "Aa263350"
-        emailTextField.text = "rayngan999@gmail.com"
+        emailTextField.text = "wngan@ucdavis.edu"
     }
     
     override func viewWillAppear(_ animated: Bool) {

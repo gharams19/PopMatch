@@ -5,6 +5,7 @@
 //  Created by Ray Ngan on 2/21/21.
 //
 
+
 import UIKit
 import TwilioVideo
 import Firebase
@@ -125,44 +126,33 @@ class MeetingViewController: UIViewController {
         if(twitterLink == ""){
             return
         }
-        urlTextView.text += twitterLink + "\n"
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+       
     }
     @IBAction func sendFacebook(_ sender: Any) {
         if(facebookLink == ""){
             return
         }
-        urlTextView.text += facebookLink + "\n"
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+      
     }
     @IBAction func sendIG(_ sender: Any) {
         if(instagramLink == ""){
             return
         }
-        urlTextView.text += instagramLink + "\n"
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+        
     }
     @IBAction func sendLinkedin(_ sender: Any) {
         if(linkedinLink == ""){
             return
         }
-        urlTextView.text += linkedinLink + "\n"
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+     
     }
     @IBAction func sendSnapchat(_ sender: Any) {
         if(snapchatLink == ""){
             return
         }
-        urlTextView.text += snapchatLink + "\n"
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.clearURL), userInfo: nil, repeats: false)
+     
     }
-    @objc func clearURL(){
-        var str = String(urlTextView.text)
-        guard let index = str.firstIndex(of: "\n") else { return }
-        str.removeSubrange(str.startIndex...index)
-        urlTextView.text = str
-    }
-    
+
     
     
    
@@ -375,6 +365,7 @@ class MeetingViewController: UIViewController {
     func prepareLocalMedia() {
 
         // We will share local audio and video when we connect to the Room.
+
         // Create an audio track.
         if (localAudioTrack == nil) {
             localAudioTrack = LocalAudioTrack(options: nil, enabled: true, name: "Microphone")
@@ -526,11 +517,13 @@ extension MeetingViewController : RemoteParticipantDelegate {
 
     func remoteParticipantDidUnpublishVideoTrack(participant: RemoteParticipant, publication: RemoteVideoTrackPublication) {
         // Remote Participant has stopped sharing the video Track.
+
         logMessage(messageText: "Participant \(participant.identity) unpublished \(publication.trackName) video track")
     }
 
     func remoteParticipantDidPublishAudioTrack(participant: RemoteParticipant, publication: RemoteAudioTrackPublication) {
         // Remote Participant has offered to share the audio Track.
+
         logMessage(messageText: "Participant \(participant.identity) published \(publication.trackName) audio track")
     }
 
@@ -542,6 +535,7 @@ extension MeetingViewController : RemoteParticipantDelegate {
 
     func didSubscribeToVideoTrack(videoTrack: RemoteVideoTrack, publication: RemoteVideoTrackPublication, participant: RemoteParticipant) {
         // The LocalParticipant is subscribed to the RemoteParticipant's video Track. Frames will begin to arrive now.
+
         logMessage(messageText: "Subscribed to \(publication.trackName) video track for Participant \(participant.identity)")
         
         if (self.remoteParticipant == nil) {
@@ -619,3 +613,4 @@ extension MeetingViewController : CameraSourceDelegate {
         logMessage(messageText: "Camera source failed with error: \(error.localizedDescription)")
     }
 }
+
