@@ -149,9 +149,9 @@ class LobbyViewController: UIViewController {
                 self.answers["hobbies"] = data?["hobbies"] as? [String]
                 self.answers["music"] = data?["music"] as? [String]
             }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.findMatches()
-//            }
+            }
         
         }
         
@@ -282,7 +282,7 @@ class LobbyViewController: UIViewController {
                 var matchedOn = [String]()
                 
                 /*No matches left*/
-                if(matches.isEmpty) {
+                if(matches.isEmpty == true) {
                     DispatchQueue.main.async {
                         print("No Matches Found!")
                         self.headerLabel1.text = "No bubbles to pop"

@@ -18,23 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         FirebaseApp.configure()
-        let uid = Auth.auth().currentUser?.uid ?? ""
         
     
-        let db = FirebaseFirestore.Firestore.firestore()
-        if uid != "" {
-        /*Delete fields of current match for myself*/
-        db.collection("users").document(uid).collection("matches").document("current match").delete()
-        db.collection("users").document(uid).collection("matches").document("previous matches").delete()
-        /* set is on call to false*/
-        db.collection("users").document(uid).getDocument{(document, error) in
-            if let document = document, document.exists {
-                document.reference.updateData([
-                    "isOnCall": "false"
-                ])
-            }
-        }
-        }
+        
 
         ApplicationDelegate.shared.application(
             application,

@@ -430,7 +430,7 @@ class MatchingViewController: UIViewController {
         preMeetingViewController.username = selfName
         preMeetingViewController.matchName = matchName
         preMeetingViewController.matchId = matchId
-        navigationController?.pushViewController(preMeetingViewController, animated: true)
+        navigationController?.pushViewController(preMeetingViewController, animated: false)
     }
     func getToken() ->String{
         
@@ -516,7 +516,7 @@ class MatchingViewController: UIViewController {
             return
         }
         //optional navigation controller
-        self.navigationController?.pushViewController(lobbyViewController, animated: true)
+        self.navigationController?.pushViewController(lobbyViewController, animated: false)
     }
     @IBAction func invokeAcceptMatchFunc(_ sender: Any) {
         acceptMatch()

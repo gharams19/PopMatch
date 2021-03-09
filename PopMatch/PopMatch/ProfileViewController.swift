@@ -80,9 +80,26 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         displayUserData()
         
         buildPresence()
-        
+        cleanPrevious()
     }
-    
+    func cleanPrevious(){
+        
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        let db = FirebaseFirestore.Firestore.firestore()
+        if uid != "" {
+        /*Delete fields of current match for myself*/
+        db.collection("users").document(uid).collection("matches").document("current match").delete()
+        db.collection("users").document(uid).collection("matches").document("previous matches").delete()
+        /* set is on call to false*/
+        db.collection("users").document(uid).getDocument{(document, error) in
+            if let document = document, document.exists {
+                document.reference.updateData([
+                    "isOnCall": "false"
+                ])
+            }
+        }
+        }
+    }
     // MARK: - Styling
     func styleSetUp() {
         signoutBtn.layer.cornerRadius = 15

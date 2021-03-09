@@ -20,7 +20,10 @@
                value = "self.currUid">
             </PersistentString>
             <PersistentString
-               value = "self.idealMatches">
+               value = "matches.isEmpty">
+            </PersistentString>
+            <PersistentString
+               value = "for (index, match) in matches.enumerated()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
