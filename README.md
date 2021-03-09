@@ -3,6 +3,10 @@
 ### Pop Match
 A video chatting app that allows users to have 1 on 1 meetings with new people and like minded thinkers. A way to create soical bonds or networks for university students.
 
+### Installation instructions
+
+- Some cocopoads are used, so before compiling the app on xcode, the command "pod install" is needed in the PopMatch folder.
+
 ### Designs for all screens to be used
 [Figma Wireframe](https://www.figma.com/file/C1nZuKT19fLt7fyb8CQKS2/The-Big-Bang-Theory?node-id=0%3A1)
 
