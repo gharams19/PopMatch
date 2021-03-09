@@ -47,6 +47,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var snapchat: UIButton!
     @IBOutlet weak var ig: UIButton!
     @IBOutlet weak var linkedin: UIButton!
+    @IBOutlet weak var urlView: UIView!
     
     
     var db = Firestore.firestore()
@@ -59,6 +60,9 @@ class MeetingViewController: UIViewController {
     var linkedinLink: String = ""
     var checkUpdates: Timer?
     var links: [String] = []
+    var y = 10
+    var sentSocialsCount = 0
+    var checkSentSocialsTimer: Timer?
    
     
     override func viewDidLoad() {
@@ -99,6 +103,8 @@ class MeetingViewController: UIViewController {
        
         
         checkUpdates = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        
+        checkSentSocialsTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.checkForSocials), userInfo: nil, repeats: true)
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
@@ -119,6 +125,7 @@ class MeetingViewController: UIViewController {
         vidImage.isHidden = flip == 0 ? true:false
         micImage.isHidden = flip == 0 ? true:false
         endImage.isHidden = flip == 0 ? true:false
+        urlView.isHidden = flip == 0 ? true:false
         flip = flip == 0 ? 1 : 0
     }
     var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
@@ -138,11 +145,86 @@ class MeetingViewController: UIViewController {
         if(twitterLink == ""){
             return
         }
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
+            if error == nil {
+                if let document = document, document.exists {
+                    var socials = document.get(uid) as? [String] ?? []
+                    
+                    if socials.contains(self.twitterLink) == false {
+                        
+                    socials.append(self.twitterLink)
+                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
+                    let attributedString = NSMutableAttributedString(string: "Follow me on Twitter")
+                    let url = URL(string: self.twitterLink)
+                    
+                    let range = NSMakeRange(0, attributedString.length)
+                    attributedString.setAttributes([.link: url], range: range)
+             
+                    let twitterTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+
+                    attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
+
+                    let linkAttributes: [NSAttributedString.Key: Any] = [
+                        NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
+                    twitterTextView.linkTextAttributes = linkAttributes
+                    twitterTextView.attributedText = attributedString
+                    twitterTextView.center = CGPoint(x: 160, y: self.y)
+                    self.y += 25
+                    twitterTextView.textAlignment = .center
+                    twitterTextView.backgroundColor = UIColor.clear
+
+                    twitterTextView.attributedText = attributedString
+                    self.urlView.addSubview(twitterTextView)
+                    self.urlView.isUserInteractionEnabled = true
+                    twitterTextView.isEditable = false
+                    }
+                }
+            }
+            
+        }
        
     }
     @IBAction func sendFacebook(_ sender: Any) {
         if(facebookLink == ""){
             return
+        }
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
+            if error == nil {
+                if let document = document, document.exists {
+                    var socials = document.get(uid) as? [String] ?? []
+                    if socials.contains(self.facebookLink) == false {
+                    socials.append(self.facebookLink)
+                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials] ,merge: true)
+                        let attributedString = NSMutableAttributedString(string: "Add me on Facebook")
+                        let url = URL(string: self.facebookLink)
+                        
+                        let range = NSMakeRange(0, attributedString.length)
+                        attributedString.setAttributes([.link: url], range: range)
+                 
+                        let facebookTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+
+                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
+
+                        
+                        
+                        facebookTextView.attributedText = attributedString
+                        facebookTextView.backgroundColor = UIColor.clear
+                        facebookTextView.center = CGPoint(x: 160, y: self.y)
+                        let linkAttributes: [NSAttributedString.Key: Any] = [
+                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
+                        facebookTextView.linkTextAttributes = linkAttributes
+                        self.y += 25
+                        facebookTextView.textAlignment = .center
+                        facebookTextView.attributedText = attributedString
+                        self.urlView.addSubview(facebookTextView)
+                        self.urlView.isUserInteractionEnabled = true
+                        facebookTextView.isEditable = false
+                    }
+                }
+            }
+            
         }
       
     }
@@ -150,11 +232,83 @@ class MeetingViewController: UIViewController {
         if(instagramLink == ""){
             return
         }
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
+            if error == nil {
+                if let document = document, document.exists {
+                    var socials = document.get(uid) as? [String] ?? []
+                    if socials.contains(self.instagramLink) == false {
+                    socials.append(self.instagramLink)
+                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
+                        let attributedString = NSMutableAttributedString(string: "Follow me on Instagram")
+                        let url = URL(string: self.instagramLink)
+                        
+                        let range = NSMakeRange(0, attributedString.length)
+                        attributedString.setAttributes([.link: url], range: range)
+                 
+                        let IGTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+
+                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
+
+                        
+                        IGTextView.attributedText = attributedString
+                        IGTextView.center = CGPoint(x: 160, y: self.y)
+                        let linkAttributes: [NSAttributedString.Key: Any] = [
+                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
+                        IGTextView.linkTextAttributes = linkAttributes
+                        self.y += 25
+                        IGTextView.textAlignment = .center
+                        IGTextView.backgroundColor = UIColor.clear
+                        IGTextView.attributedText = attributedString
+                        self.urlView.addSubview(IGTextView)
+                        self.urlView.isUserInteractionEnabled = true
+                        IGTextView.isEditable = false
+                    }
+                }
+            }
+            
+        }
         
     }
     @IBAction func sendLinkedin(_ sender: Any) {
         if(linkedinLink == ""){
             return
+        }
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
+            if error == nil {
+                if let document = document, document.exists {
+                    var socials = document.get(uid) as? [String] ?? []
+                    if socials.contains(self.linkedinLink) == false {
+                    socials.append(self.linkedinLink)
+                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
+                        let attributedString = NSMutableAttributedString(string: "Connect with me on LinkedIn: \(self.linkedinLink)")
+                        
+                        let range = NSMakeRange(0, attributedString.length)
+                 
+                        let linkedinTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+
+                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
+
+                        
+                        linkedinTextView.attributedText = attributedString
+                        linkedinTextView.center = CGPoint(x: 160, y: self.y)
+                        let linkAttributes: [NSAttributedString.Key: Any] = [
+                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
+                        linkedinTextView.linkTextAttributes = linkAttributes
+                        self.y += 25
+                        linkedinTextView.textAlignment = .center
+                        linkedinTextView.attributedText = attributedString
+                        linkedinTextView.backgroundColor = UIColor.clear
+
+                        self.urlView.addSubview(linkedinTextView)
+                        self.urlView.isUserInteractionEnabled = true
+                        linkedinTextView.isEditable = false
+                     
+                    }
+                }
+            }
+            
         }
      
     }
@@ -162,9 +316,91 @@ class MeetingViewController: UIViewController {
         if(snapchatLink == ""){
             return
         }
+        let uid = Auth.auth().currentUser?.uid ?? ""
+        db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
+            if error == nil {
+                if let document = document, document.exists {
+                    var socials = document.get(uid) as? [String] ?? []
+                    if socials.contains(self.snapchatLink) == false {
+                        socials.append(self.snapchatLink)
+                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
+                        let attributedString = NSMutableAttributedString(string: "Add me on Snapchat")
+                        let url = URL(string: self.snapchatLink)
+                        
+                        let range = NSMakeRange(0, attributedString.length)
+                        attributedString.setAttributes([.link: url], range: range)
+                 
+                        let snapchatTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+                        
+                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
+
+                        
+                        snapchatTextView.attributedText = attributedString
+                        snapchatTextView.center = CGPoint(x: 160, y: self.y)
+                        let linkAttributes: [NSAttributedString.Key: Any] = [
+                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
+                        snapchatTextView.linkTextAttributes = linkAttributes
+                        self.y += 25
+                        snapchatTextView.textAlignment = .center
+                        snapchatTextView.backgroundColor = UIColor.clear
+                        snapchatTextView.attributedText = attributedString
+                        self.urlView.addSubview(snapchatTextView)
+                        self.urlView.isUserInteractionEnabled = true
+                        snapchatTextView.isEditable = false
+                    }
+                }
+            }
+            
+        }
      
     }
     
+    func addLinkToView(url: String) {
+        
+        var messageText = ""
+
+        print(url)
+        if url.contains("instagram") {
+            messageText = "Follow me on Instagram"
+            
+        }
+        else if url.contains("snapchat") {
+            messageText =  "Add me on Snapchat"
+           
+            
+        } else if url.contains("twitter") {
+            messageText = "Follow me on Twitter"
+            
+        }
+        else if url.contains("facebook") {
+            messageText = "Add me on Facebook"
+        }
+        else {
+            messageText = "Connect with me on LinkedIn: \(linkedinLink)"
+        }
+        let socialUrl = URL(string: url)
+
+        let attributedString = NSMutableAttributedString(string: messageText)
+        let range = NSMakeRange(0, attributedString.length)
+        attributedString.setAttributes([.link: socialUrl ?? ""], range: range)
+        let snapchatTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        
+        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
+
+        
+        snapchatTextView.attributedText = attributedString
+        snapchatTextView.center = CGPoint(x: 160, y: self.y)
+        let linkAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.69, green: 0.63, blue: 1.0, alpha: 1.0)]
+        snapchatTextView.linkTextAttributes = linkAttributes
+        self.y += 25
+        snapchatTextView.textAlignment = .center
+        snapchatTextView.backgroundColor = UIColor.clear
+        snapchatTextView.attributedText = attributedString
+        self.urlView.addSubview(snapchatTextView)
+        self.urlView.isUserInteractionEnabled = true
+        snapchatTextView.isEditable = false
+    }
     
     
     
@@ -188,6 +424,7 @@ class MeetingViewController: UIViewController {
                                 }
                             }
                             checkUpdates?.invalidate()
+                            checkSentSocialsTimer?.invalidate()
                             let roomDict:[String: String] = ["room": self.roomName]
                             NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
                             self.goBackToLobby()
@@ -226,7 +463,20 @@ class MeetingViewController: UIViewController {
         
     }
     
-
+    @objc func checkForSocials() {
+        db.collection("Rooms").document(roomName).getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    let links = document.get(self.matchId) as? [String] ?? []
+                    if links.count > self.sentSocialsCount {
+                        self.sentSocialsCount += 1
+                        self.addLinkToView(url: links[links.count-1] as? String ?? "")
+                    }
+                }
+            }
+        }
+    }
 
     @IBAction func addTime(_ sender: Any) {
         db.collection("Rooms").document(roomName).getDocument(){
@@ -283,6 +533,7 @@ class MeetingViewController: UIViewController {
     func exitRoom(){
         self.room?.disconnect()
         checkUpdates?.invalidate()
+        checkSentSocialsTimer?.invalidate()
         /*Add user to previous matches */
         self.addMatchToPrevMatches()
         

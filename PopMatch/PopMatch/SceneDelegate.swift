@@ -7,7 +7,7 @@
 
 import UIKit
 import FBSDKCoreKit
-
+import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -20,10 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController
-        let logInViewController = storyboard.instantiateViewController(withIdentifier: "logInVC")
-        let viewController = [logInViewController]
+        
+        var entryViewController = storyboard.instantiateViewController(withIdentifier: "logInVC")
+        if Auth.auth().currentUser != nil {
+            entryViewController = storyboard.instantiateViewController(withIdentifier: "profileVC")
 
-//            navigationController?.viewControllers = viewController
+        }
+       
+        let viewController = [entryViewController]
+
         navigationController?.setViewControllers(viewController, animated: true)
         navigationController?.setNavigationBarHidden(true, animated: true)
         
