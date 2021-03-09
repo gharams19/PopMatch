@@ -36,7 +36,7 @@ class MatchingViewController: UIViewController {
     var currUId = ""
     var rejectedMatches = [String]()
     var db = Firestore.firestore()
-    var selfName = ""
+    var selfName = "123"
     var roomName = "123"
     let placeholderImage = UIImage(named: "bubble1")
     var vidTimer : Timer?
@@ -49,7 +49,7 @@ class MatchingViewController: UIViewController {
         countdownTimer.maximumValue = 30
         countdownTimer.animate(from: 30, to: 0)
         matchTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(self.timeOut), userInfo: nil, repeats: false)
-        checkTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.checkReject), userInfo: nil, repeats: true)
+        checkTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.checkReject), userInfo: nil, repeats: true)
         
         self.matchUsername.text = ""
         self.popUpName.text = ""
@@ -86,6 +86,11 @@ class MatchingViewController: UIViewController {
             if(error == nil){
                 if let document = document, document.exists {
                     self.selfName = document.get("first name") as? String ?? ""
+                    if self.selfName.contains(" "){
+                        let pos =  self.selfName.index(of: " ")
+                        self.selfName = String(self.selfName[..<(pos ?? self.selfName.endIndex)])
+                    }
+                    
                 }
             }
             
@@ -103,6 +108,10 @@ class MatchingViewController: UIViewController {
                         self.matchName = document.get("first name") as? String ?? ""
                         //set room name
                         var generateRoomName = self.selfName
+                        if self.matchName.contains(" "){
+                            let pos =  self.matchName.index(of: " ")
+                            self.matchName = String(self.matchName[..<(pos ?? self.matchName.endIndex)])
+                        }
                         generateRoomName += self.matchName
                         self.roomName = String(generateRoomName.sorted())
                         let username = document.get("username") as? String ?? ""
@@ -251,7 +260,13 @@ class MatchingViewController: UIViewController {
                 if let document = document, document.exists {
                     //If opponent rejected
                     if document.get("Rejected") != nil{
-                        self.db.collection("Rooms").document(self.roomName).delete()
+                        self.db.collection("Rooms").document(self.roomName).delete(){ err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
                         /*Add user to previous matches */
                         self.addMatchToPrevMatches()
                         
@@ -279,7 +294,13 @@ class MatchingViewController: UIViewController {
             if(error == nil){
                 if let document = document, document.exists {
                     if document.get("Rejected") != nil{
-                        self.db.collection("Rooms").document(self.roomName).delete()
+                        self.db.collection("Rooms").document(self.roomName).delete(){ err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
                         
                     }else{
                         self.db.collection("Rooms").document(self.roomName).setData(["Rejected":"1"])
@@ -337,9 +358,9 @@ class MatchingViewController: UIViewController {
     }
     
     func acceptMatch() {
+        print(roomName)
         self.matchTimer?.invalidate()
         self.checkTimer?.invalidate()
-        print("here")
         let generateRoomName = (selfName + matchName).sorted()
         roomName = String(generateRoomName)
         db.collection("Rooms").document(roomName).getDocument(){
@@ -465,7 +486,9 @@ class MatchingViewController: UIViewController {
                 }
             }
         }
-                
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.db.collection("Rooms").document(self.roomName).delete()
+        }
         /*Add user to previous matches */
         self.addMatchToPrevMatches()
         
@@ -484,6 +507,7 @@ class MatchingViewController: UIViewController {
        
         
     }
+    
     func goToLobby(){
         /*Go to lobbyVC to find another */
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

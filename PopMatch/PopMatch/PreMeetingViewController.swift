@@ -31,26 +31,6 @@ class PreMeetingViewController: UIViewController {
         displayLink = CADisplayLink(target: self, selector: #selector(handleAnimations))
         displayLink.add(to: RunLoop.main, forMode: .default)
         waitTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.checkIfRoomIsReady), userInfo: nil, repeats: true)
-        print("here1")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
-//            if self.enteredRoom ==  false {
-//                self.db.collection("Rooms").document(self.roomName).delete()
-//                /*Add user to previous matches */
-//                self.addMatchToPrevMatches()
-//
-//                /*Delete fields of current match for myself*/
-//                self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
-//                    if let err = err {
-//                        print("Error removing document: \(err)")
-//                    } else {
-//                        print("Document successfully removed!")
-//                    }
-//                }
-//                /* set is on call to false*/
-//                self.setIsOnCall()
-//                self.goBackToLobby()
-//            }
-//        }
     }
     
     
@@ -104,7 +84,13 @@ class PreMeetingViewController: UIViewController {
 
                     }
                     if document.get("Rejected") != nil{
-                        self.db.collection("Rooms").document(self.roomName).delete()
+                        self.db.collection("Rooms").document(self.roomName).delete(){ err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
                         /*Add user to previous matches */
                         self.addMatchToPrevMatches()
                         

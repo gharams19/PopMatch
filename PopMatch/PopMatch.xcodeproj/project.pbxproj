@@ -16,8 +16,6 @@
 		7A560C4625DB20FB00377699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A560C4525DB20FB00377699 /* Assets.xcassets */; };
 		7A560C4925DB20FB00377699 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A560C4725DB20FB00377699 /* LaunchScreen.storyboard */; };
 		7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5125DB25D200377699 /* SignUpViewController.swift */; };
-		7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A560C5425DB2FFF00377699 /* MainViewController.swift */; };
-		7A7DDA8A25DC37F000D804CB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDA8925DC37F000D804CB /* Api.swift */; };
 		7A86DE0A25E31CF700FFB75A /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A86DE0925E31CF700FFB75A /* FriendViewController.swift */; };
 		7AB7B9A925EF7274003FA2F8 /* mixkit-soap-bubble-sound-2925.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7AB7B9A825EF7274003FA2F8 /* mixkit-soap-bubble-sound-2925.wav */; };
 		7ABF85A425E070BB00B59A77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */; };
@@ -59,8 +57,6 @@
 		7A560C4825DB20FB00377699 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A560C4A25DB20FB00377699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A560C5125DB25D200377699 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		7A560C5425DB2FFF00377699 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		7A7DDA8925DC37F000D804CB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		7A86DE0925E31CF700FFB75A /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7AB7B9A825EF7274003FA2F8 /* mixkit-soap-bubble-sound-2925.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "mixkit-soap-bubble-sound-2925.wav"; path = "PopMatch/mixkit-soap-bubble-sound-2925.wav"; sourceTree = "<group>"; };
 		7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -149,8 +145,6 @@
 				7A560C4A25DB20FB00377699 /* Info.plist */,
 				7A560C5125DB25D200377699 /* SignUpViewController.swift */,
 				D4FE121325E3333100EF46F3 /* LobbyViewController.swift */,
-				7A560C5425DB2FFF00377699 /* MainViewController.swift */,
-				7A7DDA8925DC37F000D804CB /* Api.swift */,
 				7ABF85A325E070BB00B59A77 /* ProfileViewController.swift */,
 				7A86DE0925E31CF700FFB75A /* FriendViewController.swift */,
 				76412BC225E601D900777066 /* MatchingViewController.swift */,
@@ -286,7 +280,6 @@
 			files = (
 				D43AAD3625F36B6700501A4D /* PreMeetingViewController.swift in Sources */,
 				76412BC325E601D900777066 /* MatchingViewController.swift in Sources */,
-				7A7DDA8A25DC37F000D804CB /* Api.swift in Sources */,
 				7A560C4125DB20FA00377699 /* ViewController.swift in Sources */,
 				7A560C3D25DB20FA00377699 /* AppDelegate.swift in Sources */,
 				7A560C5225DB25D200377699 /* SignUpViewController.swift in Sources */,
@@ -295,7 +288,6 @@
 				D4FE121725E3333D00EF46F3 /* MeetingViewController.swift in Sources */,
 				7A560C3F25DB20FA00377699 /* SceneDelegate.swift in Sources */,
 				D4FE121425E3333100EF46F3 /* LobbyViewController.swift in Sources */,
-				7A560C5525DB2FFF00377699 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,10 +1,3 @@
-//
-//  ProfileViewController.swift
-//  PopMatch
-//
-//  Created by Ma Eint Poe on 2/21/21.
-//
-
 import UIKit
 import Photos
 import Firebase
@@ -201,7 +194,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     //    print("textFieldShouldReturn called")
-
         textField.resignFirstResponder()
         
         // Update the appropriate social media links
@@ -297,13 +289,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func facebookClicked() {
-        promptLabel.text = "Please enter your full name"
-           displayPopUp("Facebook", facebookLink, false)
-//           if (AccessToken.current == nil) {
-//               loginFB()
-//           } else {
-//               logoutFB()
-//           }
+     //   promptLabel.text = "Please enter your full name"
+        //   displayPopUp("Facebook", facebookLink, false)
+           if (AccessToken.current == nil) {
+               loginFB()
+           } else {
+               logoutFB()
+           }
     }
     
     @IBAction func snapchatClicked() {
@@ -315,56 +307,56 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func linkedinClicked() {
-        promptLabel.text = "Please enter your full name"
+     //   promptLabel.text = "Please enter your full name"
         displayPopUp("LinkedIn", linkedinLink, false)
     }
     
     // MARK: - Facebook Login
-//    func loginFB() {
-//        let loginManager = LoginManager()
-//        loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) { (result) in
-//            switch result {
-//            case .cancelled:
-//                print("User canceled login")
-//            case .failed(let error):
-//                print("here in failed")
-//                print(error.localizedDescription)
-//            case .success(_, _, _):
-//                self.getFBData()
-//            }
-//        }
-//    }
-//
-//    func getFBData(){
-//        if let token = AccessToken.current, !token.isExpired {
-//            let token = token.tokenString
-//            let request = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, link" ], tokenString: token, version: nil, httpMethod: .get)
-//            request.start(completionHandler: { (connection, result, error) in
-//                if error == nil {
-//                    let data = result as? [String:Any]
-//                    if let link = data?["link"] as? String {
-//                        self.facebookLink = link
-//                        print(self.facebookLink)
-//                        self.storeData()
-//                    }
-//                } else {
-//                    print("Error: \(String(describing: error?.localizedDescription))")
-//                }
-//            })
-//        } else {
-//            print("no token")
-//        }
-//    }
-//
-//    func logoutFB() {
-//        let logoutManager = LoginManager()
-//        logoutManager.logOut()
-//        let alert = UIAlertController(title: "Logout", message: "You've been logged out.", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-//        self.facebookLink = ""
-//        storeData()
-//    }
+    func loginFB() {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: [.publicProfile, .email, .custom("user_link")], viewController: self) { (result) in
+            switch result {
+            case .cancelled:
+                print("User canceled login")
+            case .failed(let error):
+                print("here in failed")
+                print(error.localizedDescription)
+            case .success(_, _, _):
+                self.getFBData()
+            }
+        }
+    }
+
+    func getFBData(){
+        if let token = AccessToken.current, !token.isExpired {
+            let token = token.tokenString
+            let request = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, link" ], tokenString: token, version: nil, httpMethod: .get)
+            request.start(completionHandler: { (connection, result, error) in
+                if error == nil {
+                    let data = result as? [String:Any]
+                    if let link = data?["link"] as? String {
+                        self.facebookLink = link
+                        print(self.facebookLink)
+                        self.storeData()
+                    }
+                } else {
+                    print("Error: \(String(describing: error?.localizedDescription))")
+                }
+            })
+        } else {
+            print("no token")
+        }
+    }
+
+    func logoutFB() {
+        let logoutManager = LoginManager()
+        logoutManager.logOut()
+        let alert = UIAlertController(title: "Logout", message: "You've been logged out.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        self.facebookLink = ""
+        storeData()
+    }
     
     
     // MARK: - Pop up for Social Media & Reset Password
@@ -387,6 +379,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         popUpView.isHidden = false
         popUpLabel.text = label
+        promptLabel.text = "Please enter your username"
         switch label {
         case "Twitter":
             let t = "http://twitter.com/"
@@ -397,9 +390,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         case "Instagram":
             let i = "https://www.instagram.com/"
             popUpTextField.text = String(text.dropFirst(i.count))
+        case "LinkedIn":
+            promptLabel.text = "Please enter your full name"
         default:
             popUpTextField.text = text
         }
+      
 
     }
     
@@ -519,7 +515,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

@@ -47,7 +47,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var snapchat: UIButton!
     @IBOutlet weak var ig: UIButton!
     @IBOutlet weak var linkedin: UIButton!
-    @IBOutlet weak var urlTextView: UITextView!
+    
     
     var db = Firestore.firestore()
     var storage = Storage.storage()
@@ -57,7 +57,7 @@ class MeetingViewController: UIViewController {
     var snapchatLink: String = ""
     var instagramLink: String = ""
     var linkedinLink: String = ""
-    
+    var checkUpdates: Timer?
     var links: [String] = []
    
     
@@ -96,9 +96,9 @@ class MeetingViewController: UIViewController {
             }
         }
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
-        urlTextView.isEditable = false;
+       
         
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        checkUpdates = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
@@ -121,6 +121,18 @@ class MeetingViewController: UIViewController {
         endImage.isHidden = flip == 0 ? true:false
         flip = flip == 0 ? 1 : 0
     }
+    var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
+    
+    var questionsNum  = 12
+    
+    @IBAction func generateQuestions(_ sender: Any) {
+        let randInt = Int.random(in: 0..<questionsNum)
+        self.db.collection("Rooms").document(roomName).setData(["Icebreaker":questions[randInt]], merge: true)
+        questions.remove(at: randInt)
+        questionsNum -= 1
+    }
+    
+    
     
     @IBAction func sendTwitter(_ sender: Any) {
         if(twitterLink == ""){
@@ -152,10 +164,11 @@ class MeetingViewController: UIViewController {
         }
      
     }
-
     
     
-   
+    
+    
+   var questionTime = 0
     @objc func updateTimer(){
         db.collection("Rooms").document(roomName).getDocument(){ [self]
             (document, error) in
@@ -167,16 +180,53 @@ class MeetingViewController: UIViewController {
                         self.timerLabel.text = "Timer: " + String(curTime/60) + ":" + String(format: "%02d",curTime % 60)
                         if(curTime == 0){
                             self.room?.disconnect()
-                            self.db.collection("Rooms").document(roomName).delete()
+                            self.db.collection("Rooms").document(roomName).delete(){ err in
+                                if let err = err {
+                                    print("Error removing document: \(err)")
+                                } else {
+                                    print("Document successfully removed!")
+                                }
+                            }
+                            checkUpdates?.invalidate()
                             let roomDict:[String: String] = ["room": self.roomName]
                             NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
                             self.goBackToLobby()
                         }
                     }
+                    if document.get("Icebreaker") != nil{
+                        let question = document.get("Icebreaker") as? String
+                        messageLabel.isHidden = false
+                        messageLabel.text = question  ?? "Error" + "\n"
+                        
+                    }
+                    if document.get("Exited") != nil {
+                        self.db.collection("Rooms").document(roomName).delete(){ err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                        exitRoom()
+                    }
                 }
             }
         }
+        if questionTime == 10{
+            db.collection("Rooms").document(roomName).updateData(["Icebreaker": FieldValue.delete()]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            messageLabel.isHidden = true
+        }
+        questionTime += 1
+        
     }
+    
+
 
     @IBAction func addTime(_ sender: Any) {
         db.collection("Rooms").document(roomName).getDocument(){
@@ -226,12 +276,13 @@ class MeetingViewController: UIViewController {
 
     }
     @IBAction func disconnect(sender: AnyObject) {
+        self.db.collection("Rooms").document(self.roomName).setData(["Exited":"1"], merge: true)
         exitRoom()
     }
-    
+   
     func exitRoom(){
         self.room?.disconnect()
-        self.db.collection("Rooms").document(roomName).delete()
+        checkUpdates?.invalidate()
         /*Add user to previous matches */
         self.addMatchToPrevMatches()
         

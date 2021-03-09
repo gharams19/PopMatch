@@ -346,7 +346,7 @@ class LobbyViewController: UIViewController {
                     }
                     semaphore.wait()
                             /*Found a match*/
-                            if foundIdealmatch {
+                    if self.idealMatches.isEmpty == false {
                                 print("Ideal Match Found")
                                 print("ideal matches \(self.idealMatches)")
                                 let result = self.idealMatches.sorted(by: {$0.1.count > $1.1.count})
@@ -412,7 +412,7 @@ class LobbyViewController: UIViewController {
                                             }
 
                                             self.navigationController?.pushViewController(matchingViewController, animated: false)
-                                        })
+                                                                                    })
                                     }
                                     
                                 }
