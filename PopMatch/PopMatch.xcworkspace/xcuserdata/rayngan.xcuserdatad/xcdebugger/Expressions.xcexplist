@@ -11,6 +11,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ProfileViewController.displayPopUp(_:_:_:):ProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "k">
+            </PersistentString>
+            <PersistentString
+               value = "z.replacingOccurrences(of: &quot;20%&quot;, with: &quot; &quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in LobbyViewController.findMatches():LobbyViewController.swift">
          <PersistentStrings>
             <PersistentString

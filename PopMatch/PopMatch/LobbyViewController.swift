@@ -236,7 +236,8 @@ class LobbyViewController: UIViewController {
                 
                 semaphore.wait()
                 /*No users are online*/
-                if(matches == nil) {
+                self.queue.asyncAfter(deadline: .now()+1.0){}
+                if(matches.isEmpty == true) {
                     DispatchQueue.main.async {
                         print("No Matches Found!")
                         self.headerLabel1.text = "No bubbles to pop"
@@ -282,6 +283,7 @@ class LobbyViewController: UIViewController {
                 var matchedOn = [String]()
                 
                 /*No matches left*/
+                self.queue.asyncAfter(deadline: .now()+1.0){}
                 if(matches.isEmpty == true) {
                     DispatchQueue.main.async {
                         print("No Matches Found!")
@@ -296,8 +298,10 @@ class LobbyViewController: UIViewController {
                     var foundIdealmatch = false
                     /*Find the most ideal match, if not found match with first person*/
                     semaphore = DispatchSemaphore(value: 0)
-
-                    for (index, match) in matches.enumerated() {
+                    
+                    self.queue.asyncAfter(deadline: .now()+1.0){}
+                    
+                        for (index, match) in matches.enumerated() {
                         var matchAnswers = [String:[String]]()
                         matchedOn.removeAll()
                         db.collection("users").document(match.key).collection("questions").document("friendship").getDocument{(document, error) in
@@ -483,6 +487,7 @@ class LobbyViewController: UIViewController {
                                     }                            }
                             }
                         }
+            
                         
                      
                 

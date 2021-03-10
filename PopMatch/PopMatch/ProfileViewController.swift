@@ -411,6 +411,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             popUpTextField.text = String(text.dropFirst(i.count))
         case "LinkedIn":
             promptLabel.text = "Please enter your full name"
+            let k = text.replacingOccurrences(of: "https://www.linkedin.com/search/results/all/?keywords=", with: "")
+            let z = k.replacingOccurrences(of: "&origin=GLOBAL_SEARCH_HEADER", with: "")
+            let y = z.replacingOccurrences(of: "%20", with: " ")
+            popUpTextField.text = y
         default:
             popUpTextField.text = text
         }
