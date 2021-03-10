@@ -392,13 +392,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             popUpLabel.font = popUpLabel.font.withSize(16)
             popUpConfirmBtn.isHidden = false
             popUpConfirmBtn.isUserInteractionEnabled = true
+            promptLabel.isHidden = true
         } else {
             popUpLabel.font.withSize(22)
+            promptLabel.isHidden = false
+            promptLabel.text = "Please enter your username:"
         }
-        
-        popUpView.isHidden = false
         popUpLabel.text = label
-        promptLabel.text = "Please enter your username"
+        popUpView.isHidden = false
+
         switch label {
         case "Twitter":
             let t = "http://twitter.com/"
@@ -473,7 +475,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // MARK: - Reseting Password
     // Reset button pressed
     @IBAction func resetPassPress() {
-        displayPopUp("Enter the email to send the reset link", "", true)
+        displayPopUp("Enter the email to send the reset link:", "", true)
     }
     
     // Reset password confirm
