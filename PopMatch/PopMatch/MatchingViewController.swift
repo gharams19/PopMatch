@@ -393,6 +393,12 @@ class MatchingViewController: UIViewController {
                         self.goToLobby()
                        
                     }
+                    if document.get("Timer") != nil {
+                        self.db.collection("Rooms").document(self.roomName).delete()
+                        self.db.collection("Rooms").document(self.roomName).setData([self.selfName:"1"], merge: true)
+                       
+                        self.enterWaitingRoom()
+                    }
                 }else{
                     // Go to waiting room to wait for the others response
                     self.db.collection("Rooms").document(self.roomName).setData([self.selfName:"1"], merge: true)

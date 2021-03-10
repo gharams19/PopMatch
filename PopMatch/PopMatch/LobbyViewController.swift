@@ -236,7 +236,7 @@ class LobbyViewController: UIViewController {
                 
                 semaphore.wait()
                 /*No users are online*/
-                if(matches.isEmpty) {
+                if(matches == nil) {
                     DispatchQueue.main.async {
                         print("No Matches Found!")
                         self.headerLabel1.text = "No bubbles to pop"

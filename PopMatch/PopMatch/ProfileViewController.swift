@@ -225,7 +225,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             case "Instagram":
                 self.instagramLink = "https://www.instagram.com/" + (popUpTextField.text ?? "[username]")
             case "LinkedIn":
-                self.linkedinLink = popUpTextField.text ?? "[username]"
+                let fullName = popUpTextField.text?.replacingOccurrences(of: " ", with: "%20") ?? "[username]"
+                
+                self.linkedinLink = "https://www.linkedin.com/search/results/all/?keywords=" +  fullName + "&origin=GLOBAL_SEARCH_HEADER"
             default:
                 print("Doesn't match any of the social media, meaning it's for password reset")
             }
