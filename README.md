@@ -23,7 +23,6 @@ Since we are using Firebase for our data storage and authentication of emails an
 * Sign up 
 * Profile 
 * Setting
-* Professional Questionnaire 
 * Friend Questionnaire 
 * Lobby (loading screen)
 * Match 
