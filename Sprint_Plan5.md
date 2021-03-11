@@ -42,7 +42,25 @@ Commits:
 
 **Ma Eint Poe** -
 
-**Wai Hei Ngan** -
+**Wai Hei Ngan (Ray)** -
+* Created Timer Model and connected it to the firestore so the timer in the video room will be synchronize
+* Automated username and roomname creation
+* Added matching screen timer
+* Support mutiple video rooms
+* Improved accept/reject flow
+* Added Icebreaker quiestions during video call
+* Changed delete previous matches to profile view and added delay for matching so the data will be avaible after asynchronous call
+* Added soical media links to  video room
+* Changed linkedin user data to seach for full name
+
+Commits:
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/0ddc8e771ce6811e820a3a04af3e6bf3c530638a
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/5fb43aa3ef4f984439360326f5dd72837a0688cb
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/3cfe35bee2703e8d75cc9feac02f5cf9389d87b3
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/2f25b5eebed60186af4a2456dbb44f1daf5c37d1
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/d7e6575535e8c644035193370e157a4fb7e4c30a
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/9c32f5dadcd6e2d02a906deb402ce39772767e7c
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/4c0116bb3e4d7e9b99762ee6e4172cca826df004
 
 ### Plan to do:
 
@@ -52,4 +70,6 @@ Commits:
 
 **Ma Eint Poe** -
 
-**Wai Hei Ngan** -
+**Wai Hei Ngan (Ray)** -
+Change reciving soical media links in a separate popup view
+
