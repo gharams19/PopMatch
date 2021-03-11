@@ -15,3 +15,30 @@ PopMatch is a video chatting app that allows users to have 1 on 1 meetings with 
 <img src="https://user-images.githubusercontent.com/52867931/110841422-b5946180-825a-11eb-8180-85db360b120c.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841425-b62cf800-825a-11eb-987d-c128861826b1.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841426-b62cf800-825a-11eb-884e-51b2d01b7b19.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841438-b88f5200-825a-11eb-8ac1-0538ecc0dce5.png" width="160">
 
 *Note to self: Update the screenshots with the new UI updates later
+
+## Roles & Contribution:
+* Eden Avivi
+* Gharam Alsaedi
+* Wai Hei Ngan
+* Ma Eint Poe
+
+## ViewController Detailed Descriptions ?
+### Login VC & Sign Up VC
+Here, returning users can login again if they have previously logged out. This will lead them to the profile view controller upon successful login. For the first time users, they can start by signing up and starting their PopMatch profile. This will lead them to the friend view controller.
+
+### Friend VC 
+For the first time users, here is where they will be first navigated to so that they can fill out a questionnaire regarding their basic demographic and some interests which will used in our algorithm. However, if you are a returning user, you can always revisit here from the profile view controller and make changes your selections.
+
+### Profile VC
+This is like the home page where users are redirected upon login and is the source of navigate to the others such as joining the lobby for a match, signing out, or the personal interest questionnaire. Here, users can make changes regarding their account info and profile picture.
+
+### Lobby VC
+Here is where the users will be waiting to get a match with other currently online users. They'll be shown a loading bubble animation while our matching algorithm runs in the background. Once a match has been found, a larger bubble will be displayed on the screen.
+
+## Matching and Pre-Meeting VC
+With a match found, this is where the users will be shown the profile of their match along the options to accept or reject the call and a countdown timer for them to make their choice. They can also press on bubble with the matched user's profile picture to view a more detailed description with their selections from the questionnaire. Upon an acceptance, the user will be directed to the loading pre-meeting view controller to wait while the matched user makes their choice to accept or not.
+
+## Meeting VC
+Here lies the core of our app - the video chatting. After both the matched users accept, this is where they can begin to chat and (hopefully) be the start of a new friendship :) They can discuss some fun and debatable ice-breaker questions to get a conversation going, and even extend the call time to keep chatting. This is also where can take this conversation a step furthur and share social medias with each other now that they've made a new friend.
+
+
