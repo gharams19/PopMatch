@@ -31,6 +31,14 @@ Animation tries:
 
 
 **Gharam Alsaedi** -
+* Improved Accept/Reject algorithm by adding rejected matches or matches you already conversated with to previous matches so they dont match again. 
+* Improved matching algorithm to match the user to the person they have the most in common with. 
+* Created the algoritm for sending social media links in the video chat.
+* Fixed some bugs related to matching algorithm.
+
+Commits: 
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/5b8696090c9982bad6f0b1f07220a85e06998f15
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/53d9780b000111b16ab615abeee804bb58bc4ff8
 
 **Ma Eint Poe** -
 
@@ -40,7 +48,7 @@ Animation tries:
 
 **Eden Avivi** - Finish up the project by touching up on the constraints, adding comments and fixing warnings.
 
-**Gharam Alsaedi** -
+**Gharam Alsaedi** - Clean up the code by adding comments and cleaning up the UI a little bit more.
 
 **Ma Eint Poe** -
 
