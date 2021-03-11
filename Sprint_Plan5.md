@@ -41,6 +41,15 @@ Commits:
 * https://github.com/ECS189E/project-w21-big-bang-theory/commit/53d9780b000111b16ab615abeee804bb58bc4ff8
 
 **Ma Eint Poe** -
+* Worked on adding in personal qestions with various radio/checkbox styles for the Friend VC
+* Linked external connection to facebook login
+* Attempted to add in instagram external login (and linkedin with Eden), but removed it after api usage limitations
+* Some formatting fixes and touchups on layouts for different screen sizes
+
+
+Commits: 
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/089c9e03312f905715223b401b1f3c4b84cc0930
+* https://github.com/ECS189E/project-w21-big-bang-theory/commit/c5aba04e001ff5310dc2e67db11594380be64b9e
 
 **Wai Hei Ngan (Ray)** -
 * Created Timer Model and connected it to the firestore so the timer in the video room will be synchronize
@@ -68,7 +77,7 @@ Commits:
 
 **Gharam Alsaedi** - Clean up the code by adding comments and cleaning up the UI a little bit more.
 
-**Ma Eint Poe** -
+**Ma Eint Poe** - Clean up code and polish the autolayout warnings, the final documentation/readme
 
 **Wai Hei Ngan (Ray)** -
 Change reciving soical media links in a separate popup view
