@@ -25,6 +25,7 @@ Commits:
 * https://github.com/ECS189E/project-w21-big-bang-theory/commit/4d652d04bc61a4fa08f6c38c01c45598880077bf
 
 Animation tries:
+
 ![Comp-1-4](https://user-images.githubusercontent.com/67129992/110831444-19b12880-824f-11eb-8752-40915caf7e9f.gif)
 ![Comp-1](https://user-images.githubusercontent.com/67129992/110833749-a1983200-8251-11eb-9926-9bd254f8377e.gif)
 
