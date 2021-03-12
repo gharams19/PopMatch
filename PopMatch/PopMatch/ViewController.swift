@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         errLabel.text = nil
+        
         //password is automatically hidden
         passwordTextField.isSecureTextEntry = true
         
@@ -48,17 +49,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         resetPasswordEmail.delegate = self
         
+        //style button
+        logInOutlet.layer.cornerRadius = 15
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         //add a listener to the view controller which will get called when the sign in state is changed
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //detach the listener
         
+        //detach the listener
         guard let handle1 = handle else {
             return
         }
@@ -70,6 +75,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func tap(_ sender: Any) {
+        
+        //when tapped, the keyboard will dismiss
         self.view.endEditing(true)
         resetPasswordView.endEditing(true)
         self.tapGestureRecongizer.isEnabled = false
@@ -104,8 +111,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 assertionFailure("couldn't find vc") //will stop program
                 return
         }
+        
         //optional navigation controller
         navigationController?.pushViewController(signUpViewController, animated: true)
+        
+        //clean the testfields and dismiss keyboard
         emailTextField.text = nil
         passwordTextField.text = nil
         self.view.endEditing(true)
@@ -119,18 +129,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
             errLabel.textColor = .red
         } else {
             
+            //sign in with the current email and password
             Auth.auth().signIn(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "") { [weak self] authResult, error in
                 guard self != nil else { return }
                 
                 //if there is no error with signing in
                 if error == nil {
+                    //go into the next view controller
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    
-                    
                     guard let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileVC") as? ProfileViewController else {
                             assertionFailure("couldn't find vc") //will stop program
                             return
                         }
+                    
                     //optional navigation controller
                     self?.navigationController?.pushViewController(profileViewController, animated: true)
             
@@ -139,6 +150,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     self?.passwordTextField.text = nil
                     self?.view.endEditing(true)
                 } else {
+                    
                     //present an error that could not sign in
                     self?.errLabel.text = "Invalid email or password"
                     self?.errLabel.textColor = .red
@@ -152,12 +164,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //add the custom popup
         resetPasswordView.isHidden = false
-//        resetPasswordView.layer.shadowColor = UIColor.black.cgColor
-//        resetPasswordView.layer.shadowOpacity = 0.3
-//        resetPasswordView.layer.shadowOffset = .zero
-//        resetPasswordView.layer.shadowRadius = 10
         resetPasswordView.backgroundColor = UIColor.white
-//        resetPasswordView.layer.cornerRadius = 25
         resetPasswordView.layer.cornerRadius = 15
         resetPasswordView.layer.borderWidth = 1.5
         resetPasswordView.layer.borderColor = UIColor.systemOrange.cgColor
@@ -182,7 +189,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         layer.frame = CGRect(x: 0.0, y: textField.frame.size.height - 1.0, width: textField.frame.size.width, height: 1.0)
         textField.layer.addSublayer(layer)
     }
+    
     @IBAction func resetPassXBtn() {
+        //when pressing x on the pop up, return to editing the view controller fields
         self.resetPasswordView.isHidden = true
         self.view.endEditing(true)
         self.emailTextField.isUserInteractionEnabled = true
@@ -195,6 +204,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func resetPassConfirm() {
+        
         //send email to reset password
         Auth.auth().sendPasswordReset(withEmail: resetPasswordEmail.text ?? "", completion: { error in
             if error == nil {
@@ -206,14 +216,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.logInOutlet.isUserInteractionEnabled = true
                 self.resetOutlet.isUserInteractionEnabled = true
             } else {
+                
+                //if email is invalid, present error label
                 self.resetErrLabel.text = "Invalid email"
-//                self.resetErrLabel.textColor = .red
+                self.resetErrLabel.textColor = .red
             }
         })
         
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //if return is pressed on the textfield, dismiss keyboard
         self.view.endEditing(true)
         return false
     }

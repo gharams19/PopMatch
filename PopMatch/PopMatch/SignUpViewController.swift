@@ -10,6 +10,7 @@ import Firebase
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var errLabel: UILabel!
+    @IBOutlet weak var signUpBtn: UIButton!
     
     
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -43,6 +44,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         createPassTextField.delegate = self
         verifyPassTextField.delegate = self
 
+        //style button
+        signUpBtn.layer.cornerRadius = 15
     }
     
     override func viewWillAppear(_ animated: Bool) {
