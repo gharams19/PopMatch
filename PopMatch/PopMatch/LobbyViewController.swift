@@ -32,13 +32,8 @@ class LobbyViewController: UIViewController {
         getUserInfo()
         
         let sound = Bundle.main.path(forResource: "mixkit-soap-bubble-sound-2925", ofType: "wav")
-        do {
-            //try to initialize to sound above
-            audioPlayer = try AVPlayer(url: URL(fileURLWithPath: sound ?? ""))
-        }
-        catch{
-            print(error)
-        }
+        //initialize sound above
+        audioPlayer = AVPlayer(url: URL(fileURLWithPath: sound ?? ""))
         
         //setup
         bubbleZoom.isHidden = true
