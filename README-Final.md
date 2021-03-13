@@ -19,6 +19,11 @@
 ## Roles & Contribution:
 * Eden Avivi
 * Gharam Alsaedi
+  *Designed the UI, specifically designed the pages including the buttons' icons and logo. As well as the overall flow of the app.
+  * Set up presence system (Online/Offline) using firebase's Realtime database.
+  * Created matching algorithm which finds the most ideal match by filtering out users that are either unavailable or offline and then match the current user with the person they have most in common with. Also worked on the accept/reject a match algorithm.
+  * Worked on sending and receiving social media links in the video chat.
+
 * Wai Hei Ngan
 * Ma Eint Poe
 
