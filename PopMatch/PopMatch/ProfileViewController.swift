@@ -428,7 +428,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             popUpConfirmBtn.isUserInteractionEnabled = true
             promptLabel.isHidden = true
         } else {
-            popUpLabel.font.withSize(22)
+            popUpLabel.font = popUpLabel.font.withSize(22)
             promptLabel.isHidden = false
             promptLabel.text = "Please enter your username:"
         }
