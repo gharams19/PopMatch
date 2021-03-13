@@ -69,10 +69,9 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     var db = Firestore.firestore()
     
+    // Picker Data
     var pronounData: [String] = ["She/Her", "He/Him", "They/Them", "Decline to state"]
-    
     var ageData: [String] = ["Freshman", "Sophomore", "Junior", "Senior", "Super Senior"]
-    
     var majorData: [String] = ["Business/Economics", "Technology", "Healthcare", "Education", "Engineering", "Agriculture", "Legal/Politcal Science", "Entertainment/Media", "Art", "Languages/Literature", "Research"]
   
     let pronounPicker = UIPickerView()
@@ -150,13 +149,11 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     }
                     
                     if let dietChoice = docData?["diet"] as? String {
-                        print("dietChoice: \(dietChoice)")
                        self.dietBtns = self.dietBtns.map({
                             if (dietChoice == $0.titleLabel?.text) {$0.isSelected = true}
                             return $0
                         })
                     }
-                    
                     
                 } else {
                     print("User document doesn't exists")
@@ -213,7 +210,7 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.view.endEditing(true)
     }
     
-    // MARK: - Retrieve selected data & save to db
+    // MARK: - Retrieve selection from radio groups & save to db
     func getSelection(_ selections: DLRadioButton) -> [String] {
         var selectedArray: [String] = []
         if(selections.isMultipleSelectionEnabled) {
@@ -225,7 +222,6 @@ class FriendViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func sendToDatabase() {
-        
         let pronoun = pronounTextField.text ?? ""
         let age = ageTextField.text ?? ""
         let major = majorTextField.text ?? ""

@@ -39,6 +39,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var popUpConfirmBtn: UIButton!
     @IBOutlet weak var promptLabel: UILabel!
     
+    // Social Media links
     var twitterLink: String = ""
     var facebookLink: String = ""
     var snapchatLink: String = ""
@@ -129,9 +130,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     
     // MARK: - Display User Data
-    // Make API call to database and display data
+    // Make API call to database and display user data
     func displayUserData () {
-       // print("displayUserData called")
         let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         userData.getDocument { (document, error) in
             if error == nil {
@@ -141,7 +141,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                     if let image = document.get("image") {
                         self.imageText = image as? String ?? ""
                         self.profileImage.sd_setImage(with: URL(string: self.imageText), placeholderImage: self.placeholderImage)
-                       // self.profileImage.sizeToFit()
                         self.profileImage.contentMode = .scaleAspectFill
                     }
                     
@@ -210,7 +209,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //    print("textFieldShouldReturn called")
         textField.resignFirstResponder()
         
         // Update the appropriate social media links
@@ -239,15 +237,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         return true
     }
     
-    // MARK: - Profile Picture Related
+    // MARK: - Add Profile Picture
     @IBAction func addProfileImage() {
-     //   print("addProfileImage called")
         checkPermission()
         self.imagePickerController.sourceType = .photoLibrary
         self.present(self.imagePickerController, animated: true, completion: nil)
         
     }
-    
+    // Check for photos access
     func checkPermission() {
         if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
             PHPhotoLibrary.requestAuthorization({
@@ -293,7 +290,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         photoRef.downloadURL(completion: { (url, error) in
             if let urlText = url?.absoluteString {
                 self.imageText = urlText
-               // print("Image url in db: \(urlText)")
                 self.storeData()
             }
         })
@@ -302,14 +298,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         profileImage.sd_setImage(with: photoRef, placeholderImage: placeholderImage)
     }
     
-    // MARK: - Social Media Button Clicked
+    // MARK: - Social Media Button Clicked - Display corresponding popup
     @IBAction func twitterClicked() {
         displayPopUp("Twitter", twitterLink, false)
     }
     
     @IBAction func facebookClicked() {
-     //   promptLabel.text = "Please enter your full name"
-        //   displayPopUp("Facebook", facebookLink, false)
            if (AccessToken.current == nil) {
                loginFB()
            } else {
@@ -345,7 +339,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             }
         }
     }
-
+    // Make API request for user's profile link
     func getFBData(){
         if let token = AccessToken.current, !token.isExpired {
             let token = token.tokenString
@@ -426,8 +420,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     
     @IBAction func closePopUp() {
-      //  print("closePopUp called")
-        // Clean up this code later
         popUpView.isHidden = true
         popUpConfirmBtn.isHidden = true
         popUpErrLabel.isHidden = true
@@ -450,8 +442,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // MARK: - Updating the database
     func storeData() {
         
-        // Make the request to store the data
-        
         // User Data
         let userDoc = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         userDoc.updateData([
@@ -467,7 +457,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         let socialDoc = userDoc.collection("socials").document("links")
         socialDoc.setData(socialData)
     
-        // keep the user data updated with new info
+        // Keep the user's profile view updated with new info
         displayUserData()
     }
     
@@ -537,15 +527,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         navigationController?.pushViewController(loginViewController, animated: true)
     }
     
-    
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+// MARK: - Online Presence
     func buildPresence() {
         //MARK: Build Presence System
          
@@ -592,9 +574,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
          userStatusDatabaseRef.onDisconnectSetValue(isOffline, withCompletionBlock: {_,_ in
              userStatusDatabaseRef.setValue(isOnline)
             
-            
-             
-             
          })
        
     }
