@@ -168,7 +168,7 @@ class MeetingViewController: UIViewController {
                         let url = URL(string: self.twitterLink)
                         
                         let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url], range: range)
+                        attributedString.setAttributes([.link: url ?? ""], range: range)
                         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
                         let twitterTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
                         
@@ -211,7 +211,7 @@ class MeetingViewController: UIViewController {
                         let url = URL(string: self.facebookLink)
                         
                         let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url], range: range)
+                        attributedString.setAttributes([.link: url ?? ""], range: range)
                         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
                         let facebookTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
 
@@ -255,7 +255,7 @@ class MeetingViewController: UIViewController {
                         let url = URL(string: self.instagramLink)
                         
                         let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url], range: range)
+                        attributedString.setAttributes([.link: url ?? ""], range: range)
                         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
                         let IGTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
 
@@ -297,7 +297,7 @@ class MeetingViewController: UIViewController {
                         let attributedString = NSMutableAttributedString(string: "Connect with me on LinkedIn")
                         let url = URL(string: self.linkedinLink)
                         let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url], range: range)
+                        attributedString.setAttributes([.link: url ?? ""], range: range)
                         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
                         let linkedinTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
                         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
@@ -341,7 +341,7 @@ class MeetingViewController: UIViewController {
                         let url = URL(string: self.snapchatLink)
                         
                         let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url], range: range)
+                        attributedString.setAttributes([.link: url ?? ""], range: range)
                  
                         let snapchatTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
                         

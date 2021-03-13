@@ -157,6 +157,8 @@ class LobbyViewController: UIViewController {
     /*Find match for user*/
     func findMatches() {
         var matches = [String: String]()
+        matches = [:]
+        
         if self.suspended == true { //back button was pressed
             return
         }

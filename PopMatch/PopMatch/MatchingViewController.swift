@@ -86,7 +86,7 @@ class MatchingViewController: UIViewController {
                 if let document = document, document.exists {
                     self.selfName = document.get("first name") as? String ?? ""
                     if self.selfName.contains(" "){
-                        let pos =  self.selfName.index(of: " ")
+                        let pos =  self.selfName.firstIndex(of: " ")
                         self.selfName = String(self.selfName[..<(pos ?? self.selfName.endIndex)])
                     }
                 }
