@@ -22,6 +22,9 @@
 
 ## Roles & Contribution:
 * Eden Avivi
+  * Implemented logInVC and signUpVC, including the show and hide buttons, setting up the reset email format and adding in the Firebase Auth API.
+  * Implemented the LobbyVC's animations, the transition between the LobbyVC to MatchingVC and the sound between the two.
+  * Worked on getting the links to social medias from the user's username and hiding it when they press it again.
 * Gharam Alsaedi
   * Designed the UI, specifically designed the pages including the buttons' icons and logo. As well as the overall flow of the app.
   * Set up presence system (Online/Offline) using firebase's Realtime database.
