@@ -22,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController
         
         var entryViewController = storyboard.instantiateViewController(withIdentifier: "logInVC")
+        
+        /*User logged in on current device before*/
         if Auth.auth().currentUser != nil {
             entryViewController = storyboard.instantiateViewController(withIdentifier: "profileVC")
 

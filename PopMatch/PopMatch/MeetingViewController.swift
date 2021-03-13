@@ -63,14 +63,24 @@ class MeetingViewController: UIViewController {
     var y = 10
     var sentSocialsCount = 0
     var checkSentSocialsTimer: Timer?
-   
+    var toggleMicState = 1;
+    var toggleVidState = 1;
+    
+    var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
+    var questionsNum  = 12
+    var questionTime = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.prepareLocalMedia()
         self.connect()
+        
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
+        
+        /*Get user's social links*/
         self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
         let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         let userSocialData = userData.collection("socials").document("links")
@@ -99,18 +109,17 @@ class MeetingViewController: UIViewController {
                 print("Error in getting social document, error: \(String(describing: error))")
             }
         }
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
-       
         
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
         checkUpdates = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         
-        
     }
+    
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
     }
     
-    @objc func hideInfo(){
+    @objc func hideInfo() {
         messageLabel.isHidden = true
     }
     var flip = 0;
@@ -128,9 +137,8 @@ class MeetingViewController: UIViewController {
         urlView.isHidden = flip == 0 ? true:false
         flip = flip == 0 ? 1 : 0
     }
-    var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
     
-    var questionsNum  = 12
+   
     
     @IBAction func generateQuestions(_ sender: Any) {
         let randInt = Int.random(in: 0..<questionsNum)
@@ -364,18 +372,14 @@ class MeetingViewController: UIViewController {
         
         var messageText = ""
         
-        print(url)
         if url.contains("instagram") {
             messageText = "Follow me on Instagram"
-            
         }
         else if url.contains("snapchat") {
             messageText =  "Add me on Snapchat"
             
-            
         } else if url.contains("twitter") {
             messageText = "Follow me on Twitter"
-            
         }
         else if url.contains("facebook") {
             messageText = "Add me on Facebook"
@@ -383,40 +387,38 @@ class MeetingViewController: UIViewController {
         else {
             messageText = "Connect with me on LinkedIn"
         }
+        
         let socialUrl = URL(string: url)
-        
         let attributedString = NSMutableAttributedString(string: messageText)
-        
         let range = NSMakeRange(0, attributedString.length)
         
-  
         
         attributedString.setAttributes([.link: socialUrl ?? ""], range: range)
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
         
-        let snapchatTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
                 
         attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
 
-        snapchatTextView.attributedText = attributedString
-        snapchatTextView.center = CGPoint(x: 160, y: self.y)
+        textView.attributedText = attributedString
+        textView.center = CGPoint(x: 160, y: self.y)
         let linkAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.69, green: 0.63, blue: 1.0, alpha: 1.0)]
-        snapchatTextView.linkTextAttributes = linkAttributes
+        textView.linkTextAttributes = linkAttributes
         self.y += 25
-        snapchatTextView.textAlignment = .center
-        snapchatTextView.backgroundColor = UIColor.clear
-        snapchatTextView.attributedText = attributedString
-        self.urlView.addSubview(snapchatTextView)
+        textView.textAlignment = .center
+        textView.backgroundColor = UIColor.clear
+        textView.attributedText = attributedString
+        self.urlView.addSubview(textView)
         self.urlView.isUserInteractionEnabled = true
-        snapchatTextView.isEditable = false
+        textView.isEditable = false
     }
     
     
     
-   var questionTime = 0
-    @objc func updateTimer(){
-        db.collection("Rooms").document(roomName).getDocument(){ [self]
+    @objc func updateTimer() {
+        /*Check if other user sent their links*/
+        db.collection("Rooms").document(roomName).getDocument() { [self]
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
@@ -464,7 +466,7 @@ class MeetingViewController: UIViewController {
                 }
             }
         }
-        if questionTime == 10{
+        if questionTime == 10 {
             db.collection("Rooms").document(roomName).updateData(["Icebreaker": FieldValue.delete()]){ err in
                 if let err = err {
                     print("Error updating document: \(err)")
@@ -496,7 +498,6 @@ class MeetingViewController: UIViewController {
         }
     }
 
-    
   
     func setIsOnCall() {
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").getDocument{(document, error) in
@@ -525,14 +526,14 @@ class MeetingViewController: UIViewController {
                 print("Document successfully removed!")
             }
         }
-
     }
+    
     @IBAction func disconnect(sender: AnyObject) {
         self.db.collection("Rooms").document(self.roomName).setData(["Exited":"1"], merge: true)
         exitRoom()
     }
    
-    func exitRoom(){
+    func exitRoom() {
         self.room?.disconnect()
         checkUpdates?.invalidate()
         checkSentSocialsTimer?.invalidate()
@@ -554,7 +555,8 @@ class MeetingViewController: UIViewController {
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
         goBackToLobby()
     }
-    func goBackToLobby(){
+    
+    func goBackToLobby() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
             assertionFailure("couldn't find vc")
@@ -562,7 +564,7 @@ class MeetingViewController: UIViewController {
         //optional navigation controller
         navigationController?.pushViewController(lobbyViewController, animated: true)
     }
-    var toggleMicState = 1;
+    
     @IBAction func toggleMic(sender: AnyObject) {
         let micOn = UIImage(named:"Microphone Icon")
         let micOff = UIImage(named: "mute Microphone Icon")
@@ -577,7 +579,7 @@ class MeetingViewController: UIViewController {
             }
         }
     }
-    var toggleVidState = 1;
+    
     @IBAction func toggleVid(_ sender: Any) {
         let vidOn = UIImage(named:"Video Icon")
         let vidOff = UIImage(named: "Close View Icon")
@@ -683,10 +685,6 @@ class MeetingViewController: UIViewController {
             self.logMessage(messageText:"No front capture device found!")
             return
         }
-        
-
-
-        
 
         let options = CameraSourceOptions { (builder) in
         }
