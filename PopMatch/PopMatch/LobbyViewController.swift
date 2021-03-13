@@ -28,10 +28,13 @@ class LobbyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //take the current id as the current user's id and get the user's infp
         self.currUid = Firebase.Auth.auth().currentUser?.uid ?? ""
         getUserInfo()
         
         let sound = Bundle.main.path(forResource: "mixkit-soap-bubble-sound-2925", ofType: "wav")
+        
         //initialize sound above
         audioPlayer = AVPlayer(url: URL(fileURLWithPath: sound ?? ""))
         
@@ -55,6 +58,7 @@ class LobbyViewController: UIViewController {
         }
         
     }
+    
     var previousAnimation = Int()
     
     func animation(image: UIImageView) {
@@ -73,6 +77,7 @@ class LobbyViewController: UIViewController {
             sideDecider = 1
         }
         
+        //decide which side the bubble will go based on the random number
         switch sideDecider {
         case 1:
             newX = UInt32(maxX)
@@ -257,6 +262,7 @@ class LobbyViewController: UIViewController {
                             if isOnCall == "" {
                                 isOnCall = "false"
                             }
+                            self.findMatchesQueue.asyncAfter(deadline: .now() + 1.0) {}
                             matches.updateValue(isOnCall, forKey: match.key) //update map
                         }
                     }

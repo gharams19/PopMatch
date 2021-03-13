@@ -69,6 +69,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func tap(_ sender: Any) {
+        //when tapped, the keyboard will dismiss
         self.view.endEditing(true)
         self.tapGestureRecognizer.isEnabled = false
     }
@@ -139,11 +140,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     
                     //if there is no error with creating a user
                     if error == nil {
-                        //empty error
+                        //empty error label
                         self.errLabel.text = nil
-//                        var ref: DocumentReference? = nil
                         let uid = authResult?.user.uid ?? ""
                         
+                        //add the information into firebase
                         let docData: [String: Any] = [
                             "first name": self.firstNameTextField.text ?? "",
                             "last name": self.lastNameTextField.text ?? "",
@@ -190,6 +191,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //if return is pressed on the textfield, dismiss keyboard
         self.view.endEditing(true)
         return false
     }
