@@ -7,7 +7,7 @@ import FBSDKLoginKit
 
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    // Main buttons on Profile VC
     @IBOutlet weak var settingBtn: UIButton!
     @IBOutlet weak var signoutBtn: UIButton!
     @IBOutlet weak var lobbyBtn: UIButton!
@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var emailTextField: UITextField!
     var TFFields: [UITextField] = []
    
-    // Social Media
+    // Social Media Buttons
     @IBOutlet weak var twitterBtn: UIButton!
     @IBOutlet weak var facebookBtn: UIButton!
     @IBOutlet weak var snapchatBtn: UIButton!
@@ -103,6 +103,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     // MARK: - Styling
     func styleSetUp() {
+        // Making the buttons & popup stuff round
         signoutBtn.layer.cornerRadius = 15
         popUpView.layer.cornerRadius = 15
         popUpView.layer.borderWidth = 1.5
@@ -122,6 +123,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     // Styling - textfield
     func bottomBorder(_ textField: UITextField) {
+        // Makes the textfield appear as if it were just a line
         let layer = CALayer()
         layer.backgroundColor = UIColor.blue.cgColor
         layer.frame = CGRect(x: 0.0, y: textField.frame.size.height - 1.0, width: textField.frame.size.width, height: 1.0)
@@ -132,10 +134,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // MARK: - Display User Data
     // Make API call to database and display user data
     func displayUserData () {
+        
+        // Get the current user's data collection
         let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         userData.getDocument { (document, error) in
             if error == nil {
                 if let document = document, document.exists {
+                    // Setting the profile values if there is user data found without a problem
                     self.usernameTextField.text = document.get("username") as? String ?? ""
                     
                     if let image = document.get("image") {
@@ -156,14 +161,16 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                         self.emailTextField.text = email as? String
                     }
                 } else {
+                    // Error check for document
                     print("User document doesn't exists")
                 }
             } else {
+                // Error check for document
                 print ("Error in user document, error: \(String(describing: error))")
             }
         }
             
-        // Set the social media links
+        // Get and set the social media links from Firestore
         let userSocialData = userData.collection("socials").document("links")
         userSocialData.getDocument { (document, error) in
             if error == nil {
@@ -184,9 +191,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                         self.linkedinLink = linkedin as? String ?? ""
                     }
                 } else {
+                    // Error check for document
                     print("Social Media link doc doesn't exists, user hasn't inputted any")
                 }
             } else {
+                // Error check for document
                 print("Error in getting social document, error: \(String(describing: error))")
             }
         }
@@ -194,7 +203,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
   
     // MARK: - Handling Textfield changes
-    
+    // Updating the textfield changes
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let currentText = textField.text ?? ""
@@ -203,15 +212,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             return true
         }
         
+        // Display the changes
         textField.text = currentText.replacingCharacters(in: range, with: string)
     
         return false
     }
     
+    // For when user finished making changes to the textfiends
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        // Update the appropriate social media links
+        // Update the appropriate social media links if the textfield from a popup
         if textField == popUpTextField {
             switch popUpLabel.text {
             case "Twitter":
@@ -230,7 +241,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 print("Doesn't match any of the social media, meaning it's for password reset")
             }
         } else {
-            // Store data right away if it's not the pop because pop would've stored already
+            // Store data right away if it's not the pop up because pop up would've stored already
             storeData()
         }
 
@@ -238,14 +249,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     // MARK: - Add Profile Picture
+    // When user clicks on the camera icon to change profile image
     @IBAction func addProfileImage() {
         checkPermission()
         self.imagePickerController.sourceType = .photoLibrary
         self.present(self.imagePickerController, animated: true, completion: nil)
         
     }
+    
     // Check for photos access
     func checkPermission() {
+        // Ask for authorization
         if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
             PHPhotoLibrary.requestAuthorization({
                 (status: PHAuthorizationStatus) -> Void in ()
@@ -256,6 +270,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         }
     }
     
+    // Status for photo authorization
     func requestAuthorization(status: PHAuthorizationStatus) {
         if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
             print("Have access to photos")
@@ -266,6 +281,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     // Get the url of selected image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Store the image into Firebase storage
         if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL{
             uploadToStorage(fileURL: url)
         }
@@ -273,12 +289,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         imagePickerController.dismiss(animated: true, completion: nil)
     }
     
+    
+    // Store it into Firebase storage
     func uploadToStorage(fileURL: URL) {
         let _ = Data()
         let storageRef = storage.reference()
         
         let localFile = fileURL
         
+        // Store the image as the user's id
         let photoRef = storageRef.child(Auth.auth().currentUser?.uid ?? "")
         let _ = photoRef.putFile(from: localFile, metadata: nil) { (metadata, error) in
             guard metadata != nil else {
@@ -286,7 +305,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 return
             }
         
-        // Photo downloaded, store the url to user data in db
+        // Photo successfully uploaded to storage, store the url in touser data document in Firestore
         photoRef.downloadURL(completion: { (url, error) in
             if let urlText = url?.absoluteString {
                 self.imageText = urlText
@@ -295,15 +314,19 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         })
         print("Photo has been uploaded to storage")
         }
+        // Temporary placeholder image in case of error in uploading
         profileImage.sd_setImage(with: photoRef, placeholderImage: placeholderImage)
     }
     
     // MARK: - Social Media Button Clicked - Display corresponding popup
+    // Display pop up for with values stored regarding user's twitter info
     @IBAction func twitterClicked() {
         displayPopUp("Twitter", twitterLink, false)
     }
-    
+
+    // Connect to Facebook App
     @IBAction func facebookClicked() {
+        // Check if the user is currently logged in or not to decide appropriate action
            if (AccessToken.current == nil) {
                loginFB()
            } else {
@@ -311,23 +334,27 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
            }
     }
     
+    // Display pop up for with values stored regarding user's snapchat info
     @IBAction func snapchatClicked() {
         displayPopUp("Snapchat", snapchatLink, false)
     }
     
+    // Display pop up for with values stored regarding user's instagram info
     @IBAction func instagramClicked() {
         displayPopUp("Instagram", instagramLink, false)
     }
     
+    // Display pop up for with values stored regarding user's linkedin info
     @IBAction func linkedinClicked() {
-     //   promptLabel.text = "Please enter your full name"
         displayPopUp("LinkedIn", linkedinLink, false)
     }
     
     // MARK: - Facebook Login
     func loginFB() {
+        // Use Facebook's login manager to get authorization token and permission to certain data fields
         let loginManager = LoginManager()
         loginManager.logIn(permissions: [.publicProfile, .email, .custom("user_link")], viewController: self) { (result) in
+            // Error and proceedings based on result of auhtorization token request
             switch result {
             case .cancelled:
                 print("User canceled login")
@@ -341,11 +368,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     // Make API request for user's profile link
     func getFBData(){
+        // Use the token to retrive user's data from Facebbok
         if let token = AccessToken.current, !token.isExpired {
             let token = token.tokenString
+            
+            // Making a request for the user's name, email, and Facebook profile link
             let request = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, link" ], tokenString: token, version: nil, httpMethod: .get)
             request.start(completionHandler: { (connection, result, error) in
                 if error == nil {
+                    // Get the link and store it to user's Firebase collection
                     let data = result as? [String:Any]
                     if let link = data?["link"] as? String {
                         self.facebookLink = link
@@ -353,20 +384,27 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                         self.storeData()
                     }
                 } else {
+                    // Error check
                     print("Error: \(String(describing: error?.localizedDescription))")
                 }
             })
         } else {
+            // Error check
             print("no token")
         }
     }
-
+    
+    // Log user out from Facebook
     func logoutFB() {
         let logoutManager = LoginManager()
         logoutManager.logOut()
+        
+        // Let user know they've successfully logged out
         let alert = UIAlertController(title: "Logout", message: "You've been logged out.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        
+        // Remove their Facebook profile link from Firestore
         self.facebookLink = ""
         storeData()
     }
@@ -379,9 +417,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         TFFields = TFFields.map({ $0.isUserInteractionEnabled = false; return $0})
         buttons = buttons.map({ $0.isUserInteractionEnabled = false; return $0})
         
+        // Allow only the pop up components to have interaction
         popUpTextField.isUserInteractionEnabled = true
         closeViewBtn.isUserInteractionEnabled = true
         
+        // Reset pop up displays different values and slightly different style
         if reset {
             popUpLabel.font = popUpLabel.font.withSize(16)
             popUpConfirmBtn.isHidden = false
@@ -395,6 +435,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         popUpLabel.text = label
         popUpView.isHidden = false
 
+        // Show the user's corresponding social media info in the textfield
         switch label {
         case "Twitter":
             let t = "http://twitter.com/"
@@ -420,13 +461,16 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     
     @IBAction func closePopUp() {
+        // Hide the pop up and all its components
         popUpView.isHidden = true
         popUpConfirmBtn.isHidden = true
         popUpErrLabel.isHidden = true
         
+        // Enable the previously disabled functions in the background of pop up
         TFFields = TFFields.map({ $0.isUserInteractionEnabled = true; return $0})
         buttons = buttons.map({ $0.isUserInteractionEnabled = true; return $0})
         
+        // Disable pop up components
         popUpConfirmBtn.isHidden = true
         popUpConfirmBtn.isUserInteractionEnabled = false
         popUpTextField.isUserInteractionEnabled = false
@@ -434,6 +478,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         popUpTextField.text = ""
         
+        // Update the user's data collection in Firestore based on changes in the pop up, e.g. adding in social media username
         storeData()
     }
     
@@ -442,7 +487,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // MARK: - Updating the database
     func storeData() {
         
-        // User Data
+        // Get current user's data collection and update with the newly inputted/updated values
         let userDoc = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         userDoc.updateData([
             "username": usernameTextField.text ?? (Any).self,
@@ -452,7 +497,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             "email" : emailTextField.text ?? (Any).self,
         ])
         
-        // Social Media links
+        // Also, update the social media links
         let socialData = ["twitter" : twitterLink, "facebook" : facebookLink, "snapchat" : snapchatLink, "instagram" : instagramLink, "linkedin" : linkedinLink]
         let socialDoc = userDoc.collection("socials").document("links")
         socialDoc.setData(socialData)
