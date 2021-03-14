@@ -100,7 +100,7 @@ class MatchingViewController: UIViewController {
                 self.db.collection("users").document(self.matchId).getDocument { (document, error) in
                     if let document = document, document.exists {
                         self.matchName = document.get("first name") as? String ?? ""
-                        //set room name
+                        // Set room name. Room name is set with combined of the two users's fire name sorted.
                         var generateRoomName = self.selfName
                         if self.matchName.contains(" "){
                             let pos =  self.matchName.firstIndex(of: " ")
@@ -384,8 +384,8 @@ class MatchingViewController: UIViewController {
         navigationController?.pushViewController(preMeetingViewController, animated: false)
     }
     
+    // Generate Twilio api video token for the user so that the user can be connected to Twilio API
     func getToken() ->String{
-        
         var accessToken = ""
         do {
             accessToken = try fetchToken()
@@ -397,6 +397,7 @@ class MatchingViewController: UIViewController {
         return accessToken
     }
     
+    // Call a cloud functino with token generating logic implemented
     func fetchToken() throws -> String {
         var token: String = "TWILIO_ACCESS_TOKEN"
         var tokenURL = "https://glaucous-centipede-6895.twil.io/video-token?identity="

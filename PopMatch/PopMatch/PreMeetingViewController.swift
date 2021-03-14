@@ -25,6 +25,7 @@ class PreMeetingViewController: UIViewController {
     var matchId = ""
     var currUId = ""
     var enteredRoom = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.currUId = Auth.auth().currentUser?.uid ?? ""
@@ -34,7 +35,7 @@ class PreMeetingViewController: UIViewController {
     }
     
     
-    
+    // Blinking bubble animation for the waiting room
     @objc func handleAnimations() {
         invert ? (value -= 1) : (value += 1)
         bubble.alpha = (value / 100)
@@ -42,6 +43,8 @@ class PreMeetingViewController: UIViewController {
             invert = !invert
         }
     }
+    
+    // Change isOnCall to false
     func setIsOnCall() {
         self.db.collection("users").document(self.currUId).getDocument{(document, error) in
             if let document = document, document.exists {
@@ -51,7 +54,8 @@ class PreMeetingViewController: UIViewController {
             }
         }
     }
-
+    
+    // Add current match to previous mathces
     func addMatchToPrevMatches() {
         self.db.collection("users").document(self.currUId).collection("matches").document("previous matches").getDocument {(document, error)  in
             if let document = document, document.exists {
@@ -61,16 +65,8 @@ class PreMeetingViewController: UIViewController {
             }
         }
     }
-    func deleteCurrentMatch() {
-        self.db.collection("users").document(self.currUId).collection("matches").document("current match").delete() { err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed!")
-            }
-        }
-
-    }
+   
+    // A func that is called every second to see if the other matched person went into the video room
     @objc func checkIfRoomIsReady() {
         db.collection("Rooms").document(roomName).getDocument() {
             (document, error) in

@@ -25,7 +25,17 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var micImage: UIButton!
     @IBOutlet weak var vidImage: UIButton!
     @IBOutlet weak var endImage: UIButton!
-    
+    @IBOutlet weak var socalMediaPopUp: UIView!
+    @IBOutlet weak var sendMediaText: UILabel!
+    @IBOutlet weak var twitter: UIButton!
+    @IBOutlet weak var facebook: UIButton!
+    @IBOutlet weak var snapchat: UIButton!
+    @IBOutlet weak var ig: UIButton!
+    @IBOutlet weak var linkedin: UIButton!
+    @IBOutlet weak var urlView: UIView!
+    @IBOutlet weak var mediaIcon: UIImageView!
+    @IBOutlet weak var socialMediaMessageLabel: UILabel!
+    @IBOutlet weak var mediaInbox: UIButton!
    
     var remoteView: VideoView!
     var room: Room?
@@ -37,23 +47,8 @@ class MeetingViewController: UIViewController {
     var roomName: String = ""
     var accessToken : String = ""
     var matchId = ""
-    @IBOutlet weak var socalMediaPopUp: UIView!
-    
-    @IBOutlet weak var sendMediaText: UILabel!
-    @IBOutlet weak var twitter: UIButton!
-    @IBOutlet weak var facebook: UIButton!
-    @IBOutlet weak var snapchat: UIButton!
-    @IBOutlet weak var ig: UIButton!
-    @IBOutlet weak var linkedin: UIButton!
-    @IBOutlet weak var urlView: UIView!
-    @IBOutlet weak var mediaIcon: UIImageView!
-    @IBOutlet weak var socialMediaMessageLabel: UILabel!
-    @IBOutlet weak var mediaInbox: UIButton!
-    
-    
     var db = Firestore.firestore()
     var storage = Storage.storage()
-    
     var twitterLink: String = ""
     var facebookLink: String = ""
     var snapchatLink: String = ""
@@ -65,19 +60,39 @@ class MeetingViewController: UIViewController {
     var sentSocialsCount = 0
     var checkSentSocialsTimer: Timer?
     var inboxToggle = 1
+    var flip = 0
+    var socialMediaSent: [Int] = [0,0,0,0,0]
+    var questionTime = 0
+    var toggleMicState = 1
+    var toggleVidState = 1
+    var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
+    var questionsNum  = 12
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.prepareLocalMedia()
-        self.connect()
-        self.messageLabel.adjustsFontSizeToFitWidth = true;
-        self.messageLabel.minimumScaleFactor = 0.75;
-        self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
-        let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
-        let userSocialData = userData.collection("socials").document("links")
+        prepareLocalMedia()
+        connect()
+        messageLabel.adjustsFontSizeToFitWidth = true;
+        messageLabel.minimumScaleFactor = 0.75;
+        links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
         socalMediaPopUp.isHidden = true
         urlView.isHidden = true
         mediaInbox.tintColor = UIColor.systemBlue
+        setUpSocialMedia()
+        // Hide video connection message after 5 sec
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
+        // Update timer every second. Synced to firestore room timer
+        checkUpdates = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        
+    }
+    
+    @objc func hideInfo(){
+        messageLabel.isHidden = true
+    }
+    
+    func setUpSocialMedia(){
+        let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
+        let userSocialData = userData.collection("socials").document("links")
         userSocialData.getDocument { (document, error) in
             if error == nil {
                 if let document = document, document.exists {
@@ -103,21 +118,12 @@ class MeetingViewController: UIViewController {
                 print("Error in getting social document, error: \(String(describing: error))")
             }
         }
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
-       
-        
-        checkUpdates = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
-        
-        
     }
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
     }
     
-    @objc func hideInfo(){
-        messageLabel.isHidden = true
-    }
-    var flip = 0;
+    // Allow user to hide social media and funality buttons when tap on view
     @IBAction func tapGesture(_ sender: Any) {
         twitter.isHidden = flip == 0 ? true:false
         facebook.isHidden = flip == 0 ? true:false
@@ -130,13 +136,12 @@ class MeetingViewController: UIViewController {
         micImage.isHidden = flip == 0 ? true:false
         endImage.isHidden = flip == 0 ? true:false
         mediaInbox.isHidden = flip == 0 ? true:false
-
         flip = flip == 0 ? 1 : 0
     }
-    var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
     
-    var questionsNum  = 12
     
+    
+    // Get a random icebreaker questions and send it to the room firestore database
     @IBAction func generateQuestions(_ sender: Any) {
         if (questionsNum != 0){
             let randInt = Int.random(in: 0..<questionsNum)
@@ -153,6 +158,7 @@ class MeetingViewController: UIViewController {
         }
     }
     
+    // Called when user decides to send a social media. A popup will appear telling the user the social media has suceessfully sent.
     func setSocialMedia(media:String){
         urlView.isHidden = true;
         mediaInbox.setImage(UIImage(named:"inbox"), for: .normal)
@@ -180,10 +186,12 @@ class MeetingViewController: UIViewController {
         self.socalMediaPopUp.isHidden = false
         Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.hideSocialMediaPopUp), userInfo: nil, repeats: false)
     }
+    // Hide the soical media sent message after 3 seconds
     @objc func hideSocialMediaPopUp(){
         socalMediaPopUp.isHidden = true
     }
-    var socialMediaSent: [Int] = [0,0,0,0,0]
+    
+    // Social media buttons. If pressed, it will upload to the user's info to the room firestore database and the other user can recieve it.
     @IBAction func sendTwitter(_ sender: Any) {
         if(twitterLink == ""){
             return
@@ -325,7 +333,7 @@ class MeetingViewController: UIViewController {
      
     }
     
-    
+    // Inbox for reieveing the other's user's social media. Press to open. Press again to close.
     @IBAction func openInbox(_ sender: Any) {
         
         if(inboxToggle == 1){
@@ -339,6 +347,8 @@ class MeetingViewController: UIViewController {
         }
         
     }
+    
+    // Used for appending the other user's soical media links to the inbox
     func addLinkToView(url: String) {
         if (urlView.isHidden == true){
             mediaInbox.setImage(UIImage(named: "inbox message"), for: .normal)
@@ -365,36 +375,22 @@ class MeetingViewController: UIViewController {
         }
         let socialUrl = URL(string: url)
         
-        
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
-        
         let attributedString = NSMutableAttributedString(string: messageText, attributes: [.paragraphStyle: paragraph])
-        
         let range = NSMakeRange(0, attributedString.length)
-        
-        
-        
         attributedString.setAttributes([.link: socialUrl ?? ""], range: range)
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
-        
-        
-
         let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-        
         attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 18.0), range: range)
-        
         textView.attributedText = attributedString
-        let screenWidth = self.view.frame.size.width
         textView.center = CGPoint(x: 240, y: self.y)
         let linkAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.69, green: 0.63, blue: 1.0, alpha: 1.0)]
         textView.linkTextAttributes = linkAttributes
         self.y += 25
-//        textView.textAlignment = .center
         textView.backgroundColor = UIColor.clear
         textView.attributedText = attributedString
-        
         self.urlView.addSubview(textView)
         self.urlView.isUserInteractionEnabled = true
         textView.isEditable = false
@@ -402,7 +398,7 @@ class MeetingViewController: UIViewController {
     
     
     
-   var questionTime = 0
+   // Called every second to check for if the other user sent any soical media link, update timer to firestore room's timer, check for ice breakers questsions, and if the other user has exited the room.
     @objc func updateTimer(){
         db.collection("Rooms").document(roomName).getDocument(){ [self]
             (document, error) in
@@ -454,7 +450,7 @@ class MeetingViewController: UIViewController {
     }
     
    
-
+    // Used for updating the firestore's room timer to add time to the meeting
     @IBAction func addTime(_ sender: Any) {
         db.collection("Rooms").document(roomName).getDocument(){
             (document, error) in
@@ -472,7 +468,7 @@ class MeetingViewController: UIViewController {
     }
 
     
-  
+    // Change isOnCall to false
     func setIsOnCall() {
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").getDocument{(document, error) in
             if let document = document, document.exists {
@@ -482,7 +478,7 @@ class MeetingViewController: UIViewController {
             }
         }
     }
-
+    // Add current match to previous mathces
     func addMatchToPrevMatches() {
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("previous matches").getDocument {(document, error)  in
             if let document = document, document.exists {
@@ -492,21 +488,14 @@ class MeetingViewController: UIViewController {
             }
         }
     }
-    func deleteCurrentMatch() {
-        self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").collection("matches").document("current match").delete() { err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed!")
-            }
-        }
-
-    }
+    
+    // If the user decides to press end call, set exited to 1 for the firestore room's database so the other user would know to exit too
     @IBAction func disconnect(sender: AnyObject) {
         self.db.collection("Rooms").document(self.roomName).setData(["Exited":"1"], merge: true)
         exitRoom()
     }
    
+    // Disconnect form room and delete firestore room's info
     func exitRoom(){
         self.room?.disconnect()
         checkUpdates?.invalidate()
@@ -529,6 +518,7 @@ class MeetingViewController: UIViewController {
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
         goBackToLobby()
     }
+    
     func goBackToLobby(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
@@ -537,7 +527,8 @@ class MeetingViewController: UIViewController {
         //optional navigation controller
         navigationController?.pushViewController(lobbyViewController, animated: true)
     }
-    var toggleMicState = 1;
+    
+    // Turn on and off mic
     @IBAction func toggleMic(sender: AnyObject) {
         let micOn = UIImage(named:"Microphone Icon")
         let micOff = UIImage(named: "mute Microphone Icon")
@@ -552,7 +543,8 @@ class MeetingViewController: UIViewController {
             }
         }
     }
-    var toggleVidState = 1;
+    
+    // Turn on and off video camera
     @IBAction func toggleVid(_ sender: Any) {
         let vidOn = UIImage(named:"Video Icon")
         let vidOff = UIImage(named: "Close View Icon")
@@ -568,6 +560,7 @@ class MeetingViewController: UIViewController {
         }
     }
     
+    // Set up View for the video
     func setupRemoteVideoView() {
         // Creating `VideoView` programmatically
         self.remoteView = VideoView(frame: CGRect.zero, delegate: self)
@@ -615,15 +608,9 @@ class MeetingViewController: UIViewController {
     func connect(){
         // Configure access token either from server or manually.
         // If the default wasn't changed, try fetching from server.
-       
-        
-        // Prepare local media which we will share with Room Participants.
-       
-        
         // Preparing the connect options with the access token that we fetched (or hardcoded).
         let connectOptions = ConnectOptions(token: accessToken) { (builder) in
             builder.roomName = self.roomName
-           
             // Use the local media that we prepared earlier.
             if let audioTrack = self.localAudioTrack{
                 builder.audioTracks = [audioTrack]
@@ -631,20 +618,14 @@ class MeetingViewController: UIViewController {
             if let videoTrack = self.localVideoTrack{
                 builder.videoTracks = [videoTrack]
             }
-         
         }
-        
         // Connect to the Room using the options we provided.
         room = TwilioVideoSDK.connect(options: connectOptions, delegate: self)
-        
         logMessage(messageText: "Attempting to connect to room")
-        
     }
     
     func prepareLocalMedia() {
-
         // We will share local audio and video when we connect to the Room.
-
         // Create an audio track.
         if (localAudioTrack == nil) {
             localAudioTrack = LocalAudioTrack(options: nil, enabled: true, name: "Microphone")
@@ -653,19 +634,14 @@ class MeetingViewController: UIViewController {
                 logMessage(messageText: "Failed to create audio track")
             }
         }
-        
+        // Create an video track.
         guard let frontCamera = CameraSource.captureDevice(position: .front) else{
             self.logMessage(messageText:"No front capture device found!")
             return
         }
         
-
-
-        
-
         let options = CameraSourceOptions { (builder) in
         }
-        // Preview our local camera track in the local video preview view.
         guard let camera = CameraSource(options: options, delegate: self) else{
             self.logMessage(messageText:"No front capture device found!")
             return
@@ -674,19 +650,18 @@ class MeetingViewController: UIViewController {
         localVideoTrack = LocalVideoTrack(source: camera, enabled: true, name: "Camera")
         localVideoTrack?.addRenderer(self.myView)
         // Add renderer to video track for local preview
-        
         logMessage(messageText: "Video track created")
-
         camera.startCapture(device: frontCamera) { (captureDevice, videoFormat, error) in
             if let error = error {
                 self.logMessage(messageText: "Capture failed with error.\ncode = \((error as NSError).code) error = \(error.localizedDescription)")
-            } else {
-               
             }
         }
         
-    
    }
+    
+    
+/* Code below are taken from Twilio video quickstart ios inorder to make twilio video api function properly*/
+///https://github.com/twilio/video-quickstart-ios
     
     func logMessage(messageText: String) {
         NSLog(messageText)
@@ -732,7 +707,6 @@ class MeetingViewController: UIViewController {
 extension MeetingViewController: RoomDelegate {
     func roomDidConnect(room: Room) {
         logMessage(messageText: "Connected to room \(room.name) as \(room.localParticipant?.identity ?? "")")
-
         // This example only renders 1 RemoteVideoTrack at a time. Listen for all events to decide which track to render.
         for remoteParticipant in room.remoteParticipants {
             remoteParticipant.delegate = self
@@ -740,22 +714,17 @@ extension MeetingViewController: RoomDelegate {
             // We need to create a timer API so both devices would be accessing the same timer model API
             
         }
-        
     }
 
     func roomDidDisconnect(room: Room, error: Error?) {
         logMessage(messageText: "Disconnected from room \(room.name), error = \(String(describing: error))")
         self.cleanupRemoteParticipant()
         self.room = nil
-        
-        
     }
 
     func roomDidFailToConnect(room: Room, error: Error) {
         logMessage(messageText: "Failed to connect to room with error = \(String(describing: error))")
         self.room = nil
-        
-       
     }
 
     func roomIsReconnecting(room: Room, error: Error) {
