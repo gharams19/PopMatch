@@ -235,7 +235,7 @@ class LobbyViewController: UIViewController {
                 semaphore.wait() // wait for task 3 to finish
                 
                 /*No users are online*/
-                self.findMatchesQueue.asyncAfter(deadline: .now()+1.0){}
+                self.findMatchesQueue.asyncAfter(deadline: .now()+2.0){}
                 if(matches.isEmpty == true) {
                     DispatchQueue.main.async { //update UI in main dispatch queue
                         print("No Matches Found!")
@@ -262,7 +262,7 @@ class LobbyViewController: UIViewController {
                             if isOnCall == "" {
                                 isOnCall = "false"
                             }
-                            self.findMatchesQueue.asyncAfter(deadline: .now() + 1.0) {}
+                            self.findMatchesQueue.asyncAfter(deadline: .now() + 2.0) {}
                             matches.updateValue(isOnCall, forKey: match.key) //update map
                         }
                     }
@@ -277,7 +277,7 @@ class LobbyViewController: UIViewController {
                 var matchedOn = [String]()
                 
                 /*No matches left*/
-                self.findMatchesQueue.asyncAfter(deadline: .now()+1.0){}
+                self.findMatchesQueue.asyncAfter(deadline: .now()+2.0){}
                 if(matches.isEmpty == true) {
                     DispatchQueue.main.async {
                         print("No Matches Found!")
@@ -293,9 +293,14 @@ class LobbyViewController: UIViewController {
                     /* Task 5: Find the most ideal match, if not found match with first person*/
                     semaphore = DispatchSemaphore(value: 0)
                     
-                    self.findMatchesQueue.asyncAfter(deadline: .now()+1.0){}
                     
+                    
+
                     /*Compare each match's answers to current user's, if its a match then add match id to idealMatches array */
+                    
+                    while (matches.isEmpty){
+                        self.findMatchesQueue.asyncAfter(deadline: .now()+1.0){}
+                    }
                     for (index, match) in matches.enumerated() {
                         var matchAnswers = [String:[String]]()
                         matchedOn.removeAll()

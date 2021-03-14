@@ -28,13 +28,13 @@
                value = "result.first">
             </PersistentString>
             <PersistentString
-               value = "self.currUid">
-            </PersistentString>
-            <PersistentString
                value = "matches.isEmpty">
             </PersistentString>
             <PersistentString
                value = "for (index, match) in matches.enumerated()">
+            </PersistentString>
+            <PersistentString
+               value = "matches == nil">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

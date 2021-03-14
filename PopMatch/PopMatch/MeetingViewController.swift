@@ -13,9 +13,6 @@ import FirebaseStorage
 import FirebaseUI
 
 
-protocol TimerUpdates: class {
-    func stopTimer()
-}
 
 
 class MeetingViewController: UIViewController {
@@ -29,7 +26,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var vidImage: UIButton!
     @IBOutlet weak var endImage: UIButton!
     
-    weak var delegate: TimerUpdates?
+   
     var remoteView: VideoView!
     var room: Room?
     var camera: CameraSource?
@@ -40,7 +37,8 @@ class MeetingViewController: UIViewController {
     var roomName: String = ""
     var accessToken : String = ""
     var matchId = ""
-   
+    @IBOutlet weak var socalMediaPopUp: UIView!
+    
     @IBOutlet weak var sendMediaText: UILabel!
     @IBOutlet weak var twitter: UIButton!
     @IBOutlet weak var facebook: UIButton!
@@ -48,6 +46,9 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var ig: UIButton!
     @IBOutlet weak var linkedin: UIButton!
     @IBOutlet weak var urlView: UIView!
+    @IBOutlet weak var mediaIcon: UIImageView!
+    @IBOutlet weak var socialMediaMessageLabel: UILabel!
+    @IBOutlet weak var mediaInbox: UIButton!
     
     
     var db = Firestore.firestore()
@@ -63,27 +64,20 @@ class MeetingViewController: UIViewController {
     var y = 10
     var sentSocialsCount = 0
     var checkSentSocialsTimer: Timer?
-    var toggleMicState = 1;
-    var toggleVidState = 1;
-    
-    var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
-    var questionsNum  = 12
-    var questionTime = 0
-
+    var inboxToggle = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.prepareLocalMedia()
         self.connect()
-        
         self.messageLabel.adjustsFontSizeToFitWidth = true;
         self.messageLabel.minimumScaleFactor = 0.75;
-        
-        /*Get user's social links*/
         self.links = [twitterLink, facebookLink, snapchatLink, instagramLink, snapchatLink]
         let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         let userSocialData = userData.collection("socials").document("links")
+        socalMediaPopUp.isHidden = true
+        urlView.isHidden = true
+        mediaInbox.tintColor = UIColor.systemBlue
         userSocialData.getDocument { (document, error) in
             if error == nil {
                 if let document = document, document.exists {
@@ -109,17 +103,18 @@ class MeetingViewController: UIViewController {
                 print("Error in getting social document, error: \(String(describing: error))")
             }
         }
-        
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
+       
+        
         checkUpdates = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         
+        
     }
-    
     override var prefersHomeIndicatorAutoHidden: Bool {
         return self.room != nil
     }
     
-    @objc func hideInfo() {
+    @objc func hideInfo(){
         messageLabel.isHidden = true
     }
     var flip = 0;
@@ -134,24 +129,67 @@ class MeetingViewController: UIViewController {
         vidImage.isHidden = flip == 0 ? true:false
         micImage.isHidden = flip == 0 ? true:false
         endImage.isHidden = flip == 0 ? true:false
-        urlView.isHidden = flip == 0 ? true:false
+        mediaInbox.isHidden = flip == 0 ? true:false
+
         flip = flip == 0 ? 1 : 0
     }
+    var questions: [String] = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
     
-   
+    var questionsNum  = 12
     
     @IBAction func generateQuestions(_ sender: Any) {
-        let randInt = Int.random(in: 0..<questionsNum)
-        self.db.collection("Rooms").document(roomName).setData(["Icebreaker":questions[randInt]], merge: true)
-        questions.remove(at: randInt)
-        questionsNum -= 1
+        if (questionsNum != 0){
+            let randInt = Int.random(in: 0..<questionsNum)
+            self.db.collection("Rooms").document(roomName).setData(["Icebreaker":questions[randInt]], merge: true)
+            questions.remove(at: randInt)
+            questionsNum -= 1
+        }else{
+            questions = ["What goes in first? Milk or Cereal", "You are stranded on an island. What are 3 things you’re bringing?", "How do you pronounce gif?", "Favorite TV show?", "Never have I ever", "Two truths and a lie", "One thing I’ll never do again", "Most embarrassing thing that happened to you", "This year, I really want to", "If you could have any superpower, what would you want, and why?", "Worst professor experience", "Why did you choose your major", "What’s your ideal life"]
+            questionsNum = 12
+            let randInt = Int.random(in: 0..<questionsNum)
+            self.db.collection("Rooms").document(roomName).setData(["Icebreaker":questions[randInt]], merge: true)
+            questions.remove(at: randInt)
+            questionsNum -= 1
+        }
     }
     
-    
-    
+    func setSocialMedia(media:String){
+        urlView.isHidden = true;
+        mediaInbox.setImage(UIImage(named:"inbox"), for: .normal)
+        inboxToggle = 1
+        switch media{
+        case "twitter":
+            mediaIcon.image = UIImage(named:"twitter Icon")
+            socialMediaMessageLabel.text = "Your Twitter is sent!"
+        case "facebook":
+            mediaIcon.image = UIImage(named:"facebook Icon")
+            socialMediaMessageLabel.text = "Your Facebook is sent!"
+        case "ig":
+            mediaIcon.image = UIImage(named:"Instagram Icon")
+            socialMediaMessageLabel.text = "Your Instagram is sent!"
+        case "linkedin":
+            mediaIcon.image = UIImage(named:"LinkedIn Icon")
+            socialMediaMessageLabel.text = "Your Linkedin is sent!"
+        case "snapchat":
+            mediaIcon.image = UIImage(named:"snapchat Icon")
+            socialMediaMessageLabel.text = "Your Snapchat is sent!"
+        default:
+            mediaIcon.image = UIImage()
+            socialMediaMessageLabel.text = "Your " + media + " is already sent!"
+        }
+        self.socalMediaPopUp.isHidden = false
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.hideSocialMediaPopUp), userInfo: nil, repeats: false)
+    }
+    @objc func hideSocialMediaPopUp(){
+        socalMediaPopUp.isHidden = true
+    }
+    var socialMediaSent: [Int] = [0,0,0,0,0]
     @IBAction func sendTwitter(_ sender: Any) {
         if(twitterLink == ""){
             return
+        }
+        if (self.socialMediaSent[0] == 1 ){
+            self.setSocialMedia(media: "Twitter")
         }
         let uid = Auth.auth().currentUser?.uid ?? ""
         db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
@@ -160,33 +198,12 @@ class MeetingViewController: UIViewController {
                     var socials = document.get(uid) as? [String] ?? []
                     
                     if socials.contains(self.twitterLink) == false {
-                        
-                        self.twitter.isEnabled = false
                         socials.append(self.twitterLink)
                         self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
-                        let attributedString = NSMutableAttributedString(string: "Follow me on Twitter")
-                        let url = URL(string: self.twitterLink)
                         
-                        let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url ?? ""], range: range)
-                        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
-                        let twitterTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-                        
-                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
-                        
-                        let linkAttributes: [NSAttributedString.Key: Any] = [
-                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
-                        twitterTextView.linkTextAttributes = linkAttributes
-                        twitterTextView.attributedText = attributedString
-                        twitterTextView.center = CGPoint(x: 160, y: self.y)
-                        self.y += 25
-                        twitterTextView.textAlignment = .center
-                        twitterTextView.backgroundColor = UIColor.clear
-                        
-                        twitterTextView.attributedText = attributedString
-                        self.urlView.addSubview(twitterTextView)
-                        self.urlView.isUserInteractionEnabled = true
-                        twitterTextView.isEditable = false
+                        self.setSocialMedia(media: "twitter")
+                        self.socialMediaSent[0] = 1
+
                     }
                 }
             }
@@ -198,39 +215,26 @@ class MeetingViewController: UIViewController {
         if(facebookLink == ""){
             return
         }
+        if (self.socialMediaSent[1] == 1 ){
+            self.setSocialMedia(media: "Facebook")
+        }
         let uid = Auth.auth().currentUser?.uid ?? ""
         db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
             if error == nil {
                 if let document = document, document.exists {
                     var socials = document.get(uid) as? [String] ?? []
                     if socials.contains(self.facebookLink) == false {
-                        self.facebook.isEnabled = false
-                    socials.append(self.facebookLink)
-                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials] ,merge: true)
-                        let attributedString = NSMutableAttributedString(string: "Add me on Facebook")
-                        let url = URL(string: self.facebookLink)
-                        
-                        let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url ?? ""], range: range)
-                        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
-                        let facebookTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-
-                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
-
+                
+                        socials.append(self.facebookLink)
+                        self.db.collection("Rooms").document(self.roomName).setData([uid: socials] ,merge: true)
+    
                         
                         
-                        facebookTextView.attributedText = attributedString
-                        facebookTextView.backgroundColor = UIColor.clear
-                        facebookTextView.center = CGPoint(x: 160, y: self.y)
-                        let linkAttributes: [NSAttributedString.Key: Any] = [
-                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
-                        facebookTextView.linkTextAttributes = linkAttributes
-                        self.y += 25
-                        facebookTextView.textAlignment = .center
-                        facebookTextView.attributedText = attributedString
-                        self.urlView.addSubview(facebookTextView)
-                        self.urlView.isUserInteractionEnabled = true
-                        facebookTextView.isEditable = false
+                        self.setSocialMedia(media: "facebook")
+                        
+                        self.socialMediaSent[1] = 1
+                        
+                    
                     }
                 }
             }
@@ -242,38 +246,23 @@ class MeetingViewController: UIViewController {
         if(instagramLink == ""){
             return
         }
+        if (self.socialMediaSent[2] == 1 ){
+            self.setSocialMedia(media: "Instagram")
+        }
         let uid = Auth.auth().currentUser?.uid ?? ""
         db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
             if error == nil {
                 if let document = document, document.exists {
                     var socials = document.get(uid) as? [String] ?? []
                     if socials.contains(self.instagramLink) == false {
-                        self.ig.isEnabled = false
-                    socials.append(self.instagramLink)
-                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
-                        let attributedString = NSMutableAttributedString(string: "Follow me on Instagram")
-                        let url = URL(string: self.instagramLink)
+                       
+                        socials.append(self.instagramLink)
+                        self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
+                       
                         
-                        let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url ?? ""], range: range)
-                        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
-                        let IGTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-
-                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
-
+                        self.setSocialMedia(media: "ig")
                         
-                        IGTextView.attributedText = attributedString
-                        IGTextView.center = CGPoint(x: 160, y: self.y)
-                        let linkAttributes: [NSAttributedString.Key: Any] = [
-                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
-                        IGTextView.linkTextAttributes = linkAttributes
-                        self.y += 25
-                        IGTextView.textAlignment = .center
-                        IGTextView.backgroundColor = UIColor.clear
-                        IGTextView.attributedText = attributedString
-                        self.urlView.addSubview(IGTextView)
-                        self.urlView.isUserInteractionEnabled = true
-                        IGTextView.isEditable = false
+                        self.socialMediaSent[2] = 1
                     }
                 }
             }
@@ -285,38 +274,23 @@ class MeetingViewController: UIViewController {
         if(linkedinLink == ""){
             return
         }
+        if (self.socialMediaSent[3] == 1 ){
+            self.setSocialMedia(media: "LinkedIn")
+        }
         let uid = Auth.auth().currentUser?.uid ?? ""
         db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
             if error == nil {
                 if let document = document, document.exists {
                     var socials = document.get(uid) as? [String] ?? []
                     if socials.contains(self.linkedinLink) == false {
-                        self.linkedin.isEnabled = false
-                    socials.append(self.linkedinLink)
-                    self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
-                        let attributedString = NSMutableAttributedString(string: "Connect with me on LinkedIn")
-                        let url = URL(string: self.linkedinLink)
-                        let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url ?? ""], range: range)
-                        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
-                        let linkedinTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-                        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
-                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
-
+                      
+                        socials.append(self.linkedinLink)
+                        self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
                         
-                        linkedinTextView.attributedText = attributedString
-                        linkedinTextView.center = CGPoint(x: 160, y: self.y)
-                        let linkAttributes: [NSAttributedString.Key: Any] = [
-                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
-                        linkedinTextView.linkTextAttributes = linkAttributes
-                        self.y += 25
-                        linkedinTextView.textAlignment = .center
-                        linkedinTextView.backgroundColor = UIColor.clear
-                        linkedinTextView.attributedText = attributedString
-                        self.urlView.addSubview(linkedinTextView)
-                        self.urlView.isUserInteractionEnabled = true
-                        linkedinTextView.isEditable = false
-                     
+                        
+                        self.setSocialMedia(media: "linkedin")
+                        self.socialMediaSent[3] = 1
+                        
                     }
                 }
             }
@@ -328,38 +302,21 @@ class MeetingViewController: UIViewController {
         if(snapchatLink == ""){
             return
         }
+        if (self.socialMediaSent[4] == 1 ){
+            self.setSocialMedia(media: "Snapchat")
+        }
         let uid = Auth.auth().currentUser?.uid ?? ""
         db.collection("Rooms").document(roomName).getDocument() {(document, error ) in
             if error == nil {
                 if let document = document, document.exists {
                     var socials = document.get(uid) as? [String] ?? []
                     if socials.contains(self.snapchatLink) == false {
-                        self.snapchat.isEnabled = false
                         socials.append(self.snapchatLink)
                     self.db.collection("Rooms").document(self.roomName).setData([uid: socials], merge: true)
-                        let attributedString = NSMutableAttributedString(string: "Add me on Snapchat")
-                        let url = URL(string: self.snapchatLink)
                         
-                        let range = NSMakeRange(0, attributedString.length)
-                        attributedString.setAttributes([.link: url ?? ""], range: range)
-                 
-                        let snapchatTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+                        self.setSocialMedia(media: "snapchat")
+                        self.socialMediaSent[4] = 1
                         
-                        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
-
-                        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
-                        snapchatTextView.attributedText = attributedString
-                        snapchatTextView.center = CGPoint(x: 160, y: self.y)
-                        let linkAttributes: [NSAttributedString.Key: Any] = [
-                            NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.42, green: 0.62, blue: 0.79, alpha: 1.0)]
-                        snapchatTextView.linkTextAttributes = linkAttributes
-                        self.y += 25
-                        snapchatTextView.textAlignment = .center
-                        snapchatTextView.backgroundColor = UIColor.clear
-                        snapchatTextView.attributedText = attributedString
-                        self.urlView.addSubview(snapchatTextView)
-                        self.urlView.isUserInteractionEnabled = true
-                        snapchatTextView.isEditable = false
                     }
                 }
             }
@@ -368,47 +325,76 @@ class MeetingViewController: UIViewController {
      
     }
     
-    func addLinkToView(url: String) {
+    
+    @IBAction func openInbox(_ sender: Any) {
         
+        if(inboxToggle == 1){
+            socalMediaPopUp.isHidden = true
+            urlView.isHidden = false
+            inboxToggle = 2
+            mediaInbox.setImage(UIImage(named:"inbox"), for: .normal)
+        }else{
+            urlView.isHidden = true
+            inboxToggle = 1
+        }
+        
+    }
+    func addLinkToView(url: String) {
+        if (urlView.isHidden == true){
+            mediaInbox.setImage(UIImage(named: "inbox message"), for: .normal)
+        }
         var messageText = ""
         
         if url.contains("instagram") {
-            messageText = "Follow me on Instagram"
+            messageText = "Follow Instagram"
+            
         }
         else if url.contains("snapchat") {
-            messageText =  "Add me on Snapchat"
+            messageText =  "Add Snapchat"
+            
             
         } else if url.contains("twitter") {
-            messageText = "Follow me on Twitter"
+            messageText = "Follow Twitter"
+            
         }
         else if url.contains("facebook") {
-            messageText = "Add me on Facebook"
+            messageText = "Add Facebook"
         }
         else {
-            messageText = "Connect with me on LinkedIn"
+            messageText = "Connect LinkedIn"
         }
-        
         let socialUrl = URL(string: url)
-        let attributedString = NSMutableAttributedString(string: messageText)
+        
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        
+        let attributedString = NSMutableAttributedString(string: messageText, attributes: [.paragraphStyle: paragraph])
+        
         let range = NSMakeRange(0, attributedString.length)
+        
         
         
         attributedString.setAttributes([.link: socialUrl ?? ""], range: range)
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, attributedString.length))
         
-        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-                
-        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16.0), range: range)
+        
 
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        
+        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 18.0), range: range)
+        
         textView.attributedText = attributedString
-        textView.center = CGPoint(x: 160, y: self.y)
+        let screenWidth = self.view.frame.size.width
+        textView.center = CGPoint(x: 240, y: self.y)
         let linkAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 0.69, green: 0.63, blue: 1.0, alpha: 1.0)]
         textView.linkTextAttributes = linkAttributes
         self.y += 25
-        textView.textAlignment = .center
+//        textView.textAlignment = .center
         textView.backgroundColor = UIColor.clear
         textView.attributedText = attributedString
+        
         self.urlView.addSubview(textView)
         self.urlView.isUserInteractionEnabled = true
         textView.isEditable = false
@@ -416,35 +402,23 @@ class MeetingViewController: UIViewController {
     
     
     
-    @objc func updateTimer() {
-        /*Check if other user sent their links*/
-        db.collection("Rooms").document(roomName).getDocument() { [self]
+   var questionTime = 0
+    @objc func updateTimer(){
+        db.collection("Rooms").document(roomName).getDocument(){ [self]
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
                     let links = document.get(self.matchId) as? [String] ?? []
                     if links.count > self.sentSocialsCount {
                         self.sentSocialsCount += 1
-                        self.addLinkToView(url: links[links.count-1] as? String ?? "")
+                        self.addLinkToView(url: links[links.count-1])
                     }
                     if document.get("Timer") != nil{
                         let time = document.get("Timer")
                         let curTime = Int(time as? String ?? "1000" ) ?? 1000
                         self.timerLabel.text = "Timer: " + String(curTime/60) + ":" + String(format: "%02d",curTime % 60)
                         if(curTime == 0){
-                            self.room?.disconnect()
-                            self.db.collection("Rooms").document(roomName).delete(){ err in
-                                if let err = err {
-                                    print("Error removing document: \(err)")
-                                } else {
-                                    print("Document successfully removed!")
-                                }
-                            }
-                            checkUpdates?.invalidate()
-                            checkSentSocialsTimer?.invalidate()
-                            let roomDict:[String: String] = ["room": self.roomName]
-                            NotificationCenter.default.post(name: Notification.Name("didStopTimer"), object : nil, userInfo: roomDict)
-                            self.goBackToLobby()
+                            exitRoom()
                         }
                     }
                     if document.get("Icebreaker") != nil{
@@ -466,15 +440,14 @@ class MeetingViewController: UIViewController {
                 }
             }
         }
-        if questionTime == 10 {
+        if questionTime == 10{
             db.collection("Rooms").document(roomName).updateData(["Icebreaker": FieldValue.delete()]){ err in
                 if let err = err {
                     print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
                 }
             }
             messageLabel.isHidden = true
+            questionTime = 0
         }
         questionTime += 1
         
@@ -498,6 +471,7 @@ class MeetingViewController: UIViewController {
         }
     }
 
+    
   
     func setIsOnCall() {
         self.db.collection("users").document(Auth.auth().currentUser?.uid ?? "").getDocument{(document, error) in
@@ -526,14 +500,14 @@ class MeetingViewController: UIViewController {
                 print("Document successfully removed!")
             }
         }
+
     }
-    
     @IBAction func disconnect(sender: AnyObject) {
         self.db.collection("Rooms").document(self.roomName).setData(["Exited":"1"], merge: true)
         exitRoom()
     }
    
-    func exitRoom() {
+    func exitRoom(){
         self.room?.disconnect()
         checkUpdates?.invalidate()
         checkSentSocialsTimer?.invalidate()
@@ -555,8 +529,7 @@ class MeetingViewController: UIViewController {
         logMessage(messageText: "Attempting to disconnect from room \(String(describing: room?.name))")
         goBackToLobby()
     }
-    
-    func goBackToLobby() {
+    func goBackToLobby(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let lobbyViewController = storyboard.instantiateViewController(identifier: "lobbyVC") as? LobbyViewController else {
             assertionFailure("couldn't find vc")
@@ -564,7 +537,7 @@ class MeetingViewController: UIViewController {
         //optional navigation controller
         navigationController?.pushViewController(lobbyViewController, animated: true)
     }
-    
+    var toggleMicState = 1;
     @IBAction func toggleMic(sender: AnyObject) {
         let micOn = UIImage(named:"Microphone Icon")
         let micOff = UIImage(named: "mute Microphone Icon")
@@ -579,7 +552,7 @@ class MeetingViewController: UIViewController {
             }
         }
     }
-    
+    var toggleVidState = 1;
     @IBAction func toggleVid(_ sender: Any) {
         let vidOn = UIImage(named:"Video Icon")
         let vidOff = UIImage(named: "Close View Icon")
@@ -685,6 +658,10 @@ class MeetingViewController: UIViewController {
             self.logMessage(messageText:"No front capture device found!")
             return
         }
+        
+
+
+        
 
         let options = CameraSourceOptions { (builder) in
         }
@@ -768,7 +745,6 @@ extension MeetingViewController: RoomDelegate {
 
     func roomDidDisconnect(room: Room, error: Error?) {
         logMessage(messageText: "Disconnected from room \(room.name), error = \(String(describing: error))")
-        
         self.cleanupRemoteParticipant()
         self.room = nil
         
@@ -803,7 +779,15 @@ extension MeetingViewController: RoomDelegate {
     func participantDidDisconnect(room: Room, participant: RemoteParticipant) {
         
         logMessage(messageText: "Room \(room.name), Participant \(participant.identity) disconnected")
-       
+        db.collection("Rooms").document(roomName).getDocument(){
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                }else{
+                    self.goBackToLobby()
+                }
+            }
+        }
 
         // Nothing to do in this example. Subscription events are used to add/remove renderers.
     }
@@ -915,4 +899,6 @@ extension MeetingViewController : CameraSourceDelegate {
         logMessage(messageText: "Camera source failed with error: \(error.localizedDescription)")
     }
 }
+
+
 
