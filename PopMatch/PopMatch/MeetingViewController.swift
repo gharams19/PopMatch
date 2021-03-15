@@ -161,7 +161,6 @@ class MeetingViewController: UIViewController {
     // Called when user decides to send a social media. A popup will appear telling the user the social media has suceessfully sent.
     func setSocialMedia(media:String){
         urlView.isHidden = true;
-        mediaInbox.setImage(UIImage(named:"inbox"), for: .normal)
         inboxToggle = 1
         switch media{
         case "twitter":
