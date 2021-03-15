@@ -1,5 +1,5 @@
 # PopMatch Documentation
-## Team: [The Big Bang Theory]! 
+## [The Big Bang Theory]! 
 ### Members:
 <img src="https://user-images.githubusercontent.com/52867931/110847792-33a83680-8262-11eb-88da-df669f99d09b.png" width="40"> Eden Avivi, eavivi4 (sometimes just Eden) <br />
 <img src="https://user-images.githubusercontent.com/52867931/110847792-33a83680-8262-11eb-88da-df669f99d09b.png" width="40"> Gharam Alsaedi, gharams19 <br />
