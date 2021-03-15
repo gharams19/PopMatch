@@ -82,15 +82,17 @@ class MeetingViewController: UIViewController {
         // Hide video connection message after 5 sec
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.hideInfo), userInfo: nil, repeats: false)
         // Update timer every second. Synced to firestore room timer
-        checkUpdates = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        checkUpdates = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        
+        checkSentSocialsTimer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(self.checkForSentSocials), userInfo: nil, repeats: true)
         
     }
     
-    @objc func hideInfo(){
+    @objc func hideInfo() {
         messageLabel.isHidden = true
     }
     
-    func setUpSocialMedia(){
+    func setUpSocialMedia() {
         let userData = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
         let userSocialData = userData.collection("socials").document("links")
         userSocialData.getDocument { (document, error) in
@@ -407,7 +409,9 @@ class MeetingViewController: UIViewController {
                     let links = document.get(self.matchId) as? [String] ?? []
                     if links.count > self.sentSocialsCount {
                         self.sentSocialsCount += 1
+                        
                         self.addLinkToView(url: links[links.count-1])
+                        
                     }
                     if document.get("Timer") != nil{
                         let time = document.get("Timer")
@@ -449,6 +453,25 @@ class MeetingViewController: UIViewController {
         
     }
     
+    @objc func checkForSentSocials() {
+        db.collection("Rooms").document(roomName).getDocument() { [self]
+            (document, error) in
+            if(error == nil){
+                if let document = document, document.exists {
+                    let links = document.get(self.matchId) as? [String] ?? []
+                    if links.count > self.sentSocialsCount {
+                        self.sentSocialsCount += 1
+                        
+                        self.addLinkToView(url: links[links.count-1])
+                        
+                    }
+            
+                }
+            }
+        }
+        
+    }
+    
    
     // Used for updating the firestore's room timer to add time to the meeting
     @IBAction func addTime(_ sender: Any) {
@@ -460,7 +483,7 @@ class MeetingViewController: UIViewController {
                         let time = document.get("Timer")
                         var curTime = Int(time as? String ?? "1000" ) ?? 1000
                         curTime = curTime + 60
-                        self.db.collection("Rooms").document(self.roomName).setData(["Timer":String(curTime)])
+                        self.db.collection("Rooms").document(self.roomName).setData(["Timer":String(curTime)], merge: true)
                     }
                 }
             }
@@ -497,9 +520,9 @@ class MeetingViewController: UIViewController {
    
     // Disconnect form room and delete firestore room's info
     func exitRoom(){
-        self.room?.disconnect()
-        checkUpdates?.invalidate()
         checkSentSocialsTimer?.invalidate()
+        checkUpdates?.invalidate()
+        self.room?.disconnect()
         /*Add user to previous matches */
         self.addMatchToPrevMatches()
         
@@ -753,6 +776,8 @@ extension MeetingViewController: RoomDelegate {
             if(error == nil){
                 if let document = document, document.exists {
                 }else{
+                    self.checkUpdates?.invalidate()
+                    self.checkSentSocialsTimer?.invalidate()
                     self.goBackToLobby()
                 }
             }
