@@ -31,7 +31,7 @@
   * Created matching algorithm which finds the most ideal match by filtering out users that are either unavailable or offline and then match the current user with the person they have most in common with. Also worked on the accept/reject a match algorithm.
   * Worked on sending and receiving social media links in the video chat.
 
-* Wai Hei Ngan
+* Wai Hei Ngan (Ray)
   * Created MeetingViewController for video chatting
   * Implemented Twilio Video API for the video chat
   * Created Twilio video user authentication tokens generation flow
