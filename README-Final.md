@@ -16,7 +16,7 @@
 ## App Flow: 
 <img src="https://user-images.githubusercontent.com/52867931/110840687-e1fbae00-8259-11eb-85f6-440a69328f29.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110840692-e2944480-8259-11eb-925c-eeae40b31ba6.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110840683-e0ca8100-8259-11eb-8381-8fa2d3fea11a.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110840690-e1fbae00-8259-11eb-8571-90b34eb878a5.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110840685-e1631780-8259-11eb-9c1e-0f0ed8ba0478.png" width="160"> 
 
-<img src="https://user-images.githubusercontent.com/52867931/110841422-b5946180-825a-11eb-8180-85db360b120c.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841425-b62cf800-825a-11eb-987d-c128861826b1.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841426-b62cf800-825a-11eb-884e-51b2d01b7b19.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841438-b88f5200-825a-11eb-8ac1-0538ecc0dce5.png" width="160">
+<img src="https://user-images.githubusercontent.com/52867931/110841422-b5946180-825a-11eb-8180-85db360b120c.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841425-b62cf800-825a-11eb-987d-c128861826b1.png" width="160"> <img src="https://user-images.githubusercontent.com/52867931/110841426-b62cf800-825a-11eb-884e-51b2d01b7b19.png" width="160"> <img src="https://i.ibb.co/qk3xGPj/Simulator-Screen-Shot-i-Phone-12-Pro-Max-2021-03-14-at-17-19-42.png" width="160">
 
 *Note to self: Update the screenshots with the new UI updates later
 
