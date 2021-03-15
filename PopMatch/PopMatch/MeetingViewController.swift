@@ -399,19 +399,12 @@ class MeetingViewController: UIViewController {
     
     
     
-   // Called every second to check for if the other user sent any soical media link, update timer to firestore room's timer, check for ice breakers questsions, and if the other user has exited the room.
+   // Called every second to update timer to firestore room's timer, check for ice breakers questsions, and if the other user has exited the room.
     @objc func updateTimer(){
         db.collection("Rooms").document(roomName).getDocument(){ [self]
             (document, error) in
             if(error == nil){
                 if let document = document, document.exists {
-                    let links = document.get(self.matchId) as? [String] ?? []
-                    if links.count > self.sentSocialsCount {
-                        self.sentSocialsCount += 1
-                        
-                        self.addLinkToView(url: links[links.count-1])
-                        
-                    }
                     if document.get("Timer") != nil{
                         let time = document.get("Timer")
                         let curTime = Int(time as? String ?? "1000" ) ?? 1000
@@ -452,6 +445,7 @@ class MeetingViewController: UIViewController {
         
     }
     
+    // called every 0.02 second to check if the other user send social media links
     @objc func checkForSentSocials() {
         db.collection("Rooms").document(roomName).getDocument() { [self]
             (document, error) in
