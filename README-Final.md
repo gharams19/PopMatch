@@ -3,7 +3,7 @@
 ## Group Members:
 <img src="https://user-images.githubusercontent.com/52867931/110847792-33a83680-8262-11eb-88da-df669f99d09b.png" width="40"> Eden Avivi, eavivi4 (sometimes just Eden) <br />
 <img src="https://user-images.githubusercontent.com/52867931/110847792-33a83680-8262-11eb-88da-df669f99d09b.png" width="40"> Gharam Alsaedi, gharams19 <br />
-<img src="https://user-images.githubusercontent.com/52867931/110847792-33a83680-8262-11eb-88da-df669f99d09b.png" width="40"> Wai Hei Ngan, rayngan999 <br />
+<img src="https://user-images.githubusercontent.com/52867931/110847792-33a83680-8262-11eb-88da-df669f99d09b.png" width="40"> Wai Hei Ngan (Ray), rayngan999 <br />
 <img src="https://user-images.githubusercontent.com/52867931/110847792-33a83680-8262-11eb-88da-df669f99d09b.png" width="40">  Ma Eint Poe, maeintpoe
 
 ## Description
@@ -32,6 +32,16 @@
   * Worked on sending and receiving social media links in the video chat.
 
 * Wai Hei Ngan
+  * Created MeetingViewController for video chatting
+  * Implemented Twilio Video API for the video chat
+  * Created Twilio video user authentication tokens generation flow
+  * Added timer model to video room using firebase's Realtime database
+  * Implemented basic video functionalities (Such as add time, turn on/off camera, turn on/off mic, inbox, and end call)
+  * Added Icebreaker quiestions for the video room
+  * Improved sending and receiving social media user experince for the video chat
+  * Created accept/reject flow logic in MatchingViewController with firebase's Realtime database
+  * Created PreMeetingViewController to act as waiting room 
+
 * Ma Eint Poe
   * Wireframed a prototype for overall flow of the app using Figma
   * Compiled a list of questions for questionnaire
